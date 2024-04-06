@@ -17,7 +17,5 @@ Route::get('/', [HomeController::class,'index']);
 Route::get('{name?}', function ($name="index") {
     return view($name);
 });
-Route::get('/loginsingup', function () {
-    return view('loginsingup');
-});
+
 
