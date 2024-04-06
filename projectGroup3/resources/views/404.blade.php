@@ -3,39 +3,39 @@
 	<head>
 		<!-- Meta -->
 		<meta charset="utf-8">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-	    <meta name="keywords" content="MediaCenter, Template, eCommerce">
-	    <meta name="robots" content="all">
-
-	    <title>Flipmart premium HTML5 & CSS3 Template</title>
-
-	    <!-- Bootstrap Core CSS -->
-	    <link rel="stylesheet" href="{{assets('app\css\bootstrap.min.css')}}">
-	    
-	    <!-- Customizable CSS -->
-	    <link rel="stylesheet" href="{{assets('app\css\main.css')}}">
-	    <link rel="stylesheet" href="{{assets('app\css\blue.css')}}">
-	    <link rel="stylesheet" href="{{assets('app\css\owl.carousel.css')}}">
-		<link rel="stylesheet" href="{{assets('app\css\owl.transitions.css')}}">
-		<link rel="stylesheet" href="{{assets('app\css\animate.min.css')}}">
-		<link rel="stylesheet" href="{{assets('app\css\rateit.css')}}">
-		<link rel="stylesheet" href="{{assets('app\css\bootstrap-select.min.css')}}">
-
-		
-
-		
+		<meta name="keywords" content="MediaCenter, Template, eCommerce">
+		<meta name="robots" content="all">
+	
+		<title>Flipmart premium HTML5 & CSS3 Template</title>
+	
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="{{ asset('app\css\bootstrap.min.css') }}">
+	
+		<!-- Customizable CSS -->
+		<link rel="stylesheet" href="{{ asset('app\css\main.css') }}">
+		<link rel="stylesheet" href="{{ asset('app\css\blue.css') }}">
+		<link rel="stylesheet" href="{{ asset('app\css\owl.carousel.css') }}">
+		<link rel="stylesheet" href="{{ asset('app\css\owl.transitions.css') }}">
+		<link rel="stylesheet" href="{{ asset('app\css\animate.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('app\css\rateit.css') }}">
+		<link rel="stylesheet" href="{{ asset('app\css\bootstrap-select.min.css') }}">
+		<link href="{{ asset('app\css\lightbox.css') }}" rel="stylesheet">
+	
+	
+	
 		<!-- Icons/Glyphs -->
-		<link rel="stylesheet" href="{{assets('app\css\font-awesome.css')}}">
-
-        <!-- Fonts --> 
+		<link rel="stylesheet" href="{{ asset('app\css\font-awesome.css') }}">
+	
+		<!-- Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
-
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800'
+			rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+	
 	</head>
     <body class="cnt-home">
 		<!-- ============================================== HEADER ============================================== -->
@@ -89,7 +89,7 @@
 <div class="logo">
 	<a href="home.html">
 		
-		<img src="{{assets('app\images\logo.png')}}" alt="">
+		<img src="{{asset('app\images\logo.png')}}" alt="">
 
 	</a>
 </div><!-- /.logo -->
@@ -153,7 +153,7 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<div class="image">
-								<a href="detail.html"><img src="{{assets('app\images\cart.jpg')}}" alt=""></a>
+								<a href="detail.html"><img src="{{asset('app\images\cart.jpg')}}" alt=""></a>
 							</div>
 						</div>
 						<div class="col-xs-7">
@@ -278,7 +278,7 @@
 
                     
        <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
-                                    <img class="img-responsive" src="{{assets('app\images\banners\top-menu-banner.jpg')}}" alt="">
+                                    <img class="img-responsive" src="{{asset('app\images\banners\top-menu-banner.jpg')}}" alt="">
                               
                             
       
@@ -367,7 +367,7 @@
             </div>
             
              <div class="col-xs-12 col-sm-12 col-md-4 col-menu custom-banner">
-             <a href="#"><img alt="" src="{{assets('app\images\banners\banner-side.png')}}"></a>
+             <a href="#"><img alt="" src="{{asset('app\images\banners\banner-side.png')}}"></a>
              </div>
     </div><!-- /.row -->
 </div><!-- /.yamm-content -->					</li>
@@ -589,11 +589,11 @@
             <div class="col-xs-12 col-sm-6 no-padding">
                 <div class="clearfix payment-methods">
                     <ul>
-                        <li><img src="{{assets('app\images\payments\1.png')}}" alt=""></li>
-                        <li><img src="{{assets('app\images\payments\2.png')}}" alt=""></li>
-                        <li><img src="{{assets('app\images\payments\3.png')}}" alt=""></li>
-                        <li><img src="{{assets('app\images\payments\4.png')}}" alt=""></li>
-                        <li><img src="{{assets('app\images\payments\5.png')}}" alt=""></li>
+                        <li><img src="{{asset('app\images\payments\1.png')}}" alt=""></li>
+                        <li><img src="{{asset('app\images\payments\2.png')}}" alt=""></li>
+                        <li><img src="{{asset('app\images\payments\3.png')}}" alt=""></li>
+                        <li><img src="{{asset('app\images\payments\4.png')}}" alt=""></li>
+                        <li><img src="{{asset('app\images\payments\5.png')}}" alt=""></li>
                     </ul>
                 </div><!-- /.payment-methods -->
             </div>
@@ -609,21 +609,21 @@
 	<!-- For demo purposes – can be removed on production : End -->
 
 	<!-- JavaScripts placed at the end of the document so the pages load faster -->
-	<script src="{{assets('app\js\jquery-1.11.1.min.js')}}"></script>
+	<script src="{{asset('app\js\jquery-1.11.1.min.js')}}"></script>
 	
-	<script src="{{assets('app\js\bootstrap.min.js')}}"></script>
+	<script src="{{asset('app\js\bootstrap.min.js')}}"></script>
 	
-	<script src="{{assets('app\js\bootstrap-hover-dropdown.min.js')}}"></script>
-	<script src="{{assets('app\js\owl.carousel.min.js')}}"></script>
+	<script src="{{asset('app\js\bootstrap-hover-dropdown.min.js')}}"></script>
+	<script src="{{asset('app\js\owl.carousel.min.js')}}"></script>
 	
-	<script src="{{assets('app\js\echo.min.js')}}"></script>
-	<script src="{{assets('app\js\jquery.easing-1.3.min.js')}}"></script>
-	<script src="{{assets('app\js\bootstrap-slider.min.js')}}"></script>
-    <script src="{{assets('app\js\jquery.rateit.min.js')}}"></script>
-    <script type="text/javascript" src="{{assets('app\js\lightbox.min.js')}}"></script>
-    <script src="{{assets('app\js\bootstrap-select.min.js')}}"></script>
-    <script src="{{assets('app\js\wow.min.js')}}"></script>
-	<script src="{{assets('app\js\scripts.js')}}"></script>
+	<script src="{{asset('app\js\echo.min.js')}}"></script>
+	<script src="{{asset('app\js\jquery.easing-1.3.min.js')}}"></script>
+	<script src="{{asset('app\js\bootstrap-slider.min.js')}}"></script>
+    <script src="{{asset('app\js\jquery.rateit.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('app\js\lightbox.min.js')}}"></script>
+    <script src="{{asset('app\js\bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('app\js\wow.min.js')}}"></script>
+	<script src="{{asset('app\js\scripts.js')}}"></script>
 
 	<!-- For demo purposes – can be removed on production -->
 	
