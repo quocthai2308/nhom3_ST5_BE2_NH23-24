@@ -1,7 +1,6 @@
 ﻿@extends('app')
 @section('title','eror')
 @section('content')
-
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="body-content outer-top-bd">
 	<div class="container">

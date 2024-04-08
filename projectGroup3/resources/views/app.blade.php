@@ -441,7 +441,6 @@
 
 </div><!-- /.header-nav -->
 <!-- ============================================== NAVBAR : END ============================================== -->
-
 </header>
     @yield('content')
 <footer id="footer" class="footer color-bg">
