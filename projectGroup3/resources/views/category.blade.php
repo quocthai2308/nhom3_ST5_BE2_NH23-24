@@ -8,7 +8,7 @@
     <div class="container">
       <div class="breadcrumb-inner">
         <ul class="list-inline list-unstyled">
-          <li><a href="#">Home</a></li>
+          <li><a href="{{ url('home') }}">Home</a></li>
           <li class='active'>Handbags</li>
         </ul>
       </div>
@@ -718,7 +718,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p5.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p5.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag new"><span>new</span></div>
@@ -726,7 +726,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -741,8 +741,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -760,7 +760,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p1.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p1.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag sale"><span>sale</span></div>
@@ -768,7 +768,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -783,8 +783,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -802,7 +802,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p6.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p6.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag hot"><span>hot</span></div>
@@ -810,7 +810,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -825,8 +825,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -844,7 +844,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p6.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p6.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag hot"><span>hot</span></div>
@@ -852,7 +852,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -867,8 +867,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -886,7 +886,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p7.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p7.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag sale"><span>sale</span></div>
@@ -894,7 +894,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -909,8 +909,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -928,7 +928,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p8.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p8.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag new"><span>new</span></div>
@@ -936,7 +936,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -951,8 +951,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -970,7 +970,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p9.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p9.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag new"><span>new</span></div>
@@ -978,7 +978,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -993,8 +993,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -1012,7 +1012,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p10.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p10.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag sale"><span>sale</span></div>
@@ -1020,7 +1020,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -1035,8 +1035,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -1054,7 +1054,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p2.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p2.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag hot"><span>hot</span></div>
@@ -1062,7 +1062,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -1077,8 +1077,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -1096,7 +1096,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p11.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p11.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag new"><span>new</span></div>
@@ -1104,7 +1104,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -1119,8 +1119,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -1138,7 +1138,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p12.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p12.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag sale"><span>sale</span></div>
@@ -1146,7 +1146,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -1161,8 +1161,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -1180,7 +1180,7 @@
                       <div class="products">
                         <div class="product">
                           <div class="product-image">
-                            <div class="image"> <a href="detail.html"><img src="{{asset('app\images\products\p14.jpg')}}" alt=""></a> </div>
+                            <div class="image"> <a href="{{ url('detail') }}"><img src="{{asset('app\images\products\p14.jpg')}}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag hot"><span>hot</span></div>
@@ -1188,7 +1188,7 @@
                           <!-- /.product-image -->
 
                           <div class="product-info text-left">
-                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                            <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
                             <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
@@ -1203,8 +1203,8 @@
                                   <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                   <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                 </li>
-                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                               </ul>
                             </div>
                             <!-- /.action -->
@@ -1240,7 +1240,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1252,8 +1252,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1287,7 +1287,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1299,8 +1299,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1334,7 +1334,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1346,8 +1346,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1381,7 +1381,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1393,8 +1393,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1428,7 +1428,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1440,8 +1440,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1475,7 +1475,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1487,8 +1487,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1522,7 +1522,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1534,8 +1534,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1569,7 +1569,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1581,8 +1581,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1616,7 +1616,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1628,8 +1628,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1663,7 +1663,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1675,8 +1675,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1710,7 +1710,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1722,8 +1722,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->
@@ -1757,7 +1757,7 @@
                           <!-- /.col -->
                           <div class="col col-sm-8 col-lg-8">
                             <div class="product-info">
-                              <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                              <h3 class="name"><a href="{{ url('detail') }}">Floral Print Buttoned</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
                               <!-- /.product-price -->
@@ -1769,8 +1769,8 @@
                                       <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
                                       <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                     </li>
-                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                    <li class="lnk wishlist"> <a class="add-to-cart" href="{{ url('detail') }}" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                    <li class="lnk"> <a class="add-to-cart" href="{{ url('detail') }}" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                   </ul>
                                 </div>
                                 <!-- /.action -->

@@ -13,7 +13,7 @@
                         <input placeholder="Search" autocomplete="off">
                         <button class="  btn-default le-button">Go</button>
                     </form>
-					<a href="home.html"><i class="fa fa-home"></i> Go To Homepage</a>
+					<a href="{{ url('home') }}"><i class="fa fa-home"></i> Go To Homepage</a>
 				</div>
 			</div><!-- /.row -->
 		</div><!-- /.sigin-in-->
