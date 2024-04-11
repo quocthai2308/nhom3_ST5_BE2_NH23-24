@@ -15,7 +15,7 @@
 
 <div class="body-content">
 	<div class="container">
-		<div class="track-order-page">
+		<div class="track-order-page"> 
 			<div class="row">
 				<div class="col-md-12">
 	<h2 class="heading-title">Track your Order</h2>
