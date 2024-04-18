@@ -9,6 +9,8 @@ class HomeController extends Controller
     public function index() {
         $productModel = new Product();
         $products= $productModel->getTenPreProducts();
-        return view('home',['products'=>$products]);
+        $specialProducts = $productModel->getSpecialOfferProducts();
+        $newProducts = $productModel->getNewProducts();
+       return view('home',compact('products','specialProducts','newProducts'));
     }
 }

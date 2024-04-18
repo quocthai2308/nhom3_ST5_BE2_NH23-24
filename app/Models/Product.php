@@ -15,5 +15,13 @@ class Product extends Model
     $products = Product::with('images')->take(10)->get();
     return $products;
    }
+   public function getSpecialOfferProducts(){
+    $products = Product::with('images')->offset(10)->limit(30)->get();
+    return $products;
+   }
+   public function getNewProducts(){
+    $products = Product::with('images')->orderByDesc('id')->limit(10)->get()->reverse();
+    return $products;
+   }
     use HasFactory;
 }
