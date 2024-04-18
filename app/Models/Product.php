@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+ /**
+  * @param  $id
+  */
     public function images()
     {
         return $this->hasMany(Image::class);
@@ -23,5 +26,9 @@ class Product extends Model
     $products = Product::with('images')->orderByDesc('id')->limit(10)->get()->reverse();
     return $products;
    }
+   public function getProductDetails($id)
+    {
+        return self::find($id);
+    }
     use HasFactory;
 }

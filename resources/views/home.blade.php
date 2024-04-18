@@ -827,9 +827,11 @@
                                     <div class="products">
                                         <div class="hot-deal-wrapper">
                                             <div class="image">
+                                                <a href="{{ url('detail/'.$product['id']) }}">
                                                 @foreach ($product->images as $image)
                                                     <img src="{{ asset("app/images/products/{$image->name}") }}">
                                                 @endforeach
+                                            </a>
                                             </div>
                                             <div class="sale-offer-tag"><span>49%<br>
                                                     off</span></div>
@@ -856,7 +858,7 @@
 
                                         <div class="product-info text-left m-t-20">
                                             <h3 class="name"><a
-                                                    href="{{ url('detail') }}">{{ $product['name'] }}</a>
+                                                    href="{{ url('detail/'.$product['id']) }}">{{ $product['name'] }}</a>
                                             </h3>
                                             <div class="rating rateit-small"></div>
                                             <div class="product-price"> <span class="price">
@@ -901,7 +903,7 @@
                                                     <div class="row product-micro-row">
                                                         <div class="col col-xs-5">
                                                             <div class="product-image">
-                                                                <div class="image"> <a href="#">
+                                                                <div class="image"> <a href="{{ url('detail/'.$specialProduct['id']) }}">
                                                                         @foreach ($specialProduct->images as $image)
                                                                             <img
                                                                                 src="{{ asset("app/images/products/{$image->name}") }}">
@@ -915,7 +917,7 @@
                                                         <!-- /.col -->
                                                         <div class="col col-xs-7">
                                                             <div class="product-info">
-                                                                <h3 class="name"><a href="#">Floral Print
+                                                                <h3 class="name"><a href="{{ url('detail/'.$specialProduct['id']) }}">Floral Print
                                                                         Shirt</a></h3>
                                                                 <div class="rating rateit-small"></div>
                                                                 <div class="product-price"> <span class="price">
@@ -1147,7 +1149,7 @@
                                                 <div class="products">
                                                     <div class="product">
                                                         <div class="product-image">
-                                                            <div class="image"> <a href="{{ url('detail') }}">
+                                                            <div class="image"> <a href="{{ url('detail/'.$newProduct['id']) }}">
                                                               @foreach ($newProduct->images as $image)
                                                               <img src="{{ asset("app/images/products/{$image->name}") }}" alt=""></a> 
                                                               @endforeach
@@ -1160,7 +1162,7 @@
                                                         <!-- /.product-image -->
 
                                                         <div class="product-info text-left">
-                                                            <h3 class="name"><a href="{{ url('detail') }}">${{$newProduct['name']}}</a></h3>
+                                                            <h3 class="name"><a href="{{ url('detail/'.$newProduct['id']) }}">${{$newProduct['name']}}</a></h3>
                                                             <div class="rating rateit-small"></div>
                                                             <div class="description"></div>
                                                             <div class="product-price"> <span class="price"> ${{$newProduct['price']}} 
@@ -1184,13 +1186,13 @@
                                                                     </li>
                                                                     <li class="lnk wishlist"> <a data-toggle="tooltip"
                                                                             class="add-to-cart"
-                                                                            href="{{ url('detail') }}"
+                                                                            href="{{ url('detail/'.$newProduct['id']) }}"
                                                                             title="Wishlist"> <i
                                                                                 class="icon fa fa-heart"></i> </a>
                                                                     </li>
                                                                     <li class="lnk"> <a data-toggle="tooltip"
                                                                             class="add-to-cart"
-                                                                            href="{{ url('detail') }}"
+                                                                            href="{{ url('detail/'.$newProduct['id']) }}"
                                                                             title="Compare">
                                                                             <i class="fa fa-signal"
                                                                                 aria-hidden="true"></i> </a> </li>

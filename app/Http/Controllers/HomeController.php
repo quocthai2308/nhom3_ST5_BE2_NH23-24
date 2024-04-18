@@ -13,4 +13,9 @@ class HomeController extends Controller
         $newProducts = $productModel->getNewProducts();
        return view('home',compact('products','specialProducts','newProducts'));
     }
+    public function detail($id){
+        $productModel = new Product();
+        $product = $productModel->getProductDetails($id);
+     return view('detail', compact('product'));
+    }
 }
