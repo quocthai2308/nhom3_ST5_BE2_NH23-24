@@ -14,11 +14,20 @@ class HomeController extends Controller
         $specialProducts = $productModel->getSpecialOfferProducts();
         $newProducts = $productModel->getNewProducts();
         $categories = $categoryModel->getParentCategories();
-       return view('home',compact('products','specialProducts','newProducts','categories'));
+        $allCategories = $categoryModel->getAllCategories();
+       return view('home',compact('products','specialProducts','newProducts','categories','allCategories'));
     }
     public function detail($id){
         $productModel = new Product();
         $product = $productModel->getProductDetails($id);
        return view('detail', compact('product'));
     }
+    public function search(Request $request){
+        $searchTerm = $request->input('name');
+        $productModel = new Product();
+        $products = $productModel->getProductByKeyword($searchTerm);
+       return view('search', compact('products','searchTerm'));
+    }
+  
+
 }

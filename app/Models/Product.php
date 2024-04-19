@@ -30,5 +30,11 @@ class Product extends Model
     {
         return self::find($id);
     }
+   public function getProductByKeyword($keyword)
+    {
+           $products = Product::where('name', 'LIKE', "%{$keyword}%")->get(); 
+           return $products;
+    }
+
     use HasFactory;
 }
