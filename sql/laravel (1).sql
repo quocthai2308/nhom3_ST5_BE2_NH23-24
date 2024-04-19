@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 07:53 PM
+-- Generation Time: Apr 19, 2024 at 04:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,11 +28,34 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categories` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `parent_id` int(11) NOT NULL,
+  `update_at` date NOT NULL,
+  `create_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `parent_id`, `update_at`, `create_at`) VALUES
+(1, 'men', 0, '0000-00-00', '0000-00-00'),
+(2, 'wonmen', 0, '0000-00-00', '0000-00-00'),
+(3, 'kids', 0, '0000-00-00', '0000-00-00'),
+(4, 'electronic', 0, '0000-00-00', '0000-00-00'),
+(5, 'other', 0, '0000-00-00', '0000-00-00'),
+(6, 'clothing', 1, '0000-00-00', '0000-00-00'),
+(7, 'clothing', 2, '0000-00-00', '0000-00-00'),
+(8, 'shoes', 1, '0000-00-00', '0000-00-00'),
+(9, 'shoes', 2, '0000-00-00', '0000-00-00'),
+(10, 'accessory', 1, '0000-00-00', '0000-00-00'),
+(11, 'accessory', 2, '0000-00-00', '0000-00-00'),
+(12, 'phone', 4, '0000-00-00', '0000-00-00'),
+(13, 'tablet', 4, '0000-00-00', '0000-00-00'),
+(14, 'laptop', 4, '0000-00-00', '0000-00-00'),
+(15, 'watch', 4, '0000-00-00', '0000-00-00'),
+(16, 'electronic accessory', 4, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -97,7 +120,8 @@ INSERT INTO `images` (`id`, `name`, `product_id`, `created_at`, `updated_at`) VA
 (26, 'p26.jpg', '26', '2024-04-15 10:07:37', '2024-04-15 10:07:37'),
 (27, 'p27.jpg', '27', '2024-04-15 10:07:37', '2024-04-15 10:07:37'),
 (28, 'p28.jpg', '28', '2024-04-15 10:07:37', '2024-04-15 10:07:37'),
-(29, 'p29.jpg', '29', '2024-04-15 10:07:37', '2024-04-15 10:07:37');
+(29, 'p29.jpg', '29', '2024-04-15 10:07:37', '2024-04-15 10:07:37'),
+(30, 'p30.jpg', '30', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -287,7 +311,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -299,7 +323,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `migrations`
