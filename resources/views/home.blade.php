@@ -106,7 +106,8 @@
                         <!-- /.contact-row -->
                         <!-- ============================================================= SEARCH AREA ============================================================= -->
                         <div class="search-area">
-                            <form>
+                            <form action="{{url('search')}}" method="get"> 
+                                @csrf
                                 <div class="control-group">
                                     <ul class="categories-filter animate-dropdown">
                                         <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"
@@ -118,15 +119,10 @@
                                                @endforeach
                                             </ul>
                                         </li>
-                                    </ul>
-                                    <form action="{{url('search')}}" method="get">
-                                        @csrf
-                                       <a href="{{url('search')}}">
+                                    </ul>                         
                                         <input class="search-field" name="name" placeholder="Search here..." autocomplete="on">
-                                        </a> <button type="submit" class="search-button">
-                                            Search</button>
-                                    </form>
-                                    
+                                        <button type="submit" class="search-button">
+                                            Search</button>    
                                 </div>
                             </form>
                         </div>
