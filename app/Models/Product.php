@@ -46,10 +46,8 @@ class Product extends Model
         })
         ->with('images')
         ->orderByDesc('id')
-        ->get();
-    
+        ->get();   
     return $products;
 }
-
     use HasFactory;
 }
