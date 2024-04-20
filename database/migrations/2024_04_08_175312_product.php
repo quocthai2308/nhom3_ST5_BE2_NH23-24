@@ -15,12 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('price');
-            $table->string('discount');
-            $table->string('feature');
-            $table->integer('selled_quantity');
-            $table->unsignedBigInteger('type_id');
             $table->timestamps();
+            $table->string('price');
         });
     }
     
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        //
     }
 };

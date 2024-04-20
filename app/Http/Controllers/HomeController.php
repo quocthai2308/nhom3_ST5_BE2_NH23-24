@@ -13,11 +13,8 @@ class HomeController extends Controller
         $products= $productModel->getTenPreProducts();
         $specialProducts = $productModel->getSpecialOfferProducts();
         $newProducts = $productModel->getNewProducts();
-        
         $categories = $categoryModel->getParentCategories();
         $allCategories = $categoryModel->getAllCategories();
-        
-
        return view('home',compact('products','specialProducts','newProducts','categories','allCategories'));
     }
     public function detail($id){

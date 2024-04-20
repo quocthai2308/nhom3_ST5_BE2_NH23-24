@@ -225,7 +225,9 @@
                                                         <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
                                                             @foreach ($allCategories as $subCategory)                                     
                                                             <ul class="links">
-                                                                    <li style="font-weight: bold;"><a style="font-size: 2em;" href="{{url("category/".$subCategory->category_id)}}">{{$subCategory->name}}</a></li>                                  
+                                                                @if ($category->id == $subCategory->parent_id)
+                                                                    <li style="font-weight: bold;"><a style="font-size: 2em;" href="{{url("category/".$subCategory->id)}}">{{$subCategory->name}}</a></li>                                  
+                                                                @endif
                                                             </ul>
                                                             @endforeach
                                                         </div>                                                      
