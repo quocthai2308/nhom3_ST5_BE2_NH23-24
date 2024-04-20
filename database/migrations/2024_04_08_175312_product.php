@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->timestamps();
             $table->string('price');
+            $table->string('discount');
+            $table->string('feature');
+            $table->integer('selled_quantity');
+            $table->unsignedBigInteger('type_id');
+            $table->timestamps();
         });
     }
     
