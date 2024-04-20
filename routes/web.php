@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 */
 Route::get('/', [HomeController::class,'index']);
  Route::get('search', [HomeController::class,'search']);
+ Route::get('category/{categoryId}', [HomeController::class,'category']);
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
 

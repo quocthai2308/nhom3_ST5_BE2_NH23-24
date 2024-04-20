@@ -8,23 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     /**
-  * @param  $id
-  */
-  public function parent()
-  {
-      return $this->belongsTo(Category::class, 'parent_id');
-  }
+     * @param  $id
+     */
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
 
-  public function children()
-  {
-      return $this->hasMany(Category::class, 'parent_id');
-  }
-    public function getParentCategories (){
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+    public function getParentCategories()
+    {
         return self::where('parent_id', 0)->get();
     }
-    public function getAllCategories (){
+    public function getAllCategories()
+    {
         return self::all();
     }
+   
+
 
     use HasFactory;
 }

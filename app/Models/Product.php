@@ -35,6 +35,21 @@ class Product extends Model
            $products = Product::where('name', 'LIKE', "%{$keyword}%")->get(); 
            return $products;
     }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
+    }
+    public function getProductsByCategoryId($categoryId)
+    {
+        $products = Product::whereHas('categories', function ($query) use ($categoryId) {
+            $query->where('category_id', $categoryId);
+        })
+        ->with('images')
+        ->orderByDesc('id')
+        ->get();
+    
+    return $products;
+}
 
     use HasFactory;
 }

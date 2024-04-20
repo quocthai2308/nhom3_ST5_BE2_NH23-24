@@ -28,6 +28,10 @@ class HomeController extends Controller
         $products = $productModel->getProductByKeyword($searchTerm);
        return view('search', compact('products','searchTerm'));
     }
+    public function category($categoryId){
+        $productModel = new Product();
+        $products = $productModel->getProductsByCategoryId($categoryId);
+       return view('category', compact('products'));
+    }
   
-
 }
