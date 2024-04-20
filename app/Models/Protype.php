@@ -17,4 +17,8 @@ class Protype extends Model
     {
         return $this->belongsToMany(Category::class, 'category_protype', 'type_id', 'category_id');
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
