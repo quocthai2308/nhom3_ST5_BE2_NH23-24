@@ -21,7 +21,7 @@ Route::get('register', [RegisterController::class, 'showRegistrationForm'])->nam
 Route::post('register', [RegisterController::class, 'register']);
 
 // Các routes khác của bạn...
-
+//21/4
 // Route::get('/', [HomeController::class,'index']);
  Route::get('search', [HomeController::class,'search']);
  Route::get('category/{categoryId}', [HomeController::class,'category']);
