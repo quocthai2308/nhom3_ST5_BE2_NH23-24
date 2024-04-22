@@ -3,14 +3,24 @@
 * {
 	box-sizing: border-box;
 }
-.success-message {
-    color: green;
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: opacity 0.6s;
+    z-index: 1000;
 }
 
-.error-message {
-    color: red;
+.alert-success.fadeOut {
+    opacity: 0;
+    transition: opacity 0.6s;
 }
-
 
 
 

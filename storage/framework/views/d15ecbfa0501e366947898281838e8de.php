@@ -1,13 +1,13 @@
 ﻿
-@extends('app')
-@section('title','chi tiết')
-@section('content')
+
+<?php $__env->startSection('title','chi tiết'); ?>
+<?php $__env->startSection('content'); ?>
 	<!-- ============================================== HEADER : END ============================================== -->
 	<div class="breadcrumb">
 		<div class="container">
 			<div class="breadcrumb-inner">
 				<ul class="list-inline list-unstyled">
-					<li><a href="{{ url('home') }}">Home</a></li>
+					<li><a href="<?php echo e(url('home')); ?>">Home</a></li>
 					<li><a href="#">Clothing</a></li>
 					<li class='active'>Floral Print Buttoned</li>
 				</ul>
@@ -20,7 +20,7 @@
 				<div class='col-md-3 sidebar'>
 					<div class="sidebar-module-container">
 						<div class="home-banner outer-top-n">
-							<img src="{{asset('app\images\banners\LHS-banner.jpg')}}" alt="Image">
+							<img src="<?php echo e(asset('app\images\banners\LHS-banner.jpg')); ?>" alt="Image">
 						</div>
 						<!-- ============================================== NEWSLETTER ============================================== -->
 						<div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
@@ -43,13 +43,13 @@
 					<div class="detail-block">
 						<div class="row  wow fadeInUp">
 							<div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
-									@foreach ($product->images as $image) 
-										<img style="width:100%" src="{{asset("app/images/products/{$image->name}")}}" alt="">
-										@endforeach
+									<?php $__currentLoopData = $product->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
+										<img style="width:100%" src="<?php echo e(asset("app/images/products/{$image->name}")); ?>" alt="">
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</div><!-- /.gallery-holder -->
 							<div class='col-sm-6 col-md-7 product-info-block'>
 								<div class="product-info">
-									<h1 class="name">{{$product['name']}}</h1>
+									<h1 class="name"><?php echo e($product['name']); ?></h1>
 
 									<div class="rating-reviews m-t-20">
 										<div class="row">
@@ -80,7 +80,8 @@
 									</div><!-- /.stock-container -->
 
 									<div class="description-container m-t-20">
-										{{$product['description']}}
+										<?php echo e($product['description']); ?>
+
 									</div><!-- /.description-container -->
 
 									<div class="price-container info-container m-t-20">
@@ -89,14 +90,14 @@
 
 											<div class="col-sm-6">
 												<div class="price-box">
-													<span class="price">${{$product['price']}}</span>
+													<span class="price">$<?php echo e($product['price']); ?></span>
 													<span class="price-strike">$900.00</span>
 												</div>
 											</div>
 
 											<div class="col-sm-6">
 												<div class="favorite-button m-t-10">
-													<a class="btn btn-primary like" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#" data-product-id="{{ $product->id }}">
+													<a class="btn btn-primary like" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#" data-product-id="<?php echo e($product->id); ?>">
 														<i class="fa fa-heart"></i>
 													</a>													
 													<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
@@ -157,7 +158,7 @@
 
 									<div id="description" class="tab-pane in active">
 										<div class="product-tab">
-											<p class="text">{{$product->description}}</p>
+											<p class="text"><?php echo e($product->description); ?></p>
 										</div>
 									</div><!-- /.tab-pane -->
 
@@ -304,7 +305,7 @@
 									<div class="product">
 										<div class="product-image">
 											<div class="image">
-												<a href="detail.html"><img src="{{asset('app\images\products\p1.jpg')}}" alt=""></a>
+												<a href="detail.html"><img src="<?php echo e(asset('app\images\products\p1.jpg')); ?>" alt=""></a>
 											</div><!-- /.image -->
 
 											<div class="tag sale"><span>sale</span></div>
@@ -360,7 +361,7 @@
 									<div class="product">
 										<div class="product-image">
 											<div class="image">
-												<a href="detail.html"><img src="{{asset('app\images\products\p2.jpg')}}" alt=""></a>
+												<a href="detail.html"><img src="<?php echo e(asset('app\images\products\p2.jpg')); ?>" alt=""></a>
 											</div><!-- /.image -->
 
 											<div class="tag sale"><span>sale</span></div>
@@ -416,7 +417,7 @@
 									<div class="product">
 										<div class="product-image">
 											<div class="image">
-												<a href="detail.html"><img src="{{asset('app\images\products\p3.jpg')}}" alt=""></a>
+												<a href="detail.html"><img src="<?php echo e(asset('app\images\products\p3.jpg')); ?>" alt=""></a>
 											</div><!-- /.image -->
 
 											<div class="tag hot"><span>hot</span></div>
@@ -472,7 +473,7 @@
 									<div class="product">
 										<div class="product-image">
 											<div class="image">
-												<a href="detail.html"><img src="{{asset('app\images\products\p4.jpg')}}" alt=""></a>
+												<a href="detail.html"><img src="<?php echo e(asset('app\images\products\p4.jpg')); ?>" alt=""></a>
 											</div><!-- /.image -->
 
 											<div class="tag new"><span>new</span></div>
@@ -528,7 +529,7 @@
 									<div class="product">
 										<div class="product-image">
 											<div class="image">
-												<a href="detail.html"><img src="{{asset('app\images\blank.gif')}}" data-echo="assets/images/products/p5.jpg" alt=""></a>
+												<a href="detail.html"><img src="<?php echo e(asset('app\images\blank.gif')); ?>" data-echo="assets/images/products/p5.jpg" alt=""></a>
 											</div><!-- /.image -->
 
 											<div class="tag hot"><span>hot</span></div>
@@ -584,7 +585,7 @@
 									<div class="product">
 										<div class="product-image">
 											<div class="image">
-												<a href="detail.html"><img src="{{asset('app\images\blank.gif')}}" data-echo="assets/images/products/p6.jpg" alt=""></a>
+												<a href="detail.html"><img src="<?php echo e(asset('app\images\blank.gif')); ?>" data-echo="assets/images/products/p6.jpg" alt=""></a>
 											</div><!-- /.image -->
 
 											<div class="tag new"><span>new</span></div>
@@ -647,61 +648,61 @@
 					<div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
 						<div class="item m-t-15">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand1.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand1.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item m-t-10">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand2.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand2.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand3.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand3.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand4.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand4.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand5.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand5.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand6.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand6.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand2.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand2.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand4.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand4.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand1.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand1.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 
 						<div class="item">
 							<a href="#" class="image">
-								<img data-echo="assets/images/brands/brand5.png" src="{{asset('app\images\blank.gif')}}" alt="">
+								<img data-echo="assets/images/brands/brand5.png" src="<?php echo e(asset('app\images\blank.gif')); ?>" alt="">
 							</a>
 						</div><!--/.item-->
 					</div><!-- /.owl-carousel #logo-slider -->
@@ -713,4 +714,30 @@
 	</div><!-- /.body-content -->
 
 	<!-- ============================================================= FOOTER ============================================================= -->
-	@endsection
+	<?php $__env->stopSection(); ?>
+	<script>
+		$('.like').click(function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url: '/like',
+        type: 'POST',
+        data: {
+            product_id: $(this).data('product-id')
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data){
+            if(data.success){
+                alert('Product liked successfully!');
+            }
+        },
+        error: function(error){
+            console.log(error);
+        }
+    });
+});
+
+	</script>
+<?php echo $__env->make('app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Wamp64\www\nhom3_ST5_BE2_NH23-24\resources\views/detail.blade.php ENDPATH**/ ?>

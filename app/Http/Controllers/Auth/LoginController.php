@@ -14,6 +14,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        //22/4
         return view('auth.login');
     }
 
@@ -27,6 +28,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+
             if (Cookie::get('cart')) {
                 $cart = json_decode(Cookie::get('cart'), true);
 
@@ -36,6 +38,8 @@ class LoginController extends Controller
                     $cartItem = new CartItem;
                     $cartItem->user_id = $request->user()->id; // ID người dùng hiện tại
                     $cartItem->product_id = $productId;
+                    $cartItem->name = $product['name'];
+                    $cartItem->price = $product['price'];
                     $cartItem->quantity = $product['quantity'];
                     $cartItem->save();
                 }
@@ -44,6 +48,8 @@ class LoginController extends Controller
                 Cookie::queue(Cookie::forget('cart'));
             }
 
+
+            session()->flash('success', 'Bạn đã đăng nhập thành công');
 
             $user = Auth::user();
 
@@ -67,9 +73,13 @@ class LoginController extends Controller
     {
         Auth::logout();
 
+        
+        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
+        
+        Cookie::queue(Cookie::forget('cart'));
+        
         return redirect('/');
     }
 }
