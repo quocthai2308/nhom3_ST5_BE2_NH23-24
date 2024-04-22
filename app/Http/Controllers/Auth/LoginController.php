@@ -30,6 +30,7 @@ class LoginController extends Controller
 
 
             if (Cookie::get('cart')) {
+                Cookie::queue(Cookie::forget('cart'));
                 $cart = json_decode(Cookie::get('cart'), true);
 
                 // Lưu từng sản phẩm trong giỏ hàng vào cơ sở dữ liệu
@@ -45,7 +46,6 @@ class LoginController extends Controller
                 }
 
                 // Xóa cookie
-                Cookie::queue(Cookie::forget('cart'));
             }
 
 

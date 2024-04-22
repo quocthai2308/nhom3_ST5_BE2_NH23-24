@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -514,7 +515,7 @@
                             </div>
                             <!-- /.item -->
 
-                            <div class="item" style="background-image: {{ url( asset('app/images/sliders/02.jpg')) }} ">
+                            <div class="item" style="background-image: url({{ asset('app/images/sliders/02.jpg') }} );">
                                 <div class="container-fluid">
                                     <div class="caption bg-color vertical-center text-left">
                                         <div class="slider-header fadeInDown-1">Spring 2016</div>
