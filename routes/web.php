@@ -20,13 +20,14 @@ Route::post('login', [LoginController::class, 'login']);
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
-// Các routes khác của bạn...
+// Các routes khác của bạn... Biết ời cái đó tui làm tạm tại chưa có login
 //21/4
 // Route::get('/', [HomeController::class,'index']);
  Route::get('search', [HomeController::class,'search']);
  Route::get('category/{categoryId}', [HomeController::class,'category']);
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
+Route::post('/like', 'LikeController@store')->name('like.store');
 
 
 
