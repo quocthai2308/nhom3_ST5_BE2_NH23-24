@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title><?php echo $__env->yieldContent('title', 'default'); ?></title>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="<?php echo e(asset('app\css\bootstrap.min.css')); ?>">

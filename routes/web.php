@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LikeController;
 
 Route::post('/like', [HomeController::class, 'addLike'])->name('like.store');
+Route::post('/get-like-status', [LikeController::class, 'getLikeStatus'])->name('getLikeStatus');
+
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 Route::get('/', function () {
     return view('auth.login');
