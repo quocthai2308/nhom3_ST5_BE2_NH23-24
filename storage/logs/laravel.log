@@ -1507,3 +1507,13 @@
 [2024-04-22 07:06:39] local.INFO: Registering user: {"_token":"NtCZeSEp1TkMYJasO2iaS7q8iMK5lPT6HRIvqe15","name":"h","email":"h@mail","password":"11111111","password_confirmation":"11111111"} 
 [2024-04-22 07:06:40] local.ERROR: Error registering user: {"error":"SQLSTATE[HY000]: General error: 1364 Field 'userType' doesn't have a default value (Connection: mysql, SQL: insert into `users` (`name`, `email`, `password`, `updated_at`, `created_at`) values (h, h@mail, $2y$12$7HVeb3mqbRabGS.GNkXeYeXYPfBUjVO0vJhvdV8v2fgTd2u/pWQLK, 2024-04-22 07:06:40, 2024-04-22 07:06:40))"} 
 [2024-04-22 07:07:51] local.INFO: Registering user: {"_token":"NtCZeSEp1TkMYJasO2iaS7q8iMK5lPT6HRIvqe15","name":"h","email":"h@mail","password":"11111111","password_confirmation":"11111111"} 
+[2024-04-22 08:11:24] local.INFO: Registering user: {"_token":"KsH3KxPDuTgbPLuO20Dm0pbSpsNu4atbtkeegm5I","name":"5","email":"54@mail","password":"11111111","password_confirmation":"11111111"} 
+[2024-04-22 09:02:26] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"12","email":"12@mai","password":"11111111","password_confirmation":"11111111"} 
+[2024-04-22 09:05:19] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":null,"email":null,"password":"11111111","password_confirmation":null} 
+[2024-04-22 09:09:14] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"1","email":"1@mail","password":"11111111","password_confirmation":"111"} 
+[2024-04-22 09:10:21] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"2","email":"2@mail","password":"11111111"} 
+[2024-04-22 09:15:35] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"q","email":"q@mail","password":"q1111111","password_confirmation":"11111111"} 
+[2024-04-22 09:17:16] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"1","email":"1@mail","password":"11111111"} 
+[2024-04-22 09:19:06] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"1","email":"1@mail","password":"11111111","password_confirmation":"111111111"} 
+[2024-04-22 09:24:11] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"Thuan","email":"thuan@mail","password":"11111111","password_confirmation":"11111111"} 
+[2024-04-22 09:28:40] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"1","email":"11@mail","password":"11111111"} 

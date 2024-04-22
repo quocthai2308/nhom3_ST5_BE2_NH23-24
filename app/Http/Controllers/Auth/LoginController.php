@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            session()->flash('success', 'Bạn đã đăng nhập thành công');
 
         
             $user = Auth::user();

@@ -13,9 +13,9 @@
 	@if (session('success'))
 	<div class="alert alert-success">
 		{{ session('success') }}
+		<button type="button" class="close" onclick="closeAlert()">&times;</button>
 	</div>
 	@endif
-
 
 	<!-- partial:index.partial.html -->
 	<div class="container" id="container">
@@ -23,12 +23,11 @@
 			<!-- Form đăng ký -->
 			<form action="{{ route('register') }}" method="post">
 				@csrf
-				<input type="text" placeholder="Name" name="name" />
-				<input type="email" placeholder="Email" name="email" />
-				<input type="password" placeholder="Password" name="password" />
-				<input type="password" placeholder="Confirm Password" name="password_confirmation" />
-				<button type="submit">Sign Up Dang Ky</button>
-
+				<input type="text" placeholder="Name" name="name" required />
+				<input type="email" placeholder="Email" name="email" required />
+				<input type="password" placeholder="Password" name="password" minlength="8" required oninput="checkPasswordLength(this)" />
+				<div id="passwordHelp" style="color:red;"></div>
+				<button type="submit">Đăng Ký</button>
 			</form>
 
 		</div>
@@ -37,20 +36,21 @@
 			<form action="{{ route('login') }}" method="post">
 				@csrf
 				<input type="email" placeholder="Email" name="email" />
-				<input type="password" placeholder="Password" name="password" />
-				<button type="submit">Sign In</button>
+				<input type="password" placeholder="Password" name="password" minlength="8" required oninput="checkPasswordLength(this)" />
+				<div id="passwordHelp" style="color:red;"></div>
+				<button type="submit">Đăng Nhập</button>
 			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-left">
-					<h1>Welcome Back!</h1>
-					<p>To keep connected with us please login with your personal info</p>
+					<h1>Hi Bạn!</h1>
+					<p>Nếu bạn có tài khoảng ròi thì nhấn vô Sìn in để đăng nhập nè</p>
 					<button class="ghost" id="signIn">Sign In</button>
 				</div>
 				<div class="overlay-panel overlay-right">
-					<h1>Hello, Friend!</h1>
-					<p>Enter your personal details and start journey with us</p>
+					<h1>Xin Chào !  </h1>
+					<p>Nếu Bạn chưa có tài khoảng thì hãy nhấn Sign up để đăng ký nhe !</p>
 					<button class="ghost" id="signUp">Sign Up</button>
 				</div>
 			</div>
@@ -70,6 +70,32 @@
 		signInButton.addEventListener('click', () => {
 			container.classList.remove("right-panel-active");
 		});
+
+		//toi thiu 8 ky tự
+		function checkPasswordLength(input) {
+			var helpText = document.getElementById('passwordHelp');
+			if (input.value.length > 0 && input.value.length < 8) {
+				helpText.textContent = 'Mật khẩu phải có ít nhất 8 ký tự.';
+			} else {
+				helpText.textContent = '';
+			}
+		}
+
+
+		function closeAlert() {
+			var alert = document.querySelector('.alert-success');
+			alert.classList.add('fadeOut');
+			setTimeout(function() {
+				alert.style.display = 'none';
+			}, 600);
+		}
+
+		// Tự động ẩn thông báo sau 5 giây
+		setTimeout(closeAlert, 5000);
+
+
+
+		
 	</script>
 
 </body>
