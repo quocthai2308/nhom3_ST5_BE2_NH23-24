@@ -1507,6 +1507,7 @@
 [2024-04-22 07:06:39] local.INFO: Registering user: {"_token":"NtCZeSEp1TkMYJasO2iaS7q8iMK5lPT6HRIvqe15","name":"h","email":"h@mail","password":"11111111","password_confirmation":"11111111"} 
 [2024-04-22 07:06:40] local.ERROR: Error registering user: {"error":"SQLSTATE[HY000]: General error: 1364 Field 'userType' doesn't have a default value (Connection: mysql, SQL: insert into `users` (`name`, `email`, `password`, `updated_at`, `created_at`) values (h, h@mail, $2y$12$7HVeb3mqbRabGS.GNkXeYeXYPfBUjVO0vJhvdV8v2fgTd2u/pWQLK, 2024-04-22 07:06:40, 2024-04-22 07:06:40))"} 
 [2024-04-22 07:07:51] local.INFO: Registering user: {"_token":"NtCZeSEp1TkMYJasO2iaS7q8iMK5lPT6HRIvqe15","name":"h","email":"h@mail","password":"11111111","password_confirmation":"11111111"} 
+<<<<<<< HEAD
 [2024-04-22 08:11:24] local.INFO: Registering user: {"_token":"KsH3KxPDuTgbPLuO20Dm0pbSpsNu4atbtkeegm5I","name":"5","email":"54@mail","password":"11111111","password_confirmation":"11111111"} 
 [2024-04-22 09:02:26] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"12","email":"12@mai","password":"11111111","password_confirmation":"11111111"} 
 [2024-04-22 09:05:19] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":null,"email":null,"password":"11111111","password_confirmation":null} 
@@ -1517,3 +1518,17 @@
 [2024-04-22 09:19:06] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"1","email":"1@mail","password":"11111111","password_confirmation":"111111111"} 
 [2024-04-22 09:24:11] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"Thuan","email":"thuan@mail","password":"11111111","password_confirmation":"11111111"} 
 [2024-04-22 09:28:40] local.INFO: Registering user: {"_token":"p38nSrPQC3W9wtvNku1a30JPe8rzhDIO43UJwLrh","name":"1","email":"11@mail","password":"11111111"} 
+=======
+[2024-04-22 08:40:15] local.INFO: Registering user: {"_token":"6DDQNodg6XNR36Mhs7FvjcGwwY7GWcGScYbpTw4H","name":"nhan","email":"nhan@gmail.com","password":"1234","password_confirmation":"1234"} 
+[2024-04-22 08:42:04] local.INFO: Registering user: {"_token":"6DDQNodg6XNR36Mhs7FvjcGwwY7GWcGScYbpTw4H","name":"nhan","email":"nhan@gmail.com","password":"1234","password_confirmation":"1234"} 
+[2024-04-22 08:46:03] local.INFO: Registering user: {"_token":"oRpwh71P4FqQqUM5uim7ZFnsVy4DmjtNQILszwZv","name":"nhan","email":"nhan@gmail.com","password":"1234","password_confirmation":"1234"} 
+[2024-04-22 08:47:39] local.INFO: Registering user: {"_token":"oRpwh71P4FqQqUM5uim7ZFnsVy4DmjtNQILszwZv","name":"nh","email":"t@mail","password":"12345678","password_confirmation":"12345678"} 
+[2024-04-22 09:18:07] local.ERROR: syntax error, unexpected token "public", expecting end of file {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected token \"public\", expecting end of file at D:\\Wamp64\\www\\nhom3_ST5_BE2_NH23-24\\app\\Models\\Product.php:9)
+[stacktrace]
+#0 D:\\Wamp64\\www\\nhom3_ST5_BE2_NH23-24\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(244): Symfony\\Component\\ErrorHandler\\Error\\FatalError->__construct(message: ''syntax error, ...', code: '0', error: '['type' => 4, '...', traceOffset: '0', traceArgs: '???', trace: '???')
+#1 D:\\Wamp64\\www\\nhom3_ST5_BE2_NH23-24\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(231): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->fatalErrorFromPhpError(error: '['type' => 4, '...', traceOffset: '0')
+#2 D:\\Wamp64\\www\\nhom3_ST5_BE2_NH23-24\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(255): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleShutdown()
+#3 D:\\Wamp64\\www\\nhom3_ST5_BE2_NH23-24\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php(0): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->Illuminate\\Foundation\\Bootstrap\\{closure:D:\\Wamp64\\www\\nhom3_ST5_BE2_NH23-24\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\HandleExceptions.php:254-256}()
+#4 {main}
+"} 
+>>>>>>> 42121b721f8acfd1ebd8c9c9af2e7b95802ce9e7

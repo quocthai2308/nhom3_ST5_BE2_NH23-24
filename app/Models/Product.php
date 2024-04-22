@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UserLikeProduct;
+
+
 
 class Product extends Model
 {
@@ -49,5 +52,23 @@ class Product extends Model
         ->get();   
     return $products;
 }
+// thêm lượt thích
+public function addProductToUserLikes($userId, $productId)
+{
+    $existingLike = UserLikeProduct::where('user_id', $userId)
+                                   ->where('product_id', $productId)
+                                   ->first();
+
+    if (!$existingLike) {
+        $userLikeProduct = new UserLikeProduct;
+        $userLikeProduct->user_id = $userId;
+        $userLikeProduct->product_id = $productId;
+        $userLikeProduct->save();
+    } else {
+         $existingLike->delete();
+    }
+}
+
+
     use HasFactory;
 }
