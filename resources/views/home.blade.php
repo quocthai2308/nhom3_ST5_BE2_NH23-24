@@ -3,7 +3,6 @@
     {{ session('success') }}
 </div>
 @endif
-
 <!DOCTYPE html>
 <html lang="en">
 

@@ -94,12 +94,10 @@
                                                     <span class="price-strike">$900.00</span>
                                                 </div>
                                             </div>
-
-                                            <div class="btn btn-primary" id="like" data-placement="right"										
-                                                title="Wishlist" data-product-id="{{ $product->id }}"
-                                                onclick="likeProduct(this)">	@csrf
-                                                <i class="fa fa-heart"></i>
-                                            </div>
+                                          <form action="{{ route('like.store') }}" method="post">
+                                            @csrf
+                                            <button class="btn btn-primary" type="submit" name="product_id" value="{{$product->id}}"><i class="fa fa-heart"></i></button>
+                                           </form>
 
                                             <div class="col-sm-6">
                                                 <div class="favorite-button m-t-10">

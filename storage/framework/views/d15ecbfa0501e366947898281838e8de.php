@@ -95,12 +95,10 @@
                                                     <span class="price-strike">$900.00</span>
                                                 </div>
                                             </div>
-
-                                            <div class="btn btn-primary" id="like" data-placement="right"										
-                                                title="Wishlist" data-product-id="<?php echo e($product->id); ?>"
-                                                onclick="likeProduct(this)">	<?php echo csrf_field(); ?>
-                                                <i class="fa fa-heart"></i>
-                                            </div>
+                                          <form action="<?php echo e(route('like.store')); ?>" method="post">
+                                            <?php echo csrf_field(); ?>
+                                            <button class="btn btn-primary" type="submit" name="product_id" value="<?php echo e($product->id); ?>"><i class="fa fa-heart"></i></button>
+                                           </form>
 
                                             <div class="col-sm-6">
                                                 <div class="favorite-button m-t-10">
