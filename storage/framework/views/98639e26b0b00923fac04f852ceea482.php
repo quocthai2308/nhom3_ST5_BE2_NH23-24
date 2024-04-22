@@ -466,24 +466,33 @@
     <script src="<?php echo e(asset('app\js\ajax.js')); ?>"></script>
 
     <!-- For demo purposes – can be removed on production -->
-    <script src="switchstylesheet/switchstylesheet.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".changecolor").switchstylesheet({
-                seperator: "color"
-            });
-            $('.show-theme-options').click(function() {
-                $(this).parent().toggleClass('open');
-                return false;
-            });
-        });
-
-        $(window).bind("load", function() {
-            $('.show-theme-options').delay(2000).trigger('click');
-        });
-    </script>
+    
+    
     <!-- For demo purposes – can be removed on production : End -->
-
+    <script>
+        function likeProduct(element) {
+            var productId = element.getAttribute('data-product-id');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/like', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        // Toggle the style of the like button
+                        element.classList.toggle('text-danger');
+                        console.log("Product liked successfully!");
+                    } else {
+                        console.error('Error:', response.error);
+                    }
+                } else if (xhr.status !== 200) {
+                    console.error('AJAX Error:', xhr.status);
+                }
+            };
+            xhr.send(encodeURI('product_id=' + productId));
+        }
+    </script>
 
 
 </body>

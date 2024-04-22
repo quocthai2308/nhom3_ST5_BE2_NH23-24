@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
+Route::post('/like', 'HomeController@addLike')->name('like.store');
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 Route::get('/', function () {
     return view('auth.login');
@@ -27,5 +28,4 @@ Route::post('register', [RegisterController::class, 'register']);
  Route::get('category/{categoryId}', [HomeController::class,'category']);
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
-Route::post('/like', 'LikeController@store')->name('like.store');
 
