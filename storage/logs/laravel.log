@@ -1532,3 +1532,4 @@
 #4 {main}
 "} 
 >>>>>>> 42121b721f8acfd1ebd8c9c9af2e7b95802ce9e7
+[2024-04-22 10:22:01] local.INFO: Registering user: {"_token":"4kC0QoCAZvYSLw2vnpiQ6CoutmYf0GXvkjCkJPdf","name":"t","email":"t@mail","password":"11111111"} 
