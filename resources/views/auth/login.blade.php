@@ -51,7 +51,7 @@
 				<div class="overlay-panel overlay-right">
 					<h1>Xin Chào !  </h1>
 					<p>Nếu Bạn chưa có tài khoảng thì hãy nhấn Sign up để đăng ký nhe !</p>
-					<button class="ghost" id="signUp">Sign Up</button>
+					<button class="ghost" id="signUp">Sign Up !</button>
 				</div>
 			</div>
 		</div>
