@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\UserLikeProduct;
 class HomeController extends Controller
 {
     public function index() {
@@ -33,5 +34,15 @@ class HomeController extends Controller
         $products = $productModel->getProductsByCategoryId($categoryId);
        return view('category', compact('products'));
     }
-  
+    public function addLike(Request $request)
+    {
+        // Validate request...
+        $userLikeProduct = new UserLikeProduct;
+        $userLikeProduct->user_id = $request->session->get('user_id');
+        $userLikeProduct->product_id = $request->product_id;
+        $userLikeProduct->save();
+    
+        return response()->json(['success' => true]);
+    }
+    
 }
