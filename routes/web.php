@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
