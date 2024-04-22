@@ -32,6 +32,11 @@ class HomeController extends Controller
         $productModel = new Product();
         $products = $productModel->getProductsByCategoryId($categoryId);
        return view('category', compact('products'));
+    
+    }
+    public function shopping_cart(){
+        
+       return view('shopping-cart');
     }
   
 }

@@ -4,13 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
 
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 Route::get('/', function () {
     return view('auth.login');
 });
 
+
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/shopping-cart', [HomeController::class, 'shopping_cart'])->name('shopping-cart');
+Route::get('/home/{id}', [CartController::class, 'addToCart']);
+Route::get('/shopping-cart', [CartController::class, 'showCart']);
 
 // Đăng nhập
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -19,6 +25,8 @@ Route::post('login', [LoginController::class, 'login']);
 // Đăng ký
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
+
+
 
 // Các routes khác của bạn...
 //21/4

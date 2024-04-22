@@ -462,6 +462,7 @@
     <script src="{{ asset('app\js\bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('app\js\wow.min.js') }}"></script>
     <script src="{{ asset('app\js\scripts.js') }}"></script>
+    <script src="{{ asset('app\js\shopping-cart.js') }}"></script>
 
     <!-- For demo purposes – can be removed on production -->
 
