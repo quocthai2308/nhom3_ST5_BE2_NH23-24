@@ -28,3 +28,9 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
 
+
+
+
+
+
+
