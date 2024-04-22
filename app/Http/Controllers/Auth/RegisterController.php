@@ -39,7 +39,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
                 'userType' => 0,
             ]);
-// nnn
+// 22/4
             Auth::login($user);
 
             // return redirect()->route('home');

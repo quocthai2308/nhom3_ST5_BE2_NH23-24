@@ -10,6 +10,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        //22/4
         return view('auth.login');
     }
 
@@ -22,17 +23,16 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            session()->flash('success', 'Bạn đã đăng nhập thành công');
+
+        
             $user = Auth::user();
-
-            // Lưu user id vào session
-              $request->session()->put('user_id', $user->id);
-
 
         // Kiểm tra giá trị của cột userType và điều hướng tương ứng
         if ($user->userType == 0) {
             return redirect()->intended('home');
         } elseif ($user->userType == 1) {
-            return redirect()->intended('admin.product-manager');
+            return redirect()->intended('hehe');
 
             // return abort(404);
         }
