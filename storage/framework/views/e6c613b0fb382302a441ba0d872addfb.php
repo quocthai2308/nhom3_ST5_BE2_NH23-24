@@ -138,7 +138,7 @@
                                             </div>
 
                                             <div class="col-sm-7">
-                                                <a href="#" class="btn btn-primary"><i
+                                                <a href="#" class="btn btn-primary cooke" data-id="<?php echo e($product->id); ?>"><i
                                                         class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
                                             </div>
 

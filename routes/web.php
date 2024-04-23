@@ -36,7 +36,9 @@ Route::post('register', [RegisterController::class, 'register']);
 // Giỏ hàng 
 Route::get('/shopping-cart', [HomeController::class, 'shopping_cart'])->name('shopping-cart');
 Route::get('/shopping-cart', [CartController::class, 'showCart']);
+Route::post('/shopping-cart/update', [CartController::class, 'updateCart']);
 Route::get('/shopping-cart/{id}', [CartController::class, 'removeFromCart']);
+Route::get('/checkout', [CartController::class, 'checkout']);
 
 
 

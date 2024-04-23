@@ -31,24 +31,35 @@ class LoginController extends Controller
 
             if (Cookie::get('cart')) {
                 $cart = json_decode(Cookie::get('cart'), true);
-                
+            
                 // Lưu từng sản phẩm trong giỏ hàng vào cơ sở dữ liệu
                 foreach ($cart as $productId => $product) {
-                    // Tạo một mục giỏ hàng mới
-                    $cartItem = new CartItem;
-                    $cartItem->user_id = $request->user()->id; // ID người dùng hiện tại
-                    $cartItem->product_id = $productId;
-                    $cartItem->name = $product['name'];
-                    $cartItem->description = $product['description'];
-                    $cartItem->price = $product['price'];
-                    $cartItem->quantity = $product['quantity'];
+                    // Kiểm tra xem sản phẩm đã tồn tại trong cơ sở dữ liệu chưa
+                    $cartItem = CartItem::where('user_id', $request->user()->id)
+                                        ->where('product_id', $productId)
+                                        ->first();
+            
+                    if ($cartItem) {
+                        // Sản phẩm đã tồn tại, tăng số lượng
+                        $cartItem->quantity += $product['quantity'];
+                    } else {
+                        // Sản phẩm chưa tồn tại, tạo mới
+                        $cartItem = new CartItem;
+                        $cartItem->user_id = $request->user()->id; // ID người dùng hiện tại
+                        $cartItem->product_id = $productId;
+                        $cartItem->name = $product['name'];
+                        $cartItem->description = $product['description'];
+                        $cartItem->price = $product['price'];
+                        $cartItem->quantity = $product['quantity'];
+                    }
+            
                     $cartItem->save();
                 }
-                
+            
                 // Xóa cookie
                 Cookie::queue(Cookie::forget('cart'));
-                
             }
+            
 
 
             session()->flash('success', 'Bạn đã đăng nhập thành công');
