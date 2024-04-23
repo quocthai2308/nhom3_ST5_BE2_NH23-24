@@ -63,8 +63,20 @@ Route::get('detail/{id}', [HomeController::class,'detail']);
 
 // CRUD sản phẩm
 Route::get('/manage-product', [ProductController::class, 'index'])->name('manage-product');
-Route::get('/edit-product/{id}', [ProductController::class, 'modify'])->name('edit-product');
-Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
+
+// Hiển thị form
+Route::get('/form-edit-product/{id}', [ProductController::class, 'showEditProduct'])->name('form-edit-product');
+Route::get('/add-product', [ProductController::class, 'showAddProduct']);
+
+
+// Thêm
+Route::post('/product', [ProductController::class, 'add'])->name('product.add');
+
+// Sửa
+Route::put('/product/{id}', [ProductController::class, 'modify'])->name('product.modify');
+
+// Xoá
+Route::delete('/product/{id}', [ProductController::class, 'delete'])->name('product.delete');
 
 // quản lý catelory
 Route::get('/manage-category', [CategoryController::class, 'index']);
