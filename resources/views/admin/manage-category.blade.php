@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('admin.nav')
 @section('title', 'Manage Product Type')
 @section('content')
                 <h1>Manage Category</h1>

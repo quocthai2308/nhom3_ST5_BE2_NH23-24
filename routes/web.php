@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LikeController;
@@ -30,6 +31,15 @@ Route::post('register', [RegisterController::class, 'register']);
  Route::get('search', [HomeController::class,'search']);
  Route::get('category/{categoryId}', [HomeController::class,'category']);
 Route::get('detail/{id}', [HomeController::class,'detail']);
+
+
+// CRUD sản phẩm
+Route::get('/manage-product', [ProductController::class, 'index'])->name('manage-product');
+Route::get('/edit-product/{id}', [ProductController::class, 'modify'])->name('edit-product');
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
+
+
+
 
 
 

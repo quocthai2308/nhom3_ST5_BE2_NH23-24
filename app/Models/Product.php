@@ -71,6 +71,40 @@ public function addProductToUserLikes($userId, $productId)
     }
 }
 
+    // Lấy tất cả sản phẩm
+    public function getAllProducts() {
+        return self::all();
+    }
+
+    protected $fillable = ['name', 'description', 'price'];
+
+    // Hàm thêm sản phẩm
+    public static function store($name, $description, $price)
+    {
+        $product = new self;
+        $product->name = $name;
+        $product->description = $description;
+        $product->price = $price;
+        return $product->save();
+    }
+
+    // Hàm sửa sản phẩm
+     public function modify($name, $description, $price)
+    {
+        $this->name = $name;
+        $this->description = $description;
+        $this->price = $price;
+        return $this->save();
+    }
+
+    // Hàm xoá sản phẩm
+    public function remove()
+    {
+        return $this->delete();
+    }
 
     use HasFactory;
-}
+}   
+
+
+

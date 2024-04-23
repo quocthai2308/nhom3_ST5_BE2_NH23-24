@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('admin.nav')
 @section('title', 'Add Category')
 @section('content')
 
