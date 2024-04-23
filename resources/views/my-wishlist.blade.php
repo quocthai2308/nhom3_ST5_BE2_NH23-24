@@ -26,10 +26,15 @@
 									</tr>
 								</thead>
 								<tbody>
+									@foreach ($products as $product)
 									<tr>
-										<td class="col-md-2"><img src="{{asset('app\images\products\p1.jpg')}}" alt="imga"></td>
+										<td class="col-md-2">
+											@foreach ($product->images as $image)
+											<img src="{{asset("app/images/products/$image->name")}}" alt="imga">
+											@endforeach
+										</td>
 										<td class="col-md-7">
-											<div class="product-name"><a href="#">Floral Print Buttoned</a></div>
+											<div class="product-name"><a href="{{url("detail/$product->id")}}">{{$product->name}}</a></div>
 											<div class="rating">
 												<i class="fa fa-star rate"></i>
 												<i class="fa fa-star rate"></i>
@@ -39,7 +44,7 @@
 												<span class="review">( 06 Reviews )</span>
 											</div>
 											<div class="price">
-												$400.00
+												${{$product->price}}
 												<span>$900.00</span>
 											</div>
 										</td>
@@ -49,31 +54,8 @@
 										<td class="col-md-1 close-btn">
 											<a href="#" class=""><i class="fa fa-times"></i></a>
 										</td>
-									</tr>
-									<tr>
-										<td class="col-md-2"><img src="{{asset('app\images\products\p2.jpg')}}" alt="phoro"></td>
-										<td class="col-md-7">
-											<div class="product-name"><a href="#">Floral Print Buttoned</a></div>
-											<div class="rating">
-												<i class="fa fa-star rate"></i>
-												<i class="fa fa-star rate"></i>
-												<i class="fa fa-star rate"></i>
-												<i class="fa fa-star rate"></i>
-												<i class="fa fa-star non-rate"></i>
-												<span class="review">( 06 Reviews )</span>
-											</div>
-											<div class="price">
-												$450.00
-												<span>$900.00</span>
-											</div>
-										</td>
-										<td class="col-md-2">
-											<a href="#" class="btn-upper btn btn-default">Add to cart</a>
-										</td>
-										<td class="col-md-1 close-btn">
-											<a href="#" class=""><i class="fa fa-times"></i></a>
-										</td>
-									</tr>
+									</tr>		
+									@endforeach
 								</tbody>
 							</table>
 						</div>

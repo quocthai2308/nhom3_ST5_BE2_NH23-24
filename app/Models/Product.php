@@ -72,6 +72,20 @@ class Product extends Model
                 ->where('product_id', $productId)
                 ->delete();
         }
+
+    }
+    // MARK: hàm lấy sản phẩm đã like
+    public function getProductLiked($userId)
+    {
+        $products = Product::query()
+        ->from('products as p') 
+        ->join('user_like_product as ulp', 'p.id', '=', 'ulp.product_id')
+        ->join('users as u', 'u.id', '=', 'ulp.user_id')
+        ->join('images as i', 'p.id', '=', 'i.product_id') 
+        ->where('u.id', $userId)
+        ->select('p.*') 
+        ->get();
+        return $products;
     }
 
     // Lấy tất cả sản phẩm

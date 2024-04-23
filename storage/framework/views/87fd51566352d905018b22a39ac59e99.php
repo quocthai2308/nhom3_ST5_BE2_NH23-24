@@ -36,8 +36,8 @@
 									<td colspan="7">
 										<div class="shopping-cart-btn">
 											<span class="">
-												<a href="#" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
-												<a href="#" class="btn btn-upper btn-primary pull-right outer-right-xs">Update shopping cart</a>
+												<a href="<?php echo e(url('/')); ?>" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
+												<a href="#" class="btn btn-upper btn-primary pull-right outer-right-xs update-cart">Update shopping cart</a>
 											</span>
 										</div><!-- /.shopping-cart-btn -->
 									</td>
@@ -176,10 +176,10 @@
 							<tr>
 								<th>
 									<div class="cart-sub-total">
-										Subtotal<span class="inner-left-md">$600.00</span>
+										Subtotal<span class="inner-left-md sub-total">$0</span>
 									</div>
 									<div class="cart-grand-total">
-										Grand Total<span class="inner-left-md">$600.00</span>
+										Grand Total<span class="inner-left-md grand-total">$0</span>
 									</div>
 								</th>
 							</tr>
@@ -188,9 +188,10 @@
 							<tr>
 								<td>
 									<div class="cart-checkout-btn pull-right">
-										<button type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</button>
-										<span class="">Checkout with multiples address!</span>
+										<a href="<?php echo e(url('checkout')); ?>" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</a>
+										<span class="">Checkout with multiple addresses!</span>
 									</div>
+
 								</td>
 							</tr>
 						</tbody><!-- /tbody -->
