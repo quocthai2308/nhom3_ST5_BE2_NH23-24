@@ -4,9 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+<<<<<<< HEAD
 use App\Http\Controllers\CartController;
+=======
+use App\Http\Controllers\LikeController;
+>>>>>>> 4d40221a1898f9913b0811c8f831bb9f3f6cd54d
 
 Route::post('/like', [HomeController::class, 'addLike'])->name('like.store');
+Route::post('/get-like-status', [LikeController::class, 'getLikeStatus'])->name('getLikeStatus');
+
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 // Route::get('/', function () {
 //     return view('home');

@@ -94,10 +94,10 @@
                                                     <span class="price-strike">$900.00</span>
                                                 </div>
                                             </div>
-                                          <form action="{{ route('like.store') }}" method="post">
-                                            @csrf
-                                            <button class="btn btn-primary" type="submit" name="product_id" value="{{$product->id}}"><i class="fa fa-heart"></i></button>
-                                           </form>
+                                            <div class="btn btn-primary like" data-product-id="{{ $product->id }}">
+                                                <i class="fa fa-heart">
+                                                </i>
+                                            </div>
 
                                             <div class="col-sm-6">
                                                 <div class="favorite-button m-t-10">
@@ -398,7 +398,8 @@
                                     <div class="product">
                                         <div class="product-image">
                                             <div class="image">
-                                                <a href="detail.html"><img src="{{ asset('app\images\products\p2.jpg') }}"
+                                                <a href="detail.html"><img
+                                                        src="{{ asset('app\images\products\p2.jpg') }}"
                                                         alt=""></a>
                                             </div><!-- /.image -->
 

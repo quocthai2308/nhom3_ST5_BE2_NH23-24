@@ -60,9 +60,7 @@ class HomeController extends Controller
         } else {
             return view('login');
         }
-        response()->json(['success' => true]);
-        $productModel = new Product();
-        $product = $productModel->getProductDetails($product_id );
-        return view('detail', compact('product'));
+        return response()->json(['success' => true]);;
     }
+    
 }
