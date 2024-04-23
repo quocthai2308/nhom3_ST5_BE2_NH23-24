@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\UserController;
 //chức năng thích
 Route::post('/like', [HomeController::class, 'addLike'])->name('like.store');
 Route::post('/get-like-status', [LikeController::class, 'getLikeStatus'])->name('getLikeStatus');
@@ -17,6 +18,11 @@ Route::get('/my-wishlist', [LikeController::class, 'getLikeList'])->name('myWish
 //     return view('home');
 // });
 
+Route::get('/myAccount', function () {
+    return view('myAccount');
+});
+
+Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
 
 // trang home
 Route::get('/', [HomeController::class, 'index'])->name('home');
