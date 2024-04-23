@@ -7,9 +7,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LikeController;
-
+//chức năng thích
 Route::post('/like', [HomeController::class, 'addLike'])->name('like.store');
 Route::post('/get-like-status', [LikeController::class, 'getLikeStatus'])->name('getLikeStatus');
+Route::get('/my-wishlist', [LikeController::class, 'getLikeList'])->name('myWishList');
 
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 // Route::get('/', function () {
@@ -17,7 +18,7 @@ Route::post('/get-like-status', [LikeController::class, 'getLikeStatus'])->name(
 // });
 
 
-
+// trang home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home/{id}', [CartController::class, 'addToCart']);

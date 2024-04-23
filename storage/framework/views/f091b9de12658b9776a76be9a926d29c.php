@@ -22,7 +22,7 @@
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
 			<!-- Form đăng ký -->
-			<form action="<?php echo e(route('register')); ?>" method="post">
+			<form action="<?php echo e(url('register')); ?>" method="post">
 				<?php echo csrf_field(); ?>
 				<input type="text" placeholder="Name" name="name" required />
 				<input type="email" placeholder="Email" name="email" required />
@@ -34,7 +34,7 @@
 		</div>
 		<div class="form-container sign-in-container">
 			<!-- Form đăng nhập -->
-			<form action="<?php echo e(route('login')); ?>" method="post">
+			<form action="<?php echo e(url('login')); ?>" method="post">
 				<?php echo csrf_field(); ?>
 				<input type="email" placeholder="Email" name="email" />
 				<input type="password" placeholder="Password" name="password" minlength="8" required oninput="checkPasswordLength(this)" />

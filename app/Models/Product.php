@@ -10,33 +10,36 @@ use App\Models\UserLikeProduct;
 
 class Product extends Model
 {
- /**
-  * @param  $id
-  */
+    /**
+     * @param  $id
+     */
     public function images()
     {
         return $this->hasMany(Image::class);
     }
-   public function getTenPreProducts(){
-    $products = Product::with('images')->take(10)->get();
-    return $products;
-   }
-   public function getSpecialOfferProducts(){
-    $products = Product::with('images')->offset(10)->limit(30)->get();
-    return $products;
-   }
-   public function getNewProducts(){
-    $products = Product::with('images')->orderByDesc('id')->limit(10)->get()->reverse();
-    return $products;
-   }
-   public function getProductDetails($id)
+    public function getTenPreProducts()
+    {
+        $products = Product::with('images')->take(10)->get();
+        return $products;
+    }
+    public function getSpecialOfferProducts()
+    {
+        $products = Product::with('images')->offset(10)->limit(30)->get();
+        return $products;
+    }
+    public function getNewProducts()
+    {
+        $products = Product::with('images')->orderByDesc('id')->limit(10)->get()->reverse();
+        return $products;
+    }
+    public function getProductDetails($id)
     {
         return self::find($id);
     }
-   public function getProductByKeyword($keyword)
+    public function getProductByKeyword($keyword)
     {
-           $products = Product::where('name', 'LIKE', "%{$keyword}%")->get(); 
-           return $products;
+        $products = Product::where('name', 'LIKE', "%{$keyword}%")->get();
+        return $products;
     }
     public function categories()
     {
@@ -47,32 +50,46 @@ class Product extends Model
         $products = Product::whereHas('categories', function ($query) use ($categoryId) {
             $query->where('category_id', $categoryId);
         })
-        ->with('images')
-        ->orderByDesc('id')
-        ->get();   
-    return $products;
-}
-// thêm lượt thích
-public function addProductToUserLikes($userId, $productId)
-{
-    $existingLike = UserLikeProduct::where('user_id', $userId)
-                                   ->where('product_id', $productId)
-                                   ->first();
-
-    if (!$existingLike) {
-        $userLikeProduct = new UserLikeProduct;
-        $userLikeProduct->user_id = $userId;
-        $userLikeProduct->product_id = $productId;
-        $userLikeProduct->save();
-    } else {
-          UserLikeProduct::where('user_id', $userId)
-        ->where('product_id', $productId)
-        ->delete();
+            ->with('images')
+            ->orderByDesc('id')
+            ->get();
+        return $products;
     }
-}
+    // thêm lượt thích
+    public function addProductToUserLikes($userId, $productId)
+    {
+        $existingLike = UserLikeProduct::where('user_id', $userId)
+            ->where('product_id', $productId)
+            ->first();
+
+        if (!$existingLike) {
+            $userLikeProduct = new UserLikeProduct;
+            $userLikeProduct->user_id = $userId;
+            $userLikeProduct->product_id = $productId;
+            $userLikeProduct->save();
+        } else {
+            UserLikeProduct::where('user_id', $userId)
+                ->where('product_id', $productId)
+                ->delete();
+        }
+    }
+    // MARK: hàm lấy sản phẩm đã like
+    public function getProductLiked($userId)
+    {
+        $products = Product::query()
+        ->from('products as p') 
+        ->join('user_like_product as ulp', 'p.id', '=', 'ulp.product_id')
+        ->join('users as u', 'u.id', '=', 'ulp.user_id')
+        ->join('images as i', 'p.id', '=', 'i.product_id') 
+        ->where('u.id', $userId)
+        ->select('p.*') 
+        ->get();
+        return $products;
+    }
 
     // Lấy tất cả sản phẩm
-    public function getAllProducts() {
+    public function getAllProducts()
+    {
         return self::all();
     }
 
@@ -89,7 +106,7 @@ public function addProductToUserLikes($userId, $productId)
     }
 
     // Hàm sửa sản phẩm
-     public function modify($name, $description, $price)
+    public function modify($name, $description, $price)
     {
         $this->name = $name;
         $this->description = $description;
@@ -104,7 +121,4 @@ public function addProductToUserLikes($userId, $productId)
     }
 
     use HasFactory;
-}   
-
-
-
+}
