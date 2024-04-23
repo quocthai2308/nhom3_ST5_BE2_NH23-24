@@ -30,9 +30,8 @@ class LoginController extends Controller
 
 
             if (Cookie::get('cart')) {
-                Cookie::queue(Cookie::forget('cart'));
                 $cart = json_decode(Cookie::get('cart'), true);
-
+                
                 // Lưu từng sản phẩm trong giỏ hàng vào cơ sở dữ liệu
                 foreach ($cart as $productId => $product) {
                     // Tạo một mục giỏ hàng mới
@@ -40,25 +39,34 @@ class LoginController extends Controller
                     $cartItem->user_id = $request->user()->id; // ID người dùng hiện tại
                     $cartItem->product_id = $productId;
                     $cartItem->name = $product['name'];
+                    $cartItem->description = $product['description'];
                     $cartItem->price = $product['price'];
                     $cartItem->quantity = $product['quantity'];
                     $cartItem->save();
                 }
-
+                
                 // Xóa cookie
+                Cookie::queue(Cookie::forget('cart'));
+                
             }
 
 
             session()->flash('success', 'Bạn đã đăng nhập thành công');
 
             $user = Auth::user();
+            // Lưu user_id vào session
+            $request->session()->put('user_id', $user->id);
 
-            if ($user->userType == 0) {
-                return redirect()->intended('home');
-            } elseif ($user->userType == 1) {
-                return redirect()->intended('hehe');
-                // return abort(404);
-            }
+
+
+        // Kiểm tra giá trị của cột userType và điều hướng tương ứng
+        if ($user->userType == 0) {
+            
+            return redirect()->intended('home');
+        } elseif ($user->userType == 1) {
+            return redirect()->intended('page_admin');
+        }
+
         }
 
         return back()->withErrors([
@@ -74,11 +82,11 @@ class LoginController extends Controller
         Auth::logout();
 
         
+        Cookie::queue(Cookie::forget('cart'));
         
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         
-        Cookie::queue(Cookie::forget('cart'));
         
         return redirect('/');
     }

@@ -21,7 +21,7 @@
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
 			<!-- Form đăng ký -->
-			<form action="{{ route('register') }}" method="post">
+			<form action="{{ url('register') }}" method="post">
 				@csrf
 				<input type="text" placeholder="Name" name="name" required />
 				<input type="email" placeholder="Email" name="email" required />
@@ -33,7 +33,7 @@
 		</div>
 		<div class="form-container sign-in-container">
 			<!-- Form đăng nhập -->
-			<form action="{{ route('login') }}" method="post">
+			<form action="{{ url('login') }}" method="post">
 				@csrf
 				<input type="email" placeholder="Email" name="email" />
 				<input type="password" placeholder="Password" name="password" minlength="8" required oninput="checkPasswordLength(this)" />

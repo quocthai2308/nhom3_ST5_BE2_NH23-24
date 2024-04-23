@@ -65,7 +65,9 @@ public function addProductToUserLikes($userId, $productId)
         $userLikeProduct->product_id = $productId;
         $userLikeProduct->save();
     } else {
-         $existingLike->delete();
+          UserLikeProduct::where('user_id', $userId)
+        ->where('product_id', $productId)
+        ->delete();
     }
 }
 

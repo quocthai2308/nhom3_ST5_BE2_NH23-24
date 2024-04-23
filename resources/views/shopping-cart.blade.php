@@ -25,7 +25,7 @@
 									<th class="cart-romove item">Remove</th>
 									<th class="cart-description item">Image</th>
 									<th class="cart-product-name item">Product Name</th>
-									<th class="cart-edit item">Edit</th>
+									<th class="cart-edit item">description</th>
 									<th class="cart-qty item">Quantity</th>
 									<th class="cart-sub-total item">Subtotal</th>
 									<th class="cart-total last-item">Grandtotal</th>
@@ -46,14 +46,14 @@
 							<tbody>
 								@foreach ($cart as $productId => $product)
 								<tr data-id="{{ $product['id'] }}">
-									<td class="romove-item"><a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>
+									<td class="romove-item romove-cooke"><a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>
 									<td class="cart-image">
-										<a class="entry-thumbnail" href="detail.html">
+										<a class="entry-thumbnail" href="{{ url('detail/'.$product['id']) }}">
 											<img src="{{ asset('app/images/products/p' . $product['id'] . '.jpg') }}" alt="">
 										</a>
 									</td>
 									<td class="cart-product-name-info">
-										<h4 class='cart-product-description'><a href="detail.html">{{ $product['name'] }}</a></h4>
+										<h4 class='cart-product-description'><a href="{{ url('detail/'.$product['id']) }}">{{ $product['name'] }}</a></h4>
 										<div class="row">
 											<div class="col-sm-4">
 												<div class="rating rateit-small"></div>
@@ -68,7 +68,7 @@
 											<span class="product-color">COLOR:<span>Blue</span></span>
 										</div>
 									</td>
-									<td class="cart-product-edit"><a href="#" class="product-edit">Edit</a></td>
+									<td class="cart-product-edit"><a style="text-decoration: none;" href="{{ url('detail/'.$product['id']) }}" class="product-edit">{{ $product['description'] }}</a></td>
 									<td class="cart-product-quantity">
 										<div class="quant-input" id="quant-input-{{ $product['id'] }}">
 											<div class="arrows">

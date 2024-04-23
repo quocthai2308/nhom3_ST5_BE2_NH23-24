@@ -466,26 +466,9 @@
     <script src="<?php echo e(asset('app\js\ajax.js')); ?>"></script>
 
     <!-- For demo purposes – can be removed on production -->
-    <script src="switchstylesheet/switchstylesheet.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".changecolor").switchstylesheet({
-                seperator: "color"
-            });
-            $('.show-theme-options').click(function() {
-                $(this).parent().toggleClass('open');
-                return false;
-            });
-        });
-
-        $(window).bind("load", function() {
-            $('.show-theme-options').delay(2000).trigger('click');
-        });
-    </script>
+    
+    
     <!-- For demo purposes – can be removed on production : End -->
-
-
-
 </body>
 
 </html>
