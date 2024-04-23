@@ -20,6 +20,8 @@ class HomeController extends Controller
         $allCategories = $categoryModel->getAllCategories();
         return view('home', compact('products', 'specialProducts', 'newProducts', 'categories', 'allCategories'));
     }
+   
+
     public function detail($id)
     {
         $productModel = new Product();
@@ -37,8 +39,16 @@ class HomeController extends Controller
     {
         $productModel = new Product();
         $products = $productModel->getProductsByCategoryId($categoryId);
-        return view('category', compact('products'));
+
+       return view('category', compact('products'));
+    
     }
+    public function shopping_cart(){
+        
+       return view('shopping-cart');
+
+    }
+    
     public function addLike(Request $request)
     {
         // Validate request...
