@@ -24,32 +24,25 @@ class CartController extends Controller
         }
     
         if (Auth::check()) {
-
-             // Thêm sản phẩm vào giỏ hàng
-             if (isset($cart[$id])) {
-                $cart[$id]['quantity'] += 1;
+            // Người dùng đã đăng nhập, thêm sản phẩm vào cơ sở dữ liệu
+            $user = Auth::user();
+            $cartItem = CartItem::where('user_id', $user->id)->where('product_id', $id)->first();
+        
+            if ($cartItem) {
+                // Sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng
+                $cartItem->quantity += 1;
             } else {
-                $cart[$id] = [
-                    'id' => $product->id, // Thêm ID sản phẩm vào mảng
-                    'name' => $product->name,
-                    'description' => $product->description,
-                    'price' => $product->price,
-                    'quantity' => 1
-                ];
-            }
-
-
-            foreach ($cart as $productId => $product) {
-                // Tạo một mục giỏ hàng mới
+                // Sản phẩm chưa tồn tại trong giỏ hàng, tạo mới
                 $cartItem = new CartItem;
-                $cartItem->user_id = $request->user()->id; // ID người dùng hiện tại
-                $cartItem->product_id = $productId;
-                $cartItem->name = $product['name'];
-                $cartItem->description = $product['description'];
-                $cartItem->price = $product['price'];
-                $cartItem->quantity = $product['quantity'];
-                $cartItem->save();
+                $cartItem->user_id = $user->id;
+                $cartItem->product_id = $id;
+                $cartItem->name = $product->name;
+                $cartItem->description = $product->description;
+                $cartItem->price = $product->price;
+                $cartItem->quantity = 1;
             }
+        
+            $cartItem->save();
         }
         else {
             // Thêm sản phẩm vào giỏ hàng
@@ -109,7 +102,7 @@ class CartController extends Controller
             $user = Auth::user();
             $cartItem = CartItem::where('user_id', $user->id)->where('product_id', $id)->first();
 
-            Log::info('User ID: ' . $user->id);
+            
 
             if ($cartItem) {
                 $cartItem->delete();
@@ -134,6 +127,45 @@ class CartController extends Controller
         }
     }
     
+
+    public function updateCart(Request $request) {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $updatedCart = $request->input('cart');
+    
+            Log::info('User ID update: ' . $user->id);
+            foreach ($updatedCart as $productId => $quantity) {
+                $cartItem = CartItem::where('user_id', $user->id)->where('product_id', $productId)->first();
+    
+                if ($cartItem) {
+                    $cartItem->quantity = $quantity;
+                    $cartItem->save();
+                } else {
+                    $product = Product::find($productId);
+                    $cartItem = new CartItem;
+                    $cartItem->user_id = $user->id;
+                    $cartItem->product_id = $productId;
+                    $cartItem->name = $product->name;
+                    $cartItem->description = $product->description;
+                    $cartItem->price = $product->price;
+                    $cartItem->quantity = $quantity;
+                    $cartItem->save();
+                }
+            }
+    
+            return response("Cart updated successfully.");
+        } else {
+            abort(401, 'Please login to update cart.');
+            // return response('Please login to update cart.');
+        }
+
+    }
+    
+    public function checkout(){
+        
+        return view('checkout');
+ 
+     }
     
     
     
