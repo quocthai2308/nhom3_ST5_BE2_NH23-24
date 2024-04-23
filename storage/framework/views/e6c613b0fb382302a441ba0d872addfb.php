@@ -95,10 +95,10 @@
                                                     <span class="price-strike">$900.00</span>
                                                 </div>
                                             </div>
-                                          <form action="<?php echo e(route('like.store')); ?>" method="post">
-                                            <?php echo csrf_field(); ?>
-                                            <button class="btn btn-primary" type="submit" name="product_id" value="<?php echo e($product->id); ?>"><i class="fa fa-heart"></i></button>
-                                           </form>
+                                            <div class="btn btn-primary like" data-product-id="<?php echo e($product->id); ?>">
+                                                <i class="fa fa-heart">
+                                                </i>
+                                            </div>
 
                                             <div class="col-sm-6">
                                                 <div class="favorite-button m-t-10">
@@ -399,7 +399,8 @@
                                     <div class="product">
                                         <div class="product-image">
                                             <div class="image">
-                                                <a href="detail.html"><img src="<?php echo e(asset('app\images\products\p2.jpg')); ?>"
+                                                <a href="detail.html"><img
+                                                        src="<?php echo e(asset('app\images\products\p2.jpg')); ?>"
                                                         alt=""></a>
                                             </div><!-- /.image -->
 
