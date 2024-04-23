@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 //chức năng thích
@@ -50,6 +51,8 @@ Route::get('/checkout', [CartController::class, 'checkout']);
 
 
 
+
+
 // Các routes khác của bạn... Biết ời cái đó tui làm tạm tại chưa có login
 //21/4
 // Route::get('/', [HomeController::class,'index']);
@@ -63,6 +66,11 @@ Route::get('/manage-product', [ProductController::class, 'index'])->name('manage
 Route::get('/edit-product/{id}', [ProductController::class, 'modify'])->name('edit-product');
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
 
+// quản lý catelory
+Route::get('/manage-category', [CategoryController::class, 'index']);
+Route::get('/manage-category/page', [CategoryController::class, 'pageAddCategory']);
+Route::get('/manage-category/add', [CategoryController::class, 'addCategory']);
+Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 
 
 
