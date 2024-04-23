@@ -17,9 +17,13 @@ class LikeController extends Controller
     }
     public function getLikeList()
     {
-        $userId = session('user_id'); 
-        $productModel = new Product();
-        $products = $productModel->getProductLiked($userId);
-        return view('my-wishlist',compact('products'));
+        if(session('user_id')!=null){
+            $userId = session('user_id'); 
+            $productModel = new Product();
+            $products = $productModel->getProductLiked($userId);
+            return view('my-wishlist',compact('products'));
+        }else{
+            return view('auth.login');
+        }
     }
 }
