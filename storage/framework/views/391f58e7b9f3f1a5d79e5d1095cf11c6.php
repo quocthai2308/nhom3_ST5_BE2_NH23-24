@@ -1,8 +1,9 @@
-@if (session('success'))
+<?php if(session('success')): ?>
 <div class="alert alert-success" id="success-alert">
-    {{ session('success') }}
+    <?php echo e(session('success')); ?>
+
 </div>
-@endif
+<?php endif; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,26 +16,25 @@
     <meta name="author" content="">
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'default')</title>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title><?php echo $__env->yieldContent('title', 'default'); ?></title>
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ asset('app\css\bootstrap.min.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\bootstrap.min.css')); ?>">
     <!-- Customizable CSS -->
-    <link rel="stylesheet" href="{{ asset('app\css\main.css') }}">
-    <link rel="stylesheet" href="{{ asset('app\css\blue.css') }}">
-    <link rel="stylesheet" href="{{ asset('app\css\owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('app\css\owl.transitions.css') }}">
-    <link rel="stylesheet" href="{{ asset('app\css\animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('app\css\rateit.css') }}">
-    <link rel="stylesheet" href="{{ asset('app\css\bootstrap-select.min.css') }}">
-    <link href="{{ asset('app\css\lightbox.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\main.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\blue.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\owl.carousel.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\owl.transitions.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\animate.min.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\rateit.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\bootstrap-select.min.css')); ?>">
+    <link href="<?php echo e(asset('app\css\lightbox.css')); ?>" rel="stylesheet">
     <!-- Icons/Glyphs -->
-    <link rel="stylesheet" href="{{ asset('app\css\font-awesome.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\font-awesome.css')); ?>">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    
 </head>
 
 <body class="cnt-home">
@@ -47,15 +47,15 @@
                 <div class="header-top-inner">
                     <div class="cnt-account">
                         <ul class="list-unstyled">
-                        <li><a href="{{ url('myAccount') }}"><i class="icon fa fa-user"></i>My Account</a></li>
-                            <li><a href="{{url('my-wishlist')}}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                            <li><a href="{{ url('shopping-cart') }}"><i class="icon fa fa-shopping-cart"></i>My
+                            <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
+                            <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+                            <li><a href="<?php echo e(url('shopping-cart')); ?>"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
-                            @if(Auth::check())
-                            <li><a href="{{ url('logout') }}"><i class="icon fa fa-lock"></i>Logout</a></li>
-                            @else
-                            <li><a href="{{ url('login') }}"><i class="icon fa fa-lock"></i>Login</a></li>
-                            @endif
+                            <?php if(Auth::check()): ?>
+                            <li><a href="<?php echo e(url('logout')); ?>"><i class="icon fa fa-lock"></i>Logout</a></li>
+                            <?php else: ?>
+                            <li><a href="<?php echo e(url('login')); ?>"><i class="icon fa fa-lock"></i>Login</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div><!-- /.cnt-account -->
 
@@ -91,9 +91,9 @@
                     <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                         <!-- ============================================================= LOGO ============================================================= -->
                         <div class="logo">
-                            <a href="{{ url('home') }}">
+                            <a href="<?php echo e(url('home')); ?>">
 
-                                <img src="{{ asset('app\images\logo.png') }}" alt="">
+                                <img src="<?php echo e(asset('app\images\logo.png')); ?>" alt="">
 
                             </a>
                         </div><!-- /.logo -->
@@ -107,17 +107,17 @@
                             <form>
                                 <div class="control-group">
                                     <ul class="categories-filter animate-dropdown">
-                                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="{{ url('category') }}">Categories <b class="caret"></b></a>
+                                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo e(url('category')); ?>">Categories <b class="caret"></b></a>
                                             <ul class="dropdown-menu" role="menu">
-                                                @foreach ($categories as $category)
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('category') }}">{{ $category['name'] }}</a>
+                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(url('category')); ?>"><?php echo e($category['name']); ?></a>
                                                 </li>
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </ul>
                                         </li>
                                     </ul>
-                                    <form action="{{ url('/search') }}" method="get">
-                                        @csrf
+                                    <form action="<?php echo e(url('/search')); ?>" method="get">
+                                        <?php echo csrf_field(); ?>
                                         <input class="search-field" name="name" placeholder="Search here..." autocomplete="on">
                                         <button type="submit" class="search-button">Search</button>
                                     </form>
@@ -154,7 +154,7 @@
                                         <div class="row">
                                             <div class="col-xs-4">
                                                 <div class="image">
-                                                    <a href="{{ url('detail') }}"><img src="{{ asset('app\images\cart.jpg') }}" alt=""></a>
+                                                    <a href="<?php echo e(url('detail')); ?>"><img src="<?php echo e(asset('app\images\cart.jpg')); ?>" alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-xs-7">
@@ -179,7 +179,7 @@
                                         </div>
                                         <div class="clearfix"></div>
 
-                                        <a href="{{ url('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
+                                        <a href="<?php echo e(url('checkout')); ?>" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
                                     </div><!-- /.cart-total-->
 
 
@@ -208,27 +208,27 @@
                             <div class="nav-outer">
                                 <ul class="nav navbar-nav">
                                     <li class="active dropdown yamm-fw">
-                                        <a href="{{ url('/') }}" class="dropdown-toggle">Home</a>
+                                        <a href="<?php echo e(url('/')); ?>" class="dropdown-toggle">Home</a>
                                     </li>
-                                    @foreach ($categories as $category)
-                                    <li class="dropdown yamm mega-menu"> <a href="{{ url('home') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">{{ $category->name }}</a>
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li class="dropdown yamm mega-menu"> <a href="<?php echo e(url('home')); ?>" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><?php echo e($category->name); ?></a>
                                         <ul class="dropdown-menu container">
                                             <li>
                                                 <div class="yamm-content ">
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                            @foreach ($allCategories as $subCategory)
+                                                            <?php $__currentLoopData = $allCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <ul class="links">
-                                                                @if ($category->id == $subCategory->parent_id)
-                                                                <li style="font-weight: bold;"><a style="font-size: 2em;" href="{{ url('category/' . $subCategory->id) }}">{{ $subCategory->name }}</a>
+                                                                <?php if($category->id == $subCategory->parent_id): ?>
+                                                                <li style="font-weight: bold;"><a style="font-size: 2em;" href="<?php echo e(url('category/' . $subCategory->id)); ?>"><?php echo e($subCategory->name); ?></a>
                                                                 </li>
-                                                                @endif
+                                                                <?php endif; ?>
                                                             </ul>
-                                                            @endforeach
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </div>
                                                         <!-- /.col -->
                                                         <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
-                                                            <img class="img-responsive" src="{{ asset('app\images\banners\top-menu-banner.jpg') }}" alt="">
+                                                            <img class="img-responsive" src="<?php echo e(asset('app\images\banners\top-menu-banner.jpg')); ?>" alt="">
                                                         </div>
                                                         <!-- /.yamm-content -->
                                                     </div>
@@ -236,7 +236,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Pages</a>
                                         <ul class="dropdown-menu pages">
                                             <li>
@@ -244,27 +244,27 @@
                                                     <div class="row">
                                                         <div class="col-xs-12 col-menu">
                                                             <ul class="links">
-                                                                <li><a href="{{ url('home') }}">Home</a></li>
-                                                                <li><a href="{{ url('category') }}">Category</a></li>
-                                                                <li><a href="{{ url('detail') }}">Detail</a></li>
-                                                                <li><a href="{{ url('shopping-cart') }}">Shopping Cart
+                                                                <li><a href="<?php echo e(url('home')); ?>">Home</a></li>
+                                                                <li><a href="<?php echo e(url('category')); ?>">Category</a></li>
+                                                                <li><a href="<?php echo e(url('detail')); ?>">Detail</a></li>
+                                                                <li><a href="<?php echo e(url('shopping-cart')); ?>">Shopping Cart
                                                                         Summary</a></li>
-                                                                <li><a href="{{ url('checkout') }}">Checkout</a></li>
-                                                                <li><a href="{{ url('blog') }}">Blog</a></li>
-                                                                <li><a href="{{ url('blog-details') }}">Blog
+                                                                <li><a href="<?php echo e(url('checkout')); ?>">Checkout</a></li>
+                                                                <li><a href="<?php echo e(url('blog')); ?>">Blog</a></li>
+                                                                <li><a href="<?php echo e(url('blog-details')); ?>">Blog
                                                                         Detail</a></li>
-                                                                <li><a href="{{ url('contact') }}">Contact</a></li>
-                                                                <li><a href="{{ url('sign-in') }}">Sign In</a></li>
-                                                                <li><a href="{{ url('my-wishlist') }}">Wishlist</a>
+                                                                <li><a href="<?php echo e(url('contact')); ?>">Contact</a></li>
+                                                                <li><a href="<?php echo e(url('sign-in')); ?>">Sign In</a></li>
+                                                                <li><a href="<?php echo e(url('my-wishlist')); ?>">Wishlist</a>
                                                                 </li>
-                                                                <li><a href="{{ url('terms-conditions') }}">Terms and
+                                                                <li><a href="<?php echo e(url('terms-conditions')); ?>">Terms and
                                                                         Condition</a></li>
-                                                                <li><a href="{{ url('track-orders') }}">Track
+                                                                <li><a href="<?php echo e(url('track-orders')); ?>">Track
                                                                         Orders</a></li>
-                                                                <li><a href="{{ url('product-comparison') }}">Product-Comparison</a>
+                                                                <li><a href="<?php echo e(url('product-comparison')); ?>">Product-Comparison</a>
                                                                 </li>
-                                                                <li><a href="{{ url('faq') }}">FAQ</a></li>
-                                                                <li><a href="{{ url('404') }}">404</a></li>
+                                                                <li><a href="<?php echo e(url('faq')); ?>">FAQ</a></li>
+                                                                <li><a href="<?php echo e(url('404')); ?>">404</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -293,7 +293,7 @@
         <!-- /.header-nav -->
         <!-- ============================================== NAVBAR : END ============================================== -->
     </header>
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
     <footer id="footer" class="footer color-bg">
 
 
@@ -411,11 +411,11 @@
                 <div class="col-xs-12 col-sm-6 no-padding">
                     <div class="clearfix payment-methods">
                         <ul>
-                            <li><img src="{{ asset('app\images\payments\1.png') }}" alt=""></li>
-                            <li><img src="{{ asset('app\images\payments\2.png') }}" alt=""></li>
-                            <li><img src="{{ asset('app\images\payments\3.png') }}" alt=""></li>
-                            <li><img src="{{ asset('app\images\payments\4.png') }}" alt=""></li>
-                            <li><img src="{{ asset('app\images\payments\5.png') }}" alt=""></li>
+                            <li><img src="<?php echo e(asset('app\images\payments\1.png')); ?>" alt=""></li>
+                            <li><img src="<?php echo e(asset('app\images\payments\2.png')); ?>" alt=""></li>
+                            <li><img src="<?php echo e(asset('app\images\payments\3.png')); ?>" alt=""></li>
+                            <li><img src="<?php echo e(asset('app\images\payments\4.png')); ?>" alt=""></li>
+                            <li><img src="<?php echo e(asset('app\images\payments\5.png')); ?>" alt=""></li>
                         </ul>
                     </div><!-- /.payment-methods -->
                 </div>
@@ -431,44 +431,29 @@
     <!-- For demo purposes – can be removed on production : End -->
 
     <!-- JavaScripts placed at the end of the document so the pages load faster -->
-    <script src="{{ asset('app\js\jquery-1.11.1.min.js') }}"></script>
+    <script src="<?php echo e(asset('app\js\jquery-1.11.1.min.js')); ?>"></script>
 
-    <script src="{{ asset('app\js\bootstrap.min.js') }}"></script>
+    <script src="<?php echo e(asset('app\js\bootstrap.min.js')); ?>"></script>
 
-    <script src="{{ asset('app\js\bootstrap-hover-dropdown.min.js') }}"></script>
-    <script src="{{ asset('app\js\owl.carousel.min.js') }}"></script>
+    <script src="<?php echo e(asset('app\js\bootstrap-hover-dropdown.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\owl.carousel.min.js')); ?>"></script>
 
-    <script src="{{ asset('app\js\echo.min.js') }}"></script>
-    <script src="{{ asset('app\js\jquery.easing-1.3.min.js') }}"></script>
-    <script src="{{ asset('app\js\bootstrap-slider.min.js') }}"></script>
-    <script src="{{ asset('app\js\jquery.rateit.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('app\js\lightbox.min.js') }}"></script>
-    <script src="{{ asset('app\js\bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('app\js\wow.min.js') }}"></script>
-    <script src="{{ asset('app\js\scripts.js') }}"></script>
-    <script src="{{ asset('app\js\shopping-cart.js') }}"></script>
-    <script src="{{ asset('app\js\home.js') }}"></script>
-    <script src="{{ asset('app\js\ajax.js') }}"></script>
+    <script src="<?php echo e(asset('app\js\echo.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\jquery.easing-1.3.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\bootstrap-slider.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\jquery.rateit.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('app\js\lightbox.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\bootstrap-select.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\wow.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\scripts.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\shopping-cart.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\home.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\ajax.js')); ?>"></script>
 
     <!-- For demo purposes – can be removed on production -->
-    {{-- <script src="switchstylesheet/switchstylesheet.js"></script> --}}
-    {{-- <script>
-        $(document).ready(function() {
-            $(".changecolor").switchstylesheet({
-                seperator: "color"
-            });
-            $('.show-theme-options').click(function() {
-                $(this).parent().toggleClass('open');
-                return false;
-            });
-        });
-
-        $(window).bind("load", function() {
-            $('.show-theme-options').delay(2000).trigger('click');
-        });
-        
-    </script> --}}
+    
+    
     <!-- For demo purposes – can be removed on production : End -->
 </body>
 
-</html>
+</html><?php /**PATH D:\nhom3_ST5_BE2_NH23-24\resources\views/app.blade.php ENDPATH**/ ?>

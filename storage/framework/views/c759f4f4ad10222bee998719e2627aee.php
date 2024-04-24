@@ -1,6 +1,5 @@
-@extends('admin.nav')
-@section('title', 'Add Category')
-@section('content')
+<?php $__env->startSection('title', 'Add Category'); ?>
+<?php $__env->startSection('content'); ?>
 
 <h1>Add a category</h1>
 </div>
@@ -15,8 +14,8 @@
                 <div class="widget-content nopadding">
 
                     <!-- BEGIN USER FORM -->
-                    <form id="add-category-form" action="{{ url('manage-category/add') }}" method="get" class="form-horizontal" enctype="multipart/form-data">
-                    @csrf     
+                    <form id="add-category-form" action="<?php echo e(url('manage-category/add')); ?>" method="get" class="form-horizontal" enctype="multipart/form-data">
+                    <?php echo csrf_field(); ?>     
                     <div class="control-group">
                             <label class="control-label">Name :</label>
                             <div class="controls">
@@ -45,4 +44,5 @@
 </div>
 </div>
 <!-- END CONTENT -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Tài liệu Môn Học\Kì 4\BE2\Git\nhom3_ST5_BE2_NH23-24\resources\views/admin/add-category.blade.php ENDPATH**/ ?>

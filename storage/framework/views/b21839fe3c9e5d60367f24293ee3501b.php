@@ -1,6 +1,5 @@
-@extends('admin.nav')
-@section('title', 'Manage Product Type')
-@section('content')
+<?php $__env->startSection('title', 'Manage Product Type'); ?>
+<?php $__env->startSection('content'); ?>
                 <h1>Manage Category</h1>
             </div>
             <div class="container-fluid">
@@ -9,7 +8,7 @@
                     <div class="span12">
                         <div class="widget-box">
                             <div class="widget-title"> <span class="icon"><a
-                                    href="{{ url('/manage-category/page') }}"> <i class="icon-plus"></i>
+                                    href="<?php echo e(url('/manage-category/page')); ?>"> <i class="icon-plus"></i>
                                     </a></span>
                                 <h5>Categories</h5>
                             </div>
@@ -24,19 +23,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($categories as $category)
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr class="">
-                                            <td > {{ $category['id'] }} </td> 
-                                            <td>{{ $category['name'] }}</td>
+                                            <td > <?php echo e($category['id']); ?> </td> 
+                                            <td><?php echo e($category['name']); ?></td>
 
                                             <td>
-                                                <a href="{{ url('edit-category') }}" class="btn
+                                                <a href="<?php echo e(url('edit-category')); ?>" class="btn
                                                     btn-success btn-mini">Edit</a>
                                                 <a href="#" class="btn
                                                     btn-danger btn-mini">Delete</a>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
                                 </table>
                                 <div class="row" style="margin-left: 18px;">
@@ -53,4 +52,6 @@
             </div>
         </div>
         <!-- END CONTENT -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Tài liệu Môn Học\Kì 4\BE2\Git\nhom3_ST5_BE2_NH23-24\resources\views/admin/manage-category.blade.php ENDPATH**/ ?>

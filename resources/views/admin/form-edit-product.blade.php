@@ -1,7 +1,7 @@
 @extends('admin.nav')
-@section('title', 'Add New Product')
+@section('title', 'Edit Product')
 @section('content')
-    <h1>Add New Product</h1>
+    <h1>Edit Product</h1>
     </div>
     <div class="container-fluid">
         <hr>
@@ -14,9 +14,10 @@
                     <div class="widget-content nopadding">
 
                         <!-- BEGIN USER FORM -->
-                       <form action="{{ route('product.add') }}" method="post" class="form-horizontal"
+                        <form action="{{ route('product.modify', $product->id) }}" method="post" class="form-horizontal"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="control-group">
                                 <label class="control-label">Tên sản phẩm:</label>
                                 <div class="controls">
@@ -54,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-success">Add</button>
+                                <button type="submit" class="btn btn-success" onclick="return confirm('Do you want to update this product?')">Update</button>
                             </div>
                         </form>
                         <!-- END USER FORM -->
