@@ -128,7 +128,6 @@
                                     <input class="search-field" name="name" placeholder="Search here..."
                                         autocomplete="on">
                                     <button type="submit" class="search-button">Search</button>
-
                                 </div>
                             </form>
                         </div>

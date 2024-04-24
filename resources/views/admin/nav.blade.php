@@ -94,6 +94,8 @@
                     <span>Categories</span></a></li>
             <li> <a href="{{ url('manage-user') }}"><i class="icon icon-th-list"></i>
                     <span>Users</span></a></li>
+            <li> <a href="{{ url('manage-blog') }}"><i class="icon icon-th-list"></i>
+                    <span>Blogs</span></a></li>
 
         </ul>
     </div> <!-- BEGIN CONTENT -->

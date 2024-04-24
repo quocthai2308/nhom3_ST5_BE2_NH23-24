@@ -25,6 +25,10 @@ Route::get('/my-wishlist', [LikeController::class, 'getLikeList'])->name('myWish
 Route::get('/myAccount', function () {
     return view('myAccount');
 });
+/// test load view
+Route::get('/manage-blog', function () {
+    return view('admin.manage-blog');
+});
 
 
 Route::get('/manage-user', [AdminController::class, 'index'])->name('manage-user');

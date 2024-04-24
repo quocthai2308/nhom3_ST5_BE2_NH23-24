@@ -27,7 +27,7 @@
                             <div class="control-group">
                                 <label class="control-label">Mô tả:</label>
                                 <div class="controls">
-                                    <textarea class="span11" placeholder="Mô tả sản phẩm" name="description" required></textarea> *
+                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="description" required></textarea> *
                                 </div>
                             </div>
                             <div class="control-group">
@@ -65,4 +65,12 @@
     </div>
     </div>
     <!-- END CONTENT -->
+    <script src="{{url('admin/ckeditor/ckeditor.js')}}"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 @endsection
