@@ -19,6 +19,12 @@ class User extends Authenticatable
      */
     protected $fillable = ['name', 'email', 'password', 'userType'];
 
+    // App\Models\User.php
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
 
 
     /**

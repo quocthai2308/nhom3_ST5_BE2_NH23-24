@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 
 {
+     public $users; // Khai báo thuộc tính
     //
     public function __construct()
     {
