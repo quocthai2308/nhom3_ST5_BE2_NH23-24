@@ -155,8 +155,8 @@ class CartController extends Controller
     
             return response("Cart updated successfully.");
         } else {
-            abort(401, 'Please login to update cart.');
-            // return response('Please login to update cart.');
+            // abort(401, 'Please login to update cart.');
+            return response('Please login to update cart.');
         }
 
     }

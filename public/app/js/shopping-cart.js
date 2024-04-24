@@ -90,49 +90,8 @@ $('.arrow.minus').click(function() {
         });
     });
 
-/// sửa lại nha
-    // window.onload = async function() {
-    //     let updateCartButton = document.querySelector('.update-cart');
-    
-    //     updateCartButton.addEventListener('click', async function(e) {
-    //         e.preventDefault();
-            
-    //         // Create an object to store the updated quantities
-    //         var updatedCart = {};
-    
-    //         // Loop through each product in the cart
-    //         $('tr[data-id]').each(function() {
-    //             var productId = $(this).data('id');
-    //             var quantity = $('#quant-input-' + productId + ' input').val();
-    
-    //             // Add the product ID and quantity to the updatedCart object
-    //             updatedCart[productId] = quantity;
-    //         });
-    
-    //         let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-    //         $.ajax({
-    //             url: '/shopping-cart/update',
-    //             method: 'POST',
-    //             data: {
-    //                 cart: updatedCart,
-    //                 _token: csrfToken
-    //             },
-    //             success: function(response) {
-    //                 alert(response);
-    //                 location.reload();
-    //             },
-    //             error: function(jqXHR, textStatus, errorThrown) {
-    //                 if (jqXHR.status === 401) {  // HTTP status 401 means "Unauthorized"
-    //                     alert('Please login to update cart.');
-    //                 } else {
-    //                     alert('Error: ' + textStatus + ' ' + errorThrown);
-    //                 }
-    //             }
-    //         });
-    //     });
 
-    // }
+   
     $('.checkout-btn').click(function(e) {
         e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
@@ -145,4 +104,60 @@ $('.arrow.minus').click(function() {
     
     
     
+    
+    
+    
+    
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    
+
+
+let updateCartButton = document.querySelector('.update-cart');
+    updateCartButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        updateCart();
+    });
+
+    async function updateCart() {
+        var updatedCart = {};
+    
+        // Loop through each product in the cart
+        $('tr[data-id]').each(function() {
+            var productId = $(this).data('id');
+            var quantity = $('#quant-input-' + productId + ' input').val();
+    
+            // Add the product ID and quantity to the updatedCart object
+            updatedCart[productId] = quantity;
+        });
+    
+        let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+        const url = '/shopping-cart/update';
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({
+                cart: updatedCart,
+                _token: csrfToken
+            })
+        });
+    
+        if (response.ok) {
+            const result = await response.text();
+            alert(result);
+            location.reload();
+        } else {
+            if (response.status === 401) {  // HTTP status 401 means "Unauthorized"
+                alert('Please login to update cart.');
+            } else {
+                alert('Error: ' + response.status);
+            }
+        }
+    }
 });

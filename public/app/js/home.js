@@ -8,4 +8,6 @@
             alert.style.display = 'none';
         }, 2000); // 5000ms = 5s
     }
+
+    
 });
