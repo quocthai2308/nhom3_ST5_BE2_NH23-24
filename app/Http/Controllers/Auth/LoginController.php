@@ -75,7 +75,7 @@ class LoginController extends Controller
             
             return redirect()->intended('home');
         } elseif ($user->userType == 1) {
-            return redirect()->intended('page_admin');
+            return redirect()->intended('manage-product');
         }
 
         }

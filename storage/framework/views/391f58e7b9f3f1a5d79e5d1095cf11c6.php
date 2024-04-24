@@ -35,6 +35,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    
 </head>
 
 <body class="cnt-home">
@@ -47,8 +48,8 @@
                 <div class="header-top-inner">
                     <div class="cnt-account">
                         <ul class="list-unstyled">
-                            <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
-                            <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+                        <li><a href="<?php echo e(url('myAccount')); ?>"><i class="icon fa fa-user"></i>My Account</a></li>
+                            <li><a href="<?php echo e(url('my-wishlist')); ?>"><i class="icon fa fa-heart"></i>Wishlist</a></li>
                             <li><a href="<?php echo e(url('shopping-cart')); ?>"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
                             <?php if(Auth::check()): ?>
