@@ -28,7 +28,7 @@
                             <div class="control-group">
                                 <label class="control-label">Mô tả:</label>
                                 <div class="controls">
-                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="description" required>{{ $product->description }}</textarea> *
+                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="description">{{ $product->description }}</textarea> *
                                 </div>
                             </div>
                             <div class="control-group">

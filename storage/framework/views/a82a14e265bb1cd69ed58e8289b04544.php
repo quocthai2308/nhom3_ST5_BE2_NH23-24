@@ -26,7 +26,7 @@
                             <div class="control-group">
                                 <label class="control-label">Mô tả:</label>
                                 <div class="controls">
-                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="description" required></textarea> *
+                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="description"></textarea> *
                                 </div>
                             </div>
                             <div class="control-group">
@@ -64,14 +64,6 @@
     </div>
     </div>
     <!-- END CONTENT -->
-    <script src="<?php echo e(url('admin/ckeditor/ckeditor.js')); ?>"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('admin.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Wamp64\www\nhom3_ST5_BE2_NH23-24\resources\views/admin/add-product.blade.php ENDPATH**/ ?>

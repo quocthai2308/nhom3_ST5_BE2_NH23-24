@@ -14,7 +14,7 @@
                     <div class="widget-content nopadding">
 
                         <!-- BEGIN USER FORM -->
-                        <form action="{{ route('product.modify', $product->id) }}" method="post" class="form-horizontal"
+                        <form action="{{ route('product.modify', $product->id) }}" novalidate method="post" class="form-horizontal"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -70,12 +70,4 @@
     </div>
     </div>
     <!-- END CONTENT -->
-    <script src="{{url('admin/ckeditor/ckeditor.js')}}"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
 @endsection

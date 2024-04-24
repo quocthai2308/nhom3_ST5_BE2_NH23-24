@@ -13,7 +13,7 @@
                     <div class="widget-content nopadding">
 
                         <!-- BEGIN USER FORM -->
-                        <form action="<?php echo e(route('product.modify', $product->id)); ?>" method="post" class="form-horizontal"
+                        <form action="<?php echo e(route('product.modify', $product->id)); ?>" novalidate method="post" class="form-horizontal"
                             enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('PUT'); ?>

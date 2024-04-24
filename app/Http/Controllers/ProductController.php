@@ -25,7 +25,7 @@ class ProductController extends Controller
         $description = $request->input('description');
         $price = $request->input('price');
         $category_ids = $request->input('category_ids'); // Mảng ID của các danh mục
-
+       
         // Tạo một sản phẩm mới
         $product = new Product;
         $product->name = $name;
