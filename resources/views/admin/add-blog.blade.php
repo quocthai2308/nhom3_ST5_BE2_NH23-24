@@ -14,47 +14,24 @@
                     <div class="widget-content nopadding">
 
                         <!-- BEGIN USER FORM -->
-                       <form action="{{ route('product.add') }}" method="post" class="form-horizontal"
+                       <form action="{{ route('blog.store') }}" method="post" class="form-horizontal"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="control-group">
-                                <label class="control-label">Tên sản phẩm:</label>
+                                <label class="control-label">Title:</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Tên sản phẩm" name="name"
+                                    <input type="text" class="span11" placeholder="Tên sản phẩm" name="title"
                                         required /> *
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Mô tả:</label>
+                                <label class="control-label">Content:</label>
                                 <div class="controls">
-                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="description"></textarea> *
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Giá:</label>
-                                <div class="controls">
-                                    <input type="number" class="span11" placeholder="Giá sản phẩm" name="price"
-                                        required /> *
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Chọn danh mục:</label>
-                                <div class="controls">
-                                    <select name="category_ids" multiple required>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select> *
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Chọn hình:</label>
-                                <div class="controls">
-                                    <input type="file" name="fileUpload" id="fileUpload">
+                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="content"></textarea> *
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-success">Add</button>
+                                <button type="submit" class="btn btn-success">Post</button>
                             </div>
                         </form>
                         <!-- END USER FORM -->

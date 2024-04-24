@@ -28,26 +28,24 @@
                                     table-striped">
                             <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Price ($)</th>
+                                    <th>Title</th>
+                                    <th>Content</th>
                                     <th>Created at</th>
-                                    <th>Updated at</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <th>Updated at</th>        
+                                                        </tr>
                             </thead>
                             <tbody>
+                                @foreach ($blogs as $blog)
                                     <tr class="">
-                                        <td width="250">
-                                                <img src="{{ asset("app/images/products/") }}"
-                                                    style="width:100%">
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>$</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{$blog->title}}</td>
+                                        <td> <?php
+                                            $content = trim(strip_tags($blog['content']));
+                                            if (strlen($content) >= 100) {
+                                                $content = mb_substr($content, 0, mb_strpos($content, ' ', 100));
+                                            }
+                                            echo $content;?></td>
+                                        <td>{{$blog->update_at}}</td>
+                                        <td>{{$blog->create_at}}</td>
                                         <td>
                                             <a href=""
                                                 class="btn btn-success btn-mini">Edit</a>
@@ -60,7 +58,7 @@
                                             </form>
                                         </td>
                                     </tr>
-                                
+                                @endforeach
                             </tbody>
                         </table>
                         <div class="row" style="margin-left: 18px;">

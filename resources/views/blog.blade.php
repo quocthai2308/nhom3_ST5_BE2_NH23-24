@@ -16,60 +16,29 @@
     <div class="body-content">
         <div class="container">
             <div class="row">
-                <div class="blog-page">
+                <div class="blog-page">                   
                     <div class="col-md-9">
-                        <div class="blog-post  wow fadeInUp">
-                            <a href="blog-details.html"><img class="img-responsive"
-                                    src="{{ asset('app\images\blog-post\blog_big_01.jpg') }}" alt=""></a>
-                            <h1><a href="blog-details.html">Nemo enim ipsam voluptatem quia voluptas sit aspernatur</a>
-                            </h1>
-                            <span class="author">John Doe</span>
-                            <span class="review">6 Comments</span>
-                            <span class="date-time">14/06/2016 10.00AM</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                est laborum...</p>
-                            <a href="#" class="btn btn-upper btn-primary read-more">read more</a>
-                        </div>
-                        <div class="blog-post outer-top-bd  wow fadeInUp">
-                            <a href="blog-details.html"><img class="img-responsive"
-                                    src="{{ asset('app\images\blog-post\blog_big_02.jpg') }}" alt=""></a>
-                            <h1><a href="blog-details.html">Nemo enim ipsam voluptatem quia voluptas sit aspernatur</a>
-                            </h1>
-                            <span class="author">Sarah Smith</span>
-                            <span class="review">6 Comments</span>
-                            <span class="date-time">20/06/2016 11.00AM</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                est laborum...</p>
-                            <a href="#" class="btn btn-upper btn-primary read-more">read more</a>
-                        </div>
-                        <div class="blog-post outer-top-bd  wow fadeInUp">
-                            <a href="blog-details.html"><img class="img-responsive"
-                                    src="{{ asset('app\images\blog-post\blog_big_03.jpg') }}" alt=""></a>
-                            <h1><a href="blog-details.html">Nemo enim ipsam voluptatem quia voluptas sit aspernatur</a>
-                            </h1>
-                            <span class="author">Mark Doe</span>
-                            <span class="review">6 Comments</span>
-                            <span class="date-time">14/06/2014 11.00AM</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                est laborum...</p>
-                            <a href="#" class="btn btn-upper btn-primary read-more">read more</a>
-                        </div>
-
-                        <div class="clearfix blog-pagination filters-container  wow fadeInUp"
+                        @foreach ($blogs as $blog)
+                            
+                        <div style="margin-bottom: 10px;" class="blog-post wow fadeInUp">
+                            <a href="blog-details.html">
+                                <h1><a href="blog-details.html">{{$blog->title}}</a>
+                                </h1>
+                                <span class="author">Admin</span>
+                                <span class="review">6 Comments</span>
+                                <span class="date-time">{{$blog->create_at}}</span>
+                                <p> <?php $content = trim(strip_tags($blog['content']));
+                                    if (strlen($content) >= 200) {
+                                        $content = mb_substr($content, 0, mb_strpos($content, ' ', 200));
+                                    }
+                                    echo $content;?></p>
+                                <a href="{{url("blog-details/".$blog->id)}}" class="btn btn-upper btn-primary read-more">read more</a>
+                            </div>
+                            @endforeach
+                            
+                            <div class="clearfix blog-pagination filters-container  wow fadeInUp"
                             style="padding:0px; background:none; box-shadow:none; margin-top:15px; border:none">
-
+                            
                             <div class="text-right">
                                 <div class="pagination-container">
                                     <ul class="list-inline list-unstyled">
@@ -83,7 +52,7 @@
                                         </li>
                                     </ul><!-- /.list-inline -->
                                 </div><!-- /.pagination-container -->
-                            </div><!-- /.text-right -->
+                            </div><!-- /.text-right --> 
 
                         </div><!-- /.filters-container -->
                     </div>

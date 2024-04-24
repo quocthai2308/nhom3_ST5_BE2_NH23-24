@@ -10,12 +10,20 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 
 
 //chức năng thích
 Route::post('/like', [HomeController::class, 'addLike'])->name('like.store');
 Route::post('/get-like-status', [LikeController::class, 'getLikeStatus'])->name('getLikeStatus');
 Route::get('/my-wishlist', [LikeController::class, 'getLikeList'])->name('myWishList');
+
+// chức năng blog
+Route::get('/add-blog', [BlogController::class, 'addView'])->name('addBlog');
+Route::get('/manage-blog', [BlogController::class, 'index'])->name('manage-blog');
+Route::post('/store', [BlogController::class, 'store'])->name('blog.store');
+Route::get('/blog', [BlogController::class, 'blogIndex'])->name('blog-index');
+Route::get('/blog-details/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
 
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 // Route::get('/', function () {
@@ -26,9 +34,7 @@ Route::get('/myAccount', function () {
     return view('myAccount');
 });
 /// test load view
-Route::get('/manage-blog', function () {
-    return view('admin.manage-blog');
-});
+
 
 
 Route::get('/manage-user', [AdminController::class, 'index'])->name('manage-user');

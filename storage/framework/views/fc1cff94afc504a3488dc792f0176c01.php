@@ -19,26 +19,24 @@
                                     table-striped">
                             <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Price ($)</th>
+                                    <th>Title</th>
+                                    <th>Content</th>
                                     <th>Created at</th>
-                                    <th>Updated at</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <th>Updated at</th>        
+                                                        </tr>
                             </thead>
                             <tbody>
+                                <?php $__currentLoopData = $blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr class="">
-                                        <td width="250">
-                                                <img src="<?php echo e(asset("app/images/products/")); ?>"
-                                                    style="width:100%">
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>$</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><?php echo e($blog->title); ?></td>
+                                        <td> <?php
+                                            $content = trim(strip_tags($blog['content']));
+                                            if (strlen($content) >= 100) {
+                                                $content = mb_substr($content, 0, mb_strpos($content, ' ', 100));
+                                            }
+                                            echo $content;?></td>
+                                        <td><?php echo e($blog->update_at); ?></td>
+                                        <td><?php echo e($blog->create_at); ?></td>
                                         <td>
                                             <a href=""
                                                 class="btn btn-success btn-mini">Edit</a>
@@ -51,7 +49,7 @@
                                             </form>
                                         </td>
                                     </tr>
-                                
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                         <div class="row" style="margin-left: 18px;">
