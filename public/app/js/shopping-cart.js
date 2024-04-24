@@ -55,12 +55,6 @@ $('.arrow.minus').click(function() {
         calculateTotal();
     }
 });
-
-
-
-
-
-
     $('.romove-cooke').click(function(e) {
         e.preventDefault();
     
@@ -96,51 +90,49 @@ $('.arrow.minus').click(function() {
         });
     });
 
-
-    window.onload = async function() {
-        let updateCartButton = document.querySelector('.update-cart');
+/// sửa lại nha
+    // window.onload = async function() {
+    //     let updateCartButton = document.querySelector('.update-cart');
     
-        updateCartButton.addEventListener('click', async function(e) {
-            e.preventDefault();
+    //     updateCartButton.addEventListener('click', async function(e) {
+    //         e.preventDefault();
             
-            // Create an object to store the updated quantities
-            var updatedCart = {};
+    //         // Create an object to store the updated quantities
+    //         var updatedCart = {};
     
-            // Loop through each product in the cart
-            $('tr[data-id]').each(function() {
-                var productId = $(this).data('id');
-                var quantity = $('#quant-input-' + productId + ' input').val();
+    //         // Loop through each product in the cart
+    //         $('tr[data-id]').each(function() {
+    //             var productId = $(this).data('id');
+    //             var quantity = $('#quant-input-' + productId + ' input').val();
     
-                // Add the product ID and quantity to the updatedCart object
-                updatedCart[productId] = quantity;
-            });
+    //             // Add the product ID and quantity to the updatedCart object
+    //             updatedCart[productId] = quantity;
+    //         });
     
-            let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    //         let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     
-            $.ajax({
-                url: '/shopping-cart/update',
-                method: 'POST',
-                data: {
-                    cart: updatedCart,
-                    _token: csrfToken
-                },
-                success: function(response) {
-                    alert(response);
-                    location.reload();
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 401) {  // HTTP status 401 means "Unauthorized"
-                        alert('Please login to update cart.');
-                    } else {
-                        alert('Error: ' + textStatus + ' ' + errorThrown);
-                    }
-                }
-            });
-        });
+    //         $.ajax({
+    //             url: '/shopping-cart/update',
+    //             method: 'POST',
+    //             data: {
+    //                 cart: updatedCart,
+    //                 _token: csrfToken
+    //             },
+    //             success: function(response) {
+    //                 alert(response);
+    //                 location.reload();
+    //             },
+    //             error: function(jqXHR, textStatus, errorThrown) {
+    //                 if (jqXHR.status === 401) {  // HTTP status 401 means "Unauthorized"
+    //                     alert('Please login to update cart.');
+    //                 } else {
+    //                     alert('Error: ' + textStatus + ' ' + errorThrown);
+    //                 }
+    //             }
+    //         });
+    //     });
 
-    }
-
-
+    // }
     $('.checkout-btn').click(function(e) {
         e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 

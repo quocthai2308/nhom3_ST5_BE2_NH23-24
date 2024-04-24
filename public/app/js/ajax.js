@@ -62,6 +62,6 @@ async function toggleLike(productId, csrfToken, like) {
             alert("Failed to toggle like");
         }
     } else {
-        alert("Error: " + response.status);
+        alert("login ");
     }
 }
