@@ -270,7 +270,6 @@
 		<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
 	</div><!-- /.container -->
 </div><!-- /.body-content -->
-
 <!-- ============================================================= FOOTER ============================================================= -->
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Thuận HK4\BE2\LamNhom\nhom3_ST5_BE2_NH23-24\resources\views/shopping-cart.blade.php ENDPATH**/ ?>

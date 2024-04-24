@@ -50,6 +50,9 @@ class ProductController extends Controller
         // Tạo liên kết giữa sản phẩm và các danh mục
         $product->categories()->sync($category_ids);
 
+        // Thêm thông báo flash
+        $request->session()->flash('add-success', 'Add product successfully!');
+
         return redirect()->route('manage-product');
     }
 
@@ -111,12 +114,16 @@ class ProductController extends Controller
         // Cập nhật liên kết giữa sản phẩm và các danh mục
         $product->categories()->sync($category_ids);
 
+        // Thêm thông báo flash
+        $request->session()->flash('update-success', 'Update product successfully!');
+
         return redirect()->route('manage-product');
     }
 
 
     // Hàm xoá sản phẩm
-    public function delete($id) {
+    public function delete($id)
+    {
         $product = Product::find($id);
 
         if (!$product) {
@@ -136,5 +143,26 @@ class ProductController extends Controller
 
         return redirect()->route('manage-product');
     }
+
+    // Xoá hình ảnh khỏi thư mục
+    // public function delete($id)
+    // {
+    //     // Tìm sản phẩm theo ID
+    //     $product = Product::find($id);
+
+    //     // Xóa hình ảnh từ thư mục 'images'
+    //     foreach ($product->images as $image) {
+    //         $imagePath = public_path('app\images\products\\' . $image->name);
+    //         if (file_exists($imagePath)) {
+    //             unlink($imagePath);
+    //         }
+    //     }
+
+    //     // Xóa sản phẩm từ cơ sở dữ liệu
+    //     $product->delete();
+
+    //     return redirect()->route('manage-product');
+    // }
+
 
 }

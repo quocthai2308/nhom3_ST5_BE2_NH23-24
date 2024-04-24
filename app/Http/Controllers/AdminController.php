@@ -10,6 +10,6 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all(); // Lấy tất cả người dùng
-        return view('admin', ['users' => $users]); // Trả về view với dữ liệu người dùng
+        return view('admin.manage-user', ['users' => $users]); // Trả về view với dữ liệu người dùng
     }
 }

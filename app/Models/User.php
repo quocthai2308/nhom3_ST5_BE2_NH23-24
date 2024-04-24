@@ -18,6 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = ['name', 'email', 'password', 'userType'];
+    // Trong app/Models/User.php
+    public function isAdmin()
+    {
+        return $this->userType === 1; // Giả sử userType = 1 là Admin
+    }
+
+    public function roleDescription()
+    {
+        return $this->isAdmin() ? 'Admin' : 'User';
+    }
+
 
     // App\Models\User.php
 
