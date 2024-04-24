@@ -25,12 +25,10 @@ Route::get('/my-wishlist', [LikeController::class, 'getLikeList'])->name('myWish
 Route::get('/myAccount', function () {
     return view('myAccount');
 });
-Route::get('/admin', function () {
-    return view('admin');
-});
 
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/manage-user', [AdminController::class, 'index'])->name('manage-user');
+
 Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
 
 // trang home

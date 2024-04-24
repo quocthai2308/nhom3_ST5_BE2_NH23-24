@@ -1,8 +1,8 @@
 <?php if(session('success')): ?>
-<div class="alert alert-success" id="success-alert">
-    <?php echo e(session('success')); ?>
+    <div class="alert alert-success" id="success-alert">
+        <?php echo e(session('success')); ?>
 
-</div>
+    </div>
 <?php endif; ?>
 
 <!DOCTYPE html>
@@ -33,8 +33,10 @@
     <link rel="stylesheet" href="<?php echo e(asset('app\css\font-awesome.css')); ?>">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800'
+        rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body class="cnt-home">
@@ -47,14 +49,14 @@
                 <div class="header-top-inner">
                     <div class="cnt-account">
                         <ul class="list-unstyled">
-                        <li><a href="<?php echo e(url('myAccount')); ?>"><i class="icon fa fa-user"></i>My Account</a></li>
+                            <li><a href="<?php echo e(url('myAccount')); ?>"><i class="icon fa fa-user"></i>My Account</a></li>
                             <li><a href="<?php echo e(url('my-wishlist')); ?>"><i class="icon fa fa-heart"></i>Wishlist</a></li>
                             <li><a href="<?php echo e(url('shopping-cart')); ?>"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
                             <?php if(Auth::check()): ?>
-                            <li><a href="<?php echo e(url('logout')); ?>"><i class="icon fa fa-lock"></i>Logout</a></li>
+                                <li><a href="<?php echo e(url('logout')); ?>"><i class="icon fa fa-lock"></i>Logout</a></li>
                             <?php else: ?>
-                            <li><a href="<?php echo e(url('login')); ?>"><i class="icon fa fa-lock"></i>Login</a></li>
+                                <li><a href="<?php echo e(url('login')); ?>"><i class="icon fa fa-lock"></i>Login</a></li>
                             <?php endif; ?>
                         </ul>
                     </div><!-- /.cnt-account -->
@@ -62,7 +64,8 @@
                     <div class="cnt-block">
                         <ul class="list-unstyled list-inline">
                             <li class="dropdown dropdown-small">
-                                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">USD </span><b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown"
+                                    data-toggle="dropdown"><span class="value">USD </span><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">USD</a></li>
                                     <li><a href="#">INR</a></li>
@@ -71,7 +74,9 @@
                             </li>
 
                             <li class="dropdown dropdown-small">
-                                <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">English </span><b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown"
+                                    data-toggle="dropdown"><span class="value">English </span><b
+                                        class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">English</a></li>
                                     <li><a href="#">French</a></li>
@@ -104,23 +109,25 @@
                         <!-- /.contact-row -->
                         <!-- ============================================================= SEARCH AREA ============================================================= -->
                         <div class="search-area">
-                            <form>
+                            <form action="<?php echo e(url('/search')); ?>" method="get">
                                 <div class="control-group">
                                     <ul class="categories-filter animate-dropdown">
-                                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo e(url('category')); ?>">Categories <b class="caret"></b></a>
+                                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"
+                                                href="<?php echo e(url('category')); ?>">Categories <b class="caret"></b></a>
                                             <ul class="dropdown-menu" role="menu">
                                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo e(url('category')); ?>"><?php echo e($category['name']); ?></a>
-                                                </li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                            href="<?php echo e(url('category')); ?>"><?php echo e($category['name']); ?></a>
+                                                    </li>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </ul>
                                         </li>
                                     </ul>
-                                    <form action="<?php echo e(url('/search')); ?>" method="get">
-                                        <?php echo csrf_field(); ?>
-                                        <input class="search-field" name="name" placeholder="Search here..." autocomplete="on">
-                                        <button type="submit" class="search-button">Search</button>
-                                    </form>
+
+                                    <?php echo csrf_field(); ?>
+                                    <input class="search-field" name="name" placeholder="Search here..."
+                                        autocomplete="on">
+                                    <button type="submit" class="search-button">Search</button>
                                 </div>
                             </form>
                         </div>
@@ -154,7 +161,9 @@
                                         <div class="row">
                                             <div class="col-xs-4">
                                                 <div class="image">
-                                                    <a href="<?php echo e(url('detail')); ?>"><img src="<?php echo e(asset('app\images\cart.jpg')); ?>" alt=""></a>
+                                                    <a href="<?php echo e(url('detail')); ?>"><img
+                                                            src="<?php echo e(asset('app\images\cart.jpg')); ?>"
+                                                            alt=""></a>
                                                 </div>
                                             </div>
                                             <div class="col-xs-7">
@@ -179,7 +188,8 @@
                                         </div>
                                         <div class="clearfix"></div>
 
-                                        <a href="<?php echo e(url('checkout')); ?>" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
+                                        <a href="<?php echo e(url('checkout')); ?>"
+                                            class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
                                     </div><!-- /.cart-total-->
 
 
@@ -200,8 +210,10 @@
             <div class="container">
                 <div class="yamm navbar navbar-default" role="navigation">
                     <div class="navbar-header">
-                        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse"
+                            class="navbar-toggle collapsed" type="button">
+                            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                                class="icon-bar"></span> <span class="icon-bar"></span> </button>
                     </div>
                     <div class="nav-bg-class">
                         <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
@@ -211,33 +223,41 @@
                                         <a href="<?php echo e(url('/')); ?>" class="dropdown-toggle">Home</a>
                                     </li>
                                     <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li class="dropdown yamm mega-menu"> <a href="<?php echo e(url('home')); ?>" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown"><?php echo e($category->name); ?></a>
-                                        <ul class="dropdown-menu container">
-                                            <li>
-                                                <div class="yamm-content ">
-                                                    <div class="row">
-                                                        <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                            <?php $__currentLoopData = $allCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <ul class="links">
-                                                                <?php if($category->id == $subCategory->parent_id): ?>
-                                                                <li style="font-weight: bold;"><a style="font-size: 2em;" href="<?php echo e(url('category/' . $subCategory->id)); ?>"><?php echo e($subCategory->name); ?></a>
-                                                                </li>
-                                                                <?php endif; ?>
-                                                            </ul>
-                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <li class="dropdown yamm mega-menu"> <a href="<?php echo e(url('home')); ?>"
+                                                data-hover="dropdown" class="dropdown-toggle"
+                                                data-toggle="dropdown"><?php echo e($category->name); ?></a>
+                                            <ul class="dropdown-menu container">
+                                                <li>
+                                                    <div class="yamm-content ">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                                                <?php $__currentLoopData = $allCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <ul class="links">
+                                                                        <?php if($category->id == $subCategory->parent_id): ?>
+                                                                            <li style="font-weight: bold;"><a
+                                                                                    style="font-size: 2em;"
+                                                                                    href="<?php echo e(url('category/' . $subCategory->id)); ?>"><?php echo e($subCategory->name); ?></a>
+                                                                            </li>
+                                                                        <?php endif; ?>
+                                                                    </ul>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                            </div>
+                                                            <!-- /.col -->
+                                                            <div
+                                                                class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
+                                                                <img class="img-responsive"
+                                                                    src="<?php echo e(asset('app\images\banners\top-menu-banner.jpg')); ?>"
+                                                                    alt="">
+                                                            </div>
+                                                            <!-- /.yamm-content -->
                                                         </div>
-                                                        <!-- /.col -->
-                                                        <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
-                                                            <img class="img-responsive" src="<?php echo e(asset('app\images\banners\top-menu-banner.jpg')); ?>" alt="">
-                                                        </div>
-                                                        <!-- /.yamm-content -->
                                                     </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Pages</a>
+                                    <li class="dropdown"> <a href="#" class="dropdown-toggle"
+                                            data-hover="dropdown" data-toggle="dropdown">Pages</a>
                                         <ul class="dropdown-menu pages">
                                             <li>
                                                 <div class="yamm-content">
@@ -261,7 +281,8 @@
                                                                         Condition</a></li>
                                                                 <li><a href="<?php echo e(url('track-orders')); ?>">Track
                                                                         Orders</a></li>
-                                                                <li><a href="<?php echo e(url('product-comparison')); ?>">Product-Comparison</a>
+                                                                <li><a
+                                                                        href="<?php echo e(url('product-comparison')); ?>">Product-Comparison</a>
                                                                 </li>
                                                                 <li><a href="<?php echo e(url('faq')); ?>">FAQ</a></li>
                                                                 <li><a href="<?php echo e(url('404')); ?>">404</a></li>
@@ -399,13 +420,20 @@
             <div class="container">
                 <div class="col-xs-12 col-sm-6 no-padding social">
                     <ul class="link">
-                        <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#" title="Facebook"></a></li>
-                        <li class="tw pull-left"><a target="_blank" rel="nofollow" href="#" title="Twitter"></a></li>
-                        <li class="googleplus pull-left"><a target="_blank" rel="nofollow" href="#" title="GooglePlus"></a></li>
-                        <li class="rss pull-left"><a target="_blank" rel="nofollow" href="#" title="RSS"></a></li>
-                        <li class="pintrest pull-left"><a target="_blank" rel="nofollow" href="#" title="PInterest"></a></li>
-                        <li class="linkedin pull-left"><a target="_blank" rel="nofollow" href="#" title="Linkedin"></a></li>
-                        <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="#" title="Youtube"></a></li>
+                        <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#"
+                                title="Facebook"></a></li>
+                        <li class="tw pull-left"><a target="_blank" rel="nofollow" href="#"
+                                title="Twitter"></a></li>
+                        <li class="googleplus pull-left"><a target="_blank" rel="nofollow" href="#"
+                                title="GooglePlus"></a></li>
+                        <li class="rss pull-left"><a target="_blank" rel="nofollow" href="#"
+                                title="RSS"></a></li>
+                        <li class="pintrest pull-left"><a target="_blank" rel="nofollow" href="#"
+                                title="PInterest"></a></li>
+                        <li class="linkedin pull-left"><a target="_blank" rel="nofollow" href="#"
+                                title="Linkedin"></a></li>
+                        <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="#"
+                                title="Youtube"></a></li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 no-padding">
@@ -431,6 +459,7 @@
     <!-- For demo purposes – can be removed on production : End -->
 
     <!-- JavaScripts placed at the end of the document so the pages load faster -->
+    <script src="<?php echo e(asset('app\js\ajax.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\jquery-1.11.1.min.js')); ?>"></script>
 
     <script src="<?php echo e(asset('app\js\bootstrap.min.js')); ?>"></script>
@@ -448,7 +477,6 @@
     <script src="<?php echo e(asset('app\js\scripts.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\shopping-cart.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\home.js')); ?>"></script>
-    <script src="<?php echo e(asset('app\js\ajax.js')); ?>"></script>
 
     <!-- For demo purposes – can be removed on production -->
     
@@ -456,4 +484,5 @@
     <!-- For demo purposes – can be removed on production : End -->
 </body>
 
-</html><?php /**PATH D:\Thuận HK4\BE2\LamNhom\nhom3_ST5_BE2_NH23-24\resources\views/app.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH D:\Thuận HK4\BE2\LamNhom\nhom3_ST5_BE2_NH23-24\resources\views/app.blade.php ENDPATH**/ ?>
