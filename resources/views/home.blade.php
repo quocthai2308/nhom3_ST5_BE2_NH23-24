@@ -333,10 +333,10 @@
                                                     <!-- /.product-image -->
 
                                                     <div class="product-info text-left">
-                                                        <h3 class="name"><a href="{{ url('detail/'.$newProduct['id']) }}">${{$newProduct['name']}}</a></h3>
+                                                        <h3 class="name"><a href="{{ url('detail/'.$newProduct['id']) }}">{{$newProduct['name']}}</a></h3>
                                                         <div class="rating rateit-small"></div>
-                                                        <div class="description">${{$newProduct['description']}}</div>
-                                                        <div class="product-price"> <span class="price"> ${{$newProduct['price']}}
+                                                        <div class="description"><?php echo $newProduct['description'] ;?></div>
+                                                        <div class="product-price"> <span class="price"> {{$newProduct['price']}}
                                                             </span>
                                                         </div>
                                                         <!-- /.product-price -->

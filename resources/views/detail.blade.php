@@ -81,7 +81,7 @@
                                     </div><!-- /.stock-container -->
 
                                     <div class="description-container m-t-20">
-                                        {{ $product['description'] }}
+                                        <?php echo $product->description;?>
                                     </div><!-- /.description-container -->
 
                                     <div class="price-container info-container m-t-20">
@@ -100,7 +100,7 @@
                                             </div>
 
                                             <div class="col-sm-6">
-                                                <div class="favorite-button m-t-10">
+                                               <div class="favorite-button m-t-10">
                                                     <a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
                                                         title="Add to Compare" href="#">
                                                         <i class="fa fa-signal"></i>
@@ -127,7 +127,7 @@
                                                     <div class="quant-input">
                                                         <div class="arrows">
                                                             <div class="arrow plus gradient"><span class="ir"><i
-                                                                        class="icon fa fa-sort-asc"></i></span></div>
+                                                                         class="icon fa fa-sort-asc"></i></span></div>
                                                             <div class="arrow minus gradient"><span class="ir"><i
                                                                         class="icon fa fa-sort-desc"></i></span></div>
                                                         </div>
@@ -164,7 +164,7 @@
 
                                     <div id="description" class="tab-pane in active">
                                         <div class="product-tab">
-                                            <p class="text">{{ $product->description }}</p>
+                                            <p class="text"><?php echo $product->description;?></p>
                                         </div>
                                     </div><!-- /.tab-pane -->
 
