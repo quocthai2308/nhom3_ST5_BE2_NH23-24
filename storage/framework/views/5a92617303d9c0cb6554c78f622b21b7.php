@@ -1,6 +1,17 @@
 <?php $__env->startSection('title', 'Manage Product'); ?>
 <?php $__env->startSection('content'); ?>
+    <?php if(session('add-success')): ?>
+        <div class="alert alert-success">
+            <?php echo e(session('add-success')); ?>
 
+        </div>
+    <?php endif; ?>
+    <?php if(session('update-success')): ?>
+        <div class="alert alert-success">
+            <?php echo e(session('update-success')); ?>
+
+        </div>
+    <?php endif; ?>
     <h1>Manage Products</h1>
     </div>
     <div class="container-fluid">
@@ -44,12 +55,13 @@
                                         <td>
                                             <a href="<?php echo e(url('form-edit-product', $product->id)); ?>"
                                                 class="btn btn-success btn-mini">Edit</a>
-                                            <form action="<?php echo e(route('product.delete', $product->id)); ?>" method="POST">
+                                            <form action="<?php echo e(route('product.delete', $product->id)); ?>" method="POST"
+                                                class="delete-form">
                                                 <?php echo csrf_field(); ?>
                                                 <?php echo method_field('DELETE'); ?>
-                                                <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                                <button type="submit"
+                                                    class="btn btn-danger btn-mini delete-btn">Delete</button>
                                             </form>
-
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -70,7 +82,5 @@
     </div>
     </div>
 <?php $__env->stopSection(); ?>
-
-
 
 <?php echo $__env->make('admin.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Tài liệu Môn Học\Kì 4\BE2\Git\nhom3_ST5_BE2_NH23-24\resources\views/admin/manage-product.blade.php ENDPATH**/ ?>
