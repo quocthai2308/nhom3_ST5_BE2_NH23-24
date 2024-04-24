@@ -72,6 +72,7 @@ class Product extends Model
                 ->where('product_id', $productId)
                 ->delete();
         }
+
     }
     // MARK: hàm lấy sản phẩm đã like
     public function getProductLiked($userId)
@@ -90,8 +91,9 @@ class Product extends Model
     // Lấy tất cả sản phẩm
     public function getAllProducts()
     {
-        return self::all();
+        return self::orderBy('updated_at', 'desc')->get();
     }
+
 
     protected $fillable = ['name', 'description', 'price'];
 
@@ -122,3 +124,6 @@ class Product extends Model
 
     use HasFactory;
 }
+
+
+

@@ -5,11 +5,11 @@
             </div>
             <div class="container-fluid">
                 <hr>
-                <div class="row-fluid">
+                <div class="row-fluid">add-category
                     <div class="span12">
                         <div class="widget-box">
                             <div class="widget-title"> <span class="icon"><a
-                                    href="{{ url('add-category') }}"> <i class="icon-plus"></i>
+                                    href="{{ url('/manage-category/page') }}"> <i class="icon-plus"></i>
                                     </a></span>
                                 <h5>Categories</h5>
                             </div>
@@ -24,10 +24,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($categories as $category)
                                         <tr class="">
-                                            <td width="100"><img
-                                                    src="./images/kisspng-computer-icons-smartphone-telephone-logo-5b2e3e2e956a24.866395171529757230612.png"></td>
-                                            <td>Cellphone</td>
+                                            <td > {{ $category['id'] }} </td> 
+                                            <td>{{ $category['name'] }}</td>
 
                                             <td>
                                                 <a href="{{ url('edit-category') }}" class="btn
@@ -36,42 +36,7 @@
                                                     btn-danger btn-mini">Delete</a>
                                             </td>
                                         </tr>
-                                        <tr class="">
-                                            <td width="100"><img
-                                                    src="./images/tablet-logo.jpg"></td>
-                                            <td>Tablet</td>
-
-                                            <td>
-                                                <a href="edit_protype.html" class="btn
-                                                    btn-success btn-mini">Edit</a>
-                                                <a href="#" class="btn
-                                                    btn-danger btn-mini">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="">
-                                            <td width="100"><img
-                                                    src="./images/laptop-logo.png"></td>
-                                            <td>Laptop</td>
-
-                                            <td>
-                                                <a href="edit_protype.html" class="btn
-                                                    btn-success btn-mini">Edit</a>
-                                                <a href="#" class="btn
-                                                    btn-danger btn-mini">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr class="">
-                                            <td width="100"><img
-                                                    src="./images/png-clipart-computer-icons-music-music-speaker-logo-sound.png"></td>
-                                            <td>Speaker</td>
-
-                                            <td>
-                                                <a href="edit_protype.html" class="btn
-                                                    btn-success btn-mini">Edit</a>
-                                                <a href="#" class="btn
-                                                    btn-danger btn-mini">Delete</a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <div class="row" style="margin-left: 18px;">

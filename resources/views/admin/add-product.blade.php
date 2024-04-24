@@ -14,69 +14,47 @@
                     <div class="widget-content nopadding">
 
                         <!-- BEGIN USER FORM -->
-                        <form action="form.html" method="post" class="form-horizontal" enctype="multipart/form-data">
+                       <form action="{{ route('product.add') }}" method="post" class="form-horizontal"
+                            enctype="multipart/form-data">
+                            @csrf
                             <div class="control-group">
-                                <label class="control-label">Name :</label>
+                                <label class="control-label">Tên sản phẩm:</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Product name" name="name" /> *
+                                    <input type="text" class="span11" placeholder="Tên sản phẩm" name="name"
+                                        required /> *
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Choose a
-                                    manufacture:</label>
+                                <label class="control-label">Mô tả:</label>
                                 <div class="controls">
-                                    <select name="manu_id" id="cate">
-                                        <option value="1">Apple</option>
-                                        <option value="2">Microsoft</option>
-                                        <option value="3">Sony</option>
-                                        <option value="4">SamSung</option>
-                                        <option value="5">Oppo</option>
+                                    <textarea class="span11" placeholder="Mô tả sản phẩm" name="description" required></textarea> *
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Giá:</label>
+                                <div class="controls">
+                                    <input type="number" class="span11" placeholder="Giá sản phẩm" name="price"
+                                        required /> *
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Chọn danh mục:</label>
+                                <div class="controls">
+                                    <select name="category_ids" multiple required>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select> *
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Choose a
-                                    product type:</label>
+                                <label class="control-label">Chọn hình:</label>
                                 <div class="controls">
-                                    <select name="type_id" id="subcate">
-                                        <option value="1">Cellphone</option>
-                                        <option value="2">Tablet</option>
-                                        <option value="3">Laptop</option>
-                                        <option value="4">Speaker</option>
-                                    </select> *
+                                    <input type="file" name="fileUpload" id="fileUpload">
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label">Choose
-                                        an image :</label>
-                                    <div class="controls">
-                                        <input type="file" name="fileUpload" id="fileUpload">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label">Description</label>
-                                    <div class="controls">
-                                        <textarea class="span11" placeholder="Description" name="description"></textarea>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Price
-                                            :</label>
-                                        <div class="controls">
-                                            <input type="text" class="span11" placeholder="price" name="price" /> *
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label">Feature
-                                            :</label>
-                                        <div class="controls">
-                                            <input type="number" class="span11" name="feature" /> *
-                                        </div>
-                                    </div>
-                                    <div class="form-actions">
-                                        <button type="submit"
-                                            class="btn
-                                                    btn-success">Add</button>
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success">Add</button>
                             </div>
                         </form>
                         <!-- END USER FORM -->

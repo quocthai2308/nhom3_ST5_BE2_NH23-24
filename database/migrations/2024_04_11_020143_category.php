@@ -13,7 +13,7 @@ return new class extends Migration
     {
         //
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
+            $table->id('category_id');
             $table->string('name');
             $table->string('parent_id');
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('protype');
+        Schema::dropIfExists('categories');
     }
 };

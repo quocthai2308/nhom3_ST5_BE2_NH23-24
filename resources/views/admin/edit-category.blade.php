@@ -16,7 +16,7 @@
                             <div class="widget-content nopadding">
 
                                 <!-- BEGIN USER FORM -->
-                                <form action="{{ route('products.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                <form action="{{ url('products.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
     @csrf
     <div class="control-group">
         <label class="control-label">Tên sản phẩm:</label>
@@ -43,15 +43,15 @@
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
-            </select> *
+            </select> 
         </div>
     </div>
-    <div class="control-group">
+    <!-- <div class="control-group">
         <label class="control-label">Chọn logo khác:</label>
         <div class="controls">
             <input type="file" name="fileUpload" id="fileUpload">
         </div>
-    </div>
+    </div> -->
     <div class="form-actions">
         <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
     </div>

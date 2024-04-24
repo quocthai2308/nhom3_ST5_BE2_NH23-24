@@ -6,7 +6,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+
+
 //chức năng thích
 Route::post('/like', [HomeController::class, 'addLike'])->name('like.store');
 Route::post('/get-like-status', [LikeController::class, 'getLikeStatus'])->name('getLikeStatus');
@@ -17,6 +22,16 @@ Route::get('/my-wishlist', [LikeController::class, 'getLikeList'])->name('myWish
 //     return view('home');
 // });
 
+Route::get('/myAccount', function () {
+    return view('myAccount');
+});
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
 
 // trang home
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -38,7 +53,11 @@ Route::post('register', [RegisterController::class, 'register']);
 // Giỏ hàng 
 Route::get('/shopping-cart', [HomeController::class, 'shopping_cart'])->name('shopping-cart');
 Route::get('/shopping-cart', [CartController::class, 'showCart']);
+Route::post('/shopping-cart/update', [CartController::class, 'updateCart']);
 Route::get('/shopping-cart/{id}', [CartController::class, 'removeFromCart']);
+Route::get('/checkout', [CartController::class, 'checkout']);
+
+
 
 
 
@@ -52,9 +71,26 @@ Route::get('detail/{id}', [HomeController::class,'detail']);
 
 // CRUD sản phẩm
 Route::get('/manage-product', [ProductController::class, 'index'])->name('manage-product');
-Route::get('/edit-product/{id}', [ProductController::class, 'modify'])->name('edit-product');
-Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
 
+// Hiển thị form
+Route::get('/form-edit-product/{id}', [ProductController::class, 'showEditProduct'])->name('form-edit-product');
+Route::get('/add-product', [ProductController::class, 'showAddProduct']);
+
+
+// Thêm
+Route::post('/product', [ProductController::class, 'add'])->name('product.add');
+
+// Sửa
+Route::put('/product/{id}', [ProductController::class, 'modify'])->name('product.modify');
+
+// Xoá
+Route::delete('/product/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
+// quản lý catelory
+Route::get('/manage-category', [CategoryController::class, 'index']);
+Route::get('/manage-category/page', [CategoryController::class, 'pageAddCategory']);
+Route::get('/manage-category/add', [CategoryController::class, 'addCategory']);
+Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 
 
 

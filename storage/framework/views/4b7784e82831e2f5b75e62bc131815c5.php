@@ -1,7 +1,6 @@
-@extends('admin.nav')
-@section('title', 'Edit Product')
-@section('content')
-    <h1>Edit Product</h1>
+<?php $__env->startSection('title', 'Add New Product'); ?>
+<?php $__env->startSection('content'); ?>
+    <h1>Add New Product</h1>
     </div>
     <div class="container-fluid">
         <hr>
@@ -14,9 +13,9 @@
                     <div class="widget-content nopadding">
 
                         <!-- BEGIN USER FORM -->
-                        <form action="{{ route('edit-product.modify') }}" method="post" class="form-horizontal"
+                       <form action="<?php echo e(route('product.add')); ?>" method="post" class="form-horizontal"
                             enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="control-group">
                                 <label class="control-label">Tên sản phẩm:</label>
                                 <div class="controls">
@@ -40,21 +39,21 @@
                             <div class="control-group">
                                 <label class="control-label">Chọn danh mục:</label>
                                 <div class="controls">
-                                    <select name="category_ids[]" multiple required>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
+                                    <select name="category_ids" multiple required>
+                                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select> *
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Chọn logo khác:</label>
+                                <label class="control-label">Chọn hình:</label>
                                 <div class="controls">
                                     <input type="file" name="fileUpload" id="fileUpload">
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
+                                <button type="submit" class="btn btn-success">Add</button>
                             </div>
                         </form>
                         <!-- END USER FORM -->
@@ -65,4 +64,6 @@
     </div>
     </div>
     <!-- END CONTENT -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\nhom3_ST5_BE2_NH23-24\resources\views/admin/add-product.blade.php ENDPATH**/ ?>
