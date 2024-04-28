@@ -12,6 +12,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 
+// này nè dùng để thêm hoặc bỏ admin á nhen 
+Route::post('/make-admin/{user}', [UserController::class, 'makeAdmin'])->name('make-admin');
+Route::post('/remove-admin/{user}', [UserController::class, 'removeAdmin'])->name('remove-admin');
+
 
 //chức năng thích
 Route::post('/like', [HomeController::class, 'addLike'])->name('like.store');

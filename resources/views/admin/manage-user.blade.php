@@ -1,6 +1,18 @@
 @extends('admin.nav')
 @section('title', 'Manage User')
 @section('content')
+
+
+<!-- Hiện Thị thông báo -->
+@if (session('success'))
+<div class="alert alert-success" role="alert" id="success-alert">
+    {{ session('success') }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 <h1>Manage User</h1>
 </div>
 <div class="container-fluid">
@@ -34,7 +46,18 @@
                                 <td>{{ $user->roleDescription() }}</td>
                                 <td>{{ $user->created_at}}</td>
                                 <td>
-                                    <a href="" class="btn btn-success btn-mini">Edit</a>
+                                    <!-- Thêm điều kiện để chỉ hiển thị nút này cho user không phải admin -->
+                                    @if ($user->userType == 0)
+                                    <form action="{{ route('make-admin', $user->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success btn-mini">Add ADMIN (Thêm)</button>
+                                    </form>
+                                    @else
+                                    <form action="{{ route('remove-admin', $user->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-info btn-mini">Remove ADMIN (Bỏ)</button>
+                                    </form>
+                                    @endif
                                     <form action="" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -59,4 +82,16 @@
 </div>
 </div>
 <!-- END CONTENT -->
+<script>
+    // Sử dụng vanilla JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        const successAlert = document.getElementById('success-alert');
+        if (successAlert) {
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 5000); // Ẩn thông báo sau 5 giây
+        }
+    });
+</script>
+
 @endsection

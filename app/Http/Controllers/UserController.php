@@ -5,17 +5,38 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class UserController extends Controller
 
 {
-     public $users; // Khai báo thuộc tính
+    public $users; // Khai báo thuộc tính
     //
     public function __construct()
     {
         // Đảm bảo chỉ những người dùng đã đăng nhập mới có thể truy cập các phương thức trong controller này
         $this->middleware('auth');
     }
+
+    public function makeAdmin($id)
+    {
+        $user = User::find($id);
+        $user->userType = 1; // Giả sử 1 là giá trị cho admin
+        $user->save();
+
+        return back()->with('success', 'User has been made an admin successfully.');
+    }
+
+    public function removeAdmin($id)
+    {
+        $user = User::find($id);
+        $user->userType = 0; // Giả sử 0 là giá trị cho user bình thường
+        $user->save();
+
+        return back()->with('success', 'Admin rights have been removed successfully.');
+    }
+
+
     public function update(Request $request)
     {
         $user = Auth::user();

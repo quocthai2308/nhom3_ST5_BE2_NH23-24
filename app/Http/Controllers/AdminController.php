@@ -12,4 +12,13 @@ class AdminController extends Controller
         $users = User::all(); // Lấy tất cả người dùng
         return view('admin.manage-user', ['users' => $users]); // Trả về view với dữ liệu người dùng
     }
+
+    public function makeAdmin($userId)
+    {
+        $user = User::findOrFail($userId);
+        $user->userType = 1; // Set userType là 1 để trở thành admin
+        $user->save();
+
+        return back()->with('success', 'User has been made an admin successfully.( Người dùng đã được đặt làm quản trị viên thành công )'); // Trả về thông báo thành công
+    }
 }
