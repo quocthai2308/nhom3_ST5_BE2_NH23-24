@@ -333,10 +333,10 @@
                                                     <!-- /.product-image -->
 
                                                     <div class="product-info text-left">
-                                                        <h3 class="name"><a href="<?php echo e(url('detail/'.$newProduct['id'])); ?>">$<?php echo e($newProduct['name']); ?></a></h3>
+                                                        <h3 class="name"><a href="<?php echo e(url('detail/'.$newProduct['id'])); ?>"><?php echo e($newProduct['name']); ?></a></h3>
                                                         <div class="rating rateit-small"></div>
-                                                        <div class="description">$<?php echo e($newProduct['description']); ?></div>
-                                                        <div class="product-price"> <span class="price"> $<?php echo e($newProduct['price']); ?>
+                                                        <div class="description"><?php echo $newProduct['description'] ;?></div>
+                                                        <div class="product-price"> <span class="price"> <?php echo e($newProduct['price']); ?>
 
                                                             </span>
                                                         </div>

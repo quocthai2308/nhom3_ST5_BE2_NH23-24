@@ -60,7 +60,7 @@ class HomeController extends Controller
         } else {
             return view('login');
         }
-        return response()->json(['success' => true]);;
+        return response()->json(['success' => true]);
     }
     
 }

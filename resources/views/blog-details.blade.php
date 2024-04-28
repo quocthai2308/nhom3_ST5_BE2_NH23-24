@@ -1,4 +1,4 @@
-﻿@extends('app')
+﻿@extends('blog.app')
 @section('title', 'blog details')
 @section('content')
     <!-- ============================================== HEADER : END ============================================== -->
@@ -23,7 +23,7 @@
                             <span class="author">Admin</span>
                             <span class="review">7 Comments</span>
                             <span class="date-time">{{ $blog->create_at }}</span>
-                            <?php echo $blog->content;	 ?>
+                            <?php echo $blog->content; ?>
                             <div class="social-media">
                                 <span>share post:</span>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -38,19 +38,20 @@
                                 <div class="col-md-12">
                                     <h3 class="title-review-comments">16 comments</h3>
                                 </div>
-                                
-                                <div class="col-md-10 col-sm-10 blog-comments outer-bottom-xs">
-                                    <div class="blog-comments inner-bottom-xs">
-                                        <h4>Jone doe</h4>
-                                        <span class="review-action pull-right">
-                                            03 Day ago &sol;
-                                            <a href=""> Repost</a> &sol;
-                                            <a href=""> Reply</a>
-                                        </span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                    </div>
-                                    <div class="blog-comments-responce outer-top-xs ">
+
+                                <div class="col-md-10 col-sm-10 blog-comments outer-bottom-xs comment-view">
+                                    @foreach ($comments as $comment)
+                                        <div class="blog-comments inner-bottom-xs">
+                                            <h4>{{$comment->user_name}}</h4>
+                                            <span class="review-action pull-right">
+                                                {{$comment->create_at}}&sol;
+                                                <a href=""> Repost</a> &sol;
+                                                <a href=""> Reply</a>
+                                            </span>
+                                            <p>{{$comment->content}}</p>
+                                        </div>
+                                    @endforeach
+                                    {{-- <div class="blog-comments-responce outer-top-xs ">
                                         <div class="row">
                                             <div class="col-md-2 col-sm-2">
                                             </div>
@@ -68,8 +69,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>                       
+                                    </div> --}}
+                                </div>
                                 <div class="post-load-more col-md-12"><a class="btn btn-upper btn-primary"
                                         href="#">Load more</a></div>
                             </div>
@@ -80,20 +81,21 @@
                                     <h4>Leave A Comment</h4>
                                 </div>
                                 <div class="col-md-4">
-                                <div class="col-md-12">
-                                        <div class="form-group">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
                                             <label class="info-title" for="exampleInputComments">Your Comments
                                                 <span>*</span></label>
-                                            <textarea style="width: 350%" class="form-control unicase-form-control" id="exampleInputComments"></textarea>
-                                        </div>
+                                            <textarea style="width: 350%" class="form-control unicase-form-control content" id="exampleInputComments"></textarea>
+                                    </div>
+                                    <div class="col-md-12 outer-bottom-small m-t-20">
+                                        <button type="submit" class="btn-upper btn btn-primary checkout-page-button"
+                                           id="btn-send" value="{{ $blog->id }}">Submit
+                                            Comment </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-12 outer-bottom-small m-t-20">
-                                    <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Submit
-                                        Comment</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
 
                     <div class="col-md-3 sidebar">

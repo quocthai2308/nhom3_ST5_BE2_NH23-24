@@ -476,7 +476,6 @@
     <script src="{{ asset('app\js\scripts.js') }}"></script>
     <script src="{{ asset('app\js\shopping-cart.js') }}"></script>
     <script src="{{ asset('app\js\home.js') }}"></script>
-
     <!-- For demo purposes – can be removed on production -->
     {{-- <script src="switchstylesheet/switchstylesheet.js"></script> --}}
     {{-- <script>

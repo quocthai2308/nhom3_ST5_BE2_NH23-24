@@ -67,6 +67,7 @@ class LoginController extends Controller
             $user = Auth::user();
             // Lưu user_id vào session
             $request->session()->put('user_id', $user->id);
+            $request->session()->put('user_name', $user->name);
 
 
 
