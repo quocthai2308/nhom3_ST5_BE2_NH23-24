@@ -68,13 +68,10 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="row" style="margin-left: 18px;">
-                        <ul class="pagination">
-                            <li class="active">1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
+                    <div id="pagination">
+                        {{ $users->links() }}
                     </div>
+
                 </div>
             </div>
         </div>
@@ -92,6 +89,45 @@
             }, 5000); // Ẩn thông báo sau 5 giây
         }
     });
+
+    function fetchPage(page) {
+        $.ajax({
+            url: "{{ route('ajax.users.page') }}?page=" + page,
+            type: "GET",
+            dataType: "html",
+            success: function(data) {
+                $("#user-table").html(data);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // Gán sự kiện click cho các nút phân trang
+    $(document).on('click', '.pagination a', function(e) {
+        e.preventDefault();
+        var page = $(this).attr('href').split('page=')[1];
+        fetchPage(page);
+    });
+
+    // Gọi lần đầu tiên khi trang được load
+    fetchPage(1);
+    $(document).on('click', '.pagination a', function(event) {
+        event.preventDefault();
+        var page = $(this).attr('href').split('page=')[1];
+        fetchPage(page);
+    });
+
+    function fetchPage(page) {
+        $.ajax({
+            url: '/ajax-users-page?page=' + page,
+            type: 'GET',
+            success: function(data) {
+                $('#pagination').html(data);
+            }
+        });
+    }
 </script>
 
 @endsection

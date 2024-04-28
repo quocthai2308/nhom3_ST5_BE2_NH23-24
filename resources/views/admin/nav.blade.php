@@ -28,6 +28,7 @@
             display: flex;
             padding: 10px
         }
+        
     </style>
 </head>
 

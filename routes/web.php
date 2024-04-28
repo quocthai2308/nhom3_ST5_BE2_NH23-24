@@ -39,7 +39,8 @@ Route::get('/myAccount', function () {
 });
 /// test load view
 
-
+// Route cho AJAX pagination load trang 5 nguoi
+Route::get('/ajax-users-page', [AdminController::class, 'ajaxUsersPage'])->name('ajax.users.page');
 
 Route::get('/manage-user', [AdminController::class, 'index'])->name('manage-user');
 

@@ -9,8 +9,17 @@ class AdminController extends Controller
     //
     public function index()
     {
-        $users = User::all(); // Lấy tất cả người dùng
-        return view('admin.manage-user', ['users' => $users]); // Trả về view với dữ liệu người dùng
+        // $users = User::all(); // Lấy tất cả người dùng
+        // return view('admin.manage-user', ['users' => $users]); // Trả về view với dữ liệu người dùng
+        $users = User::paginate(5);
+        return view('admin.manage-user', ['users' => $users]);
+    }
+    public function ajaxUsersPage(Request $request)
+    {
+        if ($request->ajax()) {
+            $users = User::paginate(5);
+            return view('admin.partials.users-table', compact('users'))->render();
+        }
     }
 
     public function makeAdmin($userId)
