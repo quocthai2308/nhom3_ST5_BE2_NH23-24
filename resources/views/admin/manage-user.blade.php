@@ -58,11 +58,20 @@
                                         <button type="submit" class="btn btn-info btn-mini">Remove ADMIN (Bỏ)</button>
                                     </form>
                                     @endif
-                                    <form action="" method="POST">
+
+
+                                    @if ($user->is_active)
+                                    <form action="{{ route('deactivate-user', $user->id) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-mini">Vô Hiệu Hóa</button>
                                     </form>
+                                    @else
+                                    <form action="{{ route('activate-user', $user->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success btn-mini">Hủy Vô Hiệu Hóa</button>
+                                    </form>
+                                    @endif
+
                                 </td>
                             </tr>
                             @endforeach

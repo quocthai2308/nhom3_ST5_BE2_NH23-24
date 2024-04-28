@@ -10,6 +10,37 @@ use App\Models\User;
 class UserController extends Controller
 
 {
+
+    // public function deactivateUser($id)
+    // {
+    //     $user = User::findOrFail($id);
+    //     $user->is_active = 0;
+    //     $user->save();
+
+    //     return back()->with('success', 'Tài khoản đã được vô hiệu hóa.');
+    // }
+
+    // Vô hiệu hóa người dùng
+    public function deactivateUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_active = 0;
+        $user->save();
+
+        return back()->with('success', 'Tài khoản đã được vô hiệu hóa.');
+    }
+
+    // Kích hoạt người dùng
+    public function activateUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_active = 1;
+        $user->save();
+
+        return back()->with('success', 'Tài khoản đã được kích hoạt.');
+    }
+
+
     public $users; // Khai báo thuộc tính
     //
     public function __construct()
@@ -17,6 +48,8 @@ class UserController extends Controller
         // Đảm bảo chỉ những người dùng đã đăng nhập mới có thể truy cập các phương thức trong controller này
         $this->middleware('auth');
     }
+
+
 
     public function makeAdmin($id)
     {

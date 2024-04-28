@@ -11,13 +11,15 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    protected $attributes = [
+        'is_active' => 0,
+    ];
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'email', 'password', 'userType'];
+    protected $fillable = ['name', 'email', 'password', 'userType', 'is_active'];
     // Trong app/Models/User.php
     public function isAdmin()
     {
@@ -57,4 +59,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
 }

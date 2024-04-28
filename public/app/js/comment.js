@@ -52,6 +52,7 @@ window.onload = async function () {
              <p>${result.comment.content}</p>
             </div>`;
             commentView.appendChild(div);
+            comment.value = '';
         } else {
             alert("Error: " + response.status);
         }

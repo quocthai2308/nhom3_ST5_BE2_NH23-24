@@ -58,11 +58,20 @@
                                         <button type="submit" class="btn btn-info btn-mini">Remove ADMIN (Bỏ)</button>
                                     </form>
                                     <?php endif; ?>
-                                    <form action="" method="POST">
+
+
+                                    <?php if($user->is_active): ?>
+                                    <form action="<?php echo e(route('deactivate-user', $user->id)); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
-                                        <?php echo method_field('DELETE'); ?>
-                                        <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-mini">Vô Hiệu Hóa</button>
                                     </form>
+                                    <?php else: ?>
+                                    <form action="<?php echo e(route('activate-user', $user->id)); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <button type="submit" class="btn btn-success btn-mini">Hủy Vô Hiệu Hóa</button>
+                                    </form>
+                                    <?php endif; ?>
+
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

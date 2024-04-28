@@ -36,6 +36,14 @@ Route::post('/get-comment', [BlogController::class, 'getComment'])->name('blog.g
 //     return view('home');
 // });
 
+//vô hiệu hóa tài khoảng 
+Route::post('/deactivate-user/{id}', [UserController::class, 'deactivateUser'])->name('deactivate-user');
+// web.php
+Route::post('/user/{id}/deactivate', [UserController::class, 'deactivateUser'])->name('deactivate-user');
+Route::post('/user/{id}/activate', [UserController::class, 'activateUser'])->name('activate-user');
+
+
+
 Route::get('/myAccount', function () {
     return view('myAccount');
 });
