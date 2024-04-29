@@ -11,6 +11,9 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+// reviews 
+Route::post('/review', [HomeController::class, 'review'])->name('review');
+
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 
 Route::post('/make-admin/{user}', [UserController::class, 'makeAdmin'])->name('make-admin');
