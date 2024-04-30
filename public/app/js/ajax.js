@@ -15,14 +15,15 @@ window.onload = async function () {
                 sendReview(productId, csrfToken, rating, content);
                 getStars(productId, csrfToken);
                 getCountReview(productId, csrfToken);
-                reviewContent.value= '';
+                getReviewByProduct(productId, csrfToken);
+                reviewContent.value = '';
                 element.checked = false;
             }
         })
     })
     // count reviews
     let countReviews = await countReview(productId, csrfToken);
-    document.querySelector('#rvs').textContent = countReviews+' reviews';
+    document.querySelector('#rvs').textContent = countReviews + ' reviews';
     //get stars
     async function getStars(productId, csrfToken) {
         //get rating from product
@@ -32,9 +33,9 @@ window.onload = async function () {
     //get count reviews 
     async function getCountReview(productId, csrfToken) {
         //get rating from product
-       // count reviews
-    let countReviews = await countReview(productId, csrfToken);
-    document.querySelector('#rvs').textContent = countReviews+' reviews';
+        // count reviews
+        let countReviews = await countReview(productId, csrfToken);
+        document.querySelector('#rvs').textContent = countReviews + ' reviews';
     }
 
     //get rating from product
@@ -151,6 +152,7 @@ async function getRating(productId, csrfToken) {
         alert("Error: " + response.status);
     }
 }
+// count reviews
 async function countReview(productId, csrfToken) {
     const url = '/count';
     const response = await fetch(url, {
@@ -171,3 +173,36 @@ async function countReview(productId, csrfToken) {
         alert("Error: " + response.status);
     }
 }
+async function getReviewByProduct(productId, csrfToken) {
+    const url = '/get-review-by-product';
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: JSON.stringify({
+            product_id: productId,
+        })
+    });
+    if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        const parentReview = document.querySelector('.parent-review');
+        let childReview = document.createElement('div.owl-carousel.home-owl-carousel.upsell-product.custom-carousel.owl-theme.outer-top-xs');
+        childReview.innerHTML = `
+       <div class="item item-carousel" style="margin-left: 15px;">
+           <h4 class="user-name">${result.reviews.user_name}</h4>
+           <span style="font-weight: bold;"> ${result.reviews.rating} </span>  
+           <span style="color: yellow; font-size: 1.2em">★</span>
+           <p class="created_at">${result.reviews.created_at}</p>
+           <p class="review-content">${result.reviews.content}</p>
+       </div>
+   <hr>`;
+        parentReview.appendChild(childReview);
+
+    } else {
+        alert("Error: " + response.status);
+    }
+}
+

@@ -15,6 +15,7 @@ use App\Http\Controllers\BlogController;
 Route::post('/review', [HomeController::class, 'review'])->name('review');
 Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('rating');
 Route::post('/count', [HomeController::class, 'countRV'])->name('count');
+Route::post('/get-review-by-product', [HomeController::class, 'getReviewByProduct'])->name('getReview');
 
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 

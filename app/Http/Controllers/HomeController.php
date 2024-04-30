@@ -25,8 +25,10 @@ class HomeController extends Controller
     public function detail($id)
     {
         $productModel = new Product();
+        $reviewModel = new Review();
         $product = $productModel->getProductDetails($id);
-        return view('detail', compact('product'));
+        $reviews = $reviewModel-> getReviewByProduct($id);
+        return view('detail', compact('product','reviews'));
     }
     public function search(Request $request)
     {
@@ -92,5 +94,12 @@ class HomeController extends Controller
         $id = $request->input('product_id');
         $count = $reviewModel-> countRV($id);
         return response()->json(['count' => $count]);
+    }
+    public function getReviewByProduct(Request $request){
+        $reviewModel = new Review();
+        $id = $request->input('product_id');
+        $userName = session('user_name');
+        $reviews = $reviewModel-> getReview($id,$userName);
+        return response()->json(['reviews' => $reviews]);
     }
 }

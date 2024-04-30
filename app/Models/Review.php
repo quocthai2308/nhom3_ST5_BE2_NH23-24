@@ -37,6 +37,18 @@ class Review extends Model
         $reviewCount = Review::where('product_id', $productId)->count();
         return $reviewCount;
     }
+    public static function getReviewByProduct($productId)
+    {
+        $reviews = Review::where('product_id', $productId)->get();
+        return $reviews;
+    }
+    public static function getReview($productId,$userName)
+    {
+        $reviews = Review::where('product_id', $productId)
+        ->where('user_name', $userName)
+        ->get();
+        return $reviews[0];
+    }
 
     use HasFactory;
 }

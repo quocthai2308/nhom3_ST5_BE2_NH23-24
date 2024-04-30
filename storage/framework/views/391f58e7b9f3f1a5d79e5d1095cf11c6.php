@@ -478,6 +478,7 @@
     <script src="<?php echo e(asset('app\js\scripts.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\shopping-cart.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\home.js')); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <!-- For demo purposes – can be removed on production -->
     
     
