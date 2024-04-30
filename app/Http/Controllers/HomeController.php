@@ -67,7 +67,7 @@ class HomeController extends Controller
         $productId = $request->product_id;
         $rating = $request->rating;
         $content = $request->content;
-        $user = $reviewModel->getUserName(session('user_name'));
+        $user = $reviewModel->getUserName(session('user_name'),$productId);
         if ($user) {
             return response()->json(['auth' => false]);
         }
@@ -80,5 +80,17 @@ class HomeController extends Controller
             }
             return response()->json(['success' => true]);
         }
+    }
+    public function getAverageRating(Request $request){
+        $reviewModel = new Review();
+        $id = $request->input('product_id');
+        $rating = $reviewModel-> getAverageRating($id);
+        return response()->json(['rating' => $rating]);
+    }
+    public function countRV(Request $request){
+        $reviewModel = new Review();
+        $id = $request->input('product_id');
+        $count = $reviewModel-> countRV($id);
+        return response()->json(['count' => $count]);
     }
 }

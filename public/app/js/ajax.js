@@ -13,9 +13,34 @@ window.onload = async function () {
                 const rating = element.value;
                 const content = reviewContent.value;
                 sendReview(productId, csrfToken, rating, content);
+                getStars(productId, csrfToken);
+                getCountReview(productId, csrfToken);
+                reviewContent.value= '';
+                element.checked = false;
             }
         })
     })
+    // count reviews
+    let countReviews = await countReview(productId, csrfToken);
+    document.querySelector('#rvs').textContent = countReviews+' reviews';
+    //get stars
+    async function getStars(productId, csrfToken) {
+        //get rating from product
+        let ratings = await getRating(productId, csrfToken);
+        document.getElementById('star-rating').style.width = (ratings * 25) + 'px';
+    }
+    //get count reviews 
+    async function getCountReview(productId, csrfToken) {
+        //get rating from product
+       // count reviews
+    let countReviews = await countReview(productId, csrfToken);
+    document.querySelector('#rvs').textContent = countReviews+' reviews';
+    }
+
+    //get rating from product
+    let rating = await getRating(productId, csrfToken);
+    document.getElementById('star-rating').style.width = (rating * 25) + 'px';
+
     // Get the current like status from the server when the page loads
     let isLiked = await getLikeStatus(productId, csrfToken);
     if (isLiked) {
@@ -102,5 +127,47 @@ async function sendReview(productId, csrfToken, rating, content) {
         }
     } else {
         alert("Vui lòng chọn đánh giá và nhập nội dung");
+    }
+}
+
+// get rating 
+async function getRating(productId, csrfToken) {
+    const url = '/rating';
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: JSON.stringify({
+            product_id: productId,
+        })
+    });
+    if (response.ok) {
+        const result = await response.json();
+        console.log(result.rating);
+        return result.rating;
+    } else {
+        alert("Error: " + response.status);
+    }
+}
+async function countReview(productId, csrfToken) {
+    const url = '/count';
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: JSON.stringify({
+            product_id: productId,
+        })
+    });
+    if (response.ok) {
+        const result = await response.json();
+        console.log(result.count);
+        return result.count;
+    } else {
+        alert("Error: " + response.status);
     }
 }

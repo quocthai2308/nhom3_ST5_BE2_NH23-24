@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('app\css\bootstrap.min.css')); ?>">
     <!-- Customizable CSS -->
     <link rel="stylesheet" href="<?php echo e(asset('app\css\main.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('app\css\rating.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\blue.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\owl.carousel.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\owl.transitions.css')); ?>">

@@ -13,6 +13,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 // reviews 
 Route::post('/review', [HomeController::class, 'review'])->name('review');
+Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('rating');
+Route::post('/count', [HomeController::class, 'countRV'])->name('count');
 
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 
