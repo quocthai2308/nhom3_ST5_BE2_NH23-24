@@ -36,8 +36,8 @@
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </a>
                                         </div>
-                                        <div class="sale-offer-tag"><span>49%<br>
-                                                off</span></div>
+                                        <div class="sale-offer-tag"><span>SỐC Không giảm giá!!!<br>
+                                                </span></div>
                                         <div class="timing-wrapper">
                                             <div class="box-wrapper">
                                                 <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>

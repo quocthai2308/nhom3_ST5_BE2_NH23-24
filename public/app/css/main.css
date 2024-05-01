@@ -3393,6 +3393,7 @@ age-container #owl-main .owl-next {
   top: 4%;
   right: 10px;
   width: 50px;
+  height: 100px;
   z-index: 100;
   background: #ff7878;
   position: absolute;

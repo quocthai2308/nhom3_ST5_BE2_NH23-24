@@ -67,14 +67,14 @@
 
                                     <div class="stock-container info-container m-t-10">
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <div class="stock-box">
-                                                    <span class="label">Availability :</span>
+                                                    <span class="label">Số lượng còn lại:</span>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9">
+                                            <div class="col-sm-8">
                                                 <div class="stock-box">
-                                                    <span class="value">In Stock</span>
+                                                    <span class="value">{{$product->quantity}}</span>
                                                 </div>
                                             </div>
                                         </div><!-- /.row -->
