@@ -11,11 +11,15 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DashboardController;
 // reviews 
 Route::post('/review', [HomeController::class, 'review'])->name('review');
 Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('rating');
 Route::post('/count', [HomeController::class, 'countRV'])->name('count');
 Route::post('/get-review-by-product', [HomeController::class, 'getReviewByProduct'])->name('getReview');
+// statistics
+Route::get('/revenue', [DashboardController::class, 'getRevenueByDay'])->name('revenueD');
+Route::get('/revenueM', [DashboardController::class, 'getRevenueByMonth'])->name('revenueM');
 
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 
@@ -52,6 +56,9 @@ Route::post('/user/{id}/activate', [UserController::class, 'activateUser'])->nam
 
 Route::get('/myAccount', function () {
     return view('myAccount');
+});
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
 });
 /// test load view
 

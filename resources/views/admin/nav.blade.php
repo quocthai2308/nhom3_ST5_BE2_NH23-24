@@ -85,11 +85,12 @@
     </div>
     <!--close-top-serch-->
     <!--sidebar-menu-->
-    <div id="sidebar"> <a href="#" class="visible-phone"><i
+    <div  id="sidebar"> <a href="#" class="visible-phone"><i
                 class="icon
                     icon-th"></i>Tables</a>
         <ul>
-            <li><a href="{{ url('manage-product') }}"><i class="icon icon-home"></i> <span>Dashboard</span></a>
+            <li><a href="{{ url('dashboard') }}"><i class="icon icon-home"></i> <span>Dashboard</span></a>
+            <li><a href="{{ url('manage-product') }}"><i class="icon icon-th-list"></i> <span>Products</span></a>
             </li>
             <li> <a href="{{ url('manage-category') }}"><i class="icon icon-th-list"></i>
                     <span>Categories</span></a></li>
@@ -113,7 +114,6 @@
 
             <!-- END CONTENT -->
             <div class="row-fluid">
-                <div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
             </div>
             <!--end-Footer-part-->
             <script src="{{ asset('app\js\jquery.min.js') }}"></script>
@@ -124,8 +124,9 @@
             <script src="{{ asset('app\js\jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('app\js\matrix.js') }}"></script>
             <script src="{{ asset('app\js\matrix.tables.js') }}"></script>
-
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="{{asset('app/js/chart.js')}}"></script>
             <script>
                 $(document).ready(function() {
                     $(".delete-btn").click(function(e) {

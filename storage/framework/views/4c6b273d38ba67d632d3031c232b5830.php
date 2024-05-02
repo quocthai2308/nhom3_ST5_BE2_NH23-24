@@ -28,6 +28,7 @@
             display: flex;
             padding: 10px
         }
+        
     </style>
 </head>
 
@@ -68,7 +69,7 @@
             </li>
             <li class=""><a title="" href="#"><i class="icon icon-cog"></i>
                     <span class="text">Settings</span></a></li>
-            <li class=""><a title="" href="#"><i
+            <li class=""><a title="" href="<?php echo e(url('login')); ?>"><i
                         class="icon
                             icon-share-alt"></i> <span
                         class="text">Logout</span></a>
@@ -84,16 +85,19 @@
     </div>
     <!--close-top-serch-->
     <!--sidebar-menu-->
-    <div id="sidebar"> <a href="#" class="visible-phone"><i
+    <div  id="sidebar"> <a href="#" class="visible-phone"><i
                 class="icon
                     icon-th"></i>Tables</a>
         <ul>
-            <li><a href="<?php echo e(url('manage-product')); ?>"><i class="icon icon-home"></i> <span>Dashboard</span></a>
+            <li><a href="<?php echo e(url('dashboard')); ?>"><i class="icon icon-home"></i> <span>Dashboard</span></a>
+            <li><a href="<?php echo e(url('manage-product')); ?>"><i class="icon icon-th-list"></i> <span>Products</span></a>
             </li>
             <li> <a href="<?php echo e(url('manage-category')); ?>"><i class="icon icon-th-list"></i>
                     <span>Categories</span></a></li>
             <li> <a href="<?php echo e(url('manage-user')); ?>"><i class="icon icon-th-list"></i>
                     <span>Users</span></a></li>
+            <li> <a href="<?php echo e(url('manage-blog')); ?>"><i class="icon icon-th-list"></i>
+                    <span>Blogs</span></a></li>
 
         </ul>
     </div> <!-- BEGIN CONTENT -->
@@ -110,7 +114,6 @@
 
             <!-- END CONTENT -->
             <div class="row-fluid">
-                <div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
             </div>
             <!--end-Footer-part-->
             <script src="<?php echo e(asset('app\js\jquery.min.js')); ?>"></script>
@@ -121,8 +124,9 @@
             <script src="<?php echo e(asset('app\js\jquery.dataTables.min.js')); ?>"></script>
             <script src="<?php echo e(asset('app\js\matrix.js')); ?>"></script>
             <script src="<?php echo e(asset('app\js\matrix.tables.js')); ?>"></script>
-
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="<?php echo e(asset('app/js/chart.js')); ?>"></script>
             <script>
                 $(document).ready(function() {
                     $(".delete-btn").click(function(e) {
@@ -142,6 +146,14 @@
                         }
                     });
                 });
+            </script>
+            <script src="<?php echo e(url('admin/ckeditor/ckeditor.js')); ?>"></script>
+            <script>
+                ClassicEditor
+                    .create(document.querySelector('#editor'))
+                    .catch(error => {
+                        console.error(error);
+                    });
             </script>
 
 </body>
