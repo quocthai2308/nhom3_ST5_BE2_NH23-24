@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8dea25c394cfe9b0c2b78367e8c52db31254a908',
+        'reference' => 'bedc42b579860e679196eb675efc4ce2a8a73cdb',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'brick/math' => array(
-            'pretty_version' => '0.11.0',
-            'version' => '0.11.0.0',
-            'reference' => '0ad82ce168c82ba30d1c01ec86116ab52f589478',
+            'pretty_version' => '0.12.1',
+            'version' => '0.12.1.0',
+            'reference' => 'f510c0a40911935b77b86859eb5223d58d660df1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../brick/math',
             'aliases' => array(),
@@ -382,7 +382,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8dea25c394cfe9b0c2b78367e8c52db31254a908',
+            'reference' => 'bedc42b579860e679196eb675efc4ce2a8a73cdb',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -804,9 +804,9 @@
             'dev_requirement' => false,
         ),
         'ramsey/uuid' => array(
-            'pretty_version' => '4.7.5',
-            'version' => '4.7.5.0',
-            'reference' => '5f0df49ae5ad6efb7afa69e6bfab4e5b1e080d8e',
+            'pretty_version' => '4.7.6',
+            'version' => '4.7.6.0',
+            'reference' => '91039bc1faa45ba123c4328958e620d382ec7088',
             'type' => 'library',
             'install_path' => __DIR__ . '/../ramsey/uuid',
             'aliases' => array(),
@@ -815,7 +815,7 @@
         'rhumsaa/uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.7.5',
+                0 => '4.7.6',
             ),
         ),
         'sebastian/cli-parser' => array(
@@ -972,9 +972,9 @@
             'dev_requirement' => true,
         ),
         'spatie/ignition' => array(
-            'pretty_version' => '1.13.2',
-            'version' => '1.13.2.0',
-            'reference' => '952798e239d9969e4e694b124c2cc222798dbb28',
+            'pretty_version' => '1.14.0',
+            'version' => '1.14.0.0',
+            'reference' => '80385994caed328f6f9c9952926932e65b9b774c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../spatie/ignition',
             'aliases' => array(),

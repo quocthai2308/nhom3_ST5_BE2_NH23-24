@@ -186,7 +186,11 @@
 							<tr>
 								<td>
 									<div class="cart-checkout-btn pull-right">
-										<a href="{{ url('checkout') }}" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</a>
+										<form id="checkoutForm" method="post">
+											@csrf
+											<input type="hidden" id="redirectValue" name="redirect" value="">
+											<button type="submit" name="redirect"  value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button> 
+										</form>
 										<span class="">Checkout with multiple addresses!</span>
 									</div>
 

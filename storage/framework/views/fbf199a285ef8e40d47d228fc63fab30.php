@@ -477,7 +477,6 @@
     <script src="<?php echo e(asset('app\js\scripts.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\shopping-cart.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\home.js')); ?>"></script>
-
     <!-- For demo purposes – can be removed on production -->
     
     

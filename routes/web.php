@@ -11,6 +11,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PaymentController;
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 
 Route::post('/make-admin/{user}', [UserController::class, 'makeAdmin'])->name('make-admin');
@@ -116,11 +117,16 @@ Route::get('/manage-category/add', [CategoryController::class, 'addCategory']);
 Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 
 
+// checkout (thanh toán) - VNPAY
+// Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
+Route::post('/vnpay_pay', [PaymentController::class, 'vnpay_pay']);
+Route::post('/vnpay_return', [PaymentController::class, 'vnpay_return']);
 
-
-
-
-
+// Ngân hàng        :	NCB
+// Số thẻ	        :   9704198526191432198
+// Tên chủ thẻ	    :   NGUYEN VAN A
+// Ngày phát hành   :	07/15
+// Mật khẩu OTP	    :   123456
 
 
 

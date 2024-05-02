@@ -20,7 +20,7 @@ class HomeController extends Controller
         $allCategories = $categoryModel->getAllCategories();
         return view('home', compact('products', 'specialProducts', 'newProducts', 'categories', 'allCategories'));
     }
-   
+
 
     public function detail($id)
     {
@@ -40,27 +40,31 @@ class HomeController extends Controller
         $productModel = new Product();
         $products = $productModel->getProductsByCategoryId($categoryId);
 
-       return view('category', compact('products'));
-    
+        return view('category', compact('products'));
     }
-    public function shopping_cart(){
-        
-       return view('shopping-cart');
+    public function shopping_cart()
+    {
 
+        $totalPrice = 0;
+
+        foreach ($cart as $productId => $product) {
+            $totalPrice += $product['price'] * $product['quantity'];
+        }
+
+        return view('shopping-cart');
     }
-    
+
     public function addLike(Request $request)
     {
         // Validate request...
         $userLikeProduct = new Product;
-        if (session('user_id')!= null) {
+        if (session('user_id') != null) {
             $product_id = $request->product_id;
             $user_id = session('user_id');
-            $userLikeProduct->addProductToUserLikes($user_id,$product_id);
+            $userLikeProduct->addProductToUserLikes($user_id, $product_id);
         } else {
             return view('login');
         }
         return response()->json(['success' => true]);
     }
-    
 }

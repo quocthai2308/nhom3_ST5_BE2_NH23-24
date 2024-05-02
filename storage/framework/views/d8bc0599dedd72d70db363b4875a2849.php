@@ -28,6 +28,7 @@
             display: flex;
             padding: 10px
         }
+        
     </style>
 </head>
 
@@ -94,6 +95,8 @@
                     <span>Categories</span></a></li>
             <li> <a href="<?php echo e(url('manage-user')); ?>"><i class="icon icon-th-list"></i>
                     <span>Users</span></a></li>
+            <li> <a href="<?php echo e(url('manage-blog')); ?>"><i class="icon icon-th-list"></i>
+                    <span>Blogs</span></a></li>
 
         </ul>
     </div> <!-- BEGIN CONTENT -->
@@ -142,6 +145,14 @@
                         }
                     });
                 });
+            </script>
+            <script src="<?php echo e(url('admin/ckeditor/ckeditor.js')); ?>"></script>
+            <script>
+                ClassicEditor
+                    .create(document.querySelector('#editor'))
+                    .catch(error => {
+                        console.error(error);
+                    });
             </script>
 
 </body>

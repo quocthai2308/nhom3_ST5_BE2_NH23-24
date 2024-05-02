@@ -188,7 +188,10 @@
 							<tr>
 								<td>
 									<div class="cart-checkout-btn pull-right">
-										<a href="<?php echo e(url('checkout')); ?>" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</a>
+										<form action="<?php echo e(url('/vnpay_payment')); ?>" method="post">
+										<?php echo csrf_field(); ?>
+										<button type="submit" name="redirect"  value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button>
+										</form>
 										<span class="">Checkout with multiple addresses!</span>
 									</div>
 
