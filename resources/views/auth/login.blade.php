@@ -38,6 +38,7 @@
 				<input type="email" placeholder="Email" name="email" />
 				<input type="password" placeholder="Password" name="password" minlength="8" required oninput="checkPasswordLength(this)" />
 				<div id="passwordHelp" style="color:red;"></div>
+				<a href="{{ url('quenMK') }}" class="quenMK">Bạn quên Mật Khẩu hãy nhấn vô đây !</a>
 				<button type="submit">Đăng Nhập</button>
 			</form>
 		</div>
@@ -49,7 +50,7 @@
 					<button class="ghost" id="signIn">Sign In</button>
 				</div>
 				<div class="overlay-panel overlay-right">
-					<h1>Xin Chào !  </h1>
+					<h1>Xin Chào ! </h1>
 					<p>Nếu Bạn chưa có tài khoảng thì hãy nhấn Sign up để đăng ký nhe !</p>
 					<button class="ghost" id="signUp">Sign Up !</button>
 				</div>
@@ -92,10 +93,6 @@
 
 		// Tự động ẩn thông báo sau 5 giây
 		setTimeout(closeAlert, 5000);
-
-
-
-		
 	</script>
 
 </body>

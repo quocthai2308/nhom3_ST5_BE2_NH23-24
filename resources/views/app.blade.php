@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('app\css\bootstrap.min.css') }}">
     <!-- Customizable CSS -->
     <link rel="stylesheet" href="{{ asset('app\css\main.css') }}">
+    <link rel="stylesheet" href="{{ asset('app\css\rating.css') }}">
     <link rel="stylesheet" href="{{ asset('app\css\blue.css') }}">
     <link rel="stylesheet" href="{{ asset('app\css\owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('app\css\owl.transitions.css') }}">
@@ -476,6 +477,7 @@
     <script src="{{ asset('app\js\scripts.js') }}"></script>
     <script src="{{ asset('app\js\shopping-cart.js') }}"></script>
     <script src="{{ asset('app\js\home.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <!-- For demo purposes – can be removed on production -->
     {{-- <script src="switchstylesheet/switchstylesheet.js"></script> --}}
     {{-- <script>

@@ -187,6 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Submit form
             document.getElementById('checkoutForm').submit();
         });
+
     });
 
 // document.addEventListener('DOMContentLoaded', function() {

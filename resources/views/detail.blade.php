@@ -54,12 +54,12 @@
 
                                     <div class="rating-reviews m-t-20">
                                         <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="rating rateit-small"></div>
+                                            <div class="col-sm-5">
+                                                <div class="star-rating" id="star-rating"></div>
                                             </div>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-7">
                                                 <div class="reviews">
-                                                    <a href="#" class="lnk">(13 Reviews)</a>
+                                                    <a href="#" id="rvs" class="lnk"></a>
                                                 </div>
                                             </div>
                                         </div><!-- /.row -->
@@ -67,21 +67,21 @@
 
                                     <div class="stock-container info-container m-t-10">
                                         <div class="row">
-                                            <div class="col-sm-2">
+                                            <div class="col-sm-3">
                                                 <div class="stock-box">
-                                                    <span class="label">Availability :</span>
+                                                    <span class="label">Số lượng còn lại:</span>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-9">
+                                            <div class="col-sm-8">
                                                 <div class="stock-box">
-                                                    <span class="value">In Stock</span>
+                                                    <span class="value">{{$product->quantity}}</span>
                                                 </div>
                                             </div>
                                         </div><!-- /.row -->
                                     </div><!-- /.stock-container -->
 
                                     <div class="description-container m-t-20">
-                                        <?php echo $product->description;?>
+                                        <?php echo $product->description; ?>
                                     </div><!-- /.description-container -->
 
                                     <div class="price-container info-container m-t-20">
@@ -100,7 +100,7 @@
                                             </div>
 
                                             <div class="col-sm-6">
-                                               <div class="favorite-button m-t-10">
+                                                <div class="favorite-button m-t-10">
                                                     <a class="btn btn-primary" data-toggle="tooltip" data-placement="right"
                                                         title="Add to Compare" href="#">
                                                         <i class="fa fa-signal"></i>
@@ -127,7 +127,7 @@
                                                     <div class="quant-input">
                                                         <div class="arrows">
                                                             <div class="arrow plus gradient"><span class="ir"><i
-                                                                         class="icon fa fa-sort-asc"></i></span></div>
+                                                                        class="icon fa fa-sort-asc"></i></span></div>
                                                             <div class="arrow minus gradient"><span class="ir"><i
                                                                         class="icon fa fa-sort-desc"></i></span></div>
                                                         </div>
@@ -137,7 +137,8 @@
                                             </div>
 
                                             <div class="col-sm-7">
-                                                <a href="#" class="btn btn-primary cooke" data-id="{{ $product->id }}"><i
+                                                <a href="#" class="btn btn-primary cooke"
+                                                    data-id="{{ $product->id }}"><i
                                                         class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
                                             </div>
 
@@ -164,7 +165,7 @@
 
                                     <div id="description" class="tab-pane in active">
                                         <div class="product-tab">
-                                            <p class="text"><?php echo $product->description;?></p>
+                                            <p class="text"><?php echo $product->description; ?></p>
                                         </div>
                                     </div><!-- /.tab-pane -->
 
@@ -197,42 +198,26 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th class="cell-label">&nbsp;</th>
-                                                                    <th>1 star</th>
-                                                                    <th>2 stars</th>
-                                                                    <th>3 stars</th>
-                                                                    <th>4 stars</th>
-                                                                    <th>5 stars</th>
+                                                                    <th>1 <span
+                                                                            style="color: yellow; font-size: 1.2em">★</span>
+                                                                    </th>
+                                                                    <th>2 <span
+                                                                            style="color: yellow; font-size: 1.2em">★</span>
+                                                                    </th>
+                                                                    <th>3 <span
+                                                                            style="color: yellow; font-size: 1.2em">★</span>
+                                                                    </th>
+                                                                    <th>4 <span
+                                                                            style="color: yellow; font-size: 1.2em">★</span>
+                                                                    </th>
+                                                                    <th>5 <span
+                                                                            style="color: yellow; font-size: 1.2em">★</span>
+                                                                    </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     <td class="cell-label">Quality</td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="1"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="2"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="3"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="4"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="5"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="cell-label">Price</td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="1"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="2"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="3"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="4"></td>
-                                                                    <td><input type="radio" name="quality"
-                                                                            class="radio" value="5"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="cell-label">Value</td>
                                                                     <td><input type="radio" name="quality"
                                                                             class="radio" value="1"></td>
                                                                     <td><input type="radio" name="quality"
@@ -251,39 +236,24 @@
 
                                                 <div class="review-form">
                                                     <div class="form-container">
-                                                        <form role="form" class="cnt-form">
+                                                        <div role="form" class="cnt-form">
 
                                                             <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputName">Your Name <span
-                                                                                class="astk">*</span></label>
-                                                                        <input type="text" class="form-control txt"
-                                                                            id="exampleInputName" placeholder="">
-                                                                    </div><!-- /.form-group -->
-                                                                    <div class="form-group">
-                                                                        <label for="exampleInputSummary">Summary <span
-                                                                                class="astk">*</span></label>
-                                                                        <input type="text" class="form-control txt"
-                                                                            id="exampleInputSummary" placeholder="">
-                                                                    </div><!-- /.form-group -->
-                                                                </div>
-
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="exampleInputReview">Review <span
                                                                                 class="astk">*</span></label>
-                                                                        <textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
+                                                                        <textarea class="form-control txt txt-review reviewContent" id="exampleInputReview" rows="4" placeholder=""></textarea>
                                                                     </div><!-- /.form-group -->
                                                                 </div>
                                                             </div><!-- /.row -->
 
                                                             <div class="action text-right">
-                                                                <button class="btn btn-primary btn-upper">SUBMIT
+                                                                <button class="btn btn-primary btn-upper submit">SUBMIT
                                                                     REVIEW</button>
                                                             </div><!-- /.action -->
 
-                                                        </form><!-- /.cnt-form -->
+                                                        </div><!-- /.cnt-form -->
                                                     </div><!-- /.form-container -->
                                                 </div><!-- /.review-form -->
 
@@ -328,6 +298,23 @@
                         </div><!-- /.row -->
                     </div><!-- /.product-tabs -->
 
+                    <section class="section featured-product wow fadeInUp parent-review">
+                        <h3 class="section-title">reviews</h3>
+                        @foreach ($reviews as $review)
+                            <div
+                                class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
+                                <div class="item item-carousel">
+                                    <h4 class="user-name">{{ $review->user_name }}</h4>
+                                    <span style="font-weight: bold;"> {{ $review->rating }}</span>
+                                    <span
+                                    style="color: yellow; font-size: 1.2em">★</span>
+                                    <p class="created_at">{{ $review->created_at }}</p>
+                                    <p class="review-content">{{ $review->content }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                        @endforeach
+                    </section>
                     <!-- ============================================== UPSELL PRODUCTS ============================================== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">upsell products</h3>
@@ -339,7 +326,8 @@
                                     <div class="product">
                                         <div class="product-image">
                                             <div class="image">
-                                                <a href="detail.html"><img src="{{ asset('app\images\products\p1.jpg') }}"
+                                                <a href="detail.html"><img
+                                                        src="{{ asset('app\images\products\p1.jpg') }}"
                                                         alt=""></a>
                                             </div><!-- /.image -->
 
@@ -579,7 +567,7 @@
                                         <div class="product-image">
                                             <div class="image">
                                                 <a href="detail.html"><img src="{{ asset('app\images\blank.gif') }}"
-                                                        data-echo="assets/images/products/p5.jpg" alt=""></a>
+                                                        alt=""></a>
                                             </div><!-- /.image -->
 
                                             <div class="tag hot"><span>hot</span></div>
@@ -638,7 +626,7 @@
                                         <div class="product-image">
                                             <div class="image">
                                                 <a href="detail.html"><img src="{{ asset('app\images\blank.gif') }}"
-                                                        data-echo="assets/images/products/p6.jpg" alt=""></a>
+                                                        alt=""></a>
                                             </div><!-- /.image -->
 
                                             <div class="tag new"><span>new</span></div>
@@ -703,71 +691,61 @@
                     <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
                         <div class="item m-t-15">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand1.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item m-t-10">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand2.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand3.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand4.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand5.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand6.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand2.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand4.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand1.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
 
                         <div class="item">
                             <a href="#" class="image">
-                                <img data-echo="assets/images/brands/brand5.png"
-                                    src="{{ asset('app\images\blank.gif') }}" alt="">
+                                <img src="{{ asset('app\images\blank.gif') }}" alt="">
                             </a>
                         </div><!--/.item-->
                     </div><!-- /.owl-carousel #logo-slider -->
@@ -777,6 +755,5 @@
             <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
         </div><!-- /.container -->
     </div><!-- /.body-content -->
-
     <!-- ============================================================= FOOTER ============================================================= -->
 @endsection

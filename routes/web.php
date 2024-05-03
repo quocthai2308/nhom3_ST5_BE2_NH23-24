@@ -11,7 +11,18 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ResetPasswordController;
+// reviews 
+Route::post('/review', [HomeController::class, 'review'])->name('review');
+Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('rating');
+Route::post('/count', [HomeController::class, 'countRV'])->name('count');
+Route::post('/get-review-by-product', [HomeController::class, 'getReviewByProduct'])->name('getReview');
+// statistics
+Route::get('/revenue', [DashboardController::class, 'getRevenueByDay'])->name('revenueD');
+Route::get('/revenueM', [DashboardController::class, 'getRevenueByMonth'])->name('revenueM');
+
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 
 Route::post('/make-admin/{user}', [UserController::class, 'makeAdmin'])->name('make-admin');
@@ -48,6 +59,9 @@ Route::post('/user/{id}/activate', [UserController::class, 'activateUser'])->nam
 Route::get('/myAccount', function () {
     return view('myAccount');
 });
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
 /// test load view
 
 // Route cho AJAX pagination load trang 5 nguoi
@@ -68,6 +82,12 @@ Route::post('login', [LoginController::class, 'login']);
 
 // Logout
 Route::get('/logout', [LoginController::class, 'logout']);
+
+
+// Quên mật khẩu với OTP
+// Route::post('/send-otp', [ResetPasswordController::class, 'sendOTP'])->name('send-otp');
+// Route::get('quenMK', [ResetPasswordController::class, 'resetpassword']);
+
 
 
 // Đăng ký
@@ -118,7 +138,7 @@ Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 
 
 // checkout (thanh toán) - VNPAY
-// Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
+Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
 Route::post('/vnpay_pay', [PaymentController::class, 'vnpay_pay']);
 Route::post('/vnpay_return', [PaymentController::class, 'vnpay_return']);
 

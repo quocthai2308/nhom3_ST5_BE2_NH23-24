@@ -186,7 +186,7 @@
 							<tr>
 								<td>
 									<div class="cart-checkout-btn pull-right">
-										<form id="checkoutForm" method="post">
+										<form  id="checkoutForm" method="post">
 											@csrf
 											<input type="hidden" id="redirectValue" name="redirect" value="">
 											<button type="submit" name="redirect"  value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button> 

@@ -36,8 +36,8 @@
                                                 @endforeach
                                             </a>
                                         </div>
-                                        <div class="sale-offer-tag"><span>49%<br>
-                                                off</span></div>
+                                        <div class="sale-offer-tag"><span>SỐC Không giảm giá!!!<br>
+                                                </span></div>
                                         <div class="timing-wrapper">
                                             <div class="box-wrapper">
                                                 <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
@@ -58,7 +58,6 @@
                                     <div class="product-info text-left m-t-20">
                                         <h3 class="name"><a href="{{ url('detail/'.$product['id']) }}">{{ $product['name'] }}</a>
                                         </h3>
-                                        <div class="rating rateit-small"></div>
                                         <div class="product-price"> <span class="price">
                                                 {{ $product['price'] }}$ </span></div>
                                         <!-- /.product-price -->
@@ -114,7 +113,6 @@
                                                         <div class="product-info">
                                                             <h3 class="name"><a href="{{ url('detail/'.$specialProduct['id']) }}">Floral Print
                                                                     Shirt</a></h3>
-                                                            <div class="rating rateit-small"></div>
                                                             <div class="product-price"> <span class="price">
                                                                     {{ $specialProduct->price }}$
                                                                 </span> </div>
@@ -334,7 +332,6 @@
 
                                                     <div class="product-info text-left">
                                                         <h3 class="name"><a href="{{ url('detail/'.$newProduct['id']) }}">{{$newProduct['name']}}</a></h3>
-                                                        <div class="rating rateit-small"></div>
                                                         <div class="description"><?php echo $newProduct['description'] ;?></div>
                                                         <div class="product-price"> <span class="price"> {{$newProduct['price']}}
                                                             </span>
