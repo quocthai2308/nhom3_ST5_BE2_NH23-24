@@ -168,7 +168,6 @@
                                             <p class="text"><?php echo $product->description; ?></p>
                                         </div>
                                     </div><!-- /.tab-pane -->
-
                                     <div id="review" class="tab-pane">
                                         <div class="product-tab">
 

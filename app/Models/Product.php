@@ -121,6 +121,18 @@ class Product extends Model
     {
         return $this->delete();
     }
+    public function getLimitedProductCount()
+    {
+        $products = self::query()
+        ->from('products as p')
+        ->join('bill_product as bp', 'p.id', '=', 'bp.product_id')
+        ->select('p.name', self::raw('COUNT(*) as product_count'))
+        ->groupBy('p.name')
+        ->orderBy('product_count', 'DESC')
+        ->limit(7)
+        ->get();
+return $products;
+    }
 
     use HasFactory;
 }

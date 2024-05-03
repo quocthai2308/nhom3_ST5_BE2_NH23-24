@@ -18,8 +18,10 @@ Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('ratin
 Route::post('/count', [HomeController::class, 'countRV'])->name('count');
 Route::post('/get-review-by-product', [HomeController::class, 'getReviewByProduct'])->name('getReview');
 // statistics
+Route::get('/total', [DashboardController::class, 'getTotal'])->name('total');
 Route::get('/revenue', [DashboardController::class, 'getRevenueByDay'])->name('revenueD');
 Route::get('/revenueM', [DashboardController::class, 'getRevenueByMonth'])->name('revenueM');
+Route::get('/most-product', [DashboardController::class, 'getMostPopularProduct'])->name('most-product');
 
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 

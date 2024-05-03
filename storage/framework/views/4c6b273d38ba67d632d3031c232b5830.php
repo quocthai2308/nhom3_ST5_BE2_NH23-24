@@ -127,6 +127,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script src="<?php echo e(asset('app/js/chart.js')); ?>"></script>
+            <script src="<?php echo e(asset('app/js/chart1.js')); ?>"></script>
             <script>
                 $(document).ready(function() {
                     $(".delete-btn").click(function(e) {
