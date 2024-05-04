@@ -12,6 +12,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
+
+//Nhan Tin
+
+Route::get('/chat', [AdminController::class, 'indexT'])->name('admin.chat');
+
 // reviews 
 Route::post('/review', [HomeController::class, 'review'])->name('review');
 Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('rating');
