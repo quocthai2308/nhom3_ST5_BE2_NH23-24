@@ -7,7 +7,7 @@ async function createChart() {
         return item.name;
     });
     var data = productData.mostPopularProduct.map(function (item) {
-        return item.product_count;
+        return item.total_quantity;
     });
     // Mảng màu sắc cho từng cột
     const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
@@ -17,7 +17,7 @@ async function createChart() {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Sản phẩm bán ra nhiều nhất',
+                label: 'Sản phẩm bán ra nhiều nhất (cái)',
                 data: data,
                 backgroundColor: colors,
                 borderColor: colors,
