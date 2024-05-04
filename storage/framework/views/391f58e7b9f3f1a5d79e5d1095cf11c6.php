@@ -479,6 +479,11 @@
 
     
     <!-- For demo purposes – can be removed on production : End -->
+    <script type="text/javascript">
+        var cashPaymentUrl = "<?php echo e(url('/shopping-cart')); ?>"; // Thay '/trang-A' bằng đường dẫn thực tế của bạn
+        var onlinePaymentUrl = "<?php echo e(url('/vnpay_create_payment')); ?>";
+        var checkoutUrl = "<?php echo e(url('/checkout')); ?>";
+    </script>
 </body>
 
 </html><?php /**PATH D:\nhom3_ST5_BE2_NH23-24\resources\views/app.blade.php ENDPATH**/ ?>
