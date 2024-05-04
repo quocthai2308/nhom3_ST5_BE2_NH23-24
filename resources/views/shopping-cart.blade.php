@@ -29,6 +29,7 @@
 									<th class="cart-qty item">Quantity</th>
 									<th class="cart-sub-total item">Subtotal</th>
 									<th class="cart-total last-item">Grandtotal</th>
+									<th class="cart-total last-item">Checkout</th>
 								</tr>
 							</thead><!-- /thead -->
 							<tfoot>
@@ -75,7 +76,7 @@
 												<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 												<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 											</div>
-											<input type="text" value="{{ $product['quantity'] }}">
+											<input type="text" name="qtyProduct" value="{{ $product['quantity'] }}">
 										</div>
 									</td>
 									<td class="cart-product-sub-total">
@@ -87,6 +88,16 @@
 										<span class="cart-grand-total-price" id="cart-grand-total-price-{{ $product['id'] }}">
 											{{ $product['price'] * $product['quantity'] }}
 										</span>
+									</td>
+
+									<td>
+										<form action="{{ url('/checkout') }}" method="post">
+											@csrf
+											<input type="hidden" name="product_id" value="{{ $product['id'] }}">
+											<input type="hidden" id="redirectValue-{{ $product['id'] }}" name="redirect" value="">
+											<button class="btn btn-primary checkout-btn-child">Thanh toán</button>
+										</form>
+
 									</td>
 
 								</tr>
@@ -186,10 +197,10 @@
 							<tr>
 								<td>
 									<div class="cart-checkout-btn pull-right">
-										<form  id="checkoutForm" method="post">
+										<form id="checkoutForm" method="post">
 											@csrf
 											<input type="hidden" id="redirectValue" name="redirect" value="">
-											<button type="submit" name="redirect"  value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button> 
+											<button type="submit" name="redirect" id="checkout-btn" value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button>
 										</form>
 										<span class="">Checkout with multiple addresses!</span>
 									</div>

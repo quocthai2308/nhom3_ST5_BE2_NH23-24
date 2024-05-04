@@ -5,6 +5,18 @@ $(document).ready(function() {
     var quantity = parseInt($('#quant-input-' + productId + ' input').val(), 10);
     var price = parseFloat($('#cart-sub-total-price-' + productId).text());
     $('#cart-grand-total-price-' + productId).text(price * quantity);
+
+
+    $('tr[data-id]').each(function() {
+        // Lấy product_id từ thuộc tính 'data-id' của hàng
+        var productId = $(this).data('id');
+        
+        // Lấy giá trị tổng cộng của sản phẩm từ phần tử có id tương ứng
+        var totalValue = $('#cart-grand-total-price-' + productId).text();
+        
+        // Gán giá trị tổng cộng vào trường input ẩn có id 'redirectValue-' cùng với product_id
+        $('#redirectValue-' + productId).val(totalValue);
+    });
 }
 
 // Tính toán tổng Subtotal và Grand Total
@@ -152,17 +164,20 @@ $('.arrow.minus').click(function() {
     });
 
 
-   
-    // $('.checkout-btn').click(function(e) {
-    //     e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
 
-    //     // Lấy href từ thuộc tính href của thẻ a
-    //     var href = $(this).attr('href');
 
-    //     // Chuyển hướng đến trang checkout
-    //     window.location.href = href;
-    // });
-    
+    $('.checkout-btn-child').click(function() {
+        // Lấy product_id từ thuộc tính 'data-id' của hàng sản phẩm
+        var productId = $(this).closest('tr').data('id');
+        
+        // Lấy giá trị tổng cộng của sản phẩm từ phần tử có id tương ứng
+        var totalValue = $('#cart-grand-total-price-' + productId).text();
+        
+        // Gán giá trị tổng cộng vào trường input ẩn có id 'redirectValue-' cùng với product_id
+        $('#redirectValue-' + productId).val(totalValue);
+        
+        // Tiếp tục với hành động submit form nếu cần
+    });
     
     
     
@@ -170,6 +185,34 @@ $('.arrow.minus').click(function() {
     
     
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('checkoutFormB').addEventListener('submit', function(e) {
+        e.preventDefault(); // Ngăn không cho form submit tự động
+
+
+        alert(cashPaymentUrl)
+        
+
+        // Kiểm tra xem radio button nào được chọn
+        if (document.getElementById('cash_payment').checked) {
+            // Nếu "Pay cash upon receipt" được chọn, chuyển hướng đến trang A
+            document.getElementById('checkoutFormB').action = cashPaymentUrl;
+
+            // Submit form
+            document.getElementById('checkoutFormB').submit();
+        } else if (document.getElementById('online_payment').checked) {
+            // Nếu "online payment" được chọn, chuyển hướng đến trang B
+            document.getElementById('checkoutFormB').action = onlinePaymentUrl;
+
+            // Submit form
+            document.getElementById('checkoutFormB').submit();
+        } 
+    });
+});
+
+  
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -180,20 +223,68 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Gán giá trị vào trường ẩn trong form
             document.getElementById('redirectValue').value = redirectValue;
-            
+
             // Chuyển hướng đến trang vnpay_pay.php
-            document.getElementById('checkoutForm').action = "http://localhost:8080/Git/nhom3_ST5_BE2_NH23-24/resources/views/vnpay_php/vnpay_pay.php";
+            document.getElementById('checkoutForm').action = checkoutUrl;
+            // document.getElementById('checkoutForm').action = "http://localhost:8080/Git/nhom3_ST5_BE2_NH23-24/resources/views/vnpay_php/vnpay_pay.php";
             
             // Submit form
             document.getElementById('checkoutForm').submit();
         });
 
+        // document.querySelector('.checkout-btn-child').addEventListener('click', function() {
+        //     // Lấy giá trị của nút "PROCEED TO CHECKOUT"
+
+        //     var redirectValue = document.getElementById('checkout-btn').value;;
+            
+        //     // Gán giá trị vào trường ẩn trong form
+        //     document.getElementById('redirectValue').value = redirectValue;
+            
+        //     // Submit form
+        //     document.getElementById('checkoutForm').submit();
+
+            
+        // });
+
+     /*
+        document.querySelector('.checkout-payment').addEventListener('click', function(e) {
+            
+            alert("oke")
+        
+            // Lấy product_id từ cookie
+            var product_id = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('product_id='))
+                .split('=')[1];
+        
+            // Lấy dữ liệu từ form
+            var email = document.getElementById('customerEmail').value;
+            var phone = document.getElementById('customerPhone').value;
+            var orderContent = document.getElementById('orderContent').value;
+            var shippingAddress = document.getElementById('shippingAddress').value;
+        
+            // Lưu dữ liệu vào cookie
+            document.cookie = "email=" + email;
+            document.cookie = "phone=" + phone;
+            document.cookie = "orderContent=" + orderContent;
+            document.cookie = "shippingAddress=" + shippingAddress;
+            document.cookie = "product_id=" + product_id;
+        
+            // Kiểm tra xem radio button nào được chọn
+            if (document.getElementById('cash').checked) {
+                // Nếu "Pay cash upon receipt" được chọn, chuyển hướng đến trang A
+                window.location.href = 'trangA.html';
+            } else if (document.getElementById('online').checked) {
+                // Nếu "online payment" được chọn, chuyển hướng đến trang B
+                window.location.href = 'http://localhost:8080/Git/nhom3_ST5_BE2_NH23-24/resources/views/vnpay_php/vnpay_pay.php';
+            }
+        });
+       */ 
+        
+
     });
 
 // document.addEventListener('DOMContentLoaded', function() {
-    
-    
-
 
 // let updateCartButton = document.querySelector('.update-cart');
 //     updateCartButton.addEventListener('click', function(e) {

@@ -14,6 +14,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\CheckoutController;
 // reviews 
 Route::post('/review', [HomeController::class, 'review'])->name('review');
 Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('rating');
@@ -99,7 +100,7 @@ Route::get('/shopping-cart', [HomeController::class, 'shopping_cart'])->name('sh
 Route::get('/shopping-cart', [CartController::class, 'showCart']);
 Route::post('/shopping-cart/update', [CartController::class, 'updateCart']);
 Route::get('/shopping-cart/{id}', [CartController::class, 'removeFromCart']);
-Route::get('/checkout', [CartController::class, 'checkout']);
+Route::post('/checkout', [PaymentController::class, 'checkout']);
 
 
 
@@ -138,9 +139,11 @@ Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 
 
 // checkout (thanh toán) - VNPAY
-Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
-Route::post('/vnpay_pay', [PaymentController::class, 'vnpay_pay']);
-Route::post('/vnpay_return', [PaymentController::class, 'vnpay_return']);
+// Route::post('/vnpay_payment', [PaymentController::class, 'vnpay_payment']);
+// Route::post('/vnpay_pay', [PaymentController::class, 'vnpay_pay']);
+// Route::post('/vnpay_return', [PaymentController::class, 'vnpay_return']);
+Route::get('/vnpay_return', [PaymentController::class, 'handleVnpayResponse'])->name('vnpay.return');
+Route::post('/vnpay_create_payment', [PaymentController::class, 'vnpay_create_payment']);
 
 // Ngân hàng        :	NCB
 // Số thẻ	        :   9704198526191432198
