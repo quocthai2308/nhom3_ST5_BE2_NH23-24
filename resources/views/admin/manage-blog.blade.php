@@ -11,7 +11,7 @@
             {{ session('update-success') }}
         </div>
     @endif --}}
-    <h1>Manage Products</h1>
+    <h1>Manage Blogs</h1>
     </div>
     <div class="container-fluid">
         <hr>

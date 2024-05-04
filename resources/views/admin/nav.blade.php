@@ -98,6 +98,8 @@
                     <span>Users</span></a></li>
             <li> <a href="{{ url('manage-blog') }}"><i class="icon icon-th-list"></i>
                     <span>Blogs</span></a></li>
+            <li> <a href="{{ url('manage-voucher') }}"><i class="icon icon-th-list"></i>
+                    <span>Vouchers</span></a></li>
 
         </ul>
     </div> <!-- BEGIN CONTENT -->

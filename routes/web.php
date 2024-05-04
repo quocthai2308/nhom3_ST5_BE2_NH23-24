@@ -49,9 +49,9 @@ Route::post('/send', [BlogController::class, 'comment'])->name('blog.comment');
 Route::post('/get-comment', [BlogController::class, 'getComment'])->name('blog.getComment');
 Route::delete('/blog/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
-// Route::get('/', function () {
-//     return view('home');
-// });
+Route::get('/add-voucher', function () {
+    return view('admin.add-voucher');
+});
 
 //vô hiệu hóa tài khoảng 
 Route::post('/deactivate-user/{id}', [UserController::class, 'deactivateUser'])->name('deactivate-user');
