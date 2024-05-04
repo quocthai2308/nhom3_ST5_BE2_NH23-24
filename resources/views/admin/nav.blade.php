@@ -53,7 +53,7 @@
                             Out</a></li>
                 </ul>
             </li>
-            <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown"
+            <li class="dropdown" id="menu-messages"><a href="{{ url('chat') }}" data-toggle="dropdown"
                     data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i>
                     <span class="text">Messages</span> <span class="label label-important">5</span> <b
                         class="caret"></b></a>
