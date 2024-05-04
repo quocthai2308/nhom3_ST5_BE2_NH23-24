@@ -12,7 +12,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PaymentController;
 
+Route::get('/productComparison', function () {
+    return view('productComparison');
+});
 //Nhan Tin
 
 Route::get('/chat', [AdminController::class, 'indexT'])->name('admin.chat');
