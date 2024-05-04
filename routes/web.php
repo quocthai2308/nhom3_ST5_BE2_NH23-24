@@ -47,7 +47,7 @@ Route::get('/blog', [BlogController::class, 'blogIndex'])->name('blog-index');
 Route::get('/blog-details/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
 Route::post('/send', [BlogController::class, 'comment'])->name('blog.comment');
 Route::post('/get-comment', [BlogController::class, 'getComment'])->name('blog.getComment');
-
+Route::delete('/blog/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 // Route::get('/', function () {
 //     return view('home');

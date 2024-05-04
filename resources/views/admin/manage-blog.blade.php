@@ -49,7 +49,7 @@
                                         <td>
                                             <a href=""
                                                 class="btn btn-success btn-mini">Edit</a>
-                                            <form action="" method="POST"
+                                            <form action="{{ route('blog.delete', $blog->id) }}" method="POST"
                                                 class="delete-form">
                                                 @csrf
                                                 @method('DELETE')

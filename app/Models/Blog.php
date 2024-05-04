@@ -35,5 +35,9 @@ class Blog extends Model
             return $blog;
         }
     }
+    public function remove()
+    {
+        return $this->delete();
+    }
     use HasFactory;
 }
