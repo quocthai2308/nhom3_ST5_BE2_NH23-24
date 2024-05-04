@@ -72,19 +72,18 @@ class Product extends Model
                 ->where('product_id', $productId)
                 ->delete();
         }
-
     }
     // MARK: hàm lấy sản phẩm đã like
     public function getProductLiked($userId)
     {
         $products = Product::query()
-        ->from('products as p') 
-        ->join('user_like_product as ulp', 'p.id', '=', 'ulp.product_id')
-        ->join('users as u', 'u.id', '=', 'ulp.user_id')
-        ->join('images as i', 'p.id', '=', 'i.product_id') 
-        ->where('u.id', $userId)
-        ->select('p.*') 
-        ->get();
+            ->from('products as p')
+            ->join('user_like_product as ulp', 'p.id', '=', 'ulp.product_id')
+            ->join('users as u', 'u.id', '=', 'ulp.user_id')
+            ->join('images as i', 'p.id', '=', 'i.product_id')
+            ->where('u.id', $userId)
+            ->select('p.*')
+            ->get();
         return $products;
     }
 
@@ -121,9 +120,32 @@ class Product extends Model
     {
         return $this->delete();
     }
+    public function getLimitedProductCount()
+    {
+        $products = self::query()
+            ->from('products as p')
+            ->join('bill_product as bp', 'p.id', '=', 'bp.product_id')
+            ->select('p.name', self::raw('SUM(bp.quantity) as total_quantity'))
+            ->groupBy('p.name')
+            ->orderBy('total_quantity', 'DESC')
+            ->limit(7)
+            ->get();
+        return $products;
+    }
+    public function getBestSeller(){
+        $products = self::query()
+            ->from('products as p')
+            ->join('bill_product as bp', 'p.id', '=', 'bp.product_id')
+            ->join('images as i', 'p.id', '=', 'i.product_id')
+            ->select('p.*', 'i.name as image_name', self::raw('SUM(bp.quantity) as total_quantity'))
+            ->groupBy('p.id', 'i.name')
+            ->orderBy('total_quantity', 'DESC')
+            ->limit(6)
+            ->get();
+
+            return $products;   
+
+    }
 
     use HasFactory;
 }
-
-
-

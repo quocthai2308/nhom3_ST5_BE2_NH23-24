@@ -62,4 +62,16 @@ class BlogController extends Controller
         $comment->sendComment($content, $blogId);
         return response()->json(['success' => true]); 
     }
+    public function delete($id)
+    {
+        $blog = Blog::find($id);
+
+        if (!$blog) {
+            return response()->json(['message' => 'Blog not found'], 404);
+        }
+        // Xoá sản phẩm
+        $blog->delete();
+
+        return redirect()->route('manage-blog');
+    }
 }

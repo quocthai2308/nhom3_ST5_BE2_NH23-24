@@ -24,5 +24,11 @@ class Bill extends Model
 
         return $revenueByMonth;
     }
+    public static function getTotal()
+    {
+        $total = self::select()->sum('total');
+    return $total;
+    }
+
     use HasFactory;
 }

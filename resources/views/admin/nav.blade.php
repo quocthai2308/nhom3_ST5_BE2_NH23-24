@@ -53,7 +53,7 @@
                             Out</a></li>
                 </ul>
             </li>
-            <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown"
+            <li class="dropdown" id="menu-messages"><a href="{{ url('chat') }}" data-toggle="dropdown"
                     data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i>
                     <span class="text">Messages</span> <span class="label label-important">5</span> <b
                         class="caret"></b></a>
@@ -127,6 +127,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script src="{{asset('app/js/chart.js')}}"></script>
+            <script src="{{asset('app/js/chart1.js')}}"></script>
             <script>
                 $(document).ready(function() {
                     $(".delete-btn").click(function(e) {

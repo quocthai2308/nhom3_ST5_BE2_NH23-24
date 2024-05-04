@@ -1563,6 +1563,7 @@
                         <h3 class="section-title">Best seller</h3>
                         <div class="sidebar-widget-body outer-top-xs">
                             <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
+                                @foreach ($bestSeller as $product)
                                 <div class="item">
                                     <div class="products best-product">
                                         <div class="product">
@@ -1570,7 +1571,7 @@
                                                 <div class="row product-micro-row">
                                                     <div class="col col-xs-5">
                                                         <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p20.jpg') }}" alt=""> </a> </div>
+                                                            <div class="image"> <a href="{{url('/detail/'.$product->id)}}"> <img src="{{ asset("app/images/products/".$product->image_name) }}" alt=""> </a> </div>
                                                             <!-- /.image -->
 
                                                         </div>
@@ -1579,11 +1580,10 @@
                                                     <!-- /.col -->
                                                     <div class="col2 col-xs-7">
                                                         <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
+                                                            <h2  style="font-size: 1.2em" class="name"><a href="#">{{$product->name}}</a></h2>
+                                                            <div  style="font-size: 1.2em" class="product-price"> <span class="price">
+                                                                   {{$product->price}}vnd</span> </div>
+                                                                   <p>số lượng bán {{$product->total_quantity}}</p>
                                                             <!-- /.product-price -->
 
                                                         </div>
@@ -1593,230 +1593,12 @@
                                                 <!-- /.product-micro-row -->
                                             </div>
                                             <!-- /.product-micro -->
-
-                                        </div>
-                                        <div class="product">
-                                            <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col col-xs-5">
-                                                        <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p21.jpg') }}" alt=""> </a> </div>
-                                                            <!-- /.image -->
-
-                                                        </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col2 col-xs-7">
-                                                        <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
-                                                            <!-- /.product-price -->
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
-                                            <!-- /.product-micro -->
-
+                                            
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="products best-product">
-                                        <div class="product">
-                                            <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col col-xs-5">
-                                                        <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p22.jpg') }}" alt=""> </a> </div>
-                                                            <!-- /.image -->
-
-                                                        </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col2 col-xs-7">
-                                                        <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
-                                                            <!-- /.product-price -->
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
-                                            <!-- /.product-micro -->
-
-                                        </div>
-                                        <div class="product">
-                                            <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col col-xs-5">
-                                                        <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p23.jpg') }}" alt=""> </a> </div>
-                                                            <!-- /.image -->
-
-                                                        </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col2 col-xs-7">
-                                                        <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
-                                                            <!-- /.product-price -->
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
-                                            <!-- /.product-micro -->
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="products best-product">
-                                        <div class="product">
-                                            <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col col-xs-5">
-                                                        <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p24.jpg') }}" alt=""> </a> </div>
-                                                            <!-- /.image -->
-
-                                                        </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col2 col-xs-7">
-                                                        <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
-                                                            <!-- /.product-price -->
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
-                                            <!-- /.product-micro -->
-
-                                        </div>
-                                        <div class="product">
-                                            <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col col-xs-5">
-                                                        <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p25.jpg') }}" alt=""> </a> </div>
-                                                            <!-- /.image -->
-
-                                                        </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col2 col-xs-7">
-                                                        <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
-                                                            <!-- /.product-price -->
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
-                                            <!-- /.product-micro -->
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="products best-product">
-                                        <div class="product">
-                                            <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col col-xs-5">
-                                                        <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p26.jpg') }}" alt=""> </a> </div>
-                                                            <!-- /.image -->
-
-                                                        </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col2 col-xs-7">
-                                                        <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
-                                                            <!-- /.product-price -->
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
-                                            <!-- /.product-micro -->
-
-                                        </div>
-                                        <div class="product">
-                                            <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col col-xs-5">
-                                                        <div class="product-image">
-                                                            <div class="image"> <a href="#"> <img src="{{ asset('app\images\products\p27.jpg') }}" alt=""> </a> </div>
-                                                            <!-- /.image -->
-
-                                                        </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col2 col-xs-7">
-                                                        <div class="product-info">
-                                                            <h3 class="name"><a href="#">Floral Print
-                                                                    Buttoned</a></h3>
-                                                            <div class="rating rateit-small"></div>
-                                                            <div class="product-price"> <span class="price">
-                                                                    $450.99 </span> </div>
-                                                            <!-- /.product-price -->
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.col -->
-                                                </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
-                                            <!-- /.product-micro -->
-
-                                        </div>
+                                @endforeach
+                               
                                     </div>
                                 </div>
                             </div>
@@ -1831,13 +1613,14 @@
                         <h3 class="section-title">latest form blog</h3>
                         <div class="blog-slider-container outer-top-xs">
                             <div class="owl-carousel blog-slider custom-carousel">
+                                    
                                 <div class="item">
                                     <div class="blog-post">
                                         <div class="blog-post-image">
                                             <div class="image"> <a href="blog.html"><img src="{{ asset('app\images\blog-post\post1.jpg') }}" alt=""></a> </div>
                                         </div>
                                         <!-- /.blog-post-image -->
-
+                                        
                                         <div class="blog-post-info text-left">
                                             <h3 class="name"><a href="#">Voluptatem accusantium doloremque
                                                     laudantium</a></h3>

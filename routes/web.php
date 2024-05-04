@@ -12,17 +12,21 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ResetPasswordController;
-use App\Http\Controllers\CheckoutController;
+
+//Nhan Tin
+
+Route::get('/chat', [AdminController::class, 'indexT'])->name('admin.chat');
+
 // reviews 
 Route::post('/review', [HomeController::class, 'review'])->name('review');
 Route::post('/rating', [HomeController::class, 'getAverageRating'])->name('rating');
 Route::post('/count', [HomeController::class, 'countRV'])->name('count');
 Route::post('/get-review-by-product', [HomeController::class, 'getReviewByProduct'])->name('getReview');
 // statistics
+Route::get('/total', [DashboardController::class, 'getTotal'])->name('total');
 Route::get('/revenue', [DashboardController::class, 'getRevenueByDay'])->name('revenueD');
 Route::get('/revenueM', [DashboardController::class, 'getRevenueByMonth'])->name('revenueM');
+Route::get('/most-product', [DashboardController::class, 'getMostPopularProduct'])->name('most-product');
 
 
 // này nè dùng để thêm hoặc bỏ admin á nhen 
@@ -43,7 +47,7 @@ Route::get('/blog', [BlogController::class, 'blogIndex'])->name('blog-index');
 Route::get('/blog-details/{id}', [BlogController::class, 'blogDetail'])->name('blog.detail');
 Route::post('/send', [BlogController::class, 'comment'])->name('blog.comment');
 Route::post('/get-comment', [BlogController::class, 'getComment'])->name('blog.getComment');
-
+Route::delete('/blog/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 // Route::get('/', function () {
 //     return view('home');

@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="blog-page">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="blog-post wow fadeInUp">
                             <h1>{{ $blog->title }}</h1>
                             <span class="author">Admin</span>
