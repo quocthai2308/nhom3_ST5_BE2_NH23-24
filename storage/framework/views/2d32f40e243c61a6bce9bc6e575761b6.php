@@ -1,5 +1,4 @@
 ﻿
-
 <?php $__env->startSection('title','ThuanLamProduct'); ?>
 <?php $__env->startSection('content'); ?>
 <!-- ============================================== HEADER : END ============================================== -->
@@ -16,175 +15,81 @@
 
 <div class="body-content outer-top-xs">
 	<div class="container">
-    <div class="product-comparison">
-		<div>
-			<h1 class="page-title text-center heading-title">Product Comparison</h1>
-			<div class="table-responsive">
-				<table class="table compare-table inner-top-vs">
-					<tr>
-						<th>Products</th>
-						<td>
-							<div class="product">
-								<div class="product-image">
-									<div class="image">
-										<a href="detail.html">
-										    <img alt="" src="<?php echo e(asset ('app\images\products\p1.jpg')); ?>">
-										</a>
-									</div>
+		<div class="product-comparison">
+			<div>
+				<h1 class="page-title text-center heading-title">Product Comparison</h1>
+				<div class="table-responsive">
+					<table class="table compare-table inner-top-vs">
+						<tr>
+							<td><strong>Ảnh</strong></td>
+							<td><strong>Tên Sản Phẩm</strong></td>
+							<td><strong>Giá</strong></td>
+							<td><strong>description</strong></td>
+							<td><strong>Xóa</strong></td>
+							<!-- <td><strong>Add To Cart</strong></td> -->
+						</tr>
 
-									<div class="product-info text-left">
-										<h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-										<div class="action">
-										    <a class="lnk btn btn-primary" href="#">Add To Cart</a>
-										</div>
+						<?php $__currentLoopData = session('compare'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $id => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<tr>
+							<td><img src="<?php echo e($product['image']); ?>" alt="<?php echo e($product['name']); ?>"></td>
+							<td><?php echo e($product['name']); ?></td>
+							<td><?php echo e($product['price']); ?></td>
+							<td><?php echo e($product['description'] ?? 'No description available'); ?></td>
+							<td>
+								<a href="#" class="remove-icon" onclick="return confirmRemove(<?php echo e($id); ?>);">
+									<i class="fa fa-times"></i>
+								</a>
 
-									</div>
+							</td>
+							<!-- <td>
+								<div class="action">
+									<a class="lnk btn btn-primary" href="#">Add To Cart</a>
 								</div>
-							</div>
-						</td>
-
-						<td>
-							<div class="product">
-								<div class="product-image">
-									<div class="image">
-										<a href="detail.html">
-										    <img alt="" src="<?php echo e(asset ('app\images\products\p2.jpg')); ?>">
-										</a>
-									</div>
-
-									<div class="product-info text-left">
-										<h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-										<div class="action">
-										    <a class="lnk btn btn-primary" href="#">Add To Cart</a>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div class="product">
-								<div class="product-image">
-									<div class="image">
-										<a href="detail.html">
-										    <img alt="" src="<?php echo e(asset ('app\images\products\p4.jpg')); ?>">
-										</a>
-									</div>
-
-									<div class="product-info text-left">
-										<h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-										<div class="action">
-										    <a class="lnk btn btn-primary" href="#">Add To Cart</a>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</td>
-
-						<td>
-							<div class="product">
-								<div class="product-image">
-									<div class="image">
-										<a href="detail.html">
-										    <img alt="" src="<?php echo e(asset ('app\images\products\p5.jpg')); ?>">
-										</a>
-									</div>
-
-									<div class="product-info text-left">
-										<h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-										<div class="action">
-										    <a class="lnk btn btn-primary" href="#">Add To Cart</a>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						</td>
-					</tr>
-
-					<tr>
-						<th>Price</th>
-						<td>
-							<div class="product-price">
-								<span class="price"> $300.00 </span>
-								<span class="price-before-discount">$500.00</span>
-							</div>
-						</td>
-
-						<td>
-							<div class="product-price">
-								<span class="price"> $350.00 </span>
-								<span class="price-before-discount">$500.00</span>
-							</div>
-						</td>
-
-						<td>
-							<div class="product-price">
-								<span class="price"> $400.00 </span>
-								<span class="price-before-discount">$500.00</span>
-							</div>
-						</td>
-
-						<td>
-							<div class="product-price">
-								<span class="price"> $3600.00 </span>
-								<span class="price-before-discount">$500.00</span>
-							</div>
-						</td>
-					</tr>
-
-					<tr>
-						<th>Description</th>
-						<td><p class="text">Proin semper eros ac posuere ultrices. Nulla quis mi in risus volutpat blandit vestibulum in lorem. In euismod laoreet sapien vel gravida.  Proin sem per eros ac posuere ultrices. Nulla quis mi in risus.<p></td>
-						<td><p class="text">Proin semper eros ac posuere ultrices. Nulla quis mi in risus volutpat blandit vestibulum in lorem. In euismod laoreet sapien vel gravida.  Proin sem per eros ac posuere ultrices.<p> </td>
-						<td><p class="text">Proin semper eros ac posuere ultrices. Nulla quis mi in risus volutpat blandit vestibulum in lorem. In euismod laoreet sapien vel gravida.<p></td>
-						<td><p class="text">Proin semper eros ac posuere ultrices. Nulla quis mi in risus volutpat blandit vestibulum in lorem. In euismod laoreet sapien vel gravida.  Proin sem per eros ac posuere ultrices. Nulla quis mi in risus.<p></td> 
-					</tr>
-
-					<tr>
-						 <th>Availability</th>
-	                     <td><p class="in-stock">In Stock</p></td>
-	                     <td><p class="in-stock">In Stock</p></td>
-	                     <td><p class="in-stock">In Stock</p></td>
-	                     <td><p class="in-stock">In Stock</p></td>
-					</tr>
-
-					<tr>
-						<th>Remove</th>
-						<td class='text-center'><a href="#" class="remove-icon"><i class="fa fa-times"></i></a></td>
-						<td class='text-center'><a href="#" class="remove-icon"><i class="fa fa-times"></i></a></td>
-						<td class='text-center'><a href="#" class="remove-icon"><i class="fa fa-times"></i></a></td>
-						<td class='text-center'><a href="#" class="remove-icon"><i class="fa fa-times"></i></a></td>
-					</tr>
-				</table>
+							</td> -->
+						</tr>
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					</table>
+				</div>
 			</div>
-            </div>
 		</div>
 	</div>
 </div>
 <!-- ============================================================= FOOTER ============================================================= -->
 
 <?php $__env->stopSection(); ?>
-	<script>
-		$(document).ready(function(){ 
-			$(".changecolor").switchstylesheet( { seperator:"color"} );
-			$('.show-theme-options').click(function(){
-				$(this).parent().toggleClass('open');
-				return false;
-			});
-		});
+<script>
+	function confirmRemove(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+        removeFromCompare(id);
+        return true;
+    }
+    return false;
+}
 
-		$(window).bind("load", function() {
-		   $('.show-theme-options').delay(2000).trigger('click');
-		});
-	</script>
-	<!-- For demo purposes – can be removed on production : End -->
+	function removeFromCompare(id) {
+		window.location.href = `/remove-from-compare/${id}`;
+	}
 
-	
+
+	$(document).ready(function() {
+		$(".changecolor").switchstylesheet({
+			seperator: "color"
+		});
+		$('.show-theme-options').click(function() {
+			$(this).parent().toggleClass('open');
+			return false;
+		});
+	});
+
+	$(window).bind("load", function() {
+		$('.show-theme-options').delay(2000).trigger('click');
+	});
+</script>
+<!-- For demo purposes – can be removed on production : End -->
+
+
 
 </body>
-</html>
 
+</html>
 <?php echo $__env->make('app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Thuận HK4\BE2\LamNhom\nhom3_ST5_BE2_NH23-24\resources\views/productComparison.blade.php ENDPATH**/ ?>

@@ -10,6 +10,48 @@ use App\Models\Image;
 
 class ProductController extends Controller
 {
+    public function showComparisonPage()
+    {
+        $compare = session('compare', []);  // Lấy mảng so sánh từ session, mặc định là một mảng rỗng
+        return view('productComparison', ['compare' => $compare]);
+    }
+
+    // public function showComparisonPage()
+    // {
+    //     return view('productComparison');
+    // }
+
+    //soánh
+    public function removeFromCompare($id)
+    {
+        $compare = session()->get('compare', []);
+        if (array_key_exists($id, $compare)) {
+            unset($compare[$id]); // Xóa sản phẩm khỏi mảng so sánh
+            session()->put('compare', $compare); // Cập nhật lại session
+        }
+        return redirect()->back(); // Quay lại trang hiện tại
+    }
+
+    public function addToCompare(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $compare = session()->get('compare', []);
+
+        // Kiểm tra xem sản phẩm đã có trong danh sách so sánh chưa
+        if (!array_key_exists($id, $compare)) {
+            $compare[$id] = [
+                "name" => $product->name,
+                "price" => $product->price,
+                "image" => $product->image,
+                "description" => $product->description  // Thêm trường description
+            ];
+            session()->put('compare', $compare);
+        }
+
+        return redirect()->route('productComparison');
+    }
+
+
     // Function lấy toàn bộ sản phẩm
     public function index()
     {
@@ -25,7 +67,7 @@ class ProductController extends Controller
         $description = $request->input('description');
         $price = $request->input('price');
         $category_ids = $request->input('category_ids'); // Mảng ID của các danh mục
-       
+
         // Tạo một sản phẩm mới
         $product = new Product;
         $product->name = $name;

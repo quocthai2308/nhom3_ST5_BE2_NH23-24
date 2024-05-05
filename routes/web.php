@@ -14,6 +14,12 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
 
+Route::get('/remove-from-compare/{id}', [ProductController::class, 'removeFromCompare'])->name('remove.from.compare');
+
+//Tôi làm về so sánh coi bộ cũng khó đấy
+Route::get('/add-to-compare/{id}', [ProductController::class, 'addToCompare'])->name('add.to.compare');
+Route::get('/product-comparison', [ProductController::class, 'showComparisonPage'])->name('productComparison');
+
 Route::get('/productComparison', function () {
     return view('productComparison');
 });
