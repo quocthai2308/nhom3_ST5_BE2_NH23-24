@@ -31,7 +31,7 @@
 
 						@foreach (session('compare') as $id => $product)
 						<tr>
-							<td><img src="{{ $product['image'] }}" alt="{{ $product['name'] }}"></td>
+							<td><img src="{{asset('app/images/products/'.$product['image'])}}" alt="{{ $product['name'] }}"></td>
 							<td>{{ $product['name'] }}</td>
 							<td>{{ $product['price'] }}</td>
 							<td>{{ $product['description'] ?? 'No description available' }}</td>

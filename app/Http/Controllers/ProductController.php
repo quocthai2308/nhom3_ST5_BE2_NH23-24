@@ -38,15 +38,15 @@ class ProductController extends Controller
         $compare = session()->get('compare', []);
 
         // Kiểm tra xem sản phẩm đã có trong danh sách so sánh chưa
-        if (!array_key_exists($id, $compare)) {
+         if (!array_key_exists($id, $compare)) {
             $compare[$id] = [
                 "name" => $product->name,
                 "price" => $product->price,
-                "image" => $product->image,
+                "image" => getImage($id),
                 "description" => $product->description  // Thêm trường description
             ];
             session()->put('compare', $compare);
-        }
+     }
 
         return redirect()->route('productComparison');
     }
@@ -208,3 +208,10 @@ class ProductController extends Controller
 
 
 }
+function getImage ($id){
+    $productM = new Product();
+    $product = $productM->getProductDetails($id);
+    foreach ($product->images as $image) {
+        return $image->name;
+    }
+    }
