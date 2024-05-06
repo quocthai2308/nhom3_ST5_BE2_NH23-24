@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Review;
+use App\Models\Voucher;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,7 @@ class HomeController extends Controller
         $categories = $categoryModel->getParentCategories();
         $allCategories = $categoryModel->getAllCategories();
         $bestSeller = $productModel->getBestSeller();
-        return view('home', compact('products', 'specialProducts', 'newProducts', 'categories', 'allCategories','bestSeller'));
+        return view('home', compact('products', 'specialProducts', 'newProducts', 'categories', 'allCategories', 'bestSeller'));
     }
 
 
@@ -28,8 +29,8 @@ class HomeController extends Controller
         $productModel = new Product();
         $reviewModel = new Review();
         $product = $productModel->getProductDetails($id);
-        $reviews = $reviewModel-> getReviewByProduct($id);
-        return view('detail', compact('product','reviews'));
+        $reviews = $reviewModel->getReviewByProduct($id);
+        return view('detail', compact('product', 'reviews'));
     }
     public function search(Request $request)
     {
@@ -69,12 +70,10 @@ class HomeController extends Controller
         $productId = $request->product_id;
         $rating = $request->rating;
         $content = $request->content;
-        $user = $reviewModel->getUserName(session('user_name'),$productId);
+        $user = $reviewModel->getUserName(session('user_name'), $productId);
         if ($user) {
             return response()->json(['auth' => false]);
-        }
-         else
-          {
+        } else {
             if (session('user_id') != null) {
                 $reviewModel->store($rating, $content, $productId);
             } else {
@@ -83,23 +82,38 @@ class HomeController extends Controller
             return response()->json(['success' => true]);
         }
     }
-    public function getAverageRating(Request $request){
+    public function getAverageRating(Request $request)
+    {
         $reviewModel = new Review();
         $id = $request->input('product_id');
-        $rating = $reviewModel-> getAverageRating($id);
+        $rating = $reviewModel->getAverageRating($id);
         return response()->json(['rating' => $rating]);
     }
-    public function countRV(Request $request){
+    public function countRV(Request $request)
+    {
         $reviewModel = new Review();
         $id = $request->input('product_id');
-        $count = $reviewModel-> countRV($id);
+        $count = $reviewModel->countRV($id);
         return response()->json(['count' => $count]);
     }
-    public function getReviewByProduct(Request $request){
+    public function getReviewByProduct(Request $request)
+    {
         $reviewModel = new Review();
         $id = $request->input('product_id');
         $userName = session('user_name');
-        $reviews = $reviewModel-> getReview($id,$userName);
+        $reviews = $reviewModel->getReview($id, $userName);
         return response()->json(['reviews' => $reviews]);
+    }
+    public function vouchers()
+    {
+        $voucherM = new Voucher();
+        $id = session('user_id');
+        if(isset($id)){
+            $vouchers = $voucherM->getVoucherByUserId($id);
+            return view('vouchers', compact('vouchers'));
+        }else{
+            return view('auth.login');
+        }
+
     }
 }

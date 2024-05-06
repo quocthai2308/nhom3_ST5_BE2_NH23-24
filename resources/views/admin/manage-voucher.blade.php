@@ -11,7 +11,7 @@
                     <div class="widget-title"> <span class="icon"><a href="{{ url('add-voucher') }}"> <i
                                     class="icon-plus"></i>
                             </a></span>
-                        <h5>Products</h5>
+                        <h5>Vouchers</h5>
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered
@@ -19,30 +19,32 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>        
+                                    <th>Discount</th>
+                                    <th>Due date</th>
+                                    <th>Quantity</th>        
                                                         </tr>
                             </thead>
                             <tbody>
-                             
-                                    <tr class="">
-                                        <td></td>
-                                        <td> </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href=""
-                                                class="btn btn-success btn-mini">Edit</a>
-                                            <form action="{{ route('voucher.delete') }}" method="POST"
-                                                class="delete-form">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="btn btn-danger btn-mini delete-btn">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                             @foreach ($vouchers as $voucher )
+                                 
+                             <tr class="">
+                                 <td>{{$voucher->title}}</td>
+                                 <td>{{$voucher->discount}}</td>
+                                 <td>{{$voucher->due_date}}</td>
+                                 <td>{{$voucher->quantity}}</td>
+                                 <td>
+                                     <a href=""
+                                     class="btn btn-success btn-mini">Edit</a>
+                                     <form action="{{--{{ route('voucher.delete') }}--}}" method="POST"
+                                     class="delete-form">
+                                     @csrf
+                                     @method('DELETE')
+                                     <button type="submit"
+                                     class="btn btn-danger btn-mini delete-btn">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="row" style="margin-left: 18px;">

@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('app\css\owl.transitions.css') }}">
     <link rel="stylesheet" href="{{ asset('app\css\animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('app\css\rateit.css') }}">
+    <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0\css\font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('app\css\bootstrap-select.min.css') }}">
     <link href="{{ asset('app\css\lightbox.css') }}" rel="stylesheet">
     <link href="{{ asset('app\chatWe\chatWe.css') }}" rel="stylesheet">
@@ -57,6 +58,8 @@
                             <li><a href="{{ url('productComparison') }}"><i class="icon fa fa-heart"></i>Comparison ( So Sánh )</a></li>
                             <li><a href="{{ url('shopping-cart') }}"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
+                            <li><a href="{{ url('vouchers') }}"><i class="fa-solid fa-ticket"></i>
+                               Your Vouchers</a></li>
                             @if (Auth::check())
                             <li><a href="{{ url('logout') }}"><i class="icon fa fa-lock"></i>Logout</a></li>
                             @else

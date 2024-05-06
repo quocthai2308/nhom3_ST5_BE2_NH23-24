@@ -14,17 +14,19 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
 
-Route::get('/remove-from-compare/{id}', [ProductController::class, 'removeFromCompare'])->name('remove.from.compare');
+//voucher
+Route::get('/manage-voucher', [DashboardController::class, 'manageVoucher'])->name('admin.voucher');
+Route::post('/add-voucher', [DashboardController::class, 'addVoucher'])->name('add.voucher');
+Route::get('/vouchers', [HomeController::class, 'vouchers'])->name('vouchers');
 
 //Tôi làm về so sánh coi bộ cũng khó đấy
+Route::get('/remove-from-compare/{id}', [ProductController::class, 'removeFromCompare'])->name('remove.from.compare');
 Route::get('/add-to-compare/{id}', [ProductController::class, 'addToCompare'])->name('add.to.compare');
 Route::get('/product-comparison', [ProductController::class, 'showComparisonPage'])->name('productComparison');
-
 Route::get('/productComparison', function () {
     return view('productComparison');
 });
 //Nhan Tin
-
 Route::get('/chat', [AdminController::class, 'indexT'])->name('admin.chat');
 
 // reviews 
@@ -158,12 +160,7 @@ Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 // Route::post('/vnpay_return', [PaymentController::class, 'vnpay_return']);
 Route::get('/vnpay_return', [PaymentController::class, 'handleVnpayResponse'])->name('vnpay.return');
 Route::post('/vnpay_create_payment', [PaymentController::class, 'vnpay_create_payment']);
-
-// Ngân hàng        :	NCB
-// Số thẻ	        :   9704198526191432198
-// Tên chủ thẻ	    :   NGUYEN VAN A
-// Ngày phát hành   :	07/15
-// Mật khẩu OTP	    :   123456
+// thông tin mình di dời qua file data.txt rồi nha
 
 
 
