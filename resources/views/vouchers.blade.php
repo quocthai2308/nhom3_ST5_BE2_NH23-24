@@ -16,7 +16,7 @@
 							<td>{{ $voucher['due_date'] }}</td>
 							<td>Giảm: {{ $voucher['discount'] }}%</td>
 							<td>
-								<a href="#" class="remove-icon" onclick="return confirmRemove({{ $voucher['id']; }});">
+								<a href="#" class="remove-icon" onclick="return confirmRemove({{ $voucher['id']}});">
 									<i class="fa fa-times"></i>
 								</a>
 

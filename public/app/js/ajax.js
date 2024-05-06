@@ -29,6 +29,9 @@ window.onload = async function () {
         //get rating from product
         let ratings = await getRating(productId, csrfToken);
         document.getElementById('star-rating').style.width = (ratings * 25) + 'px';
+        ratings = Number(ratings);
+        ratings =  ratings.toFixed(1);
+        document.querySelector('#avr').textContent='('+ratings+')';
     }
     //get count reviews 
     async function getCountReview(productId, csrfToken) {
@@ -41,6 +44,9 @@ window.onload = async function () {
     //get rating from product
     let rating = await getRating(productId, csrfToken);
     document.getElementById('star-rating').style.width = (rating * 25) + 'px';
+    rating = Number(rating);
+    rating =  rating.toFixed(1);
+    document.querySelector('#avr').textContent ='('+rating+')';
 
     // Get the current like status from the server when the page loads
     let isLiked = await getLikeStatus(productId, csrfToken);
