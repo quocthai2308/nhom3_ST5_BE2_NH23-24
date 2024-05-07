@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Payment;
+use App\Models\Bill;
+use App\Models\BillProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -86,19 +88,19 @@ class PaymentController extends Controller
     public function checkout(Request $request)
     {
 
-         
+
 
         $product_id = $request->input('product_id');
         $redirectValue = $request->input('redirect');
         $qtyProduct = $request->input('qtyProduct');
         
-        return view('checkout', compact('product_id', 'redirectValue','qtyProduct'));
+        return view('checkout', compact('product_id', 'redirectValue', 'qtyProduct'));
     }
-
+    
     public function vnpay_create_payment(Request $request)
     {
-       
-
+        
+        
         // Lấy thông tin từ form
         $email = $request->input('customerEmail');
         $phone = $request->input('customerPhone');
@@ -107,7 +109,7 @@ class PaymentController extends Controller
         $product_id = $request->input('product_id');
         $redirectValue = $request->input('redirectCheckout');
         $user_id = Auth::user()->id; // Hoặc bất kỳ cách nào bạn xác định người dùng hiện tại
-
+       
         // Tạo mã giao dịch duy nhất
         do {
             $code_vnpay = rand(1, 100000);
@@ -129,7 +131,6 @@ class PaymentController extends Controller
             'shipping_address' => $shippingAddress,
         ]);
         $transaction->save();
-
         // Chuyển hướng đến trang 'vnpay_create_payment' với thông tin giao dịch
 
         // Lấy thông tin giao dịch từ cơ sở dữ liệu
@@ -137,7 +138,7 @@ class PaymentController extends Controller
 
         // Tiếp tục với việc tạo thanh toán VNPAY...
 
-        return view('vnpay_php.vnpay_create_payment', compact('transaction','redirectValue','code_vnpay'));
+        return view('vnpay_php.vnpay_create_payment', compact('transaction', 'redirectValue', 'code_vnpay'));
     }
 
     public function vnpay_return()
@@ -150,47 +151,59 @@ class PaymentController extends Controller
     }
 
     public function handleVnpayResponse(Request $request)
-{
-    // Lấy thông tin từ request
-    $transactionId = $request->input('vnp_TxnRef');
-    $amount = $request->input('vnp_Amount');
-    $orderInfo = $request->input('vnp_OrderInfo');
-    $responseCode = $request->input('vnp_ResponseCode');
-    $vnpayTransactionNo = $request->input('vnp_TransactionNo');
-    $bankCode = $request->input('vnp_BankCode');
-    $payDate = $request->input('vnp_PayDate');
+    {
+        // Lấy thông tin từ request
+        $transactionId = $request->input('vnp_TxnRef');
+        $amount = $request->input('vnp_Amount');
+        $orderInfo = $request->input('vnp_OrderInfo');
+        $responseCode = $request->input('vnp_ResponseCode');
+        $vnpayTransactionNo = $request->input('vnp_TransactionNo');
+        $bankCode = $request->input('vnp_BankCode');
+        $payDate = $request->input('vnp_PayDate');
 
-    // Kiểm tra chữ ký hợp lệ và mã phản hồi
-    // ...
+        // Kiểm tra chữ ký hợp lệ và mã phản hồi
+        // ...
 
-    $existingPayment = Payment::where('code_vnpay', $transactionId)->first();
+        $existingPayment = Payment::where('code_vnpay', $transactionId)->first();
 
-    // Nếu không tồn tại, lưu thông tin mới vào bảng 'payments'
-    if (!$existingPayment) {
-        $payment = new Payment([
-            'user_id' => Auth::user()->id,
-            'code_vnpay' => $transactionId,
-            'amount' => $amount,
-            'transaction_code' => $responseCode,
-            'transaction_no' => $vnpayTransactionNo,
-            'bank_code' => $bankCode,
-            'payment_date' => $payDate,
-            'status' => ($responseCode == '00') ? 'GD Thanh cong' : 'GD Khong thanh cong',
-            // Các trường khác nếu cần
-        ]);
-        $payment->save();
+        // Nếu không tồn tại, lưu thông tin mới vào bảng 'payments'
+        if (!$existingPayment) {
+            $payment = new Payment([
+                'user_id' => Auth::user()->id,
+                'code_vnpay' => $transactionId,
+                'amount' => $amount,
+                'transaction_code' => $responseCode,
+                'transaction_no' => $vnpayTransactionNo,
+                'bank_code' => $bankCode,
+                'payment_date' => $payDate,
+                'status' => ($responseCode == '00') ? 'GD Thanh cong' : 'GD Khong thanh cong',
+                // Các trường khác nếu cần
+            ]);
+            $payment->save();
+        }
+
+        if($responseCode == '00'){
+            $bill = new Bill;
+            $billProduct= new BillProduct();
+            $amount = $amount / 10000;
+                $total = $amount;
+                $userId = Auth::user()->id;
+                $createdAt = $payDate;
+                $paymentMethod = 'VNpay';
+          $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
+          $product_id = session('product_id');
+          $quantity = session('quantity');
+          $billProduct->addBillProduct($billId,$product_id,$quantity);
+        }
+        // Tìm giao dịch trong bảng 'transactions' với code_vnpay tương ứng
+        $transaction = Transaction::where('code_vnpay', $transactionId)->first();
+
+        // Nếu tìm thấy giao dịch, cập nhật trạng thái của nó
+        if ($transaction && $responseCode == '00') {
+            $transaction->status = 1; // Cập nhật trạng thái thành công
+            $transaction->save();
+        }
+
+        return view('vnpay_php.vnpay_return', compact('transactionId'));
     }
-
-    // Tìm giao dịch trong bảng 'transactions' với code_vnpay tương ứng
-    $transaction = Transaction::where('code_vnpay', $transactionId)->first();
-
-    // Nếu tìm thấy giao dịch, cập nhật trạng thái của nó
-    if ($transaction && $responseCode == '00') {
-        $transaction->status = 1; // Cập nhật trạng thái thành công
-        $transaction->save();
-    }
-
-    return view('vnpay_php.vnpay_return', compact('transactionId'));
-}
-
 }

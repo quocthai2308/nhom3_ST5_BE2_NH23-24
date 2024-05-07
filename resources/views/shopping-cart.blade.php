@@ -77,6 +77,9 @@
 												<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 											</div>
 											<input type="text" name="qtyProduct" value="{{ $product['quantity'] }}">
+											<?php session()->put('quantity',$product['quantity']);
+											      session()->put('product_id', $product['id']);
+											?>
 										</div>
 									</td>
 									<td class="cart-product-sub-total">
