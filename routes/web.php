@@ -18,6 +18,8 @@ use App\Http\Controllers\PaymentController;
 Route::get('/manage-voucher', [DashboardController::class, 'manageVoucher'])->name('admin.voucher');
 Route::post('/add-voucher', [DashboardController::class, 'addVoucher'])->name('add.voucher');
 Route::get('/vouchers', [HomeController::class, 'vouchers'])->name('vouchers');
+Route::delete('/voucher/{id}', [DashboardController::class, 'delete'])->name('voucher.delete');
+
 
 //Tôi làm về so sánh coi bộ cũng khó đấy
 Route::get('/remove-from-compare/{id}', [ProductController::class, 'removeFromCompare'])->name('remove.from.compare');

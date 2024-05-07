@@ -21,5 +21,8 @@ class UserVoucher extends Model
         $userVoucher->voucher_id = $voucher_id;
         return $userVoucher->save();
     }
+    public function destroye ($id) {
+       return UserVoucher::where('voucher_id', $id)->delete();
+    }
     use HasFactory;
 }

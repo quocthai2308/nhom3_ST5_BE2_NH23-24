@@ -21,6 +21,8 @@
                                     <th>Discount</th>
                                     <th>Due date</th>
                                     <th>Quantity</th>        
+                                    <th>Type</th>        
+                                    <th>Status</th>        
                                                         </tr>
                             </thead>
                             <tbody>
@@ -31,10 +33,17 @@
                                  <td><?php echo e($voucher->discount); ?></td>
                                  <td><?php echo e($voucher->due_date); ?></td>
                                  <td><?php echo e($voucher->quantity); ?></td>
+                                 <td><?php echo e($voucher->type); ?></td>
+                                 <?php if($voucher->due_date <= date('Y-m-d H:i:s')): ?>
+                                 <td><?php echo e('Đã quá hạn'); ?></td>
+                                 <?php endif; ?>
+                                 <?php if($voucher->due_date > date('Y-m-d H:i:s')): ?>
+                                 <td><?php echo e('Còn hiệu lực'); ?></td>
+                                 <?php endif; ?>
                                  <td>
                                      <a href=""
                                      class="btn btn-success btn-mini">Edit</a>
-                                     <form action="" method="POST"
+                                     <form action="<?php echo e(route('voucher.delete',$voucher->id)); ?>" method="POST"
                                      class="delete-form">
                                      <?php echo csrf_field(); ?>
                                      <?php echo method_field('DELETE'); ?>

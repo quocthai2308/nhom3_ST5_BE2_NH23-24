@@ -53,12 +53,41 @@ class DashboardController extends Controller
         $due_date = $request->input('duedate');
         $quantity = $request->input('quantity');
         $application = $request->input('application');
-         if ($application == 1) {
-            $voucherId =  $voucherModel->addVoucher($title, $discount, $due_date, $quantity);
+        $input = $request->input('application_value');
+        $type = '';
+        if ($application == 1) {
+            $type='all users';
+            $voucherId =  $voucherModel->addVoucher($title, $discount, $due_date, $quantity,$type);
             foreach ($users as $user) {
                 $userVocherModel->addUserVoucher($user->id, $voucherId);
             }
-         }
+        }
+        if ($application == 2) {
+            $type='user buy products';
+            $voucherId =  $voucherModel->addVoucher($title, $discount, $due_date, $quantity,$type);
+            $users = $userModel->getUserBuyProduct();
+            foreach ($users as $user) {
+                $userVocherModel->addUserVoucher($user->id, $voucherId);
+            }
+        }
+        if ($application == 3) {
+            $type='user buy more than '. $input .' vnd';
+            $voucherId =  $voucherModel->addVoucher($title, $discount, $due_date, $quantity,$type);
+            $users = $userModel->getUserBuyProduct();
+            foreach ($users as $user) {
+                if ($user->total >= $input) {
+                    $userVocherModel->addUserVoucher($user->id, $voucherId);
+                }
+            }
+        }
+        return redirect()->route('admin.voucher');
+    }
+    public function delete($id){
+        $voucherModel = new Voucher();
+        $voucherModel->destroye($id);
+        $userVoucherModel = new UserVoucher();
+        $voucherModel->destroye($id);
+        $userVoucherModel->destroye($id);
         return redirect()->route('admin.voucher');
     }
 }

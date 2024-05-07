@@ -22,6 +22,8 @@
                                     <th>Discount</th>
                                     <th>Due date</th>
                                     <th>Quantity</th>        
+                                    <th>Type</th>        
+                                    <th>Status</th>        
                                                         </tr>
                             </thead>
                             <tbody>
@@ -32,10 +34,17 @@
                                  <td>{{$voucher->discount}}</td>
                                  <td>{{$voucher->due_date}}</td>
                                  <td>{{$voucher->quantity}}</td>
+                                 <td>{{$voucher->type}}</td>
+                                 @if ($voucher->due_date <= date('Y-m-d H:i:s'))
+                                 <td>{{'Đã quá hạn'}}</td>
+                                 @endif
+                                 @if ($voucher->due_date > date('Y-m-d H:i:s'))
+                                 <td>{{'Còn hiệu lực'}}</td>
+                                 @endif
                                  <td>
                                      <a href=""
                                      class="btn btn-success btn-mini">Edit</a>
-                                     <form action="{{--{{ route('voucher.delete') }}--}}" method="POST"
+                                     <form action="{{ route('voucher.delete',$voucher->id) }}" method="POST"
                                      class="delete-form">
                                      @csrf
                                      @method('DELETE')

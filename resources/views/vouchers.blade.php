@@ -11,10 +11,16 @@
 						 @foreach ($vouchers as $voucher)
 						<tr>
 							<td><i class="fa-solid fa-ticket"></i></td>
-							<td>{{ $voucher['title'] }}</td>
-							<td>{{  $voucher['quantity'] }}</td>
-							<td>{{ $voucher['due_date'] }}</td>
+							<td> {{ $voucher['title'] }}</td>
+							<td>Số lượng còn lại: {{  $voucher['quantity'] }}</td>
+							<td>Ngày hết hạn: {{ $voucher['due_date'] }}</td>
 							<td>Giảm: {{ $voucher['discount'] }}%</td>
+							@if ($voucher->due_date <= date('Y-m-d H:i:s'))
+                                 <td class= "danger">Đã quá hạn</td>
+                           @endif
+						   @if ($voucher->due_date > date('Y-m-d H:i:s'))
+						   <td class= "success">Còn hiệu lực</td>
+						   @endif
 							<td>
 								<a href="#" class="remove-icon" onclick="return confirmRemove({{ $voucher['id']}});">
 									<i class="fa fa-times"></i>

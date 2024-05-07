@@ -62,5 +62,13 @@ class User extends Authenticatable
     public function getAllUsers(){
         return User::all();
     }
+    public function getUserBuyProduct(){
+        $users = User::join('bills', 'users.id', '=', 'bills.user_id')
+        ->select('users.id', User::raw('SUM(bills.total) as total'))
+        ->groupBy('users.id')
+        ->get();
+      return $users;
+    }
+  
     
 }

@@ -13,13 +13,19 @@ class Voucher extends Model
     {
         return Voucher::all();
     }
-    public function addVoucher($title, $discount, $due_date, $quantity)
+    public function destroye($id)
+    {
+      return Voucher::where('id', $id)->delete();
+       
+    }
+    public function addVoucher($title, $discount, $due_date, $quantity,$type)
     {
         $voucher = new self;
         $voucher->title = $title;
         $voucher->discount = $discount;
         $voucher->quantity = $quantity;
         $voucher->due_date = $due_date;
+        $voucher->type = $type;
         $voucher->save();
         $voucher_id = $voucher->id;
         return $voucher_id;
