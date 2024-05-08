@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('app\css\owl.transitions.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\animate.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\rateit.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('font-awesome-4.7.0\css\font-awesome.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\bootstrap-select.min.css')); ?>">
     <link href="<?php echo e(asset('app\css\lightbox.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('app\chatWe\chatWe.css')); ?>" rel="stylesheet">
@@ -58,6 +59,8 @@
                             <li><a href="<?php echo e(url('productComparison')); ?>"><i class="icon fa fa-heart"></i>Comparison ( So Sánh )</a></li>
                             <li><a href="<?php echo e(url('shopping-cart')); ?>"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
+                            <li><a href="<?php echo e(url('vouchers')); ?>"><i class="fa-solid fa-ticket"></i>
+                               Your Vouchers</a></li>
                             <?php if(Auth::check()): ?>
                             <li><a href="<?php echo e(url('logout')); ?>"><i class="icon fa fa-lock"></i>Logout</a></li>
                             <?php else: ?>

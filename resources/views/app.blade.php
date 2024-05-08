@@ -55,7 +55,7 @@
                         <ul class="list-unstyled">
                             <li><a href="{{ url('myAccount') }}"><i class="icon fa fa-user"></i>My Account</a></li>
                             <li><a href="{{ url('my-wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                            <li><a href="{{ url('productComparison') }}"><i class="icon fa fa-heart"></i>Comparison ( So Sánh )</a></li>
+                        
                             <li><a href="{{ url('shopping-cart') }}"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
                             <li><a href="{{ url('vouchers') }}"><i class="fa-solid fa-ticket"></i>
