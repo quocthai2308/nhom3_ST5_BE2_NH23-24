@@ -77,9 +77,6 @@
 												<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 											</div>
 											<input type="text" name="qtyProduct" value="<?php echo e($product['quantity']); ?>">
-											<?php session()->put('quantity',$product['quantity']);
-											      session()->put('product_id', $product['id']);
-											?>
 										</div>
 									</td>
 									<td class="cart-product-sub-total">
@@ -98,6 +95,7 @@
 									<td>
 										<form action="<?php echo e(url('/checkout')); ?>" method="post">
 											<?php echo csrf_field(); ?>
+											<input type="hidden" name="qty" value="<?php echo e($product['quantity']); ?>">
 											<input type="hidden" name="product_id" value="<?php echo e($product['id']); ?>">
 											<input type="hidden" id="redirectValue-<?php echo e($product['id']); ?>" name="redirect" value="">
 											<button class="btn btn-primary checkout-btn-child">Thanh toán</button>

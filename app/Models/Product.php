@@ -132,21 +132,31 @@ class Product extends Model
             ->get();
         return $products;
     }
-    public function getBestSeller(){
+    public function getBestSeller()
+    {
         $products = self::query()
-        ->from('products as p')
-        ->join('bill_product as bp', 'p.id', '=', 'bp.product_id')
-        ->join('images as i', 'p.id', '=', 'i.product_id')
-        ->select('p.*', 'i.name as image_name', self::raw('(SELECT SUM(quantity) FROM bill_product WHERE product_id = p.id) as total_quantity'))
-        ->distinct()
-        ->orderBy('total_quantity', 'DESC')
-        ->limit(6)
-        ->get();
+            ->from('products as p')
+            ->join('bill_product as bp', 'p.id', '=', 'bp.product_id')
+            ->join('images as i', 'p.id', '=', 'i.product_id')
+            ->select('p.*', 'i.name as image_name', self::raw('(SELECT SUM(quantity) FROM bill_product WHERE product_id = p.id) as total_quantity'))
+            ->distinct()
+            ->orderBy('total_quantity', 'DESC')
+            ->limit(6)
+            ->get();
 
 
 
-            return $products;   
-
+        return $products;
+    }
+    public function updateProductQuantity($id, $quantity)
+    {
+        $product = Product::find($id);
+        $newQuantity = $product->quantity;
+        $newQuantity = $newQuantity - $quantity;
+        if ($product) {
+            $product->quantity = $newQuantity;
+            $product->save();
+        }
     }
 
     use HasFactory;

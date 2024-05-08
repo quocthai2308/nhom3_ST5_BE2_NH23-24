@@ -76,10 +76,7 @@
 												<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
 												<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
 											</div>
-											<input type="text" name="qtyProduct" value="{{ $product['quantity'] }}">
-											<?php session()->put('quantity',$product['quantity']);
-											      session()->put('product_id', $product['id']);
-											?>
+											<input type="text" name="qtyProduct" value="{{ $product['quantity']}}">
 										</div>
 									</td>
 									<td class="cart-product-sub-total">
@@ -96,6 +93,7 @@
 									<td>
 										<form action="{{ url('/checkout') }}" method="post">
 											@csrf
+											<input type="hidden" name="qty" value="{{ $product['quantity']}}">
 											<input type="hidden" name="product_id" value="{{ $product['id'] }}">
 											<input type="hidden" id="redirectValue-{{ $product['id'] }}" name="redirect" value="">
 											<button class="btn btn-primary checkout-btn-child">Thanh toán</button>

@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\Payment;
 use App\Models\Bill;
 use App\Models\BillProduct;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -92,7 +93,9 @@ class PaymentController extends Controller
 
         $product_id = $request->input('product_id');
         $redirectValue = $request->input('redirect');
-        $qtyProduct = $request->input('qtyProduct');
+        $qtyProduct = $request->input('qty');
+        session()->put('quantity',$qtyProduct);
+        session()->put('product_id',$product_id );
         
         return view('checkout', compact('product_id', 'redirectValue', 'qtyProduct'));
     }
@@ -183,9 +186,11 @@ class PaymentController extends Controller
         }
 
         if($responseCode == '00'){
+            $productdM = new Product();
             $bill = new Bill;
             $billProduct= new BillProduct();
-            $amount = $amount / 10000;
+            $amount = $amount / 100000;
+
                 $total = $amount;
                 $userId = Auth::user()->id;
                 $createdAt = $payDate;
@@ -194,6 +199,7 @@ class PaymentController extends Controller
           $product_id = session('product_id');
           $quantity = session('quantity');
           $billProduct->addBillProduct($billId,$product_id,$quantity);
+          $productdM->updateProductQuantity($product_id,$quantity);
         }
         // Tìm giao dịch trong bảng 'transactions' với code_vnpay tương ứng
         $transaction = Transaction::where('code_vnpay', $transactionId)->first();
