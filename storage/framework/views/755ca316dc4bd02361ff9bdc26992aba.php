@@ -53,7 +53,7 @@
                                 <div class="rating-reviews m-t-20">
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <div class="star-rating" id="star-rating"></div>
+                                            <div class="star-rating" id="star-rating"></div><span id="avr"></span>
                                         </div>
                                         <div class="col-sm-7">
                                             <div class="reviews">

@@ -9,12 +9,13 @@ class Bill extends Model
 {
     protected $table = "bills";
     public $timestamps = false;
-    public function getRevenueByDay(){
+    public function getRevenueByDay()
+    {
         $revenueByDay = self::selectRaw('DATE(created_at) as date, SUM(total) as revenue')
-        ->groupBy('date')
-        ->get();
+            ->groupBy('date')
+            ->get();
 
-    return $revenueByDay;
+        return $revenueByDay;
     }
     public static function getRevenueByMonth()
     {
@@ -27,8 +28,19 @@ class Bill extends Model
     public static function getTotal()
     {
         $total = self::select()->sum('total');
-    return $total;
+        return $total;
     }
+    public function addBill($total, $userId, $createdAt, $paymentMethod)
+    {
+
+        $this->total =  $total;
+        $this->user_id = $userId;
+        $this->created_at = $createdAt;
+        $this->payment_method = $paymentMethod;
+        $this->save();
+        return $this->id;
+    }
+
 
     use HasFactory;
 }

@@ -31,7 +31,7 @@
 
 						<?php $__currentLoopData = session('compare'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $id => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<tr>
-							<td><img src="<?php echo e($product['image']); ?>" alt="<?php echo e($product['name']); ?>"></td>
+							<td><img src="<?php echo e(asset('app/images/products/'.$product['image'])); ?>" alt="<?php echo e($product['name']); ?>"></td>
 							<td><?php echo e($product['name']); ?></td>
 							<td><?php echo e($product['price']); ?></td>
 							<td><?php echo e($product['description'] ?? 'No description available'); ?></td>
