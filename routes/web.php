@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LikeController;
@@ -104,8 +105,13 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 
 // Quên mật khẩu với OTP
+Route::post('/send-otp', [ResetPasswordController::class, 'sendOTP'])->name('sendOtp');
+Route::post('/verifiedOtp', [ResetPasswordController::class, 'verifiedOtp']);
+Route::get('reset-password', [ResetPasswordController::class, 'view']);
+Route::get('/resend-otp', [ResetPasswordController::class, 'resendOtp'])->name('resendOtp');
+Route::get('/verification/{email}', [ResetPasswordController::class, 'verification'])->name('verification');
+Route::get('/verification', [ResetPasswordController::class, 'verification']);
 // Route::post('/send-otp', [ResetPasswordController::class, 'sendOTP'])->name('send-otp');
-// Route::get('quenMK', [ResetPasswordController::class, 'resetpassword']);
 
 
 

@@ -39,7 +39,7 @@
 				<input type="email" placeholder="Email" name="email" />
 				<input type="password" placeholder="Password" name="password" minlength="8" required oninput="checkPasswordLength(this)" />
 				<div id="passwordHelp" style="color:red;"></div>
-				<a href="<?php echo e(url('quenMK')); ?>" class="quenMK">Bạn quên Mật Khẩu hãy nhấn vô đây !</a>
+				<a href="<?php echo e(url('reset-password')); ?>" class="reset-password">Bạn quên Mật Khẩu hãy nhấn vô đây !</a>
 				<button type="submit">Đăng Nhập</button>
 			</form>
 		</div>

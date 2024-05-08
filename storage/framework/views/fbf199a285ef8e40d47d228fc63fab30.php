@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('app\css\owl.transitions.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\animate.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\rateit.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('font-awesome-4.7.0\css\font-awesome.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('app\css\bootstrap-select.min.css')); ?>">
     <link href="<?php echo e(asset('app\css\lightbox.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('app\chatWe\chatWe.css')); ?>" rel="stylesheet">
@@ -38,7 +39,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-
+<style>
+    
+</style>
 </head>
 
 <body class="cnt-home">
@@ -53,8 +56,11 @@
                         <ul class="list-unstyled">
                             <li><a href="<?php echo e(url('myAccount')); ?>"><i class="icon fa fa-user"></i>My Account</a></li>
                             <li><a href="<?php echo e(url('my-wishlist')); ?>"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+                            <li><a href="<?php echo e(url('productComparison')); ?>"><i class="icon fa fa-heart"></i>Comparison ( So Sánh )</a></li>
                             <li><a href="<?php echo e(url('shopping-cart')); ?>"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
+                            <li><a href="<?php echo e(url('vouchers')); ?>"><i class="fa-solid fa-ticket"></i>
+                               Your Vouchers</a></li>
                             <?php if(Auth::check()): ?>
                             <li><a href="<?php echo e(url('logout')); ?>"><i class="icon fa fa-lock"></i>Logout</a></li>
                             <?php else: ?>
