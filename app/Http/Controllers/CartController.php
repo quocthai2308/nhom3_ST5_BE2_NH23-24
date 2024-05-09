@@ -114,7 +114,7 @@ class CartController extends Controller
             // Người dùng chưa đăng nhập, xóa sản phẩm khỏi cookie
             if (Cookie::get('cart')) {
                 $cart = json_decode(Cookie::get('cart'), true);
-                if (isset($cart[$id])) {
+                if (isset($cart[$id])) {    
                     unset($cart[$id]);
                     $cookie = Cookie::make('cart', json_encode($cart), 60);
                     return response('Product removed from cart.')->withCookie($cookie);

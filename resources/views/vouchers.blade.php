@@ -14,7 +14,7 @@
 							<td> {{ $voucher['title'] }}</td>
 							<td>Số lượng còn lại: {{  $voucher['quantity'] }}</td>
 							<td>Ngày hết hạn: {{ $voucher['due_date'] }}</td>
-							<td>Giảm: {{ $voucher['discount'] }}%</td>
+							<td>Giảm: {{ $voucher['discount'] }}$</td>
 							@if ($voucher->due_date <= date('Y-m-d H:i:s'))
                                  <td class= "danger">Đã quá hạn</td>
                            @endif
