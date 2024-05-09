@@ -116,4 +116,16 @@ class HomeController extends Controller
         }
 
     }
+    public function getVoucher()
+    {
+        $voucherM = new Voucher();
+        $id = session('user_id');
+        if(isset($id)){
+            $vouchers = $voucherM->getVoucherByUserId($id);
+            return response()->json(['vouchers' => $vouchers]);
+        }else{
+            return view('auth.login');
+        }
+
+    }
 }

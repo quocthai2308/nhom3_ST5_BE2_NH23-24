@@ -26,6 +26,7 @@
                     <h3 class="section-title">hot deals</h3>
                     <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
                         @foreach ($products as $product)
+                        @if ($product['discount']!= 0)
                         <div class="item">
                             <div class="products">
                                 <div class="hot-deal-wrapper">
@@ -59,26 +60,29 @@
                                 <div class="product-info text-left m-t-20">
                                     <h3 class="name"><a href="{{ url('detail/'.$product['id']) }}">{{ $product['name'] }}</a>
                                     </h3>
+                                        
+                                    <span style="text-decoration: line-through;">{{ $product['price'] }} vnd</span>
                                     <div class="product-price"> <span class="price">
-                                            {{ $product['price'] }}$ </span></div>
-                                    <!-- /.product-price -->
-
-                                </div>
-                                <!-- /.product-info -->
-
-                                <div class="cart clearfix animate-effect">
-                                    <div class="action">
-                                        <div class="add-cart-button btn-group">
-                                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                            <button class="btn btn-primary cart-btn cooke" data-id="{{ $product->id }}" type="button">Add to
-                                                cart</button>
-                                        </div>
+                                        {{ $product['discount'] }} vnd </span></div>
+                                        <!-- /.product-price -->
+                                        
                                     </div>
-                                    <!-- /.action -->
+                                    <!-- /.product-info -->
+                                    
+                                    <div class="cart clearfix animate-effect">
+                                        <div class="action">
+                                            <div class="add-cart-button btn-group">
+                                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                                <button class="btn btn-primary cart-btn cooke" data-id="{{ $product->id }}" type="button">Add to
+                                                    cart</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.action -->
+                                        </div>
+                                        <!-- /.cart -->
+                                    </div>
                                 </div>
-                                <!-- /.cart -->
-                            </div>
-                        </div>
+                                @endif   
                         @endforeach
                     </div>
                     <!-- /.sidebar-widget -->
@@ -115,7 +119,7 @@
                                                         <h3 class="name"><a href="{{ url('detail/'.$specialProduct['id']) }}">Floral Print
                                                                 Shirt</a></h3>
                                                         <div class="product-price"> <span class="price">
-                                                                {{ $specialProduct->price }}$
+                                                                {{ $specialProduct->price }}vnd
                                                             </span> </div>
                                                         <!-- /.product-price -->
 
@@ -334,7 +338,7 @@
                                                 <div class="product-info text-left">
                                                     <h3 class="name"><a href="{{ url('detail/'.$newProduct['id']) }}">{{$newProduct['name']}}</a></h3>
                                                     <div class="description"><?php echo $newProduct['description']; ?></div>
-                                                    <div class="product-price"> <span class="price"> {{$newProduct['price']}}
+                                                    <div class="product-price"> <span class="price"> {{$newProduct['price']}}vnd
                                                         </span>
                                                     </div>
                                                     <!-- /.product-price -->

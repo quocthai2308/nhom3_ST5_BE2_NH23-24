@@ -121,6 +121,7 @@ Route::post('register', [RegisterController::class, 'register']);
 
 // Giỏ hàng 
 Route::get('/shopping-cart', [HomeController::class, 'shopping_cart'])->name('shopping-cart');
+Route::get('/get-product-info', [HomeController::class, 'getVoucher'])->name('get.voucher.cart');
 Route::get('/shopping-cart', [CartController::class, 'showCart']);
 Route::post('/shopping-cart/update', [CartController::class, 'updateCart']);
 Route::get('/shopping-cart/{id}', [CartController::class, 'removeFromCart']);
@@ -133,8 +134,8 @@ Route::post('/checkout', [PaymentController::class, 'checkout']);
 // Các routes khác của bạn... Biết ời cái đó tui làm tạm tại chưa có login
 //21/4
 // Route::get('/', [HomeController::class,'index']);
- Route::get('search', [HomeController::class,'search']);
- Route::get('category/{categoryId}', [HomeController::class,'category']);
+Route::get('search', [HomeController::class,'search']);
+Route::get('category/{categoryId}', [HomeController::class,'category']);
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
 

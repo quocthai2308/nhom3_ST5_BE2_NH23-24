@@ -1,5 +1,27 @@
+let date = new Date();
+getProductInfo();
+async function getProductInfo (){
+    let voucherContent = document.querySelectorAll('.voucher');
+    const url = '/get-product-info';
+    const response = await fetch(url);
+     const result = await response.json();
+     console.log(result)
+     voucherContent.forEach(e => {   
+     
+         result.vouchers.forEach(element => {
+           let due = element.due_date.replace(' ', 'T');
+            let dueDate = new Date(due);
+            if (dueDate > date) {
+             e.innerHTML += `	
+             <input type="radio" id="option${element.id}" name="options" value="${element.id}">
+             <label for="option${element.id}">
+             ${element.title} - giảm ${element.discount} vnd
+             </label>`;}
+            });
+        });
+    
+ }
 $(document).ready(function() {
-
    // Load value price 
    function updateGrandTotal(productId) {
     var quantity = parseInt($('#quant-input-' + productId + ' input').val(), 10);
