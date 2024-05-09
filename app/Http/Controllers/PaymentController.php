@@ -25,7 +25,7 @@ class PaymentController extends Controller
         $vnp_TxnRef = "127k8kb3kdgf6l046687"; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh Toán Hóa Đơn - " . $vnp_TxnRef;
         $vnp_OrderType = "Flipmart";
-        $vnp_Amount = $data['redirect'];
+        $vnp_Amount = $data['redirect']*10000;
         $vnp_Locale = "VN";
         $vnp_BankCode = "NCB";
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -188,7 +188,7 @@ class PaymentController extends Controller
             $productdM = new Product();
             $bill = new Bill;
             $billProduct= new BillProduct();
-                $total = $amount;
+                $total = $amount/10000;
                 $userId = Auth::user()->id;
                 $createdAt = $payDate;
                 $paymentMethod = 'VNpay';
