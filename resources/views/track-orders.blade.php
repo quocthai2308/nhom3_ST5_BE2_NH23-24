@@ -18,19 +18,47 @@
 		<div class="track-order-page"> 
 			<div class="row">
 				<div class="col-md-12">
-	<h2 class="heading-title">Track your Order</h2>
-	<span class="title-tag inner-top-ss">Please enter your Order ID in the box below and press Enter. This was given to you on your receipt and in the confirmation email you should have received. </span>
-	<form class="register-form outer-top-xs" role="form">
-		<div class="form-group">
-		    <label class="info-title" for="exampleOrderId1">Order ID</label>
-		    <input type="text" class="form-control unicase-form-control text-input" id="exampleOrderId1">
-		</div>
-	  	<div class="form-group">
-		    <label class="info-title" for="exampleBillingEmail1">Billing Email</label>
-		    <input type="email" class="form-control unicase-form-control text-input" id="exampleBillingEmail1">
-		</div>
-	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Track</button>
-	</form>	
+	<h2 class="heading-title">Your Orders</h2>
+	<div class="table-responsive">
+		<table class="table compare-table inner-top-vs">
+			<tr>
+				<td><strong>Ảnh</strong></td>
+				<td><strong>Tên Sản Phẩm</strong></td>
+				<td><strong>Giá</strong></td>
+				<td><strong>Số lượng</strong></td>
+				<td><strong>Thành tiền</strong></td>
+				<td><strong>Đã thanh toán</strong></td>
+				<td><strong>Trạng Thái</strong></td>
+				<td><strong>Xác nhận đã nhận hàng</strong></td>
+				<!-- <td><strong>Add To Cart</strong></td> -->
+			</tr>
+
+			@foreach ($products as $product)
+			<tr>
+				<td><img style ="width: 90%" src="{{asset('app/images/products/'.$product['image'])}}" alt="{{ $product['name'] }}"></td>
+				<td>{{ $product['name'] }}</td>
+				<td>{{ $product['price'] }}</td>
+				<td>{{ $product['quantity'] }}</td>
+				<td>{{ $product['total'] }}</td>
+				<td>{{ $product['created_at'] }}</td>
+				<td>
+					<button class="btn btn-danger">Đang Giao Hàng</button>
+
+				</td>
+				<td>
+					<button class="btn btn-warning">Xác Nhận</button>
+
+				</td>
+				<!-- <td>
+					<div class="action">
+						<a class="lnk btn btn-primary" href="#">Add To Cart</a>
+					</div>
+				</td> -->
+			</tr>
+			@endforeach
+		</table>
+	</div>
+	
 </div>			</div><!-- /.row -->
 		</div><!-- /.sigin-in-->
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->

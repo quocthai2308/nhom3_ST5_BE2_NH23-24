@@ -128,4 +128,17 @@ class HomeController extends Controller
         }
 
     }
+    public function getProductByOrders()
+    {
+        $productModel = new Product();
+        $id = session('user_id');
+        if (isset($id)) {
+            $products = $productModel -> getProductByOrders($id);
+            return view('track-orders', compact('products') );
+        }
+        else{
+            return view('auth.login');
+        }
+
+    }
 }

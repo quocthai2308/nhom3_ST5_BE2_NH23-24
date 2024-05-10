@@ -158,6 +158,16 @@ class Product extends Model
             $product->save();
         }
     }
-
+    public function getProductByOrders($id)
+    {
+        $products = Product::join('bill_product', 'products.id', '=', 'bill_product.product_id')
+        ->join('bills', 'bill_product.bill_id', '=', 'bills.id')
+        ->join('images', 'products.id', '=', 'images.product_id')
+        ->where('bills.user_id', $id)
+        ->select('products.id', 'products.name', 'products.price', 'bill_product.quantity', 'bills.total', 'images.name as image','bills.created_at')
+        ->get();
+        return $products;
+    
+    }
     use HasFactory;
 }

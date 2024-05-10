@@ -188,7 +188,7 @@ class PaymentController extends Controller
             $productdM = new Product();
             $bill = new Bill;
             $billProduct= new BillProduct();
-                $total = $amount/10000;
+                $total = $amount/100000;
                 $userId = Auth::user()->id;
                 $createdAt = $payDate;
                 $paymentMethod = 'VNpay';

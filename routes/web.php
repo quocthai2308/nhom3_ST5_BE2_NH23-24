@@ -20,7 +20,8 @@ Route::get('/manage-voucher', [DashboardController::class, 'manageVoucher'])->na
 Route::post('/add-voucher', [DashboardController::class, 'addVoucher'])->name('add.voucher');
 Route::get('/vouchers', [HomeController::class, 'vouchers'])->name('vouchers');
 Route::delete('/voucher/{id}', [DashboardController::class, 'delete'])->name('voucher.delete');
-
+// tracking orders
+Route::get('/track-orders', [HomeController::class, 'getProductByOrders'])->name('getProductByOrders');
 
 //Tôi làm về so sánh coi bộ cũng khó đấy
 Route::get('/remove-from-compare/{id}', [ProductController::class, 'removeFromCompare'])->name('remove.from.compare');
@@ -82,6 +83,9 @@ Route::get('/myAccount', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
+// Route::get('/track-orders', function () {
+//     return view('track-orders');
+// });
 /// test load view
 
 // Route cho AJAX pagination load trang 5 nguoi
