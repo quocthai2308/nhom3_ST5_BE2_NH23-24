@@ -37,6 +37,7 @@ class Bill extends Model
         $this->user_id = $userId;
         $this->created_at = $createdAt;
         $this->payment_method = $paymentMethod;
+        $this->state = 0;
         $this->save();
         return $this->id;
     }
