@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\Voucher;
+use App\Models\Bill;
 
 class HomeController extends Controller
 {
@@ -139,6 +140,15 @@ class HomeController extends Controller
         else{
             return view('auth.login');
         }
+
+    }
+    public function setStateOrder(Request $request)
+    {
+        $billModel = new Bill();
+        $id = $request->input('bill_id');
+        $billModel->updateBill($id);
+
+        return response()->json(['result' => true]);
 
     }
 }

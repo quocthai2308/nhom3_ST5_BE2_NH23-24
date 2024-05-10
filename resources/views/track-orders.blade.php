@@ -41,14 +41,25 @@
 				<td>{{ $product['quantity'] }}</td>
 				<td>{{ $product['total'] }}</td>
 				<td>{{ $product['created_at'] }}</td>
+				<div class="btn-group">
 				<td>
-					<button class="btn btn-danger">Đang Giao Hàng</button>
-
-				</td>
-				<td>
-					<button class="btn btn-warning">Xác Nhận</button>
-
-				</td>
+						@if ($product['state'] == 0)
+						<button class="btn btn-danger state" value="{{$product['bill_id']}}">Đang Giao Hàng</button>	
+						@endif
+						@if ($product['state'] == 1)
+						<button class="btn btn-success">Đã Nhận Hàng</button>	
+						@endif
+						
+					</td>
+					<td>
+						@if ($product['state'] == 0)
+						<button class="btn btn-warning confirm" value="{{$product['bill_id']}}">Xác Nhận</button>
+						@endif
+						@if ($product['state'] == 1)
+						<button class="btn btn-primary">Đánh giá</button>	
+						@endif			
+					</td>
+				</div>
 				<!-- <td>
 					<div class="action">
 						<a class="lnk btn btn-primary" href="#">Add To Cart</a>

@@ -477,6 +477,7 @@
     <script src="{{ asset('app\js\scripts.js') }}"></script>
     <script src="{{ asset('app\js\shopping-cart.js') }}"></script>
     <script src="{{ asset('app\js\home.js') }}"></script>
+    <script src="{{ asset('app\js\confirmorder.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="{{ asset('app\chatWe\chatWe.js') }}"></script>
     <!-- For demo purposes – can be removed on production -->

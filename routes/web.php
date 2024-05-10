@@ -22,6 +22,7 @@ Route::get('/vouchers', [HomeController::class, 'vouchers'])->name('vouchers');
 Route::delete('/voucher/{id}', [DashboardController::class, 'delete'])->name('voucher.delete');
 // tracking orders
 Route::get('/track-orders', [HomeController::class, 'getProductByOrders'])->name('getProductByOrders');
+Route::post('/set-state-orders', [HomeController::class, 'setStateOrder'])->name('setstateorder');
 
 //Tôi làm về so sánh coi bộ cũng khó đấy
 Route::get('/remove-from-compare/{id}', [ProductController::class, 'removeFromCompare'])->name('remove.from.compare');

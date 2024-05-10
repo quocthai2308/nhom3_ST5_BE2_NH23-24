@@ -164,7 +164,9 @@ class Product extends Model
         ->join('bills', 'bill_product.bill_id', '=', 'bills.id')
         ->join('images', 'products.id', '=', 'images.product_id')
         ->where('bills.user_id', $id)
-        ->select('products.id', 'products.name', 'products.price', 'bill_product.quantity', 'bills.total', 'images.name as image','bills.created_at')
+        ->select('products.id', 'products.name', 'products.price', 'bill_product.quantity'
+        , 'bills.total', 'images.name as image','bills.created_at','bills.state',
+        'bills.id as bill_id')
         ->get();
         return $products;
     

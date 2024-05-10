@@ -41,14 +41,25 @@
 				<td><?php echo e($product['quantity']); ?></td>
 				<td><?php echo e($product['total']); ?></td>
 				<td><?php echo e($product['created_at']); ?></td>
+				<div class="btn-group">
 				<td>
-					<button class="btn btn-danger">Đang Giao Hàng</button>
-
-				</td>
-				<td>
-					<button class="btn btn-warning">Xác Nhận</button>
-
-				</td>
+						<?php if($product['state'] == 0): ?>
+						<button class="btn btn-danger state" value="<?php echo e($product['bill_id']); ?>">Đang Giao Hàng</button>	
+						<?php endif; ?>
+						<?php if($product['state'] == 1): ?>
+						<button class="btn btn-success">Đã Nhận Hàng</button>	
+						<?php endif; ?>
+						
+					</td>
+					<td>
+						<?php if($product['state'] == 0): ?>
+						<button class="btn btn-warning confirm" value="<?php echo e($product['bill_id']); ?>">Xác Nhận</button>
+						<?php endif; ?>
+						<?php if($product['state'] == 1): ?>
+						<button class="btn btn-primary">Đánh giá</button>	
+						<?php endif; ?>			
+					</td>
+				</div>
 				<!-- <td>
 					<div class="action">
 						<a class="lnk btn btn-primary" href="#">Add To Cart</a>

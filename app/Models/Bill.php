@@ -41,6 +41,10 @@ class Bill extends Model
         $this->save();
         return $this->id;
     }
+    public function updateBill($id)
+    {
+        return Bill::where('id', $id)->update(['state' => 1]);
+    }
 
 
     use HasFactory;
