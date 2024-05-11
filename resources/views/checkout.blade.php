@@ -3,8 +3,9 @@
 @section('content')
 
 <?php
- echo "kkkk:" . $qtyProduct
+session()->put('qtyProduct', $qtyProduct);
 ?>
+
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
 	<div class="container">

@@ -95,7 +95,7 @@
 									<td>
 										<form action="<?php echo e(url('/checkout')); ?>" method="post">
 											<?php echo csrf_field(); ?>
-											<input type="hidden" name="qty" value="<?php echo e($product['quantity']); ?>">
+											<input type="hidden" name="qtyProduct-<?php echo e($product['id']); ?>" value="<?php echo e($product['quantity']); ?>">
 											<input type="hidden" name="product_id" value="<?php echo e($product['id']); ?>">
 											<input type="hidden" id="redirectValue-<?php echo e($product['id']); ?>" name="redirect" value="">
 											<button class="btn btn-primary checkout-btn-child">Thanh toán</button>

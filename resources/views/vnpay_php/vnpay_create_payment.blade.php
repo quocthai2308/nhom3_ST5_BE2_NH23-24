@@ -5,7 +5,7 @@ use function Laravel\Prompts\alert;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
-
+use Ramsey\Uuid\Type\Integer;
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -39,12 +39,10 @@ $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; //IP Khách hàng thanh toán
 
 
 
-
-
 $inputData = array(
     "vnp_Version" => "2.1.0",
     "vnp_TmnCode" => $vnp_TmnCode,
-    "vnp_Amount" => $vnp_Amount . 10000,
+    "vnp_Amount" =>  $vnp_Amount * 100,
     "vnp_Command" => "pay",
     "vnp_CreateDate" => date('YmdHis'),
     "vnp_CurrCode" => "VND",

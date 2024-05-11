@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
+    /*
     public function vnpay_payment(Request $request)
     {
 
@@ -84,6 +85,7 @@ class PaymentController extends Controller
         // vui lòng tham khảo thêm tại code demo
 
     }
+    */
 
 
     public function checkout(Request $request)
@@ -93,17 +95,19 @@ class PaymentController extends Controller
 
         $product_id = $request->input('product_id');
         $redirectValue = $request->input('redirect');
-        $qtyProduct = $request->input('qty');
-        session()->put('quantity',$qtyProduct);
-        session()->put('product_id',$product_id );
-        
+        $redirectValue = str_replace('.', '', $redirectValue);
+        $qtyProduct = $request->input('qtyProduct-' . $product_id);
+
+        session()->put('quantity', $qtyProduct);
+        session()->put('product_id', $product_id);
+
         return view('checkout', compact('product_id', 'redirectValue', 'qtyProduct'));
     }
-    
+
     public function vnpay_create_payment(Request $request)
     {
-        
-        
+
+
         // Lấy thông tin từ form
         $email = $request->input('customerEmail');
         $phone = $request->input('customerPhone');
@@ -112,7 +116,9 @@ class PaymentController extends Controller
         $product_id = $request->input('product_id');
         $redirectValue = $request->input('redirectCheckout');
         $user_id = Auth::user()->id; // Hoặc bất kỳ cách nào bạn xác định người dùng hiện tại
-       
+        $qtyProduct = $request->input('qtyProduct');
+
+
         // Tạo mã giao dịch duy nhất
         do {
             $code_vnpay = rand(1, 100000);
@@ -134,14 +140,13 @@ class PaymentController extends Controller
             'shipping_address' => $shippingAddress,
         ]);
         $transaction->save();
-        // Chuyển hướng đến trang 'vnpay_create_payment' với thông tin giao dịch
 
         // Lấy thông tin giao dịch từ cơ sở dữ liệu
         $transaction = Transaction::where('code_vnpay', $code_vnpay)->firstOrFail();
 
         // Tiếp tục với việc tạo thanh toán VNPAY...
 
-        return view('vnpay_php.vnpay_create_payment', compact('transaction', 'redirectValue', 'code_vnpay'));
+        return view('vnpay_php.vnpay_create_payment', compact('transaction', 'redirectValue', 'code_vnpay', 'qtyProduct'));
     }
 
     public function vnpay_return()
@@ -185,21 +190,30 @@ class PaymentController extends Controller
             $payment->save();
         }
 
-        if($responseCode == '00'){
+        if ($responseCode == '00') {
             $productdM = new Product();
             $bill = new Bill;
-            $billProduct= new BillProduct();
-            $amount = $amount / 100000;
+            $billProduct = new BillProduct();
+            $amount = $amount / 100;
 
-                $total = $amount;
-                $userId = Auth::user()->id;
-                $createdAt = $payDate;
-                $paymentMethod = 'VNpay';
-          $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
-          $product_id = session('product_id');
-          $quantity = session('quantity');
-          $billProduct->addBillProduct($billId,$product_id,$quantity);
-          $productdM->updateProductQuantity($product_id,$quantity);
+            $total = $amount;
+            $userId = Auth::user()->id;
+            $createdAt = $payDate;
+            $paymentMethod = 'VnPay';
+            $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
+            $product_id = session('product_id');
+            $quantity = session('quantity');
+            
+            //$qtyProduct = session('qtyProduct');
+            // $product = Product::find($product_id); // Tìm sản phẩm theo $product_id
+            // if ($product) {
+            //     $newQuantity = $product->quantity - $quantity; // Tính toán số lượng mới
+            //     $product->quantity = $newQuantity; // Cập nhật số lượng mới
+            //     $product->save(); // Lưu thay đổi vào cơ sở dữ liệu
+            // }
+
+            $billProduct->addBillProduct($billId, $product_id, $quantity);
+            $productdM->updateProductQuantity($product_id, $quantity);
         }
         // Tìm giao dịch trong bảng 'transactions' với code_vnpay tương ứng
         $transaction = Transaction::where('code_vnpay', $transactionId)->first();

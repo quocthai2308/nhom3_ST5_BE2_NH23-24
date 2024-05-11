@@ -93,7 +93,7 @@
 									<td>
 										<form action="{{ url('/checkout') }}" method="post">
 											@csrf
-											<input type="hidden" name="qty" value="{{ $product['quantity']}}">
+											<input type="hidden" name="qtyProduct-{{ $product['id'] }}" value="{{ $product['quantity']}}">
 											<input type="hidden" name="product_id" value="{{ $product['id'] }}">
 											<input type="hidden" id="redirectValue-{{ $product['id'] }}" name="redirect" value="">
 											<button class="btn btn-primary checkout-btn-child">Thanh toán</button>
