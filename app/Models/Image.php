@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class image extends Model
 {
+    protected $table = 'images';
+    public function images( ){
+        return image ::all();
+    }
     public function product()
     {
         return $this->belongsTo(Product::class);

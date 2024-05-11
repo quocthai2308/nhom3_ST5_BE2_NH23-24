@@ -20,6 +20,8 @@
                         <thead>
                             <tr>
                                 <th>Tên Người Dùng</th>
+                                <th>ảnh sản phẩm</th>
+                                <th>Tên Sản Phẩm</th>
                                 <th>Email</th>
                                 <th>Số Điện Thoại</th>
                                 <th>Nội Dung Khách Đặc</th>
@@ -34,6 +36,16 @@
                             @foreach ($transactions as $transaction)
                             <tr>
                                 <td>{{ $transaction->user->name }}</td> <!-- Giả sử bạn đã có relation 'user' trong model Transaction -->
+                                <td style="width: 50%;">
+                                    @foreach ($images as $item)
+
+                                    @if($transaction -> product_id == $item->product_id)
+                                    <img style="width: 30%;" src="{{asset('app/images/products/'.$item['name'])}}" alt="{{ $item['name'] }}">
+                                    @endif
+                                    @endforeach
+
+                                </td>
+                                <td>{{ $transaction->product->name }}</td> <!-- Hiển thị tên sản phẩm -->
                                 <td>{{ $transaction->email }}</td>
                                 <td>{{ $transaction->phone }}</td>
                                 <td>{{ $transaction->order_content }}</td>
@@ -55,7 +67,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-<h5 class="modal-title">Modal title</h5>
+                                    <h5 class="modal-title">Modal title</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">

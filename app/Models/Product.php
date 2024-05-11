@@ -13,6 +13,7 @@ class Product extends Model
     /**
      * @param  $id
      */
+    
     public function images()
     {
         return $this->hasMany(Image::class);

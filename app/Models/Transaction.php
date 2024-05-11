@@ -9,6 +9,17 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $table = 'transaction';
+    // App\Models\Transaction
+
+public function product()
+{
+    return $this->belongsTo('App\Models\Product', 'product_id');
+}
+
+// public function user()
+// {
+//     return $this->belongsTo('App\Models\User', 'user_id');
+// }
 
     // Đảm bảo quan hệ này được định nghĩa
     public function user() {
