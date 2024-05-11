@@ -108,9 +108,12 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/send-otp', [ResetPasswordController::class, 'sendOTP'])->name('sendOtp');
 Route::post('/verifiedOtp', [ResetPasswordController::class, 'verifiedOtp']);
 Route::get('reset-password', [ResetPasswordController::class, 'view']);
-Route::get('/resend-otp', [ResetPasswordController::class, 'resendOtp'])->name('resendOtp');
 Route::get('/verification/{email}', [ResetPasswordController::class, 'verification'])->name('verification');
 Route::get('/verification', [ResetPasswordController::class, 'verification']);
+Route::get('/resend-otp', [ResetPasswordController::class, 'resendOtp'])->name('resendOtp');
+Route::get('/passwordVerification', [ResetPasswordController::class, 'viewPasswordVerification']);
+Route::post('/change-password', [ResetPasswordController::class, 'changePassword']);
+
 // Route::post('/send-otp', [ResetPasswordController::class, 'sendOTP'])->name('send-otp');
 
 

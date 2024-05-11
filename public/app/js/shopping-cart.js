@@ -232,103 +232,10 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('checkoutForm').submit();
         });
 
-        // document.querySelector('.checkout-btn-child').addEventListener('click', function() {
-        //     // Lấy giá trị của nút "PROCEED TO CHECKOUT"
+       
 
-        //     var redirectValue = document.getElementById('checkout-btn').value;;
-            
-        //     // Gán giá trị vào trường ẩn trong form
-        //     document.getElementById('redirectValue').value = redirectValue;
-            
-        //     // Submit form
-        //     document.getElementById('checkoutForm').submit();
-
-            
-        // });
-
-     /*
-        document.querySelector('.checkout-payment').addEventListener('click', function(e) {
-            
-            alert("oke")
-        
-            // Lấy product_id từ cookie
-            var product_id = document.cookie
-                .split('; ')
-                .find(row => row.startsWith('product_id='))
-                .split('=')[1];
-        
-            // Lấy dữ liệu từ form
-            var email = document.getElementById('customerEmail').value;
-            var phone = document.getElementById('customerPhone').value;
-            var orderContent = document.getElementById('orderContent').value;
-            var shippingAddress = document.getElementById('shippingAddress').value;
-        
-            // Lưu dữ liệu vào cookie
-            document.cookie = "email=" + email;
-            document.cookie = "phone=" + phone;
-            document.cookie = "orderContent=" + orderContent;
-            document.cookie = "shippingAddress=" + shippingAddress;
-            document.cookie = "product_id=" + product_id;
-        
-            // Kiểm tra xem radio button nào được chọn
-            if (document.getElementById('cash').checked) {
-                // Nếu "Pay cash upon receipt" được chọn, chuyển hướng đến trang A
-                window.location.href = 'trangA.html';
-            } else if (document.getElementById('online').checked) {
-                // Nếu "online payment" được chọn, chuyển hướng đến trang B
-                window.location.href = 'http://localhost:8080/Git/nhom3_ST5_BE2_NH23-24/resources/views/vnpay_php/vnpay_pay.php';
-            }
-        });
-       */ 
+   
         
 
     });
 
-// document.addEventListener('DOMContentLoaded', function() {
-
-// let updateCartButton = document.querySelector('.update-cart');
-//     updateCartButton.addEventListener('click', function(e) {
-//         e.preventDefault();
-//         updateCart();
-//     });
-
-//     async function updateCart() {
-//         var updatedCart = {};
-    
-//         // Loop through each product in the cart
-//         $('tr[data-id]').each(function() {
-//             var productId = $(this).data('id');
-//             var quantity = $('#quant-input-' + productId + ' input').val();
-    
-//             // Add the product ID and quantity to the updatedCart object
-//             updatedCart[productId] = quantity;
-//         });
-    
-//         let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-//         const url = '/shopping-cart/update';
-//         const response = await fetch(url, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'X-CSRF-TOKEN': csrfToken
-//             },
-//             body: JSON.stringify({
-//                 cart: updatedCart,
-//                 _token: csrfToken
-//             })
-//         });
-    
-//         if (response.ok) {
-//             const result = await response.text();
-//             alert(result);
-//             location.reload();
-//         } else {
-//             if (response.status === 401) {  // HTTP status 401 means "Unauthorized"
-//                 alert('Please login to update cart.');
-//             } else {
-//                 alert('Error: ' + response.status);
-//             }
-//         }
-//     }
-// });

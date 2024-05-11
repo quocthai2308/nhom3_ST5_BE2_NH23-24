@@ -6,37 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>Verification</title>
+    <!-- Link Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-light">
 
-    <p id="message_error" style="color:red;"></p>
-    <p id="message_success" style="color:green;"></p>
-    <form method="post" id="verificationForm">
-        <?php echo csrf_field(); ?>
-        <input type="hidden" name="email" value="<?php echo e($email); ?>">
-        <input type="number" name="otp" placeholder="Enter OTP" required>
-        <br><br>
-        <input type="submit" value="Verify">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Xác Thực Email </h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger" id="message_error" style="display:none;"></div>
+                <div class="alert alert-success" id="message_success" style="display:none;"></div>
+                <form method="post" id="verificationForm">
+                    <?php echo csrf_field(); ?>
+                    <input type="hidden" name="email" value="<?php echo e($email); ?>">
+                    <div class="form-group">
+                        <label for="otp">Nhập mã OTP:</label>
+                        <input type="number" class="form-control" name="otp" id="otp" placeholder="Nhập mã OTP" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Xác minh</button>
+                </form>
 
-    </form>
+                <p class="mt-3">Không nhận được mã OTP? <button class="btn btn-link p-0" id="resendOtpVerification">Gửi lại</button></p>
+                <p class="time"></p>
+            </div>
+        </div>
+    </div>
 
-    <p class="time"></p>
-
-    <button id="resendOtpVerification">Resend Verification OTP</button>
-
+    <!-- Link jQuery and Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
         $(document).ready(function() {
             $('#verificationForm').submit(function(e) {
                 e.preventDefault();
-
                 var formData = $(this).serialize();
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-                console.log(formData);
-                console.log(csrfToken);
                 $.ajax({
                     url: "/verifiedOtp/",
                     method: "POST",
@@ -46,13 +56,14 @@
                     data: formData,
                     success: function(res) {
                         if (res.success) {
-                            alert(res.msg);
-                            window.open("/", "_self");
-                        } else {
-                            $('#message_error').text(res.msg);
+                            $('#message_success').text(res.msg).show();
                             setTimeout(() => {
-                                $('#message_error').text('');
-                            }, 3000);
+                                // Xây dựng URL với tham số email và chuyển hướng
+                                var redirectUrlWithEmail = res.redirect_url + '?email=' + encodeURIComponent('<?php echo e($email); ?>');
+                                window.location.href = redirectUrlWithEmail;
+                            }, 2000);
+                        } else {
+                            $('#message_error').text(res.msg).show();
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -61,9 +72,8 @@
                 });
             });
 
-
             $('#resendOtpVerification').click(function() {
-                $(this).text('Wait...');
+                $(this).prop('disabled', true).text('Sending...');
                 var userMail = <?php echo json_encode($email, 15, 512) ?>;
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -76,59 +86,46 @@
                     },
                     data: JSON.stringify({
                         email: userMail
-                    }), // Chuyển đổi dữ liệu thành JSON string
+                    }),
                     success: function(res) {
-                        $('#resendOtpVerification').text('Resend Verification OTP');
+                        $('#resendOtpVerification').prop('disabled', false).text('Resend');
                         if (res.success) {
                             timer();
-                            $('#message_success').text(res.msg);
-                            setTimeout(() => {
-                                $('#message_success').text('');
-                            }, 3000);
+                            $('#message_success').text(res.msg).show();
                         } else {
-                            $('#message_error').text(res.msg);
-                            setTimeout(() => {
-                                $('#message_error').text('');
-                            }, 3000);
+                            $('#message_error').text(res.msg).show();
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Error: ' + textStatus + ' ' + errorThrown);
                     }
                 });
-
             });
         });
 
         function timer() {
-            var seconds = 00;
             var minutes = 3;
-
-            var timer = setInterval(() => {
-
-                if (minutes < 0) {
+            var seconds = 0;
+            var timerInterval = setInterval(function() {
+                if (minutes === 0 && seconds === 0) {
+                    clearInterval(timerInterval);
                     $('.time').text('');
-                    clearInterval(timer);
                 } else {
-                    let tempMinutes = minutes.toString().length > 1 ? minutes : '0' + minutes;
-                    let tempSeconds = seconds.toString().length > 1 ? seconds : '0' + seconds;
-
-                    $('.time').text(tempMinutes + ':' + tempSeconds);
+                    if (seconds === 0) {
+                        minutes--;
+                        seconds = 59;
+                    } else {
+                        seconds--;
+                    }
+                    var displayMinutes = ('0' + minutes).slice(-2);
+                    var displaySeconds = ('0' + seconds).slice(-2);
+                    $('.time').text(displayMinutes + ':' + displaySeconds);
                 }
-
-                if (seconds <= 0) {
-                    minutes--;
-                    seconds = 59;
-                }
-
-                seconds--;
-
             }, 1000);
         }
 
-        timer();
+        timer(); // Start timer initially
     </script>
-
 </body>
 
 </html><?php /**PATH D:\Tài liệu Môn Học\Kì 4\BE2\Git\nhom3_ST5_BE2_NH23-24\resources\views/auth/verification.blade.php ENDPATH**/ ?>

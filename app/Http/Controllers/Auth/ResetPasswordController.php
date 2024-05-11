@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\MailVerification;
 use Illuminate\Support\Facades\Config;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class ResetPasswordController extends Controller
 {
@@ -88,45 +89,6 @@ class ResetPasswordController extends Controller
     }
 
 
-    public function userLogin(Request $request)
-    {
-        $request->validate([
-            'email' => 'string|required|email',
-            'password' => 'string|required'
-        ]);
-
-        $userCredential = $request->only('email', 'password');
-        $userData = User::where('email', $request->email)->first();
-        if ($userData && $userData->is_verified == 0) {
-            $this->sendOtp($userData);
-            return redirect("/verification/" . $userData->id);
-        } else if (Auth::attempt($userCredential)) {
-            return redirect('/dashboard');
-        } else {
-            return back()->with('error', 'Username & Password is incorrect');
-        }
-    }
-
-    public function loadDashboard()
-    {
-        if (Auth::user()) {
-            return view('dashboard');
-        }
-        return redirect('/');
-    }
-
-    public function verification($id)
-    {
-        $user = User::where('id', $id)->first();
-        if (!$user || $user->is_verified == 1) {
-            return redirect('/');
-        }
-        $email = $user->email;
-
-        $this->sendOtp($user); //OTP SEND
-
-        return view('verification', ['email' => $email]);
-    }
 
     public function verifiedOtp(Request $request)
     {
@@ -139,29 +101,55 @@ class ResetPasswordController extends Controller
 
         if (!$otpData) {
             return response()->json(['success' => false, 'msg' => 'You entered wrong OTP']);
+        } else {
+            return response()->json(['success' => true, 'redirect_url' => '/passwordVerification']);
         }
-        else {
-            return response()->json(['success' => true, 'msg' => 'Email has been verified']);
-        }
-
-        // // Calculate expiration time (3 minutes) in seconds
-        // $expirationTime = 3 * 60; // 3 minutes in seconds
-
-        // // Get current time and created_at time from OTP data
-        // $currentTime = time();
-        // $createdAt = strtotime($otpData->created_at);
-
-        // // Check if OTP is within the valid window
-        // if (($currentTime - $createdAt) <= $expirationTime) {
-        //     // Successful OTP verification
-        //     User::where('email', $email)->update(['is_verified' => 1]);
-        //     $otpData->delete(); // Delete OTP data after successful verification
-        //     return response()->json(['success' => true, 'msg' => 'Email has been verified']);
-        // } else {
-        //     // OTP has expired
-        //     return response()->json(['success' => false, 'msg' => 'Your OTP has expired']);
-        // }
     }
+
+
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email', // Validate email
+            'password' => 'required|min:8|confirmed', // Validate password
+        ]);
+    
+        $email = $request->email;
+    
+        // Tìm người dùng dựa trên email
+        $user = User::where('email', $email)->first();
+    
+        if (!$user) {
+            // Xử lý khi không tìm thấy người dùng
+            return redirect()->back()->with('error', 'Người dùng không tồn tại.');
+        }
+    
+        // Cập nhật mật khẩu mới cho người dùng
+        $user->password = Hash::make($request->password);
+        $user->save();
+    
+        // Chuyển hướng hoặc trả về phản hồi thành công
+        return redirect()->route('login')->with('success', 'Đã cập nhật mật khẩu thành công!');
+    }
+
+    // // Calculate expiration time (3 minutes) in seconds
+    // $expirationTime = 3 * 60; // 3 minutes in seconds
+
+    // // Get current time and created_at time from OTP data
+    // $currentTime = time();
+    // $createdAt = strtotime($otpData->created_at);
+
+    // // Check if OTP is within the valid window
+    // if (($currentTime - $createdAt) <= $expirationTime) {
+    //     // Successful OTP verification
+    //     User::where('email', $email)->update(['is_verified' => 1]);
+    //     $otpData->delete(); // Delete OTP data after successful verification
+    //     return response()->json(['success' => true, 'msg' => 'Email has been verified']);
+    // } else {
+    //     // OTP has expired
+    //     return response()->json(['success' => false, 'msg' => 'Your OTP has expired']);
+    // }
 
 
     public function resendOtp(Request $request)
@@ -214,8 +202,13 @@ class ResetPasswordController extends Controller
     }
 
 
+
     public function view()
     {
         return view('auth.reset-password');
+    }
+    public function viewPasswordVerification()
+    {
+        return view('auth.passwordVerification');
     }
 }

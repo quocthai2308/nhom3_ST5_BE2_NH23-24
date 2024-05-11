@@ -349,7 +349,7 @@
                                                             <li class="add-cart-button btn-group">
                                                                 <button data-toggle="tooltip" class="btn btn-primary icon cooke" data-id="<?php echo e($newProduct['id']); ?>" type="button" title="Add Cart"> <i class="fa fa-shopping-cart"></i>
                                                                 </button>
-                                                                <button class="btn btn-primary cart-btn add-to-cart" data-id="<?php echo e($newProduct['id']); ?>" type="button">Add to cart</button>
+                                                                <button class="btn btn-primary cart-btn add-to-cart cooke" data-id="<?php echo e($newProduct['id']); ?>" type="button">Add to cart</button>
                                                             </li>
                                                             <li class="lnk wishlist"> <a data-toggle="tooltip" class="add-to-cart" href="<?php echo e(url('detail/'.$newProduct['id'])); ?>" title="Wishlist"> <i class="icon fa fa-heart"></i> </a>
                                                             </li>
