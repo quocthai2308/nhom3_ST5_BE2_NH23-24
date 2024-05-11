@@ -95,6 +95,11 @@
 											@csrf
 											<input type="hidden" name="qtyProduct-{{ $product['id'] }}" value="{{ $product['quantity']}}">
 											<input type="hidden" name="product_id" value="{{ $product['id'] }}">
+											<div class ="voucher" style="font-weight: bold; text-align: right; color: #0077cc;">
+											</div>
+											<input type="hidden" name="qty" value="{{ $product['quantity']}}">
+											<input type="hidden" name="product_id" class="product-id" value="{{ $product['id'] }}">
+
 											<input type="hidden" id="redirectValue-{{ $product['id'] }}" name="redirect" value="">
 											<button class="btn btn-primary checkout-btn-child">Thanh toán</button>
 										</form>
@@ -185,11 +190,26 @@
 						<thead>
 							<tr>
 								<th>
+									<div class="luaChon"style="font-weight: bold; text-align: right; color: #0077cc;">lựa chọn vocher
+										<input type="radio" id="option1" name="options" value="1">
+										<label for="option1">Option 1</label><br>
+
+										<input type="radio" id="option2" name="options" value="2">
+										<label for="option2">Option 2</label><br>
+									</div>
+ 
 									<div class="cart-sub-total">
-										Subtotal<span class="inner-left-md sub-total">$0</span>
+										Dá một món<span class="inner-left-md sub-total">$0</span>
 									</div>
 									<div class="cart-grand-total">
-										Grand Total<span class="inner-left-md grand-total">$0</span>
+										Tổng cộng<span class="inner-left-md grand-total">$0</span>
+									</div>
+
+									<div class="cart-deduction">
+										Trừ Vocher<span class="inner-left-md deduction">$0</span>
+									</div>
+									<div class="cart-result">
+										Kết Quả<span class="inner-left-md result">$0</span>
 									</div>
 								</th>
 							</tr>

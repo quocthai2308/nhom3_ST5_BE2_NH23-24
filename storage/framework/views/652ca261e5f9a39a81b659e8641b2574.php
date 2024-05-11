@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title','vouchers của bạn'); ?>
 <?php $__env->startSection('content'); ?>
 <div class="body-content outer-top-xs">
@@ -14,7 +13,7 @@
 							<td> <?php echo e($voucher['title']); ?></td>
 							<td>Số lượng còn lại: <?php echo e($voucher['quantity']); ?></td>
 							<td>Ngày hết hạn: <?php echo e($voucher['due_date']); ?></td>
-							<td>Giảm: <?php echo e($voucher['discount']); ?>%</td>
+							<td>Giảm: <?php echo e($voucher['discount']); ?>$</td>
 							<?php if($voucher->due_date <= date('Y-m-d H:i:s')): ?>
                                  <td class= "danger">Đã quá hạn</td>
                            <?php endif; ?>

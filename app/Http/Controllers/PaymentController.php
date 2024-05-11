@@ -26,7 +26,7 @@ class PaymentController extends Controller
         $vnp_TxnRef = "127k8kb3kdgf6l046687"; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh Toán Hóa Đơn - " . $vnp_TxnRef;
         $vnp_OrderType = "Flipmart";
-        $vnp_Amount = $data['redirect'] * 10000;
+        $vnp_Amount = $data['redirect']*10000;
         $vnp_Locale = "VN";
         $vnp_BankCode = "NCB";
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -190,30 +190,46 @@ class PaymentController extends Controller
             $payment->save();
         }
 
-        if ($responseCode == '00') {
+
+        // if ($responseCode == '00') {
+        //     $productdM = new Product();
+        //     $bill = new Bill;
+        //     $billProduct = new BillProduct();
+        //     $amount = $amount / 100;
+
+        //     $total = $amount;
+        //     $userId = Auth::user()->id;
+        //     $createdAt = $payDate;
+        //     $paymentMethod = 'VnPay';
+        //     $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
+        //     $product_id = session('product_id');
+        //     $quantity = session('quantity');
+            
+        //     //$qtyProduct = session('qtyProduct');
+        //     // $product = Product::find($product_id); // Tìm sản phẩm theo $product_id
+        //     // if ($product) {
+        //     //     $newQuantity = $product->quantity - $quantity; // Tính toán số lượng mới
+        //     //     $product->quantity = $newQuantity; // Cập nhật số lượng mới
+        //     //     $product->save(); // Lưu thay đổi vào cơ sở dữ liệu
+        //     // }
+
+        //     $billProduct->addBillProduct($billId, $product_id, $quantity);
+        //     $productdM->updateProductQuantity($product_id, $quantity);
+
+        if($responseCode == '00'){
             $productdM = new Product();
             $bill = new Bill;
-            $billProduct = new BillProduct();
-            $amount = $amount / 100;
+            $billProduct= new BillProduct();
+                $total = $amount/100000;
+                $userId = Auth::user()->id;
+                $createdAt = $payDate;
+                $paymentMethod = 'VNpay';
+          $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
+          $product_id = session('product_id');
+          $quantity = session('quantity');
+          $billProduct->addBillProduct($billId,$product_id,$quantity);
+          $productdM->updateProductQuantity($product_id,$quantity);
 
-            $total = $amount;
-            $userId = Auth::user()->id;
-            $createdAt = $payDate;
-            $paymentMethod = 'VnPay';
-            $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
-            $product_id = session('product_id');
-            $quantity = session('quantity');
-            
-            //$qtyProduct = session('qtyProduct');
-            // $product = Product::find($product_id); // Tìm sản phẩm theo $product_id
-            // if ($product) {
-            //     $newQuantity = $product->quantity - $quantity; // Tính toán số lượng mới
-            //     $product->quantity = $newQuantity; // Cập nhật số lượng mới
-            //     $product->save(); // Lưu thay đổi vào cơ sở dữ liệu
-            // }
-
-            $billProduct->addBillProduct($billId, $product_id, $quantity);
-            $productdM->updateProductQuantity($product_id, $quantity);
         }
         // Tìm giao dịch trong bảng 'transactions' với code_vnpay tương ứng
         $transaction = Transaction::where('code_vnpay', $transactionId)->first();

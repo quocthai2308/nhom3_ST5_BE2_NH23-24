@@ -88,8 +88,14 @@
 
                                         <div class="col-sm-6">
                                             <div class="price-box">
-                                                <span class="price">${{ $product['price'] }}</span>
-                                                <span class="price-strike">$900.00</span>
+                                                @if ($product['discount']!=0)
+                                                <span class="price">{{ $product['discount'] }} vnd</span>
+                                                <span class="price-strike">{{ $product['price'] }} vnd</span>
+                                                @endif
+                                                @if ($product['discount']==0)
+                                                <span class="price">{{ $product['price'] }} vnd</span>
+                                                @endif
+
                                             </div>
                                         </div>
                                         <div class="btn btn-primary like" data-product-id="{{ $product->id }}">

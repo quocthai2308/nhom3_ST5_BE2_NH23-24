@@ -100,6 +100,8 @@
                     <span>Blogs</span></a></li>
             <li> <a href="{{ url('manage-voucher') }}"><i class="icon icon-th-list"></i>
                     <span>Vouchers</span></a></li>
+            <li> <a href="{{ url('hangMoiDac') }}"><i class="icon icon-th-list"></i>
+                    <span>Thông Tin Hàng Mới Đặc</span></a></li>
 
         </ul>
     </div> <!-- BEGIN CONTENT -->

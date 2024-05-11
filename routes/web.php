@@ -15,12 +15,25 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
 
+use App\Http\Controllers\TransactionController;
+
+
+Route::get('/hangMoiDac', [TransactionController::class, 'showTransactions'])->name('hangMoiDac.show');
+
+
+
+// Route::get('/hangMoiDac', function () {
+//     return view('admin.hangMoiDac');
+// });
+
 //voucher
 Route::get('/manage-voucher', [DashboardController::class, 'manageVoucher'])->name('admin.voucher');
 Route::post('/add-voucher', [DashboardController::class, 'addVoucher'])->name('add.voucher');
 Route::get('/vouchers', [HomeController::class, 'vouchers'])->name('vouchers');
 Route::delete('/voucher/{id}', [DashboardController::class, 'delete'])->name('voucher.delete');
-
+// tracking orders
+Route::get('/track-orders', [HomeController::class, 'getProductByOrders'])->name('getProductByOrders');
+Route::post('/set-state-orders', [HomeController::class, 'setStateOrder'])->name('setstateorder');
 
 //Tôi làm về so sánh coi bộ cũng khó đấy
 Route::get('/remove-from-compare/{id}', [ProductController::class, 'removeFromCompare'])->name('remove.from.compare');
@@ -82,6 +95,9 @@ Route::get('/myAccount', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
+// Route::get('/track-orders', function () {
+//     return view('track-orders');
+// });
 /// test load view
 
 // Route cho AJAX pagination load trang 5 nguoi
@@ -124,6 +140,7 @@ Route::post('register', [RegisterController::class, 'register']);
 
 // Giỏ hàng 
 Route::get('/shopping-cart', [HomeController::class, 'shopping_cart'])->name('shopping-cart');
+Route::get('/get-product-info', [HomeController::class, 'getVoucher'])->name('get.voucher.cart');
 Route::get('/shopping-cart', [CartController::class, 'showCart']);
 Route::post('/shopping-cart/update', [CartController::class, 'updateCart']);
 Route::get('/shopping-cart/{id}', [CartController::class, 'removeFromCart']);
@@ -136,8 +153,8 @@ Route::post('/checkout', [PaymentController::class, 'checkout']);
 // Các routes khác của bạn... Biết ời cái đó tui làm tạm tại chưa có login
 //21/4
 // Route::get('/', [HomeController::class,'index']);
- Route::get('search', [HomeController::class,'search']);
- Route::get('category/{categoryId}', [HomeController::class,'category']);
+Route::get('search', [HomeController::class,'search']);
+Route::get('category/{categoryId}', [HomeController::class,'category']);
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
 

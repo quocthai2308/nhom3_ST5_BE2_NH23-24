@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\Voucher;
+use App\Models\Bill;
 
 class HomeController extends Controller
 {
@@ -114,6 +115,40 @@ class HomeController extends Controller
         }else{
             return view('auth.login');
         }
+
+    }
+    public function getVoucher()
+    {
+        $voucherM = new Voucher();
+        $id = session('user_id');
+        if(isset($id)){
+            $vouchers = $voucherM->getVoucherByUserId($id);
+            return response()->json(['vouchers' => $vouchers]);
+        }else{
+            return view('auth.login');
+        }
+
+    }
+    public function getProductByOrders()
+    {
+        $productModel = new Product();
+        $id = session('user_id');
+        if (isset($id)) {
+            $products = $productModel -> getProductByOrders($id);
+            return view('track-orders', compact('products') );
+        }
+        else{
+            return view('auth.login');
+        }
+
+    }
+    public function setStateOrder(Request $request)
+    {
+        $billModel = new Bill();
+        $id = $request->input('bill_id');
+        $billModel->updateBill($id);
+
+        return response()->json(['result' => true]);
 
     }
 }

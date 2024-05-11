@@ -56,7 +56,7 @@
                         <ul class="list-unstyled">
                             <li><a href="<?php echo e(url('myAccount')); ?>"><i class="icon fa fa-user"></i>My Account</a></li>
                             <li><a href="<?php echo e(url('my-wishlist')); ?>"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                            <li><a href="<?php echo e(url('productComparison')); ?>"><i class="icon fa fa-heart"></i>Comparison ( So Sánh )</a></li>
+                        
                             <li><a href="<?php echo e(url('shopping-cart')); ?>"><i class="icon fa fa-shopping-cart"></i>My
                                     Cart</a></li>
                             <li><a href="<?php echo e(url('vouchers')); ?>"><i class="fa-solid fa-ticket"></i>
@@ -478,6 +478,7 @@
     <script src="<?php echo e(asset('app\js\scripts.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\shopping-cart.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\home.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\confirmorder.js')); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="<?php echo e(asset('app\chatWe\chatWe.js')); ?>"></script>
     <!-- For demo purposes – can be removed on production -->

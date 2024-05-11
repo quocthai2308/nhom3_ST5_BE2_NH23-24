@@ -1,31 +1,60 @@
+
 $(document).ready(function () {
 
     // Load value price 
+
+    let date = new Date();
+    getProductInfo();
+    async function getProductInfo() {
+        let voucherContent = document.querySelectorAll('.voucher');
+        const url = '/get-product-info';
+        const response = await fetch(url);
+        const result = await response.json();
+        console.log(result)
+        voucherContent.forEach(e => {
+
+            result.vouchers.forEach(element => {
+                let due = element.due_date.replace(' ', 'T');
+                let dueDate = new Date(due);
+                if (dueDate > date) {
+                    e.innerHTML += `	
+             <input type="radio" id="option${element.id}" name="options" value="${element.id}">
+             <label for="option${element.id}">
+             ${element.title} - giảm ${element.discount} vnd
+             </label>`;
+                }
+            });
+        });
+
+    }
+
+    // Load value price 
     function updateGrandTotal(productId) {
-    var quantity = parseInt($('#quant-input-' + productId + ' input').val(), 10);
-    var priceString = $('#cart-sub-total-price-' + productId).text().trim();
 
-    // Loại bỏ dấu chấm phân cách thập phân (ví dụ: "522.000" -> "522000")
-    var priceWithoutDecimal = priceString.replace('.', '');
-    // Chuyển đổi chuỗi thành số dấu phẩy động
-    var price = parseFloat(priceWithoutDecimal);
-    var grandTotal = price * quantity; // Tính toán tổng cộng
+        var quantity = parseInt($('#quant-input-' + productId + ' input').val(), 10);
+        var priceString = $('#cart-sub-total-price-' + productId).text().trim();
 
-    // Định dạng kết quả tổng cộng thành định dạng tiền tệ và gán vào thành phần DOM
-    $('#cart-grand-total-price-' + productId).text(formatCurrency(grandTotal));
+        // Loại bỏ dấu chấm phân cách thập phân (ví dụ: "522.000" -> "522000")
+        var priceWithoutDecimal = priceString.replace('.', '');
+        // Chuyển đổi chuỗi thành số dấu phẩy động
+        var price = parseFloat(priceWithoutDecimal);
+        var grandTotal = price * quantity; // Tính toán tổng cộng
 
-    // Lặp qua các hàng và gán giá trị tổng cộng vào trường input ẩn
-    $('tr[data-id]').each(function () {
-        var productId = $(this).data('id');
-        var totalValueStrng =  $('#cart-grand-total-price-' + productId).text().trim();
-        var totalValueWithoutDecimal = totalValueStrng.replace('.', '');
-        var totalValue = parseFloat(totalValueWithoutDecimal);
-        // console.log('totalValue = ' + totalValue);
-        $('#redirectValue-' + productId).val(totalValue);
-    });
+        // Định dạng kết quả tổng cộng thành định dạng tiền tệ và gán vào thành phần DOM
+        $('#cart-grand-total-price-' + productId).text(formatCurrency(grandTotal));
 
-    
-}
+        // Lặp qua các hàng và gán giá trị tổng cộng vào trường input ẩn
+        $('tr[data-id]').each(function () {
+            var productId = $(this).data('id');
+            var totalValueStrng = $('#cart-grand-total-price-' + productId).text().trim();
+            var totalValueWithoutDecimal = totalValueStrng.replace('.', '');
+            var totalValue = parseFloat(totalValueWithoutDecimal);
+            // console.log('totalValue = ' + totalValue);
+            $('#redirectValue-' + productId).val(totalValue);
+        });
+
+
+    }
 
 
 
@@ -139,30 +168,30 @@ $(document).ready(function () {
         var input = $('#quant-input-' + productId + ' input');
         var quantity = parseInt(input.val(), 10) + 1;
         input.val(quantity); // Cập nhật giá trị mới vào input
-    
+
         // Cập nhật giá trị qtyProduct-{{ $product['id'] }}
         $('input[name="qtyProduct-' + productId + '"]').val(quantity);
-    
+
         updateGrandTotal(productId);
         calculateTotal();
     });
-    
+
     $('.arrow.minus').click(function () {
         var productId = $(this).closest('tr').data('id');
         var input = $('#quant-input-' + productId + ' input');
         var quantity = parseInt(input.val(), 10) - 1;
         if (quantity >= 1) {
             input.val(quantity); // Cập nhật giá trị mới vào input
-    
+
             // Cập nhật giá trị qtyProduct-{{ $product['id'] }}
             $('input[name="qtyProduct-' + productId + '"]').val(quantity);
-    
+
             updateGrandTotal(productId);
             calculateTotal();
         }
     });
-    
-    
+
+
     $('.romove-cooke').click(function (e) {
         e.preventDefault();
 
@@ -220,16 +249,16 @@ $(document).ready(function () {
         // Lặp qua mỗi hàng sản phẩm để cập nhật dữ liệu
         $('tr[data-id]').each(function () {
             var productId = $(this).data('id');
-    
+
             // Cập nhật tổng giá trị cho sản phẩm
             updateGrandTotal(productId);
         });
-    
+
         // Tính toán và hiển thị tổng Subtotal và Grand Total khi màn hình được tải xong
         calculateTotal();
     }
 
-    updateCartDataOnLoad(); 
+    updateCartDataOnLoad();
 });
 
 

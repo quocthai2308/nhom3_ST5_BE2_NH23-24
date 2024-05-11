@@ -13,6 +13,7 @@ class Product extends Model
     /**
      * @param  $id
      */
+    
     public function images()
     {
         return $this->hasMany(Image::class);
@@ -157,6 +158,57 @@ class Product extends Model
             $product->quantity = $newQuantity;
             $product->save();
         }
+    }
+    public function getProductByOrders($id)
+    {
+        $products = Product::join('bill_product', 'products.id', '=', 'bill_product.product_id')
+        ->join('bills', 'bill_product.bill_id', '=', 'bills.id')
+        ->join('images', 'products.id', '=', 'images.product_id')
+        ->where('bills.user_id', $id)
+        ->select('products.id', 'products.name', 'products.price', 'bill_product.quantity'
+        , 'bills.total', 'images.name as image','bills.created_at','bills.state',
+        'bills.id as bill_id')
+        ->get();
+        return $products;
+    
+    }
+
+    // Filter
+    public static function filterProducts($params)
+    {
+        $query = self::query();
+
+        if(isset($params['price'])) {
+            $query->where('price', '<=', $params['price']);
+        }
+
+        if(isset($params['name'])) {
+            $query->where('name', 'LIKE', "%{$params['name']}%");
+        }
+
+        if(isset($params['quantity'])) {
+            $query->where('quantity', '>=', $params['quantity']);
+        }
+
+        if(isset($params['status'])) {
+            $query->where('status', $params['status']);
+        }
+
+        if(isset($params['size'])) {
+            $query->where('size', $params['size']);
+        }
+
+        if(isset($params['feature'])) {
+            $query->where('feature', 'LIKE', "%{$params['feature']}%");
+        }
+
+        if(isset($params['discount'])) {
+            $query->where('discount', '>=', $params['discount']);
+        }
+
+        $products = $query->get();
+
+        return $products;
     }
 
     use HasFactory;

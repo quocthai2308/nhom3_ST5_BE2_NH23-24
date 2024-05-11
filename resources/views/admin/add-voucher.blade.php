@@ -39,9 +39,9 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Số giảm giá tính theo %:</label>
+                                <label class="control-label">Số giảm giá tính theo $:</label>
                                 <div class="controls">
-                                    <input type="number" class="span11" placeholder="giảm gía %" name="discount"
+                                    <input type="number" class="span11" placeholder="giảm gía $" name="discount"
                                         required /> *
                                 </div>
                             </div>
