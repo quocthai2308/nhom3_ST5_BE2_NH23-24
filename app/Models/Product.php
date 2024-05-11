@@ -171,5 +171,44 @@ class Product extends Model
         return $products;
     
     }
+
+    // Filter
+    public static function filterProducts($params)
+    {
+        $query = self::query();
+
+        if(isset($params['price'])) {
+            $query->where('price', '<=', $params['price']);
+        }
+
+        if(isset($params['name'])) {
+            $query->where('name', 'LIKE', "%{$params['name']}%");
+        }
+
+        if(isset($params['quantity'])) {
+            $query->where('quantity', '>=', $params['quantity']);
+        }
+
+        if(isset($params['status'])) {
+            $query->where('status', $params['status']);
+        }
+
+        if(isset($params['size'])) {
+            $query->where('size', $params['size']);
+        }
+
+        if(isset($params['feature'])) {
+            $query->where('feature', 'LIKE', "%{$params['feature']}%");
+        }
+
+        if(isset($params['discount'])) {
+            $query->where('discount', '>=', $params['discount']);
+        }
+
+        $products = $query->get();
+
+        return $products;
+    }
+
     use HasFactory;
 }

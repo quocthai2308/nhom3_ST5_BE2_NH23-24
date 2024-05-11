@@ -206,7 +206,14 @@ class ProductController extends Controller
     //     return redirect()->route('manage-product');
     // }
 
+    public function filterProducts(Request $request)
+    {
+        $params = $request->all();
 
+        $products = Product::filterProducts($params);
+
+        return view('category', compact('products'));
+    }
 }
 function getImage ($id){
     $productM = new Product();
