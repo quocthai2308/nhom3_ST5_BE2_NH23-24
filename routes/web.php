@@ -15,6 +15,17 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
 
+use App\Http\Controllers\TransactionController;
+
+
+Route::get('/hangMoiDac', [TransactionController::class, 'showTransactions'])->name('hangMoiDac.show');
+
+
+
+// Route::get('/hangMoiDac', function () {
+//     return view('admin.hangMoiDac');
+// });
+
 //voucher
 Route::get('/manage-voucher', [DashboardController::class, 'manageVoucher'])->name('admin.voucher');
 Route::post('/add-voucher', [DashboardController::class, 'addVoucher'])->name('add.voucher');
