@@ -54,7 +54,12 @@
                                 <td>
                                     <!-- Nút điều chỉnh, ví dụ xóa hoặc sửa -->
                                     <!-- <button type="button" class="btn btn-primary btn-mini">Chi Tiết</button> -->
-                                    <button type="button" class="btn btn-primary btn-mini" data-bs-toggle="modal" data-bs-target="#exampleModal">Chi Tiết</button>
+                                    <button type="button" class="btn btn-primary btn-mini" data-bs-toggle="modal" data-bs-target="#exampleModal" data-transaction-id="{{ $transaction->id }}" data-product-name="{{ $transaction->product->name }}" data-product-image="{{ asset('app/images/products/' . $transaction->product->image) }}" data-order-content="{{ $transaction->order_content }}">
+                                        Chi Tiết
+                                    </button>
+
+
+
 
                                     <button type="button" class="btn btn-danger btn-mini">Hủy</button>
                                 </td>
@@ -67,19 +72,26 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Modal title</h5>
+                                    <h5 class="modal-title">Chi Tiết Sản Phẩm</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Modal body text goes here.</p>
+                                    <h1 id="productName"></h1>
+                                    @foreach ($images as $item)
+                                    @if($transaction -> product_id == $item->product_id)
+                                    <img style="width: 100%;" src="{{asset('app/images/products/'.$item['name'])}}" alt="{{ $item['name'] }}">
+                                    @endif
+                                    @endforeach
+
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
 
                     <div class="row" style="margin-left: 18px;">
                         <ul class="pagination">
@@ -96,5 +108,29 @@
 </div>
 </div>
 <!-- Bootstrap Bundle JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var exampleModal = document.getElementById('exampleModal');
+        exampleModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget; // Nút kích hoạt modal
+
+            // Lấy dữ liệu từ data-* attributes
+            var productName = button.getAttribute('data-product-name');
+            var productImage = button.getAttribute('data-product-image');
+
+            // Cập nhật nội dung của modal
+            var modalProductName = exampleModal.querySelector('#productName');
+            var modalProductImage = exampleModal.querySelector('#productImage');
+
+            modalProductName.textContent = productName;
+            modalProductImage.src = productImage;
+            modalProductImage.alt = productName;
+        });
+    });
+</script>
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 @endsection
