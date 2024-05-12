@@ -154,7 +154,7 @@ Route::post('/checkout', [PaymentController::class, 'checkout']);
 //21/4
 // Route::get('/', [HomeController::class,'index']);
 Route::get('search', [HomeController::class,'search']);
-Route::get('category/{categoryId}', [HomeController::class,'category']);
+Route::get('category/{categoryId}', [HomeController::class,'category'])->name('category');
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
 
@@ -189,6 +189,14 @@ Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 Route::get('/vnpay_return', [PaymentController::class, 'handleVnpayResponse'])->name('vnpay.return');
 Route::post('/vnpay_create_payment', [PaymentController::class, 'vnpay_create_payment']);
 // thông tin mình di dời qua file data.txt rồi nha
+
+// Filter
+Route::get('/filterProducts', [ProductController::class, 'filterProducts'])->name('filterProducts');
+
+// Sort
+Route::get('/sortProducts', [ProductController::class, 'sortProducts'])->name('sortProducts');
+
+
 
 
 

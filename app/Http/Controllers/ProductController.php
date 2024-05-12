@@ -38,7 +38,7 @@ class ProductController extends Controller
         $compare = session()->get('compare', []);
 
         // Kiểm tra xem sản phẩm đã có trong danh sách so sánh chưa
-         if (!array_key_exists($id, $compare)) {
+        if (!array_key_exists($id, $compare)) {
             $compare[$id] = [
                 "name" => $product->name,
                 "price" => $product->price,
@@ -46,7 +46,7 @@ class ProductController extends Controller
                 "description" => $product->description  // Thêm trường description
             ];
             session()->put('compare', $compare);
-     }
+        }
 
         return redirect()->route('productComparison');
     }
@@ -208,17 +208,44 @@ class ProductController extends Controller
 
     public function filterProducts(Request $request)
     {
-        $params = $request->all();
+        $minPrice = $request->input('minPrice');
+        $maxPrice = $request->input('maxPrice');
 
-        $products = Product::filterProducts($params);
+        $products = Product::whereBetween('price', [$minPrice, $maxPrice])->get();
+
+        return view('category', compact('products'))->render();
+    }
+
+    // Sort
+    public function sortProducts(Request $request)
+    {
+        $sortType = $request->input('sort');
+
+        switch ($sortType) {
+            case 'price_asc':
+                $products = Product::orderBy('price', 'asc')->get();
+                break;
+            case 'price_desc':
+                $products = Product::orderBy('price', 'desc')->get();
+                break;
+            case 'name_asc':
+                $products = Product::orderBy('name', 'asc')->get();
+                break;
+            default:
+                $products = Product::all();
+                break;
+        }
 
         return view('category', compact('products'));
     }
+
+
 }
-function getImage ($id){
+function getImage($id)
+{
     $productM = new Product();
     $product = $productM->getProductDetails($id);
     foreach ($product->images as $image) {
         return $image->name;
     }
-    }
+}
