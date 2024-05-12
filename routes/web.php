@@ -17,7 +17,9 @@ use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\TransactionController;
 
-
+Route::get('/banDoKhoBau', function () {
+    return view('banDoKhoBau');
+});
 Route::get('/hangMoiDac', [TransactionController::class, 'showTransactions'])->name('hangMoiDac.show');
 
 
