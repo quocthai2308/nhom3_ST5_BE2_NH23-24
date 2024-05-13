@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'transactions '); ?>
+<?php $__env->startSection('title', 'Chi Tiếc Cái cc '); ?>
 <?php $__env->startSection('content'); ?>
 <!-- Bootstrap CSS -->
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -26,25 +26,22 @@
                                 <th>Nội Dung Khách Đặc</th>
                                 <th>Địa Chỉ</th>
                                 <th>Ngày Đặc</th>
-                                <th>Nút ( Điều Chỉnh )</th>
-
                             </tr>
                         </thead>
                         <tbody>
                         <tbody>
                             <?php $__currentLoopData = $transactions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $transaction): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td><?php echo e($transaction->user->name); ?></td> <!-- Giả sử bạn đã có relation 'user' trong model Transaction -->
+                                <td><?php echo e($transaction->user->name); ?></td>
+                                <!-- Giả sử bạn đã có relation 'user' trong model Transaction -->
                                 <td style="width: 20%;">
-                                    <?php
-                                    $shown = false;
-                                    ?>
+                                    <?php $shown = false; ?>
                                     <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php if(!$shown && $transaction->product_id == $item->product_id): ?>
-                                    <img style="width: 100%; max-width: 200px;" src="<?php echo e(asset('app/images/products/'.$item['name'])); ?>" alt="<?php echo e($item['name']); ?>">
-                                    <?php
-                                    $shown = true;
-                                    ?>
+                                    <img style="width: 100%; max-width: 200px;" src="<?php echo e(asset('app/images/products/'.$item->name)); ?>" alt="<?php echo e($item->name); ?>">
+                                    <?php $shown = true; ?>
+
+
                                     <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </td>
@@ -55,23 +52,17 @@
                                 <td><?php echo e($transaction->shipping_address); ?></td>
                                 <td><?php echo e($transaction->created_at->format('d-m-Y')); ?></td>
                                 <td>
-                                    <!-- Nút điều chỉnh, ví dụ xóa hoặc sửa -->
-                                    <!-- <button type="button" class="btn btn-primary btn-mini">Chi Tiết</button> -->
-                                    <button type="button" class="btn btn-primary btn-mini" 
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal" 
-                                    data-transaction-id="<?php echo e($transaction->id); ?>" 
-                                    data-product-name="<?php echo e($transaction->product->name); ?>" 
-                                    data-product-image="<?php echo e(asset('app/images/products/' . $transaction->product->image)); ?>" 
-                                    data-order-content="<?php echo e($transaction->order_content); ?>">
+                                    <?php $shown = false; ?>
+                                    <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if(!$shown && $transaction->product_id == $item->product_id): ?><button type="button" class="btn btn-primary btn-mini" data-bs-toggle="modal" data-bs-target="#exampleModal" data-name="<?php echo e($transaction->product->name); ?>" data-image="<?php echo e(asset('app/images/products/'.$item->name)); ?>" data-price="<?php echo e($transaction->product->price); ?>" data-description="<?php echo e($transaction->product->description); ?>">
                                         Chi Tiết
                                     </button>
+                                    <?php $shown = true; ?>
+                                    <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></td>
 
-
-
-
-                                    <!-- <button type="button" class="btn btn-danger btn-mini">Hủy</button> -->
-                                </td>
                             </tr>
+
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                         </tbody>
@@ -83,14 +74,16 @@
                                     <h5 class="modal-title">Chi Tiết Sản Phẩm</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
+
                                 <div class="modal-body">
-                                    <h1 id="productName"></h1>
-                                    <!-- <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if($transaction -> product_id == $item->product_id): ?>
-                                    <img style="width: 100%;" src="<?php echo e(asset('app/images/products/'.$item['name'])); ?>" alt="<?php echo e($item['name']); ?>">
-                                    <?php endif; ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> -->
+                                    <h1 id="productName" style="font-size: 36px; font-weight: bold;">Tên sản phẩm</h1>
+
+                                    <img id="productImage" src="" alt="Hình Sản Phẩm" width="100%">
+                                    <h1 id="productPrice" style="font-weight: bold; color: black;">Giá sản phẩm</h1>
+                                    <h1 id="productDescription" style="font-weight: bold; color: black;">Mô tả sản phẩm</h1>
+
                                 </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
                                 </div>
@@ -119,23 +112,27 @@
     document.addEventListener('DOMContentLoaded', function() {
         var exampleModal = document.getElementById('exampleModal');
         exampleModal.addEventListener('show.bs.modal', function(event) {
-            var button = event.relatedTarget; // Nút kích hoạt modal
+            var button = event.relatedTarget;
+            var productName = button.getAttribute('data-name');
+            var productImage = button.getAttribute('data-image');
+            var productPrice = button.getAttribute('data-price');
+            var productDescription = button.getAttribute('data-description');
 
-            // Lấy dữ liệu từ data-* attributes
-            var productName = button.getAttribute('data-product-name');
-            var productImage = button.getAttribute('data-product-image');
+            var modalTitle = exampleModal.querySelector('#productName');
+            var modalImage = exampleModal.querySelector('#productImage');
+            var modalPrice = exampleModal.querySelector('#productPrice');
+            var modalDescription = exampleModal.querySelector('#productDescription');
 
-            // Cập nhật nội dung của modal
-            var modalProductName = exampleModal.querySelector('#productName');
-            var modalProductImage = exampleModal.querySelector('#productImage');
-
-            modalProductName.textContent = productName;
-            modalProductImage.src = productImage;
-            modalProductImage.alt = productName;
+            modalTitle.textContent = productName;
+            modalImage.src = productImage;
+            modalImage.alt = productName;
+            modalPrice.textContent = "Giá: " + productPrice;
+            modalDescription.textContent = "Mô tả: " + productDescription;
         });
     });
-    
 </script>
+
+
 
 
 
