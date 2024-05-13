@@ -2,7 +2,7 @@
 @section('title', 'transactions ')
 @section('content')
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 <h1>Manage Vouchers</h1>
 </div>
 <div class="container-fluid">
@@ -36,14 +36,18 @@
                             @foreach ($transactions as $transaction)
                             <tr>
                                 <td>{{ $transaction->user->name }}</td> <!-- Giả sử bạn đã có relation 'user' trong model Transaction -->
-                                <td style="width: 50%;">
+                                <td style="width: 20%;">
+                                    @php
+                                    $shown = false;
+                                    @endphp
                                     @foreach ($images as $item)
-
-                                    @if($transaction -> product_id == $item->product_id)
-                                    <img style="width: 30%;" src="{{asset('app/images/products/'.$item['name'])}}" alt="{{ $item['name'] }}">
+                                    @if (!$shown && $transaction->product_id == $item->product_id)
+                                    <img style="width: 100%; max-width: 200px;" src="{{ asset('app/images/products/'.$item['name']) }}" alt="{{ $item['name'] }}">
+                                    @php
+                                    $shown = true;
+                                    @endphp
                                     @endif
                                     @endforeach
-
                                 </td>
                                 <td>{{ $transaction->product->name }}</td> <!-- Hiển thị tên sản phẩm -->
                                 <td>{{ $transaction->email }}</td>
@@ -54,14 +58,19 @@
                                 <td>
                                     <!-- Nút điều chỉnh, ví dụ xóa hoặc sửa -->
                                     <!-- <button type="button" class="btn btn-primary btn-mini">Chi Tiết</button> -->
-                                    <button type="button" class="btn btn-primary btn-mini" data-bs-toggle="modal" data-bs-target="#exampleModal" data-transaction-id="{{ $transaction->id }}" data-product-name="{{ $transaction->product->name }}" data-product-image="{{ asset('app/images/products/' . $transaction->product->image) }}" data-order-content="{{ $transaction->order_content }}">
+                                    <button type="button" class="btn btn-primary btn-mini" 
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal" 
+                                    data-transaction-id="{{ $transaction->id }}" 
+                                    data-product-name="{{ $transaction->product->name }}" 
+                                    data-product-image="{{ asset('app/images/products/' . $transaction->product->image) }}" 
+                                    data-order-content="{{ $transaction->order_content }}">
                                         Chi Tiết
                                     </button>
 
 
 
 
-                                    <button type="button" class="btn btn-danger btn-mini">Hủy</button>
+                                    <!-- <button type="button" class="btn btn-danger btn-mini">Hủy</button> -->
                                 </td>
                             </tr>
                             @endforeach
@@ -77,12 +86,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <h1 id="productName"></h1>
-                                    @foreach ($images as $item)
+                                    <!-- @foreach ($images as $item)
                                     @if($transaction -> product_id == $item->product_id)
                                     <img style="width: 100%;" src="{{asset('app/images/products/'.$item['name'])}}" alt="{{ $item['name'] }}">
                                     @endif
-                                    @endforeach
-
+                                    @endforeach -->
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -127,6 +135,7 @@
             modalProductImage.alt = productName;
         });
     });
+    
 </script>
 
 
