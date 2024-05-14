@@ -54,13 +54,20 @@
                                 <td>
                                     <?php $shown = false; ?>
                                     <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if(!$shown && $transaction->product_id == $item->product_id): ?><button type="button" class="btn btn-primary btn-mini" data-bs-toggle="modal" data-bs-target="#exampleModal" data-name="<?php echo e($transaction->product->name); ?>" data-image="<?php echo e(asset('app/images/products/'.$item->name)); ?>" data-price="<?php echo e($transaction->product->price); ?>" data-description="<?php echo e($transaction->product->description); ?>">
+                                    <?php if(!$shown && $transaction->product_id == $item->product_id): ?>
+                                    <button type="button" class="btn btn-primary btn-mini" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#exampleModal" 
+                                    data-name="<?php echo e($transaction->product->name); ?>" 
+                                    data-image="<?php echo e(asset('app/images/products/'.$item->name)); ?>" 
+                                    data-price="<?php echo e($transaction->product->price); ?>" 
+                                    data-description="<?php echo e($transaction->product->description); ?>">
                                         Chi Tiết
                                     </button>
                                     <?php $shown = true; ?>
                                     <?php endif; ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></td>
-
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </td>
                             </tr>
 
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -302,7 +302,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="<?php echo e(url('banDoKhoBau')); ?>">Bản Đồ Kho Báo</a></li>
+                                    <li><a href="<?php echo e(url('contact')); ?>">Bản Đồ Kho Báo</a></li>
                                     <li class="dropdown  navbar-right special-menu"> <a href="#">Todays
                                             offer</a> </li>
                                 </ul>

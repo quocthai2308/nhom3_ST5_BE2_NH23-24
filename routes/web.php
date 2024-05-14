@@ -17,6 +17,9 @@ use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\TransactionController;
 
+Route::get('/contact', function () {
+    return view('contact');
+});
 Route::get('/banDoKhoBau', function () {
     return view('banDoKhoBau');
 });

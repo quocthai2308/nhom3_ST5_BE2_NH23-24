@@ -55,12 +55,20 @@
                                 <td>
                                     @php $shown = false; @endphp
                                     @foreach ($images as $item)
-                                    @if (!$shown && $transaction->product_id == $item->product_id)<button type="button" class="btn btn-primary btn-mini" data-bs-toggle="modal" data-bs-target="#exampleModal" data-name="{{ $transaction->product->name }}" data-image="{{ asset('app/images/products/'.$item->name) }}" data-price="{{ $transaction->product->price }}" data-description="{{ $transaction->product->description }}">
+                                    @if (!$shown && $transaction->product_id == $item->product_id)
+                                    <button type="button" class="btn btn-primary btn-mini" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#exampleModal" 
+                                    data-name="{{ $transaction->product->name }}" 
+                                    data-image="{{ asset('app/images/products/'.$item->name) }}" 
+                                    data-price="{{ $transaction->product->price }}" 
+                                    data-description="{{ $transaction->product->description }}">
                                         Chi Tiết
                                     </button>
                                     @php $shown = true; @endphp
                                     @endif
-                                    @endforeach</td>
+                                    @endforeach
+                                </td>
                             </tr>
 
                             @endforeach
