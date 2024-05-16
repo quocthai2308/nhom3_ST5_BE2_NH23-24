@@ -74,4 +74,17 @@ class BlogController extends Controller
 
         return redirect()->route('manage-blog');
     }
+    public function edit($id){
+        $blogModel = new Blog();
+        $blog = $blogModel->getBlogById($id);
+        return view('admin.edit-blog', compact('blog'));
+    }
+    public function updateBlog(Request $request){
+        $blogModel = new Blog();
+        $id = $request->input('id');
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $blogModel->updateBlog($id,$title,$content);
+        return redirect()->route('manage-blog');
+    }
 }

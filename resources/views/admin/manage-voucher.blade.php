@@ -42,7 +42,7 @@
                                  <td>{{'Còn hiệu lực'}}</td>
                                  @endif
                                  <td>
-                                     <a href=""
+                                     <a href="{{url('edit-voucher/'.$voucher->id)}}"
                                      class="btn btn-success btn-mini">Edit</a>
                                      <form action="{{ route('voucher.delete',$voucher->id) }}" method="POST"
                                      class="delete-form">

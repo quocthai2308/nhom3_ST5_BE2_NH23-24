@@ -1,7 +1,7 @@
 @extends('admin.nav')
-@section('title', 'Edit Product')
+@section('title', 'Add New Product')
 @section('content')
-    <h1>Update Product</h1>
+    <h1>Add New Product</h1>
     </div>
     <div class="container-fluid">
         <hr>
@@ -14,54 +14,28 @@
                     <div class="widget-content nopadding">
 
                         <!-- BEGIN USER FORM -->
-                        <form action="{{ route('product.modify', $product->id) }}" novalidate method="post" class="form-horizontal"
+                       <form action="{{route('blog.update')}}" method="post" class="form-horizontal"
                             enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <div class="control-group">
-                                <label class="control-label">Tên sản phẩm:</label>
+                                <label class="control-label">Title:</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Tên sản phẩm" name="name"
-                                        value="{{ $product->name }}" required /> *
+                                    <input type="text" class="span11" placeholder="Tên sản phẩm" name="title"
+                                        required value="{{$blog->title}}" /> *
+                                    <input type="hidden" name="id"
+                                        value="{{$blog->id}}" /> *
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Mô tả:</label>
+                                <label class="control-label">Content:</label>
                                 <div class="controls">
-                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="description" required>{{ $product->description }}</textarea> *
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Giá:</label>
-                                <div class="controls">
-                                    <input type="number" class="span11" placeholder="Giá sản phẩm" name="price"
-                                        value="{{ $product->price }}" required /> *
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Chọn danh mục:</label>
-                                <div class="controls">
-                                    <select name="category_ids[]" multiple required>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}"
-                                                {{ in_array($category->id, $product->categories->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                                {{ $category->name }}</option>
-                                        @endforeach
-                                    </select> *
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Chọn hình:</label>
-                                <div class="controls">
-                                    <input type="file" name="fileUpload" id="fileUpload">
+                                    <textarea class="span11" id="editor" placeholder="Mô tả sản phẩm" name="content"><?php echo $blog->content ?></textarea> *
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn btn-success"
-                                    onclick="return confirm('Do you want to update this product?')">Update</button>
+                                <button type="submit" class="btn btn-success">Post</button>
                             </div>
                         </form>
-
                         <!-- END USER FORM -->
                     </div>
                 </div>

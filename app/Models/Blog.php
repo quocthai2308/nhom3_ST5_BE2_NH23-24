@@ -35,6 +35,16 @@ class Blog extends Model
             return $blog;
         }
     }
+    public function updateBlog($id, $title, $content){
+        $blogModel = new Blog();
+        $blog = $blogModel ->getBlogById($id);
+         if ($blog) {
+        $blog->title = $title;
+        $blog->content = $content;
+        $blog->update_at = date('Y-m-d H:i:s');
+        return $blog->save();
+    }  
+    }
     public function remove()
     {
         return $this->delete();

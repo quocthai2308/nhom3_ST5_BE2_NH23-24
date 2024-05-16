@@ -41,7 +41,7 @@
                                  <td><?php echo e('Còn hiệu lực'); ?></td>
                                  <?php endif; ?>
                                  <td>
-                                     <a href=""
+                                     <a href="<?php echo e(url('edit-voucher/'.$voucher->id)); ?>"
                                      class="btn btn-success btn-mini">Edit</a>
                                      <form action="<?php echo e(route('voucher.delete',$voucher->id)); ?>" method="POST"
                                      class="delete-form">

@@ -34,8 +34,10 @@ Route::get('/hangMoiDac', [TransactionController::class, 'showTransactions'])->n
 //voucher
 Route::get('/manage-voucher', [DashboardController::class, 'manageVoucher'])->name('admin.voucher');
 Route::post('/add-voucher', [DashboardController::class, 'addVoucher'])->name('add.voucher');
+Route::get('/edit-voucher/{id}', [DashboardController::class, 'edit'])->name('edit.voucher');
 Route::get('/vouchers', [HomeController::class, 'vouchers'])->name('vouchers');
 Route::delete('/voucher/{id}', [DashboardController::class, 'delete'])->name('voucher.delete');
+Route::post('/update-voucher', [DashboardController::class, 'update'])->name('voucher.update');
 // tracking orders
 Route::get('/track-orders', [HomeController::class, 'getProductByOrders'])->name('getProductByOrders');
 Route::post('/set-state-orders', [HomeController::class, 'setStateOrder'])->name('setstateorder');
@@ -81,6 +83,8 @@ Route::get('/blog-details/{id}', [BlogController::class, 'blogDetail'])->name('b
 Route::post('/send', [BlogController::class, 'comment'])->name('blog.comment');
 Route::post('/get-comment', [BlogController::class, 'getComment'])->name('blog.getComment');
 Route::delete('/blog/{id}', [BlogController::class, 'delete'])->name('blog.delete');
+Route::get('/edit-blog/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+Route::post('/update', [BlogController::class, 'updateBlog'])->name('blog.update');
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 Route::get('/add-voucher', function () {
     return view('admin.add-voucher');
