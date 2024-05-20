@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'Manage Product'); ?>
 <?php $__env->startSection('content'); ?>
     <h1>Manage Vouchers</h1>
@@ -11,7 +10,7 @@
                     <div class="widget-title"> <span class="icon"><a href="<?php echo e(url('add-voucher')); ?>"> <i
                                     class="icon-plus"></i>
                             </a></span>
-                        <h5>Products</h5>
+                        <h5>Vouchers</h5>
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered
@@ -19,30 +18,41 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>        
+                                    <th>Discount</th>
+                                    <th>Due date</th>
+                                    <th>Quantity</th>        
+                                    <th>Type</th>        
+                                    <th>Status</th>        
                                                         </tr>
                             </thead>
                             <tbody>
-                             
-                                    <tr class="">
-                                        <td></td>
-                                        <td> </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a href=""
-                                                class="btn btn-success btn-mini">Edit</a>
-                                            <form action="<?php echo e(route('voucher.delete')); ?>" method="POST"
-                                                class="delete-form">
-                                                <?php echo csrf_field(); ?>
-                                                <?php echo method_field('DELETE'); ?>
-                                                <button type="submit"
-                                                    class="btn btn-danger btn-mini delete-btn">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                             <?php $__currentLoopData = $vouchers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $voucher): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                 
+                             <tr class="">
+                                 <td><?php echo e($voucher->title); ?></td>
+                                 <td><?php echo e($voucher->discount); ?></td>
+                                 <td><?php echo e($voucher->due_date); ?></td>
+                                 <td><?php echo e($voucher->quantity); ?></td>
+                                 <td><?php echo e($voucher->type); ?></td>
+                                 <?php if($voucher->due_date <= date('Y-m-d H:i:s')): ?>
+                                 <td><?php echo e('Đã quá hạn'); ?></td>
+                                 <?php endif; ?>
+                                 <?php if($voucher->due_date > date('Y-m-d H:i:s')): ?>
+                                 <td><?php echo e('Còn hiệu lực'); ?></td>
+                                 <?php endif; ?>
+                                 <td>
+                                     <a href="<?php echo e(url('edit-voucher/'.$voucher->id)); ?>"
+                                     class="btn btn-success btn-mini">Edit</a>
+                                     <form action="<?php echo e(route('voucher.delete',$voucher->id)); ?>" method="POST"
+                                     class="delete-form">
+                                     <?php echo csrf_field(); ?>
+                                     <?php echo method_field('DELETE'); ?>
+                                     <button type="submit"
+                                     class="btn btn-danger btn-mini delete-btn">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                         <div class="row" style="margin-left: 18px;">

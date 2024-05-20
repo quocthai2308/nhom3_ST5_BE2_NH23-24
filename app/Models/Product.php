@@ -98,13 +98,19 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'price'];
 
     // Hàm thêm sản phẩm
-    public static function store($name, $description, $price)
+    public static function store($name, $description, $price, $quantity, $status, $size, $feature, $discount)
     {
         $product = new self;
         $product->name = $name;
         $product->description = $description;
         $product->price = $price;
-        return $product->save();
+        $product->quantity = $quantity;
+        $product->status = $status;
+        $product->size = $size;
+        $product->feature = $feature;
+        $product->discount = $discount;
+        $product->save();
+        return $product;
     }
 
     // Hàm sửa sản phẩm

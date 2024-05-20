@@ -66,14 +66,16 @@ class ProductController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
         $price = $request->input('price');
+        $quantity = $request->input('quantity');
+        $status = $request->input('status');
+        $size = $request->input('size');
+        $feature = $request->input('feature');
+        $discount = $request->input('discount');
         $category_ids = $request->input('category_ids'); // Mảng ID của các danh mục
 
-        // Tạo một sản phẩm mới
-        $product = new Product;
-        $product->name = $name;
-        $product->description = $description;
-        $product->price = $price;
-        $product->save();
+        // Sử dụng hàm store trong model để tạo sản phẩm mới
+        $product = Product::store($name, $description, $price, $quantity, $status, $size, $feature, $discount);
+
 
         // Xử lý tệp hình ảnh được tải lên
         if ($request->hasFile('fileUpload')) {
