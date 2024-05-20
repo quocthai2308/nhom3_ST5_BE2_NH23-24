@@ -77,9 +77,37 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div id="pagination">
-                        {{ $users->links() }}
-                    </div>
+
+                    @if ($users->hasPages())
+                    <nav>
+                        <ul class="pagination">
+                            {{-- Previous Page Link --}}
+                            @if ($users->onFirstPage())
+                            <li class="page-item disabled"><span class="page-link">««</span></li>
+                            @else
+                            <li class="page-item"><a class="page-link" href="{{ $users->previousPageUrl() }}" rel="prev">««</a></li>
+                            @endif
+
+                            {{-- Pagination Elements --}}
+                            @foreach ($users->getUrlRange(1, $users->lastPage()) as $page => $url)
+                            @if ($page == $users->currentPage())
+                            <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                            @else
+                            <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                            @endif
+                            @endforeach
+
+                            {{-- Next Page Link --}}
+                            @if ($users->hasMorePages())
+                            <li class="page-item"><a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next">»»</a></li>
+                            @else
+                            <li class="page-item disabled"><span class="page-link">»»</span></li>
+                            @endif
+                        </ul>
+                    </nav>
+                    @endif
+
+
 
                 </div>
             </div>
@@ -99,41 +127,60 @@
         }
     });
 
-    function fetchPage(page) {
-        $.ajax({
-            url: "{{ route('ajax.users.page') }}?page=" + page,
-            type: "GET",
-            dataType: "html",
-            success: function(data) {
-                $("#user-table").html(data);
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
-        });
-    }
+    // function fetchPage(page) {
+    //     $.ajax({
+    //         url: "{{ route('ajax.users.page') }}?page=" + page,
+    //         type: "GET",
+    //         dataType: "html",
+    //         success: function(data) {
+    //             $("#user-table").html(data);
+    //         },
+    //         error: function(xhr, status, error) {
+    //             console.error(error);
+    //         }
+    //     });
+    // }
 
-    // Gán sự kiện click cho các nút phân trang
+    // // Gán sự kiện click cho các nút phân trang
+    // $(document).on('click', '.pagination a', function(e) {
+    //     e.preventDefault();
+    //     var page = $(this).attr('href').split('page=')[1];
+    //     fetchPage(page);
+    // });
+
+    // // Gọi lần đầu tiên khi trang được load
+    // fetchPage(1);
+    // $(document).on('click', '.pagination a', function(event) {
+    //     event.preventDefault();
+    //     var page = $(this).attr('href').split('page=')[1];
+    //     fetchPage(page);
+    // });
+
+    // function fetchPage(page) {
+    //     $.ajax({
+    //         url: '/ajax-users-page?page=' + page,
+    //         type: 'GET',
+    //         success: function(data) {
+    //             $('#pagination').html(data);
+    //         }
+    //     });
+    // }
+    $(document).ready(function() {
+    // Place your event listener code here
     $(document).on('click', '.pagination a', function(e) {
         e.preventDefault();
         var page = $(this).attr('href').split('page=')[1];
         fetchPage(page);
     });
+});
 
-    // Gọi lần đầu tiên khi trang được load
-    fetchPage(1);
-    $(document).on('click', '.pagination a', function(event) {
-        event.preventDefault();
-        var page = $(this).attr('href').split('page=')[1];
-        fetchPage(page);
-    });
 
     function fetchPage(page) {
         $.ajax({
             url: '/ajax-users-page?page=' + page,
             type: 'GET',
-            success: function(data) {
-                $('#pagination').html(data);
+            success: function(response) {
+                $('#user-table').html(response); // Ensure this targets the correct HTML element
             }
         });
     }

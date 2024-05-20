@@ -17,7 +17,12 @@ use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\TransactionController;
 
-
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/banDoKhoBau', function () {
+    return view('banDoKhoBau');
+});
 Route::get('/hangMoiDac', [TransactionController::class, 'showTransactions'])->name('hangMoiDac.show');
 
 
@@ -29,8 +34,10 @@ Route::get('/hangMoiDac', [TransactionController::class, 'showTransactions'])->n
 //voucher
 Route::get('/manage-voucher', [DashboardController::class, 'manageVoucher'])->name('admin.voucher');
 Route::post('/add-voucher', [DashboardController::class, 'addVoucher'])->name('add.voucher');
+Route::get('/edit-voucher/{id}', [DashboardController::class, 'edit'])->name('edit.voucher');
 Route::get('/vouchers', [HomeController::class, 'vouchers'])->name('vouchers');
 Route::delete('/voucher/{id}', [DashboardController::class, 'delete'])->name('voucher.delete');
+Route::post('/update-voucher', [DashboardController::class, 'update'])->name('voucher.update');
 // tracking orders
 Route::get('/track-orders', [HomeController::class, 'getProductByOrders'])->name('getProductByOrders');
 Route::post('/set-state-orders', [HomeController::class, 'setStateOrder'])->name('setstateorder');
@@ -76,6 +83,8 @@ Route::get('/blog-details/{id}', [BlogController::class, 'blogDetail'])->name('b
 Route::post('/send', [BlogController::class, 'comment'])->name('blog.comment');
 Route::post('/get-comment', [BlogController::class, 'getComment'])->name('blog.getComment');
 Route::delete('/blog/{id}', [BlogController::class, 'delete'])->name('blog.delete');
+Route::get('/edit-blog/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+Route::post('/update', [BlogController::class, 'updateBlog'])->name('blog.update');
 // Khi người dùng truy cập '/', họ sẽ được chuyển hướng ngay lập tức đến trang đăng nhập.
 Route::get('/add-voucher', function () {
     return view('admin.add-voucher');
@@ -101,6 +110,7 @@ Route::get('/dashboard', function () {
 /// test load view
 
 // Route cho AJAX pagination load trang 5 nguoi
+
 Route::get('/ajax-users-page', [AdminController::class, 'ajaxUsersPage'])->name('ajax.users.page');
 
 Route::get('/manage-user', [AdminController::class, 'index'])->name('manage-user');
@@ -159,7 +169,7 @@ Route::get('/get-all-vouchers', [CartController::class, 'getAllVouchers']);
 //21/4
 // Route::get('/', [HomeController::class,'index']);
 Route::get('search', [HomeController::class,'search']);
-Route::get('category/{categoryId}', [HomeController::class,'category']);
+Route::get('category/{categoryId}', [HomeController::class,'category'])->name('category');
 Route::get('detail/{id}', [HomeController::class,'detail']);
 
 
@@ -196,6 +206,14 @@ Route::post('/vnpay_create_payment', [PaymentController::class, 'vnpay_create_pa
 // thông tin mình di dời qua file data.txt rồi nha
 // routes/web.php
 Route::post('/save-selected-products', [PaymentController::class, 'saveSelectedProducts']);
+
+// Filter
+Route::get('/filterProducts', [ProductController::class, 'filterProducts'])->name('filterProducts');
+
+// Sort
+Route::get('/sortProducts', [ProductController::class, 'sortProducts'])->name('sortProducts');
+
+
 
 
 

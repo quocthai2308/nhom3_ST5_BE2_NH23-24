@@ -40,13 +40,38 @@ class HomeController extends Controller
         $products = $productModel->getProductByKeyword($searchTerm);
         return view('search', compact('products', 'searchTerm'));
     }
-    public function category($categoryId)
+    public function category($categoryId, Request $request)
     {
-        $productModel = new Product();
-        $products = $productModel->getProductsByCategoryId($categoryId);
+        $sortType = $request->input('sort');
+        $category = Category::find($categoryId); // Lấy category dựa trên categoryId
 
-        return view('category', compact('products'));
+        switch ($sortType) {
+            case 'price_asc':
+                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
+                    $query->where('category_id', $categoryId);
+                })->orderBy('price', 'asc')->get();
+                break;
+            case 'price_desc':
+                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
+                    $query->where('category_id', $categoryId);
+                })->orderBy('price', 'desc')->get();
+                break;
+            case 'name_asc':
+                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
+                    $query->where('category_id', $categoryId);
+                })->orderBy('name', 'asc')->get();
+                break;
+            default:
+                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
+                    $query->where('category_id', $categoryId);
+                })->get();
+                break;
+        }
+
+        return view('category', compact('products', 'category')); // Truyền $category vào view
     }
+
+
     public function shopping_cart()
     {
         return view('shopping-cart');
@@ -109,10 +134,10 @@ class HomeController extends Controller
     {
         $voucherM = new Voucher();
         $id = session('user_id');
-        if(isset($id)){
+        if (isset($id)) {
             $vouchers = $voucherM->getVoucherByUserId($id);
             return view('vouchers', compact('vouchers'));
-        }else{
+        } else {
             return view('auth.login');
         }
 
@@ -121,10 +146,10 @@ class HomeController extends Controller
     {
         $voucherM = new Voucher();
         $id = session('user_id');
-        if(isset($id)){
+        if (isset($id)) {
             $vouchers = $voucherM->getVoucherByUserId($id);
             return response()->json(['vouchers' => $vouchers]);
-        }else{
+        } else {
             return view('auth.login');
         }
 
@@ -134,10 +159,9 @@ class HomeController extends Controller
         $productModel = new Product();
         $id = session('user_id');
         if (isset($id)) {
-            $products = $productModel -> getProductByOrders($id);
-            return view('track-orders', compact('products') );
-        }
-        else{
+            $products = $productModel->getProductByOrders($id);
+            return view('track-orders', compact('products'));
+        } else {
             return view('auth.login');
         }
 

@@ -37,7 +37,7 @@
                                         <td><?php echo e($blog->update_at); ?></td>
                                         <td><?php echo e($blog->create_at); ?></td>
                                         <td>
-                                            <a href=""
+                                            <a href="<?php echo e(url('edit-blog/'.$blog->id)); ?>"
                                                 class="btn btn-success btn-mini">Edit</a>
                                             <form action="<?php echo e(route('blog.delete', $blog->id)); ?>" method="POST"
                                                 class="delete-form">

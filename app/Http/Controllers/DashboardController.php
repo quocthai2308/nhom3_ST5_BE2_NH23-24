@@ -90,4 +90,24 @@ class DashboardController extends Controller
         $userVoucherModel->destroye($id);
         return redirect()->route('admin.voucher');
     }
+    public function edit($id){
+        $voucherModel = new Voucher();
+        $voucher = $voucherModel->find($id);
+        return view('admin.edit-voucher', compact('voucher'));
+    }
+    public function update(Request $request){
+        $voucherModel = new Voucher();
+        $id = $request->input('id');
+        $voucher = $voucherModel->find($id);
+        $title = $request->input('title');
+        $discount = $request->input('discount');
+        $due_date = $request->input('duedate');
+        $quantity = $request->input('quantity');
+        $voucher->title = $title;
+        $voucher->discount = $discount;
+        $voucher->due_date = $due_date;
+        $voucher->quantity = $quantity;
+        $voucher->save();
+        return redirect()->route('admin.voucher');
+    }
 }
