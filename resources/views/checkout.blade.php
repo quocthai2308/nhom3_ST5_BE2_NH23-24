@@ -3,7 +3,7 @@
 @section('content')
 
 <?php
-session()->put('qtyProduct', $qtyProduct);
+echo $selectedProductsInput;
 ?>
 
 <!-- ============================================== HEADER : END ============================================== -->
@@ -51,6 +51,7 @@ session()->put('qtyProduct', $qtyProduct);
 											<!-- radio-form  -->
 											<form id="checkoutFormB" role="form" method="post">
 												@csrf
+												<input type="hidden" id="selectedProductsInput" name="selectedProducts" value="{{ $selectedProductsInput }}">
 												<input type="hidden" name="product_id" value="{{ $product_id }}">
 												<input type="hidden" id="redirectValueCheckout" name="redirectCheckout" value="<?php echo $redirectValue ?>">
 												<input type="hidden" name="qtyProduct" value="<?php echo $qtyProduct ?>">

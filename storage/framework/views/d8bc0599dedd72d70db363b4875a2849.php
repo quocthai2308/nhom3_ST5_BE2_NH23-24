@@ -98,6 +98,10 @@
                     <span>Users</span></a></li>
             <li> <a href="<?php echo e(url('manage-blog')); ?>"><i class="icon icon-th-list"></i>
                     <span>Blogs</span></a></li>
+            <li> <a href="<?php echo e(url('manage-voucher')); ?>"><i class="icon icon-th-list"></i>
+                    <span>Vouchers</span></a></li>
+            <li> <a href="<?php echo e(url('hangMoiDac')); ?>"><i class="icon icon-th-list"></i>
+                    <span>Thông Tin Hàng Mới Đặc</span></a></li>
 
         </ul>
     </div> <!-- BEGIN CONTENT -->

@@ -8,8 +8,10 @@ use App\Models\Payment;
 use App\Models\Bill;
 use App\Models\BillProduct;
 use App\Models\Product;
+use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
 
 class PaymentController extends Controller
 {
@@ -97,11 +99,12 @@ class PaymentController extends Controller
         $redirectValue = $request->input('redirect');
         $redirectValue = str_replace('.', '', $redirectValue);
         $qtyProduct = $request->input('qtyProduct-' . $product_id);
+        $selectedProductsInput = $request->input('selectedProducts');
 
         session()->put('quantity', $qtyProduct);
         session()->put('product_id', $product_id);
 
-        return view('checkout', compact('product_id', 'redirectValue', 'qtyProduct'));
+        return view('checkout', compact('product_id', 'redirectValue', 'qtyProduct', 'selectedProductsInput'));
     }
 
     public function vnpay_create_payment(Request $request)
@@ -117,6 +120,9 @@ class PaymentController extends Controller
         $redirectValue = $request->input('redirectCheckout');
         $user_id = Auth::user()->id; // Hoặc bất kỳ cách nào bạn xác định người dùng hiện tại
         $qtyProduct = $request->input('qtyProduct');
+        $selectedProductsInput = $request->input('selectedProducts');
+        $selectedProductsArray = json_decode($selectedProductsInput, true);
+
 
 
         // Tạo mã giao dịch duy nhất
@@ -127,26 +133,35 @@ class PaymentController extends Controller
 
         log::info('gia tien la: ' . $redirectValue);
         // Lưu thông tin giao dịch vào bảng 'transactions'
-        $transaction = new Transaction([
-            'user_id' => $user_id,
-            'product_id' => $product_id,
-            'amount' => $redirectValue,
-            'payment_method' => 'VNPAY',
-            'code_vnpay' => $code_vnpay,
-            'status' => 0, // Mặc định là 0
-            'email' => $email,
-            'phone' => $phone,
-            'order_content' => $orderContent,
-            'shipping_address' => $shippingAddress,
-        ]);
-        $transaction->save();
+
+        foreach ($selectedProductsArray as $product) {
+            // Tạo và lưu các giao dịch mới
+            $transaction = new Transaction([
+                'user_id' => $user_id,
+                'product_id' => $product['id'],
+                'amount' => $product['total'],
+                'payment_method' => 'VNPAY',
+                'code_vnpay' => $code_vnpay,
+                'status' => 0,
+                'email' => $email,
+                'phone' => $phone,
+                'order_content' => $orderContent,
+                'shipping_address' => $shippingAddress,
+            ]);
+            $transaction->save();
+        }
 
         // Lấy thông tin giao dịch từ cơ sở dữ liệu
         $transaction = Transaction::where('code_vnpay', $code_vnpay)->firstOrFail();
 
         // Tiếp tục với việc tạo thanh toán VNPAY...
 
-        return view('vnpay_php.vnpay_create_payment', compact('transaction', 'redirectValue', 'code_vnpay', 'qtyProduct'));
+        session_start();
+        // Lưu mảng selectedProductsInput vào session
+        session(['selectedProductsInput' => $selectedProductsArray]);
+
+
+        return view('vnpay_php.vnpay_create_payment', compact('transaction', 'redirectValue', 'code_vnpay', 'qtyProduct', 'selectedProductsInput'));
     }
 
     public function vnpay_return()
@@ -168,6 +183,8 @@ class PaymentController extends Controller
         $vnpayTransactionNo = $request->input('vnp_TransactionNo');
         $bankCode = $request->input('vnp_BankCode');
         $payDate = $request->input('vnp_PayDate');
+        // Lấy dữ liệu từ request
+
 
         // Kiểm tra chữ ký hợp lệ và mã phản hồi
         // ...
@@ -191,46 +208,66 @@ class PaymentController extends Controller
         }
 
 
-        // if ($responseCode == '00') {
-        //     $productdM = new Product();
-        //     $bill = new Bill;
-        //     $billProduct = new BillProduct();
-        //     $amount = $amount / 100;
 
-        //     $total = $amount;
-        //     $userId = Auth::user()->id;
-        //     $createdAt = $payDate;
-        //     $paymentMethod = 'VnPay';
-        //     $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
-        //     $product_id = session('product_id');
-        //     $quantity = session('quantity');
-            
-        //     //$qtyProduct = session('qtyProduct');
-        //     // $product = Product::find($product_id); // Tìm sản phẩm theo $product_id
-        //     // if ($product) {
-        //     //     $newQuantity = $product->quantity - $quantity; // Tính toán số lượng mới
-        //     //     $product->quantity = $newQuantity; // Cập nhật số lượng mới
-        //     //     $product->save(); // Lưu thay đổi vào cơ sở dữ liệu
-        //     // }
 
-        //     $billProduct->addBillProduct($billId, $product_id, $quantity);
-        //     $productdM->updateProductQuantity($product_id, $quantity);
 
-        if($responseCode == '00'){
-            $productdM = new Product();
-            $bill = new Bill;
-            $billProduct= new BillProduct();
-                $total = $amount/100000;
+        // ... (xử lý các sản phẩm được chọn)
+
+
+        //dd($parameters);
+        $selectedProductsInput = Cache::get('selectedProductsInput');
+
+        // Sử dụng vòng lặp for để xử lý từng sản phẩm
+        foreach ($selectedProductsInput['id'] as $index => $productId) {
+            $productName = $selectedProductsInput['name'][$index];
+            $productPrice = $selectedProductsInput['price'][$index];
+            $productQuantity = $selectedProductsInput['quantity'][$index];
+            $productTotal = $selectedProductsInput['total'][$index];
+
+            // // Xử lý từng sản phẩm ở đây
+            // echo "ID: " . $productId . "<br>";
+            // echo "Tên: " . $productName . "<br>";
+            // echo "Giá: " . $productPrice . "<br>";
+            // echo "Số lượng: " . $productQuantity . "<br>";
+            // echo "Tổng cộng: " . $productTotal . "<br><br>";
+
+            if ($responseCode == '00') {
+                $productdM = new Product();
+                $bill = new Bill;
+                $billProduct = new BillProduct();
+                $total = $productTotal / 100000;
                 $userId = Auth::user()->id;
                 $createdAt = $payDate;
                 $paymentMethod = 'VNpay';
-          $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
-          $product_id = session('product_id');
-          $quantity = session('quantity');
-          $billProduct->addBillProduct($billId,$product_id,$quantity);
-          $productdM->updateProductQuantity($product_id,$quantity);
+                $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
+                // $product_id = session('product_id');
+                // $quantity = session('quantity');
+                $product_id = $productId;
+                $quantity = $productQuantity;
+                $billProduct->addBillProduct($billId, $product_id, $quantity);
+                $productdM->updateProductQuantity($product_id, $quantity);
 
+
+                $user = Auth::user();
+                $cartItem = CartItem::where('user_id', $user->id)->where('product_id', $productId)->first();
+
+
+
+                if ($cartItem) {
+                    $cartItem->delete();
+                    //return response('Product removed from cart.');
+                 }
+                //else {
+                //     return response('Product not found in cart.');
+                // }
+            }
         }
+
+
+
+
+
+
         // Tìm giao dịch trong bảng 'transactions' với code_vnpay tương ứng
         $transaction = Transaction::where('code_vnpay', $transactionId)->first();
 
@@ -241,5 +278,20 @@ class PaymentController extends Controller
         }
 
         return view('vnpay_php.vnpay_return', compact('transactionId'));
+    }
+
+
+    public function saveSelectedProducts(Request $request)
+    {
+        // Lấy dữ liệu sản phẩm được chọn từ request
+        $selectedProducts = $request->input('selectedProducts');
+
+        // Lưu dữ liệu vào session
+        session(['selectedProducts' => $selectedProducts]);
+
+        // Tiếp tục xử lý khác nếu cần...
+
+        // Trả về phản hồi cho client (nếu cần)
+        return response()->json(['message' => 'Dữ liệu đã được lưu vào session']);
     }
 }

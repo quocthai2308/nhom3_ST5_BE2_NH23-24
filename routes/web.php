@@ -145,6 +145,11 @@ Route::get('/shopping-cart', [CartController::class, 'showCart']);
 Route::post('/shopping-cart/update', [CartController::class, 'updateCart']);
 Route::get('/shopping-cart/{id}', [CartController::class, 'removeFromCart']);
 Route::post('/checkout', [PaymentController::class, 'checkout']);
+// Route trong web.php
+Route::get('/get-cart-data', [CartController::class, 'getCartData']);
+
+// vochers
+Route::get('/get-all-vouchers', [CartController::class, 'getAllVouchers']);
 
 
 
@@ -189,6 +194,11 @@ Route::get('/edit-category', [CategoryController::class, 'index_edit']);
 Route::get('/vnpay_return', [PaymentController::class, 'handleVnpayResponse'])->name('vnpay.return');
 Route::post('/vnpay_create_payment', [PaymentController::class, 'vnpay_create_payment']);
 // thông tin mình di dời qua file data.txt rồi nha
+// routes/web.php
+Route::post('/save-selected-products', [PaymentController::class, 'saveSelectedProducts']);
 
 
 
+// order (đơn hàng)
+Route::get('/order/{id}', 'OrderController@show')->name('orderDetail');
+Route::get('/order/{id}/cancel', 'OrderController@cancel')->name('cancelOrder');

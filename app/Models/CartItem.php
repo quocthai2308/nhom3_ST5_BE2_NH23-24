@@ -9,7 +9,7 @@ class CartItem extends Model
 {
     use HasFactory;
 
-   // public $timestamps = false;
+    // public $timestamps = false;
 
     protected $table = 'cart';
 
@@ -23,5 +23,11 @@ class CartItem extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function deleteCartItem($id)
+    {
+        // Xóa sản phẩm trong giỏ hàng dựa trên ID
+        CartItem::where('id', $id)->delete();
     }
 }

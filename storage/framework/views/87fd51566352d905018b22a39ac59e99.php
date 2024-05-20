@@ -15,21 +15,22 @@
 
 <div class="body-content outer-top-xs">
 	<div class="container">
-		<div class="row ">
+		<div class="row">
 			<div class="shopping-cart">
 				<div class="shopping-cart-table ">
 					<div class="table-responsive">
 						<table class="table">
 							<thead>
 								<tr>
-									<th class="cart-romove item">Remove</th>
+									<th class="cart-romove item"> <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input"> </th>
 									<th class="cart-description item">Image</th>
 									<th class="cart-product-name item">Product Name</th>
 									<th class="cart-edit item">description</th>
 									<th class="cart-qty item">Quantity</th>
 									<th class="cart-sub-total item">Subtotal</th>
 									<th class="cart-total last-item">Grandtotal</th>
-									<th class="cart-total last-item">Checkout</th>
+									<!-- <th class="cart-total last-item">Checkout</th> -->
+									<th class="cart-romove item">Remove</th>
 								</tr>
 							</thead><!-- /thead -->
 							<tfoot>
@@ -47,7 +48,7 @@
 							<tbody>
 								<?php $__currentLoopData = $cart; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $productId => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<tr data-id="<?php echo e($product['id']); ?>">
-									<td class="romove-item romove-cooke"><a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>
+									<td> <input class="form-check-input mt-0" id="checkbox-<?php echo e($product['id']); ?>" type="checkbox" value="" aria-label="Checkbox for following text input"> </td>
 									<td class="cart-image">
 										<a class="entry-thumbnail" href="<?php echo e(url('detail/'.$product['id'])); ?>">
 											<img src="<?php echo e(asset('app/images/products/p' . $product['id'] . '.jpg')); ?>" alt="">
@@ -92,12 +93,12 @@
 										</span>
 									</td>
 
-									<td>
+									<!-- <td>
 										<form action="<?php echo e(url('/checkout')); ?>" method="post">
 											<?php echo csrf_field(); ?>
 											<input type="hidden" name="qtyProduct-<?php echo e($product['id']); ?>" value="<?php echo e($product['quantity']); ?>">
 											<input type="hidden" name="product_id" value="<?php echo e($product['id']); ?>">
-											<div class ="voucher" style="font-weight: bold; text-align: right; color: #0077cc;">
+											<div class="voucher" style="font-weight: bold; text-align: right; color: #0077cc;">
 											</div>
 											<input type="hidden" name="qty" value="<?php echo e($product['quantity']); ?>">
 											<input type="hidden" name="product_id" class="product-id" value="<?php echo e($product['id']); ?>">
@@ -106,7 +107,8 @@
 											<button class="btn btn-primary checkout-btn-child">Thanh toán</button>
 										</form>
 
-									</td>
+									</td> -->
+									<td class="romove-item remove-cooke"><a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>
 
 								</tr>
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -192,16 +194,42 @@
 						<thead>
 							<tr>
 								<th>
-									<div class="luaChon"style="font-weight: bold; text-align: right; color: #0077cc;">lựa chọn vocher
+									<!-- <div class="luaChon"style="font-weight: bold; text-align: right; color: #0077cc;">lựa chọn vocher
 										<input type="radio" id="option1" name="options" value="1">
 										<label for="option1">Option 1</label><br>
 
 										<input type="radio" id="option2" name="options" value="2">
 										<label for="option2">Option 2</label><br>
+									</div> -->
+
+									<button type="button" id="openVoucherModalBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+										vochers
+									</button>
+									<!-- Modal -->
+									<div class="modal modal-md" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Vouchers</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form id="voucherForm">
+														<div id="voucherList"></div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary save-vocher" data-bs-dismiss="modal">Save changes</button>
+												</div>
+											</div>
+										</div>
 									</div>
- 
+
+
+
 									<div class="cart-sub-total">
-										Dá một món<span class="inner-left-md sub-total">$0</span>
+										Tổng :<span class="inner-left-md sub-total">0 Sản Phẩm</span>
 									</div>
 									<div class="cart-grand-total">
 										Tổng cộng<span class="inner-left-md grand-total">$0</span>
@@ -222,8 +250,10 @@
 									<div class="cart-checkout-btn pull-right">
 										<form id="checkoutForm" method="post">
 											<?php echo csrf_field(); ?>
-											<input type="hidden" id="redirectValue" name="redirect" value="">
-											<button type="submit" name="redirect" id="checkout-btn" value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button>
+											<!-- Trong form của bạn -->
+											<input type="hidden" id="selectedProductsInput" name="selectedProducts" value="">
+											<input class="tongtien" type="hidden" id="redirectValue" name="redirect" value="">
+											<button type="submit" id="checkout-btn" value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button>
 										</form>
 										<span class="">Checkout with multiple addresses!</span>
 									</div>
@@ -235,6 +265,7 @@
 				</div><!-- /.cart-shopping-total -->
 			</div><!-- /.shopping-cart -->
 		</div> <!-- /.row -->
+
 		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
 		<div id="brands-carousel" class="logo-slider wow fadeInUp">
 

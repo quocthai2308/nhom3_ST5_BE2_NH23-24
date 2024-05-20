@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
 use Ramsey\Uuid\Type\Integer;
+use Illuminate\Support\Facades\Cache;
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -15,6 +16,22 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
  *
  * @author CTT VNPAY
  */
+
+ session_start();
+        // Lấy mảng selectedProductsInput từ session
+        $selectedProductsInput = session('selectedProductsInput');
+
+        //dd($selectedProductsInput);
+        $parameters = [];
+foreach ($selectedProductsInput as $product) {
+    $parameters['id'][] = $product['id'];
+    $parameters['name'][] = $product['name'];
+    $parameters['price'][] = $product['price'];
+    $parameters['quantity'][] = $product['quantity'];
+    $parameters['total'][] = $product['total'];
+}
+
+Cache::put('selectedProductsInput', $parameters, 60);
 
  $vnp_TmnCode = "S77NQKOC"; //Mã định danh merchant kết nối (Terminal Id)
 $vnp_HashSecret = "VMUTQZMAJALJDPSKDOATRRZBNLUQYNMJ"; //Secret key

@@ -88,17 +88,23 @@
 
                                         <div class="col-sm-6">
                                             <div class="price-box">
-                                                <span class="price">$<?php echo e($product['price']); ?></span>
-                                                <span class="price-strike">$900.00</span>
+                                                <?php if($product['discount']!=0): ?>
+                                                <span class="price"><?php echo e($product['discount']); ?> vnd</span>
+                                                <span class="price-strike"><?php echo e($product['price']); ?> vnd</span>
+                                                <?php endif; ?>
+                                                <?php if($product['discount']==0): ?>
+                                                <span class="price"><?php echo e($product['price']); ?> vnd</span>
+                                                <?php endif; ?>
+
                                             </div>
                                         </div>
-                                        <div class="btn btn-primary like" data-product-id="<?php echo e($product->id); ?>">
-                                            <i class="fa fa-heart">
-                                            </i>
-                                        </div>
-
+                                        
                                         <div class="col-sm-6">
                                             <div class="favorite-button m-t-10">
+                                                <div class="btn btn-primary like" data-product-id="<?php echo e($product->id); ?>">
+                                                    <i class="fa fa-heart">
+                                                    </i>
+                                                </div>
                                                 <!-- <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
                                                     <i class="fa fa-signal"></i>
                                                 </a> -->
