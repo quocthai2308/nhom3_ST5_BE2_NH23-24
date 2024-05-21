@@ -39,7 +39,7 @@ class Product extends Model
     }
     public function getProductByKeyword($keyword)
     {
-        $products = Product::where('name', 'LIKE', "%{$keyword}%")->get();
+        $products = Product::where('name', 'LIKE', "%{$keyword}%");
         return $products;
     }
     public function categories()
