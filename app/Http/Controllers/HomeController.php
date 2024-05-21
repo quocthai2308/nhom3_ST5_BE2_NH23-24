@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
         $searchTerm = $request->input('name');
         $productModel = new Product();
-        $products = $productModel->getProductByKeyword($searchTerm);
+        $products = $productModel->getProductByKeyword($searchTerm)->paginate(6);
         return view('search', compact('products', 'searchTerm'));
     }
     public function category($categoryId, Request $request)
