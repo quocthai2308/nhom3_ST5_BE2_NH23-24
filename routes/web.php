@@ -155,6 +155,7 @@ Route::get('/shopping-cart', [CartController::class, 'showCart']);
 Route::post('/shopping-cart/update', [CartController::class, 'updateCart']);
 Route::get('/shopping-cart/{id}', [CartController::class, 'removeFromCart']);
 Route::post('/checkout', [PaymentController::class, 'checkout']);
+Route::post('/cash-payment', [PaymentController::class, 'pay_cash']);
 // Route trong web.php
 Route::get('/get-cart-data', [CartController::class, 'getCartData']);
 
@@ -217,6 +218,4 @@ Route::get('/sortProducts', [ProductController::class, 'sortProducts'])->name('s
 
 
 
-// order (đơn hàng)
-Route::get('/order/{id}', 'OrderController@show')->name('orderDetail');
-Route::get('/order/{id}/cancel', 'OrderController@cancel')->name('cancelOrder');
+

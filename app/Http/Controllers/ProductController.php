@@ -238,8 +238,6 @@ class ProductController extends Controller
 
         return view('category', compact('products'));
     }
-
-
 }
 function getImage($id)
 {

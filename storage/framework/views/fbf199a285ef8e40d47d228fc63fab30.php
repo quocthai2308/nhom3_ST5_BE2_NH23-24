@@ -508,6 +508,8 @@
     <script src="<?php echo e(asset('app\js\wow.min.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\scripts.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\shopping-cart.js')); ?>"></script>
+    <script src="<?php echo e(asset('app\js\category.js')); ?>"></script>
+
     <script src="<?php echo e(asset('app\js\home.js')); ?>"></script>
     <script src="<?php echo e(asset('app\js\confirmorder.js')); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -519,7 +521,7 @@
     
     <!-- For demo purposes – can be removed on production : End -->
     <script type="text/javascript">
-        var cashPaymentUrl = "<?php echo e(url('/shopping-cart')); ?>"; // Thay '/trang-A' bằng đường dẫn thực tế của bạn
+        var cashPaymentUrl = "<?php echo e(url('/cash-payment')); ?>"; // Thay '/trang-A' bằng đường dẫn thực tế của bạn
         var onlinePaymentUrl = "<?php echo e(url('/vnpay_create_payment')); ?>";
         var checkoutUrl = "<?php echo e(url('/checkout')); ?>";
     </script>

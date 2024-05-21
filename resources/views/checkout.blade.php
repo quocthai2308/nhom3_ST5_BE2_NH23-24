@@ -2,9 +2,6 @@
 @section('title', 'checkout')
 @section('content')
 
-<?php
-echo $selectedProductsInput;
-?>
 
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
@@ -65,13 +62,13 @@ echo $selectedProductsInput;
 													<label class="info-title" for="customerEmail">Email <span>*</span></label>
 													<input type="email" class="form-control unicase-form-control text-input" id="customerEmail" name="customerEmail" placeholder="Nhập địa chỉ email của bạn" required>
 
-													<label class="info-title" for="customerPhone">Số điện thoại <span>*</span></label>
+													<label class="info-title" for="customerPhone">phone number <span>*</span></label>
 													<input type="tel" class="form-control unicase-form-control text-input" id="customerPhone" name="customerPhone" placeholder="Nhập số điện thoại của bạn" required>
 
-													<label class="info-title" for="orderContent">Nội dung đơn hàng <span>*</span></label>
+													<label class="info-title" for="orderContent">Order content <span>*</span></label>
 													<textarea class="form-control unicase-form-control text-input" id="orderContent" name="orderContent" placeholder="Nhập nội dung đơn hàng của bạn" rows="4" required></textarea>
 													
-													<label class="info-title" for="shippingAddress">Địa chỉ nhận hàng <span>*</span></label>
+													<label class="info-title" for="shippingAddress">Address to receive goods <span>*</span></label>
 													<input type="text" class="form-control unicase-form-control text-input" id="shippingAddress" name="shippingAddress" placeholder="Nhập địa chỉ nhận hàng của bạn" required>
 
 													<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Continue</button>

@@ -507,6 +507,8 @@
     <script src="{{ asset('app\js\wow.min.js') }}"></script>
     <script src="{{ asset('app\js\scripts.js') }}"></script>
     <script src="{{ asset('app\js\shopping-cart.js') }}"></script>
+    <script src="{{ asset('app\js\category.js') }}"></script>
+
     <script src="{{ asset('app\js\home.js') }}"></script>
     <script src="{{ asset('app\js\confirmorder.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -533,7 +535,7 @@
     </script> --}}
     <!-- For demo purposes – can be removed on production : End -->
     <script type="text/javascript">
-        var cashPaymentUrl = "{{ url('/shopping-cart') }}"; // Thay '/trang-A' bằng đường dẫn thực tế của bạn
+        var cashPaymentUrl = "{{ url('/cash-payment') }}"; // Thay '/trang-A' bằng đường dẫn thực tế của bạn
         var onlinePaymentUrl = "{{ url('/vnpay_create_payment') }}";
         var checkoutUrl = "{{ url('/checkout') }}";
     </script>

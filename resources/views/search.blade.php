@@ -22,10 +22,10 @@
                         </div>
                         <!-- /.product-image -->
                         <div class="product-info text-left">
-                            <h3 class="name"><a href="{{ url('detail/'.$product['id']) }}">${{$product['name']}}</a></h3>
+                            <h3 class="name"><a href="{{ url('detail/'.$product['id']) }}">{{$product['name']}}</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> ${{$product['price']}} 
+                            <div class="product-price"> <span class="price"> {{$product['price'] }} VND 
                             </span>                                                                   
                         </div>
                             <!-- /.product-price -->

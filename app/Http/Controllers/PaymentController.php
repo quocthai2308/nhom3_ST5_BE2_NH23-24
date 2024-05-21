@@ -164,6 +164,67 @@ class PaymentController extends Controller
         return view('vnpay_php.vnpay_create_payment', compact('transaction', 'redirectValue', 'code_vnpay', 'qtyProduct', 'selectedProductsInput'));
     }
 
+    public function pay_cash(Request $request) {
+
+        $email = $request->input('customerEmail');
+        $phone = $request->input('customerPhone');
+        $orderContent = $request->input('orderContent');
+        $shippingAddress = $request->input('shippingAddress');
+        $user_id = Auth::user()->id;
+
+        $selectedProductsInput = $request->input('selectedProducts');
+        $selectedProductsArray = json_decode($selectedProductsInput, true);
+    
+        foreach ($selectedProductsArray as $product) {
+            // Tạo và lưu các giao dịch mới
+            $transaction = new Transaction([
+                'user_id' => $user_id,
+                'product_id' => $product['id'],
+                'amount' => $product['total'],
+                'payment_method' => 'VNPAY',
+                'code_vnpay' => 'null',
+                'status' => 0,
+                'email' => $email,
+                'phone' => $phone,
+                'order_content' => $orderContent,
+                'shipping_address' => $shippingAddress,
+            ]);
+            $transaction->save();
+
+
+
+            $productdM = new Product();
+                $bill = new Bill;
+                $billProduct = new BillProduct();
+                $total = $product['total'] / 100000;
+                $userId = Auth::user()->id;
+                $createdAt = date('Y-m-d H:i:s');
+                $paymentMethod = 'VNpay';
+                $billId = $bill->addBill($total, $userId, $createdAt, $paymentMethod);
+                // $product_id = session('product_id');
+                // $quantity = session('quantity');
+                $product_id = $product['id'];
+                $quantity = $product['quantity'];
+                $billProduct->addBillProduct($billId, $product_id, $quantity);
+                $productdM->updateProductQuantity($product_id, $quantity);
+
+
+                $user = Auth::user();
+                $cartItem = CartItem::where('user_id', $user->id)->where('product_id', $product['id'])->first();
+
+
+
+                if ($cartItem) {
+                    $cartItem->delete();
+                   
+                 }
+        }
+        session()->flash('success_message', 'Đã thanh toán thành công!');
+
+        return redirect('/shopping-cart');
+    }
+    
+
     public function vnpay_return()
     {
         return view('vnpay_php.vnpay_return');
@@ -214,7 +275,7 @@ class PaymentController extends Controller
         // ... (xử lý các sản phẩm được chọn)
 
 
-        //dd($parameters);
+        
         $selectedProductsInput = Cache::get('selectedProductsInput');
 
         // Sử dụng vòng lặp for để xử lý từng sản phẩm
@@ -223,13 +284,6 @@ class PaymentController extends Controller
             $productPrice = $selectedProductsInput['price'][$index];
             $productQuantity = $selectedProductsInput['quantity'][$index];
             $productTotal = $selectedProductsInput['total'][$index];
-
-            // // Xử lý từng sản phẩm ở đây
-            // echo "ID: " . $productId . "<br>";
-            // echo "Tên: " . $productName . "<br>";
-            // echo "Giá: " . $productPrice . "<br>";
-            // echo "Số lượng: " . $productQuantity . "<br>";
-            // echo "Tổng cộng: " . $productTotal . "<br><br>";
 
             if ($responseCode == '00') {
                 $productdM = new Product();
@@ -255,11 +309,9 @@ class PaymentController extends Controller
 
                 if ($cartItem) {
                     $cartItem->delete();
-                    //return response('Product removed from cart.');
+                   
                  }
-                //else {
-                //     return response('Product not found in cart.');
-                // }
+
             }
         }
 
