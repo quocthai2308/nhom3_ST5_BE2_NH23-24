@@ -60,21 +60,24 @@ class CategoryController extends Controller
 
     }
 
-    public function deleteCategory($id)
+    public function deleteCategory(Request $request, $id)
     {
         $category = Category::find($id);
 
         // Kiểm tra xem danh mục có sản phẩm nào không
         if ($category->products()->count() > 0) {
             // Nếu có, trả về thông báo lỗi
-            return redirect()->back()->with('error', 'Cannot delete category that has products.');
+            $request->session()->flash('delete-failure', 'Cannot delete category that has products.');
+            return redirect()->back();
         }
 
         // Nếu không, xóa danh mục
         $category->delete();
 
-        return redirect()->route('admin.manage-category')->with('success', 'Category deleted successfully!');
+        $request->session()->flash('delete-success', 'Category deleted successfully!');
+        return redirect()->route('admin.manage-category');
     }
+
 
 
 }

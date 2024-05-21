@@ -91,7 +91,7 @@ class Product extends Model
     // Lấy tất cả sản phẩm
     public function getAllProducts()
     {
-        return self::orderBy('updated_at', 'desc')->get();
+        return self::orderBy('updated_at', 'desc');
     }
 
 

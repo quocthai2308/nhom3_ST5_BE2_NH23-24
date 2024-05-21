@@ -56,9 +56,10 @@ class ProductController extends Controller
     public function index()
     {
         $productModel = new Product();
-        $products = $productModel->getAllProducts();
+        $products = $productModel->getAllProducts()->paginate(10); // Số sản phẩm trên mỗi trang
         return view('admin.manage-product', compact('products'));
     }
+    
 
     // Hàm thêm sản phẩm
     public function add(Request $request)

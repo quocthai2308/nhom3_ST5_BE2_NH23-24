@@ -11,6 +11,16 @@
             {{ session('update-success') }}
         </div>
     @endif
+    @if (session('delete-success'))
+        <div class="alert alert-success">
+            {{ session('delete-success') }}
+        </div>
+    @endif
+    @if (session('delete-failure'))
+        <div class="alert alert-danger">
+            {{ session('delete-failure') }}
+        </div>
+    @endif
     <h1>Manage Category</h1>
     </div>
     <div class="container-fluid">
@@ -55,13 +65,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="row" style="margin-left: 18px;">
-                            <ul class="pagination">
-                                <li class="active">1</li>
-                                <li>2</li>
-                                <li>3</li>
-                            </ul>
-                        </div>
                     </div>
 
                 </div>
