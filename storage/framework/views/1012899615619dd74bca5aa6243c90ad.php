@@ -1,7 +1,7 @@
 <?php $__env->startSection('title', 'Manage Product'); ?>
 <?php $__env->startSection('content'); ?>
     
-    <h1>Manage Products</h1>
+    <h1>Manage Blogs</h1>
     </div>
     <div class="container-fluid">
         <hr>
@@ -37,7 +37,7 @@
                                         <td><?php echo e($blog->update_at); ?></td>
                                         <td><?php echo e($blog->create_at); ?></td>
                                         <td>
-                                            <a href=""
+                                            <a href="<?php echo e(url('edit-blog/'.$blog->id)); ?>"
                                                 class="btn btn-success btn-mini">Edit</a>
                                             <form action="<?php echo e(route('blog.delete', $blog->id)); ?>" method="POST"
                                                 class="delete-form">

@@ -318,39 +318,41 @@
                         </div>
                         <div class="col col-sm-12 col-md-6">
                             <div class="col col-sm-3 col-md-6 no-padding">
-                                <div class="lbl-cnt"><span class="lbl">Sort by</span>
+                                <div class="lbl-cnt">
+                                    <span class="lbl">Sort by</span>
                                     <div class="fld inline">
                                         <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                                            <button data-toggle="dropdown" type="button" class="btn dropdown-toggle" id="dropdownMenuButton"> Position <span class="caret"></span></button>
+                                            <button data-toggle="dropdown" type="button" class="btn dropdown-toggle" id="dropdownMenuButton">
+                                                {{ ucfirst(str_replace('_', ' ', $sortType)) }} <span class="caret"></span>
+                                            </button>
                                             <ul role="menu" class="dropdown-menu">
-                                                <li role="presentation"><a class="dropdown-item" href="{{ route('category', ['categoryId' => $category->id, 'sort' => 'position', 'show' => request('show', 10)]) }}">Position</a></li>
-                                                <li role="presentation"><a class="dropdown-item" href="{{ route('category', ['categoryId' => $category->id, 'sort' => 'price_asc', 'show' => request('show', 10)]) }}">Price: Lowest first</a></li>
-                                                <li role="presentation"><a class="dropdown-item" href="{{ route('category', ['categoryId' => $category->id, 'sort' => 'price_desc', 'show' => request('show', 10)]) }}">Price: Highest first</a></li>
-                                                <li role="presentation"><a class="dropdown-item" href="{{ route('category', ['categoryId' => $category->id, 'sort' => 'name_asc', 'show' => request('show', 10)]) }}">Product Name: A to Z</a></li>
+                                                <li role="presentation"><a class="dropdown-item" href="#" data-sort="position">Position</a></li>
+                                                <li role="presentation"><a class="dropdown-item" href="#" data-sort="price_asc">Price: Lowest first</a></li>
+                                                <li role="presentation"><a class="dropdown-item" href="#" data-sort="price_desc">Price: Highest first</a></li>
+                                                <li role="presentation"><a class="dropdown-item" href="#" data-sort="name_asc">Product Name: A to Z</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col col-sm-3 col-md-6 no-padding">
-                                <div class="lbl-cnt"><span class="lbl">Show</span>
+                                <div class="lbl-cnt">
+                                    <span class="lbl">Show</span>
                                     <div class="fld inline">
                                         <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                                            <button data-toggle="dropdown" type="button" class="btn dropdown-toggle" id="showDropdownButton"> 1 <span class="caret"></span> </button>
+                                            <button data-toggle="dropdown" type="button" class="btn dropdown-toggle" id="showDropdownButton">
+                                                {{ $showCount }} <span class="caret"></span>
+                                            </button>
                                             <ul role="menu" class="dropdown-menu" id="showDropdownMenu">
-                                                <li role="presentation"><a class="dropdown-item" data-count="1" href="{{ route('category', ['categoryId' => $category->id, 'sort' => request('sort', 'position'), 'show' => 1]) }}">1</a></li>
-                                                <li role="presentation"><a class="dropdown-item" data-count="2" href="{{ route('category', ['categoryId' => $category->id, 'sort' => request('sort', 'position'), 'show' => 2]) }}">2</a></li>
-                                                <li role="presentation"><a class="dropdown-item" data-count="3" href="{{ route('category', ['categoryId' => $category->id, 'sort' => request('sort', 'position'), 'show' => 3]) }}">3</a></li>
-                                                <li role="presentation"><a class="dropdown-item" data-count="4" href="{{ route('category', ['categoryId' => $category->id, 'sort' => request('sort', 'position'), 'show' => 4]) }}">4</a></li>
-                                                <li role="presentation"><a class="dropdown-item" data-count="5" href="{{ route('category', ['categoryId' => $category->id, 'sort' => request('sort', 'position'), 'show' => 5]) }}">5</a></li>
-                                                <li role="presentation"><a class="dropdown-item" data-count="6" href="{{ route('category', ['categoryId' => $category->id, 'sort' => request('sort', 'position'), 'show' => 6]) }}">6</a></li>
+                                                @for ($i = 1; $i <= 6; $i++) <li role="presentation"><a class="dropdown-item" href="#" data-show="{{ $i }}">{{ $i }}</a></li>
+                                                    @endfor
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col col-sm-6 col-md-4 text-right">
+                        <!-- <div class="col col-sm-6 col-md-4 text-right">
                             <div class="pagination-container">
                                 <ul class="list-inline list-unstyled">
                                     <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
@@ -361,7 +363,8 @@
                                     <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
+                       
                     </div>
                 </div>
 
@@ -369,6 +372,7 @@
                     <div id="myTabContent" class="tab-content category-list">
                         <div class="tab-pane active " id="grid-container">
                             <div class="category-product" id="product-list">
+                                
                                 <div class="row">
                                     @foreach ($products as $product)
                                     <div class="col-sm-6 col-md-4 wow fadeInUp">
@@ -433,21 +437,10 @@
                 </div>
                 <!-- /.tab-content -->
                 <div class="clearfix filters-container">
-                    <div class="text-right">
-                        <div class="pagination-container">
-                            <ul class="list-inline list-unstyled">
-                                <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
-                            <!-- /.list-inline -->
+                    <!-- AJAX Pagination -->
+                    <div class="row" style="margin-left: 650px;">
+                            {{ $products->appends(['sort' => $sortType, 'show' => $showCount])->links('vendor.pagination.default') }}
                         </div>
-                        <!-- /.pagination-container -->
-                    </div>
-                    <!-- /.text-right -->
 
                 </div>
                 <!-- /.filters-container -->

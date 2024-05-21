@@ -32,9 +32,10 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Price ($)</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
+                                    <th>Price (đ)</th>
+                                    <th>Quantity</th>
+                                    <th>Featured</th>
+                                    <th>Discount</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -49,9 +50,10 @@
                                         </td>
                                         <td><?php echo e($product->name); ?></td>
                                         <td><?php echo e($product->description); ?></td>
-                                        <td><?php echo e($product->price); ?>$</td>
-                                        <td><?php echo e($product->created_at); ?></td>
-                                        <td><?php echo e($product->updated_at); ?></td>
+                                        <td><?php echo e($product->price); ?>đ</td>
+                                        <td><?php echo e($product->quantity); ?></td>
+                                        <td><?php echo e($product->feature); ?></td>
+                                        <td><?php echo e($product->discount); ?></td>
                                         <td>
                                             <a href="<?php echo e(url('form-edit-product', $product->id)); ?>"
                                                 class="btn btn-success btn-mini">Edit</a>
@@ -68,13 +70,11 @@
                             </tbody>
                         </table>
                         <div class="row" style="margin-left: 18px;">
-                            <ul class="pagination">
-                                <li class="active"><a href="">1</a>
-                                </li>
-                                <li><a href="">2</a></li>
-                                <li><a href="">3</a></li>
-                            </ul>
+                            <?php echo e($products->links('vendor.pagination.default')); ?>
+
                         </div>
+
+
                     </div>
                 </div>
             </div>

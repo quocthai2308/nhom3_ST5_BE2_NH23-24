@@ -107,12 +107,11 @@
     </div> <!-- BEGIN CONTENT -->
     <div id="content">
         <div id="content-header">
-            <div id="breadcrumb"> <a href="{{ url('manage-product') }}" title="Go to Home"
+            <div id="breadcrumb"> <a href="{{ url('dashboard') }}" title="Go to Home"
                     class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
 
 
             @yield('content')
-
 
 
 
@@ -152,6 +151,7 @@
                     });
                 });
             </script>
+            
             <script src="{{url('admin/ckeditor/ckeditor.js')}}"></script>
             <script>
                 ClassicEditor

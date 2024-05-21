@@ -43,7 +43,7 @@ class HomeController extends Controller
     public function category($categoryId, Request $request)
     {
         $sortType = $request->input('sort', 'position'); // Mặc định sắp xếp theo 'position'
-        $showCount = $request->input('show', 1); // Mặc định hiển thị 10 sản phẩm
+        $showCount = $request->input('show', 3); // Mặc định hiển thị 10 sản phẩm
         $category = Category::find($categoryId); // Lấy category dựa trên categoryId
     
         // Khởi tạo query cơ bản

@@ -5,6 +5,7 @@
     </div>
 <?php endif; ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -147,17 +148,18 @@
                     <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">
                         <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
 
-                        <div class="dropdown dropdown-cart">
+                        <div class="dropdown dropdown-cart" >
+                            
                             <a href="#" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
                                 <div class="items-cart-inner">
                                     <div class="basket">
                                         <i class="glyphicon glyphicon-shopping-cart"></i>
                                     </div>
-                                    <div class="basket-item-count"><span class="count">2</span></div>
+                                    <div class="basket-item-count" id="qtyItem"><span class="count">0</span></div>
                                     <div class="total-price-basket">
-                                        <span class="lbl">cart -</span>
-                                        <span class="total-price">
-                                            <span class="sign">$</span><span class="value">600.00</span>
+                                        <span class="lbl">cart Item</span>
+                                        <span class="total-price" id="totalPrice">
+                                            <span class="sign"></span><span class="value"></span>
                                         </span>
                                     </div>
 
@@ -166,8 +168,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <div class="cart-item product-summary">
-                                        <div class="row">
+                                    <div class="cart-item product-summary" id="cart-products">
+                                        <!-- <div class="row">
                                             <div class="col-xs-4">
                                                 <div class="image">
                                                     <a href="<?php echo e(url('detail')); ?>"><img
@@ -184,15 +186,15 @@
                                             <div class="col-xs-1 action">
                                                 <a href="#"><i class="fa fa-trash"></i></a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div><!-- /.cart-item -->
                                     <div class="clearfix"></div>
                                     <hr>
 
                                     <div class="clearfix cart-total">
-                                        <div class="pull-right">
+                                        <div class="pull-right" style="padding-right: 50%;">
 
-                                            <span class="text">Sub Total :</span><span class='price'>$600.00</span>
+                                            <span class="text" id="subTotal">Sub Total :</span><span class='price'></span>
 
                                         </div>
                                         <div class="clearfix"></div>
@@ -203,7 +205,7 @@
 
 
                                 </li>
-                            </ul><!-- /.dropdown-menu-->
+                            </ul><!-- /.dropdown-menu -->
                         </div><!-- /.dropdown-cart -->
 
                         <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
@@ -302,6 +304,7 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    <li><a href="<?php echo e(url('contact')); ?>">Bản Đồ Kho Báo</a></li>
                                     <li class="dropdown  navbar-right special-menu"> <a href="#">Todays
                                             offer</a> </li>
                                 </ul>
@@ -509,6 +512,7 @@
     <script src="<?php echo e(asset('app\js\confirmorder.js')); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="<?php echo e(asset('app\chatWe\chatWe.js')); ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- For demo purposes – can be removed on production -->
     
 

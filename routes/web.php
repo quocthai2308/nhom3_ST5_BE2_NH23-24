@@ -192,10 +192,13 @@ Route::put('/product/{id}', [ProductController::class, 'modify'])->name('product
 Route::delete('/product/{id}', [ProductController::class, 'delete'])->name('product.delete');
 
 // quản lý catelory
-Route::get('/manage-category', [CategoryController::class, 'index']);
+Route::get('/manage-category', [CategoryController::class, 'index'])->name('admin.manage-category');
 Route::get('/manage-category/page', [CategoryController::class, 'pageAddCategory']);
 Route::get('/manage-category/add', [CategoryController::class, 'addCategory']);
-Route::get('/edit-category', [CategoryController::class, 'index_edit']);
+Route::get('/manage-category/edit/{id}', [CategoryController::class, 'index_edit'])->name('edit-category');
+Route::put('/manage-category/edit/{id}', [CategoryController::class, 'editCategory'])->name('category.edit');
+Route::delete('/manage-category/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete');
+
 
 
 // checkout (thanh toán) - VNPAY

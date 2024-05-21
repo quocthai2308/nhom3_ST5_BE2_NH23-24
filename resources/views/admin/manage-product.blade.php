@@ -31,9 +31,10 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <th>Price ($)</th>
-                                    <th>Created at</th>
-                                    <th>Updated at</th>
+                                    <th>Price (đ)</th>
+                                    <th>Quantity</th>
+                                    <th>Featured</th>
+                                    <th>Discount</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -48,9 +49,10 @@
                                         </td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->description }}</td>
-                                        <td>{{ $product->price }}$</td>
-                                        <td>{{ $product->created_at }}</td>
-                                        <td>{{ $product->updated_at }}</td>
+                                        <td>{{ $product->price }}đ</td>
+                                        <td>{{ $product->quantity }}</td>
+                                        <td>{{ $product->feature }}</td>
+                                        <td>{{ $product->discount }}</td>
                                         <td>
                                             <a href="{{ url('form-edit-product', $product->id) }}"
                                                 class="btn btn-success btn-mini">Edit</a>
@@ -67,13 +69,10 @@
                             </tbody>
                         </table>
                         <div class="row" style="margin-left: 18px;">
-                            <ul class="pagination">
-                                <li class="active"><a href="">1</a>
-                                </li>
-                                <li><a href="">2</a></li>
-                                <li><a href="">3</a></li>
-                            </ul>
+                            {{ $products->links('vendor.pagination.default') }}
                         </div>
+
+
                     </div>
                 </div>
             </div>

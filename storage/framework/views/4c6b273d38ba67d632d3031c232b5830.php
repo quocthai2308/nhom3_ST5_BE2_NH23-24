@@ -100,17 +100,18 @@
                     <span>Blogs</span></a></li>
             <li> <a href="<?php echo e(url('manage-voucher')); ?>"><i class="icon icon-th-list"></i>
                     <span>Vouchers</span></a></li>
+            <li> <a href="<?php echo e(url('hangMoiDac')); ?>"><i class="icon icon-th-list"></i>
+                    <span>Thông Tin Hàng Mới Đặc</span></a></li>
 
         </ul>
     </div> <!-- BEGIN CONTENT -->
     <div id="content">
         <div id="content-header">
-            <div id="breadcrumb"> <a href="<?php echo e(url('manage-product')); ?>" title="Go to Home"
+            <div id="breadcrumb"> <a href="<?php echo e(url('dashboard')); ?>" title="Go to Home"
                     class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
 
 
             <?php echo $__env->yieldContent('content'); ?>
-
 
 
 
@@ -150,6 +151,7 @@
                     });
                 });
             </script>
+            
             <script src="<?php echo e(url('admin/ckeditor/ckeditor.js')); ?>"></script>
             <script>
                 ClassicEditor
