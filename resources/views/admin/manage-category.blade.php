@@ -1,56 +1,73 @@
 @extends('admin.nav')
 @section('title', 'Manage Product Type')
 @section('content')
-                <h1>Manage Category</h1>
-            </div>
-            <div class="container-fluid">
-                <hr>
-                <div class="row-fluid">add-category
-                    <div class="span12">
-                        <div class="widget-box">
-                            <div class="widget-title"> <span class="icon"><a
-                                    href="{{ url('/manage-category/page') }}"> <i class="icon-plus"></i>
-                                    </a></span>
-                                <h5>Categories</h5>
-                            </div>
-                            <div class="widget-content nopadding">
-                                <table class="table table-bordered
-                                    table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Category Id</th>
-                                            <th>Category Name</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($categories as $category)
-                                        <tr class="">
-                                            <td > {{ $category['id'] }} </td> 
-                                            <td>{{ $category['name'] }}</td>
+    @if (session('add-success'))
+        <div class="alert alert-success">
+            {{ session('add-success') }}
+        </div>
+    @endif
+    @if (session('update-success'))
+        <div class="alert alert-success">
+            {{ session('update-success') }}
+        </div>
+    @endif
+    <h1>Manage Category</h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><a href="{{ url('/manage-category/page') }}"> <i
+                                    class="icon-plus"></i>
+                            </a></span>
+                        <h5>Categories</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Category Id</th>
+                                    <th>Category Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($categories as $category)
+                                    <tr class="">
+                                        <td> {{ $category['id'] }} </td>
+                                        <td>{{ $category['name'] }}</td>
 
-                                            <td>
-                                                <a href="{{ url('edit-category') }}" class="btn
-                                                    btn-success btn-mini">Edit</a>
-                                                <a href="#" class="btn
-                                                    btn-danger btn-mini">Delete</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="row" style="margin-left: 18px;">
-                                    <ul class="pagination">
-                                        <li class="active">1</li>
-                                        <li>2</li>
-                                        <li>3</li>
-                                    </ul>
-                                </div>
-                            </div>
+                                        <td>
+                                            <a href="{{ route('edit-category', ['id' => $category->id]) }}"
+                                                class="btn btn-success btn-mini">Edit</a>
+
+                                            <form action="{{ route('category.delete', $category->id) }}" method="POST"
+                                                class="delete-form">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-mini delete-cate-btn"
+                                                    onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="row" style="margin-left: 18px;">
+                            <ul class="pagination">
+                                <li class="active">1</li>
+                                <li>2</li>
+                                <li>3</li>
+                            </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-        <!-- END CONTENT -->
+    </div>
+    </div>
+    <!-- END CONTENT -->
 @endsection
