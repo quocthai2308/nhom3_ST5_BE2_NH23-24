@@ -21,7 +21,8 @@ class HomeController extends Controller
         $categories = $categoryModel->getParentCategories();
         $allCategories = $categoryModel->getAllCategories();
         $bestSeller = $productModel->getBestSeller();
-        return view('home', compact('products', 'specialProducts', 'newProducts', 'categories', 'allCategories', 'bestSeller'));
+        $feature = $productModel->getFeaturedProducts();
+        return view('home', compact('products', 'specialProducts', 'newProducts', 'categories', 'allCategories', 'bestSeller','feature'));
     }
 
 

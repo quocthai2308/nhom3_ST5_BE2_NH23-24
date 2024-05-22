@@ -387,7 +387,7 @@ $(document).ready(function () {
             url: "/shopping-cart/" + productId,
             method: "get",
             success: function (response) {
-                alert("Sản phẩm đã được xóa khỏi giỏ hàng");
+                alert("The product has been removed from the cart");
                 location.reload(); // Tải lại trang để cập nhật giỏ hàng
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -482,7 +482,7 @@ $(document).ready(function () {
             url: "/shopping-cart/" + productId,
             method: "get",
             success: function (response) {
-                alert("Sản phẩm đã được xóa khỏi giỏ hàng");
+                alert("The product has been removed from the cart");
                 location.reload(); // Tải lại trang để cập nhật giỏ hàng
                 fetchCartData();
             },
@@ -597,14 +597,21 @@ $(document).ready(function () {
         return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 
+
+    
+
+
     $(".checkout-btn").click(function () {
         var selectedProducts = [];
-        
+        var hasChecked = false;  // Biến để kiểm tra xem có checkbox nào được chọn hay không
+        var userLogin = $("#user").val();
+        console.log(userLogin);
 
         $("tbody tr").each(function () {
             var checkbox = $(this).find(".form-check-input");
             if (checkbox.prop("checked")) {
-                // Kiểm tra trạng thái checked của checkbox
+                hasChecked = true;  // Nếu có ít nhất một checkbox được chọn, đặt biến hasChecked thành true
+    
                 var productId = $(this).data("id");
                 var productName = $(this)
                     .find(".cart-product-description a")
@@ -621,7 +628,7 @@ $(document).ready(function () {
                     .find(".cart-grand-total-price")
                     .text()
                     .trim();
-
+    
                 selectedProducts.push({
                     id: productId,
                     name: productName,
@@ -631,20 +638,34 @@ $(document).ready(function () {
                 });
             }
         });
-
+    
+        if (!hasChecked) {
+            // Nếu không có checkbox nào được chọn, hiển thị thông báo và không thực hiện sự kiện
+            alert("Please select at least one product to checkout.");
+            event.preventDefault();
+            return;  // Dừng thực hiện sự kiện click
+        }
+        	if (userLogin == 0) {
+            // Nếu không có checkbox nào được chọn, hiển thị thông báo và không thực hiện sự kiện
+            alert("Please login to Checkout.");
+            event.preventDefault();
+            return;  // Dừng thực hiện sự kiện click
+        }
+    
         // Đặt giá trị cho input ẩn với chuỗi JSON của mảng selectedProducts
         $("#selectedProductsInput").val(JSON.stringify(selectedProducts));
-
+    
         // In mảng selectedProducts ra console để kiểm tra
         console.log(selectedProducts);
-
+    
         // Chuyển hướng đến trang vnpay_pay.php
         document.getElementById("checkoutForm").action = checkoutUrl;
         // document.getElementById('checkoutForm').action = "http://localhost:8080/Git/nhom3_ST5_BE2_NH23-24/resources/views/vnpay_php/vnpay_pay.php";
-
+    
         // Submit form
         document.getElementById("checkoutForm").submit();
     });
+    
 
 
 

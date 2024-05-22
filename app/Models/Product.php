@@ -139,6 +139,7 @@ class Product extends Model
             ->get();
         return $products;
     }
+
     public function getBestSeller()
     {
         $products = self::query()
@@ -186,6 +187,14 @@ class Product extends Model
         return $products;
     }
 
+
+    
+    public function getFeaturedProducts()
+    {
+        return Product::where('feature', 1)->with('images')->get();
+    }
+
+
     // Filter
     public static function filterProducts($params)
     {
@@ -224,7 +233,8 @@ class Product extends Model
         return $products;
     }
 
-    
+
+
 
     use HasFactory;
 }

@@ -82,32 +82,36 @@ class CartController extends Controller
 
 
     public function showCart(Request $request)
-    {
-        if (Auth::check()) {
-            $cart = CartItem::where('user_id', $request->user()->id)->get()->toArray();
+{
+    $cart = [];
 
-            // Chuyển đổi dữ liệu từ cơ sở dữ liệu thành định dạng giống như cookie
-            $cart = array_map(function ($item) {
-                return [
-                    'id' => $item['product_id'],
-                    'name' => $item['name'],
-                    'description' => $item['description'],
-                    'price' => $item['price'],
-                    'quantity' => $item['quantity']
-                ];
-            }, $cart);
-        } else {
-            // Nếu người dùng chưa đăng nhập, lấy dữ liệu từ cookie
-            if (Cookie::get('cart')) {
-                $cart = json_decode(Cookie::get('cart'), true);
-            } else {
-                $cart = [];
-            }
+    if (Auth::check()) {
+        $cart = CartItem::where('user_id', $request->user()->id)->get()->toArray();
+
+        // Chuyển đổi dữ liệu từ cơ sở dữ liệu thành định dạng giống như cookie
+        $cart = array_map(function ($item) {
+            return [
+                'id' => $item['product_id'],
+                'name' => $item['name'],
+                'description' => $item['description'],
+                'price' => $item['price'],
+                'quantity' => $item['quantity']
+            ];
+        }, $cart);
+    } else {
+        // Nếu người dùng chưa đăng nhập, lấy dữ liệu từ cookie
+        if (Cookie::get('cart')) {
+            $cart = json_decode(Cookie::get('cart'), true);
         }
-
-        // Hiển thị trang giỏ hàng với dữ liệu từ cookie hoặc cơ sở dữ liệu
-        return view('shopping-cart', ['cart' => $cart]);
     }
+
+    // Trả về view với biến isLoggedIn và dữ liệu giỏ hàng
+    return view('shopping-cart', [
+        'cart' => $cart,
+        'isLoggedIn' => Auth::check() ? 1 : 0// Truyền biến isLoggedIn
+    ]);
+}
+
 
 
     public function removeFromCart(Request $request, $id)

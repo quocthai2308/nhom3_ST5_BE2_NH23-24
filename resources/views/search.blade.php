@@ -69,7 +69,7 @@
             <h1>Nothing is choose</h1>
         </div>
     @endif
-    <div class="row" style="margin-left: 18px; padding-left:15px">
+    <div class="row" style="margin-left: 18px;">
         {{ $products->appends(['name' => $searchTerm])->links('vendor.pagination.default') }}
     </div>
 

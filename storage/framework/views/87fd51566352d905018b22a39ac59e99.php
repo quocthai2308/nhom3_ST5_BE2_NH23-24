@@ -11,6 +11,7 @@
     </div>
 <?php endif; ?>
 
+
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
 	<div class="container">
@@ -261,6 +262,7 @@
 										<form id="checkoutForm" method="post">
 											<?php echo csrf_field(); ?>
 											<!-- Trong form của bạn -->
+											<input type="hidden" id="user" name="user" value=" <?php echo $isLoggedIn ?> ">
 											<input type="hidden" id="selectedProductsInput" name="selectedProducts" value="">
 											<input class="tongtien" type="hidden" id="redirectValue" name="redirect" value="">
 											<button type="submit" id="checkout-btn" value="123456" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</button>

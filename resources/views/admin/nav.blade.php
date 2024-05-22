@@ -76,12 +76,7 @@
         </ul>
     </div>
     <!--start-top-serch-->
-    <div id="search">
-        <form action="result.html" method="get">
-            <input type="text" placeholder="Search here..." />
-            <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
-        </form>
-    </div>
+  
     <!--close-top-serch-->
     <!--sidebar-menu-->
     <div id="sidebar"> <a href="#" class="visible-phone"><i
