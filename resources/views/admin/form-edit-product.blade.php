@@ -94,11 +94,13 @@
                                         value="{{ $product->discount }}" required /> *
                                 </div>
                             </div>
-                            
+
                             <div class="control-group">
                                 <label class="control-label">Choose image:</label>
                                 <div class="controls">
-                                    <input type="file" name="fileUpload" id="fileUpload">
+                                    <input type="file" name="fileUpload" id="fileUpload" accept="image/*">
+                                    <img id="preview" src="#" alt="your image"
+                                        style="display: none; width: 100px;" />
                                 </div>
                             </div>
                             <div class="form-actions">

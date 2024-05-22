@@ -15,13 +15,12 @@
 
                         <!-- BEGIN USER FORM -->
                         <form action="{{ route('product.add') }}" method="post" class="form-horizontal"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" id="productForm">
                             @csrf
                             <div class="control-group">
                                 <label class="control-label">Name:</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Name" name="name"
-                                        required /> *
+                                    <input type="text" class="span11" placeholder="Name" name="name" required /> *
                                 </div>
                             </div>
                             <div class="control-group">
@@ -33,8 +32,7 @@
                             <div class="control-group">
                                 <label class="control-label">Price:</label>
                                 <div class="controls">
-                                    <input type="number" class="span11" placeholder="Price" name="price"
-                                        required /> *
+                                    <input type="number" class="span11" placeholder="Price" name="price" required /> *
                                 </div>
                             </div>
                             <div class="control-group">
@@ -50,15 +48,16 @@
                             <div class="control-group">
                                 <label class="control-label">Quantity:</label>
                                 <div class="controls">
-                                    <input type="number" class="span11" placeholder="Quantity" name="quantity"
-                                        required /> *
+                                    <input type="number" class="span11" placeholder="Quantity" name="quantity" required />
+                                    *
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Status</label>
                                 <div class="controls">
-                                    <label><input type="radio" name="status" value="1" required/> Available </label>
-                                    <label><input type="radio" name="status" value="0" required/> Disable </label>
+                                    <label><input type="radio" name="status" value="1" required /> Available
+                                    </label>
+                                    <label><input type="radio" name="status" value="0" required /> Disable </label>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -86,14 +85,16 @@
                             <div class="control-group">
                                 <label class="control-label">Discount:</label>
                                 <div class="controls">
-                                    <input type="number" class="span11" placeholder="Discount" name="discount"
-                                        required /> *
+                                    <input type="number" class="span11" placeholder="Discount" name="discount" required />
+                                    *
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Choose image:</label>
                                 <div class="controls">
-                                    <input type="file" name="fileUpload" id="fileUpload">
+                                    <input type="file" name="fileUpload" id="fileUpload" accept="image/*">
+                                    <img id="preview" src="#" alt="your image"
+                                        style="display: none; width: 100px;" />
                                 </div>
                             </div>
                             <div class="form-actions">

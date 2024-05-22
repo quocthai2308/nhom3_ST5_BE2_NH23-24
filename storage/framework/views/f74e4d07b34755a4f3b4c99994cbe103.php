@@ -14,7 +14,7 @@
 
                         <!-- BEGIN USER FORM -->
                         <form action="<?php echo e(route('product.modify', $product->id)); ?>" method="post" class="form-horizontal"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" id="updateForm">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('PUT'); ?>
                             <div class="control-group">
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">Chọn danh mục:</label>
+                                <label class="control-label">Choose categories:</label>
                                 <div class="controls">
                                     <select name="category_ids[]" multiple required>
                                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -93,11 +93,13 @@
                                         value="<?php echo e($product->discount); ?>" required /> *
                                 </div>
                             </div>
-                            
+
                             <div class="control-group">
                                 <label class="control-label">Choose image:</label>
                                 <div class="controls">
-                                    <input type="file" name="fileUpload" id="fileUpload">
+                                    <input type="file" name="fileUpload" id="fileUpload" accept="image/*">
+                                    <img id="preview" src="#" alt="your image"
+                                        style="display: none; width: 100px;" />
                                 </div>
                             </div>
                             <div class="form-actions">

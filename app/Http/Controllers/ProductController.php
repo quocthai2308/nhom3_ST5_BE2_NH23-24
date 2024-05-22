@@ -167,47 +167,47 @@ class ProductController extends Controller
 
 
     // Hàm xoá sản phẩm
-    public function delete($id)
-    {
-        $product = Product::find($id);
-
-        if (!$product) {
-            return response()->json(['message' => 'Product not found'], 404);
-        }
-
-        // Xoá tất cả hình ảnh liên quan
-        foreach ($product->images as $image) {
-            $image->delete();
-        }
-
-        // Xoá liên kết giữa sản phẩm và các danh mục
-        $product->categories()->detach();
-
-        // Xoá sản phẩm
-        $product->delete();
-
-        return redirect()->route('manage-product');
-    }
-
-    // Xoá hình ảnh khỏi thư mục
     // public function delete($id)
     // {
-    //     // Tìm sản phẩm theo ID
     //     $product = Product::find($id);
 
-    //     // Xóa hình ảnh từ thư mục 'images'
-    //     foreach ($product->images as $image) {
-    //         $imagePath = public_path('app\images\products\\' . $image->name);
-    //         if (file_exists($imagePath)) {
-    //             unlink($imagePath);
-    //         }
+    //     if (!$product) {
+    //         return response()->json(['message' => 'Product not found'], 404);
     //     }
 
-    //     // Xóa sản phẩm từ cơ sở dữ liệu
+    //     // Xoá tất cả hình ảnh liên quan
+    //     foreach ($product->images as $image) {
+    //         $image->delete();
+    //     }
+
+    //     // Xoá liên kết giữa sản phẩm và các danh mục
+    //     $product->categories()->detach();
+
+    //     // Xoá sản phẩm
     //     $product->delete();
 
     //     return redirect()->route('manage-product');
     // }
+
+    // Xoá hình ảnh khỏi thư mục
+    public function delete($id)
+    {
+        // Tìm sản phẩm theo ID
+        $product = Product::find($id);
+
+        // Xóa hình ảnh từ thư mục 'images'
+        foreach ($product->images as $image) {
+            $imagePath = public_path('app\images\products\\' . $image->name);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
+        // Xóa sản phẩm từ cơ sở dữ liệu
+        $product->delete();
+
+        return redirect()->route('manage-product');
+    }
 
     public function filterProducts(Request $request)
     {

@@ -28,7 +28,6 @@
             display: flex;
             padding: 10px
         }
-        
     </style>
 </head>
 
@@ -85,7 +84,7 @@
     </div>
     <!--close-top-serch-->
     <!--sidebar-menu-->
-    <div  id="sidebar"> <a href="#" class="visible-phone"><i
+    <div id="sidebar"> <a href="#" class="visible-phone"><i
                 class="icon
                     icon-th"></i>Tables</a>
         <ul>
@@ -107,8 +106,8 @@
     </div> <!-- BEGIN CONTENT -->
     <div id="content">
         <div id="content-header">
-            <div id="breadcrumb"> <a href="<?php echo e(url('dashboard')); ?>" title="Go to Home"
-                    class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
+            <div id="breadcrumb"> <a href="<?php echo e(url('dashboard')); ?>" title="Go to Home" class="tip-bottom current"><i
+                        class="icon-home"></i> Home</a></div>
 
 
             <?php echo $__env->yieldContent('content'); ?>
@@ -151,7 +150,7 @@
                     });
                 });
             </script>
-            
+
             <script src="<?php echo e(url('admin/ckeditor/ckeditor.js')); ?>"></script>
             <script>
                 ClassicEditor
@@ -159,6 +158,30 @@
                     .catch(error => {
                         console.error(error);
                     });
+            </script>
+            <script>
+                document.getElementById('fileUpload').addEventListener('change', function() {
+                    var file = this.files[0];
+                    if (file.type.match('image.*')) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            document.getElementById('preview').src = e.target.result;
+                            document.getElementById('preview').style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert('Please select an image file.');
+                        this.value = ''; // Reset the input
+                        document.getElementById('preview').style.display = 'none'; // Hide the image element
+                    }
+                });
+
+                document.getElementById('productForm').addEventListener('submit', function(e) {
+                    if (!document.getElementById('fileUpload').value) {
+                        alert('Please select an image before submitting the form.');
+                        e.preventDefault(); // Stop form submission
+                    }
+                });
             </script>
 
 </body>
