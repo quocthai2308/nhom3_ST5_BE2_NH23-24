@@ -33,7 +33,7 @@ foreach ($selectedProductsInput as $product) {
 
 Cache::put('selectedProductsInput', $parameters, 60);
 
- $vnp_TmnCode = "S77NQKOC"; //Mã định danh merchant kết nối (Terminal Id)
+$vnp_TmnCode = "S77NQKOC"; //Mã định danh merchant kết nối (Terminal Id)
 $vnp_HashSecret = "VMUTQZMAJALJDPSKDOATRRZBNLUQYNMJ"; //Secret key
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 $vnp_Returnurl = route('vnpay.return');

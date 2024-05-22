@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function () {
+    //
     $('#add-category-button').on('click', function(e) {
         e.preventDefault();
 
@@ -21,4 +22,27 @@ $(document).ready(function() {
             }
         });
     });
+
+
+
+
+    const dropdownItems = document.querySelectorAll('#showDropdownMenu .dropdown-item');
+    const dropdownButton = document.getElementById('showDropdownButton');
+
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            const newCount = this.textContent;
+            dropdownButton.innerHTML = `${newCount} <span class="caret"></span>`;
+            const currentUrlParams = new URLSearchParams(window.location.search);
+            currentUrlParams.set('show', newCount);
+            window.location.search = currentUrlParams.toString();
+        });
+    });
+
+
+
+
+    
+
 });

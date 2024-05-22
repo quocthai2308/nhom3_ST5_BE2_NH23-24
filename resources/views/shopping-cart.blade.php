@@ -1,6 +1,15 @@
 ﻿@extends('app')
 @section('title','Vỏ Hàng á Nhennnnn')
 @section('content')
+
+
+
+@if (session('success_message'))
+    <div class="alert alert-success" id="success-alert">
+        {{ session('success_message') }}
+    </div>
+@endif
+
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
 	<div class="container">

@@ -42,35 +42,37 @@ class HomeController extends Controller
     }
     public function category($categoryId, Request $request)
     {
-        $sortType = $request->input('sort');
+        $sortType = $request->input('sort', 'position'); // Mặc định sắp xếp theo 'position'
+        $showCount = $request->input('show', 3); // Mặc định hiển thị 10 sản phẩm
         $category = Category::find($categoryId); // Lấy category dựa trên categoryId
-
+    
+        // Khởi tạo query cơ bản
+        $query = Product::whereHas('categories', function ($query) use ($categoryId) {
+            $query->where('category_id', $categoryId);
+        });
+    
+        // Thêm sắp xếp theo yêu cầu
         switch ($sortType) {
             case 'price_asc':
-                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
-                    $query->where('category_id', $categoryId);
-                })->orderBy('price', 'asc')->get();
+                $query->orderBy('price', 'asc');
                 break;
             case 'price_desc':
-                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
-                    $query->where('category_id', $categoryId);
-                })->orderBy('price', 'desc')->get();
+                $query->orderBy('price', 'desc');
                 break;
             case 'name_asc':
-                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
-                    $query->where('category_id', $categoryId);
-                })->orderBy('name', 'asc')->get();
+                $query->orderBy('name', 'asc');
                 break;
             default:
-                $products = Product::whereHas('categories', function ($query) use ($categoryId) {
-                    $query->where('category_id', $categoryId);
-                })->get();
+                // Không có sắp xếp mặc định
                 break;
         }
-
-        return view('category', compact('products', 'category')); // Truyền $category vào view
+    
+        // Giới hạn số lượng sản phẩm hiển thị
+        $products = $query->paginate($showCount);
+    
+        return view('category', compact('products', 'category', 'sortType', 'showCount'));
     }
-
+    
 
     public function shopping_cart()
     {

@@ -450,7 +450,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -503,7 +503,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -556,7 +556,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -609,7 +609,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -661,7 +661,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -713,7 +713,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -774,7 +774,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -826,7 +826,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -878,7 +878,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -930,7 +930,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -982,7 +982,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1034,7 +1034,7 @@
                                             Iphone 5s 32GB</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1095,7 +1095,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1147,7 +1147,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1199,7 +1199,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1251,7 +1251,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1303,7 +1303,7 @@
                                             Print Buttoned</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1355,7 +1355,7 @@
                                             Galaxy S4</a></h3>
                                     <div class="rating rateit-small"></div>
                                     <div class="description"></div>
-                                    <div class="product-price"> <span class="price"> $450.99
+                                    <div class="product-price"> <span class="price"> 450.99 VND
                                         </span> <span class="price-before-discount">$ 800</span>
                                     </div>
                                     <!-- /.product-price -->
@@ -1446,7 +1446,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -1497,7 +1497,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -1535,9 +1535,8 @@
                 <div class="products">
                     <div class="product">
                         <div class="product-image">
-                            <div class="image"> <a href="{{ url('detail') }}"><img
-                                        src="{{ asset('app\images\blank.gif') }}"
-                                        data-echo="assets/images/products/p7.jpg" alt=""></a> </div>
+                        <div class="image"> <a href="{{ url('detail') }}"><img
+                                        src="{{ asset('app\images\products\p7.jpg') }}" alt=""></a> </div>
                             <!-- /.image -->
 
                             <div class="tag sale"><span>sale</span></div>
@@ -1549,7 +1548,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -1600,7 +1599,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -1651,7 +1650,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -1702,7 +1701,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -1975,7 +1974,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -2026,7 +2025,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -2077,7 +2076,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -2128,7 +2127,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -2179,7 +2178,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 
@@ -2230,7 +2229,7 @@
                                     Buttoned</a></h3>
                             <div class="rating rateit-small"></div>
                             <div class="description"></div>
-                            <div class="product-price"> <span class="price"> $450.99 </span> <span
+                            <div class="product-price"> <span class="price"> 450.99 VND </span> <span
                                     class="price-before-discount">$ 800</span> </div>
                             <!-- /.product-price -->
 

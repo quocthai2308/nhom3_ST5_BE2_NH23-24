@@ -1,6 +1,16 @@
 ﻿
 <?php $__env->startSection('title','Vỏ Hàng á Nhennnnn'); ?>
 <?php $__env->startSection('content'); ?>
+
+
+
+<?php if(session('success_message')): ?>
+    <div class="alert alert-success" id="success-alert">
+        <?php echo e(session('success_message')); ?>
+
+    </div>
+<?php endif; ?>
+
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
 	<div class="container">
